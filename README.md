@@ -23,6 +23,7 @@
 
  ## Database
  - DataStore
+ - Room DB
 
  ## Observable
  - StateFlow
