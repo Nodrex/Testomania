@@ -1,7 +1,7 @@
 # PsicoCard
 
 ## architecture:
- - clean (usecase/interactor)
+ - Clean (usecase/interactor)
  - MVVM
  
  ## UI
@@ -11,7 +11,8 @@
  - Hilt
  
  ## Testing
- - Unit Test (MockK) 
+ - Unit Test (MockK)
+ - Instrumentation (Robolectric)
  - UI Test (Espresso)
 
  ## Database
