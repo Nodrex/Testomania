@@ -1,5 +1,8 @@
 # Testomania
 
+## Language:
+- Kotlin
+
 ## architecture:
  - Clean (usecase/interactor) 
  - MVVM
