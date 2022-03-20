@@ -1,8 +1,9 @@
 # Testomania
 
 ## architecture:
- - Clean (usecase/interactor)
+ - Clean (usecase/interactor) 
  - MVVM
+ - Package based architecture
  
  ## UI
  - jetpack compose
@@ -19,3 +20,7 @@
 
  ## Database
  - DataStore
+ 
+ ## Networking
+ - Retrofit
+ - Glide to download images
