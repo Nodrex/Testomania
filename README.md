@@ -1,4 +1,4 @@
-# PsicoCard
+# Testomania
 
 ## architecture:
  - Clean (usecase/interactor)
