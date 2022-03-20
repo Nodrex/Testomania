@@ -20,6 +20,14 @@
 
  ## Database
  - DataStore
+
+ ## Observable
+ - StateFlow
+ - SharedFlow
+ - Flow
+
+ ## Multithreading
+ - Coroutines
  
  ## Networking
  - Retrofit
