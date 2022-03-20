@@ -6,6 +6,8 @@
  
  ## UI
  - jetpack compose
+ - Dark mode
+ - Tablet UI
  
  ## DI
  - Hilt
