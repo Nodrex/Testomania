@@ -1,18 +1,26 @@
-# PsicoCard
+# Testomania
 
 ## architecture:
- - clean (usecase/interactor)
+ - Clean (usecase/interactor) 
  - MVVM
+ - Package based architecture
  
  ## UI
  - jetpack compose
+ - Dark mode
+ - Tablet UI
  
  ## DI
  - Hilt
  
  ## Testing
- - Unit Test (MockK) 
+ - Unit Test (MockK)
+ - Instrumentation (Robolectric)
  - UI Test (Espresso)
 
  ## Database
  - DataStore
+ 
+ ## Networking
+ - Retrofit
+ - Glide to download images
