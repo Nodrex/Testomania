@@ -1,9 +1,18 @@
 # PsicoCard
 
-architecture:
- - MVVM
+## architecture:
  - clean (usecase/interactor)
+ - MVVM
+ 
+ ## UI
  - jetpack compose
+ 
+ ## DI
  - Hilt
- - Unit Test (MockK), UI Test (Espresso)
+ 
+ ## Testing
+ - Unit Test (MockK) 
+ - UI Test (Espresso)
+
+ ## Database
  - DataStore
