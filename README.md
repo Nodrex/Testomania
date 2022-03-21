@@ -4,9 +4,8 @@
 - Kotlin
 
 ## architecture:
- - Clean (usecase/interactor) 
+ - Clean package based (usecase/interactor) 
  - MVVM
- - Package based architecture
  
  ## UI
  - jetpack compose
