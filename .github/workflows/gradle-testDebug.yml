@@ -7,7 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Unit tests
-        run: ./gradlew testDebug
-      - name: Android Lint
-        run: ./gradlew lintDebug
+      - uses: actions/setup-java@v2
+      with:
+        java-version: 11
+        - uses: gradle/gradle-build-action@v2
+          with:
+            arguments: testDebug
+        - uses: gradle/gradle-build-action@v2
+          with:
+            arguments: lintDebug
