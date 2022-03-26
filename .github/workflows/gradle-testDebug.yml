@@ -11,6 +11,7 @@ jobs:
         with:
           java-version: 11
           distribution: temurin
+          cache: 'gradle'
       - uses: gradle/gradle-build-action@v2
         with:
           arguments: testDebug
