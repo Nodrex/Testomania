@@ -2,14 +2,13 @@
 name: Run tests with Gradle
 
 ## Actions that will be executed when you push code currently none
-on:
-  push:
+on: [pull_request, workflow_dispatch]
 
 ## 2
 jobs:
   ## 3
   unit_tests:
-    runs-on: [ubuntu-latest]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
