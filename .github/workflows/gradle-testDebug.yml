@@ -1,16 +1,12 @@
-## 1
-name: Run tests with Gradle
+name: Gradlew testDebug and lintDebug
 
-## Actions that will be executed when you push code currently none
-on: [pull_request, workflow_dispatch]
+on: [pull_request]
 
-## 2
 jobs:
-  ## 3
-  unit_tests:
+  unit_tests_lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
       - name: Unit tests
-        run: ./gradlew testDebug
+      - run: ./gradlew testDebug
+      - run: ./gradlew lintDebug
