@@ -1,0 +1,17 @@
+## 1
+name: Run tests with Gradle
+
+## Actions that will be executed when you push code currently none
+on:
+  push:
+
+## 2
+jobs:
+  ## 3
+  unit_tests:
+    runs-on: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Unit tests
+        run: ./gradlew testDebug
