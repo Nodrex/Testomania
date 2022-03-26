@@ -3,10 +3,11 @@ name: Gradlew testDebug and lintDebug
 on: [pull_request]
 
 jobs:
-  unit_tests_lint:
+  unit_tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Unit tests
-      - run: ./gradlew testDebug
-      - run: ./gradlew lintDebug
+        run: ./gradlew testDebug
+      - name: Android Lint
+        run: ./gradlew lintDebug
