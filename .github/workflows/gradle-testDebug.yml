@@ -1,6 +1,6 @@
 name: Gradlew testDebug and lintDebug
 
-on: [pull_request]
+on: [ pull_request ]
 
 jobs:
   unit_tests:
@@ -8,11 +8,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-java@v2
-      with:
-        java-version: 11
-        - uses: gradle/gradle-build-action@v2
-          with:
-            arguments: testDebug
-        - uses: gradle/gradle-build-action@v2
-          with:
-            arguments: lintDebug
+        with:
+          java-version: 11
+      - uses: gradle/gradle-build-action@v2
+        with:
+          arguments: testDebug
+      - uses: gradle/gradle-build-action@v2
+        with:
+          arguments: lintDebug
