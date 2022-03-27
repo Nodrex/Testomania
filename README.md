@@ -6,6 +6,7 @@
 ## architecture:
  - Clean package based (usecase/interactor) 
  - MVVM
+ - Single Activity
  
  ## UI
  - jetpack compose
@@ -35,3 +36,6 @@
  ## Networking
  - Retrofit
  - Glide to download images
+
+ ## Tools
+ - LeakCanary
