@@ -10,6 +10,7 @@
  
  ## UI
  - jetpack compose
+ - jetpack compose navigation (https://github.com/raamcosta/compose-destinations)
  - Dark mode
  - Tablet UI
  
@@ -35,6 +36,7 @@
  
  ## Networking
  - Retrofit
+ - Moshi as Json convertor  
  - Glide to download images
 
  ## Tools

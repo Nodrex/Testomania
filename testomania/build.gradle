@@ -85,4 +85,5 @@ dependencies {
     implementation "androidx.room:room-ktx:2.4.2"
     kapt "androidx.room:room-compiler:2.4.2"
 
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.8.1'
 }
