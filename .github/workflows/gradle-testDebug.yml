@@ -10,6 +10,8 @@ jobs:
       - uses: actions/setup-java@v2
         with:
           java-version: 11
+          distribution: temurin
+          cache: 'gradle'
       - uses: gradle/gradle-build-action@v2
         with:
           arguments: testDebug
