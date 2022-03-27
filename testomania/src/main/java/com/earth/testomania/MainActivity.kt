@@ -26,7 +26,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String) {
-    Text(text = "Testomania $name!")
+    Text(text = "აპლიკაცია ბორძიკებს მაგრამ სწორი მიმართულებით")
 }
 
 @Preview(showBackground = true)
