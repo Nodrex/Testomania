@@ -17,7 +17,7 @@ class MainActivity : ComponentActivity() {
             TestomaniaTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    Greeting("World!")
+                    Greeting("Hello Testomania World")
                 }
             }
         }
@@ -26,7 +26,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String) {
-    Text(text = "აპლიკაცია ბორძიკებს მაგრამ სწორი მიმართულებით")
+    Text(text = name)
 }
 
 @Preview(showBackground = true)
