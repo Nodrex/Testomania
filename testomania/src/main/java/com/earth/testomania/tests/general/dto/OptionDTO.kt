@@ -1,5 +1,8 @@
 package com.earth.testomania.tests.general.dto
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class OptionDTO(
     val correct: Int,
     val id: Int,

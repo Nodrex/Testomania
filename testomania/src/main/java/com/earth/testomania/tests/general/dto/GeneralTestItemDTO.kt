@@ -1,5 +1,8 @@
 package com.earth.testomania.tests.general.dto
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class GeneralTestItemDTO(
 //    val active: Int,
 //    val creator_id: Any,
