@@ -1,8 +1,8 @@
 package com.earth.testomania.tests.general.dto
 
-import kotlinx.serialization.Serializable
+import com.squareup.moshi.JsonClass
 
-@Serializable
+@JsonClass(generateAdapter = false)
 data class OptionDTO(
     val correct: Int,
     val id: Int,
