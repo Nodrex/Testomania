@@ -3,7 +3,7 @@ package com.earth.testomania.tests.general.dto
 import com.squareup.moshi.JsonClass
 
 
-@JsonClass(generateAdapter = false)
+@JsonClass(generateAdapter = true)
 data class GeneralTestItemDTO(
 //    val active: Int,
 //    val creator_id: Any,

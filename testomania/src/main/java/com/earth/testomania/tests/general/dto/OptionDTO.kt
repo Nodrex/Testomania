@@ -2,7 +2,7 @@ package com.earth.testomania.tests.general.dto
 
 import com.squareup.moshi.JsonClass
 
-@JsonClass(generateAdapter = false)
+@JsonClass(generateAdapter = true)
 data class OptionDTO(
     val correct: Int,
     val id: Int,
