@@ -23,7 +23,6 @@ class GeneralSkillsMathematicalRepo @Inject constructor(
         val rawJson = appContext.resources.openRawResource(R.raw.general_ability_test_data)
         val adapter: JsonAdapter<List<GeneralTestItemDTO>> = moshi.adapter()
         adapter.fromJson(rawJson.source().buffer()) ?: emptyList()
-        emptyList<GeneralTestItemDTO>()
     }
 
     fun getAllTests(): List<GeneralTestItemDTO> {
