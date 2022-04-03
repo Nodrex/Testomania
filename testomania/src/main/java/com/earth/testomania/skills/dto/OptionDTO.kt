@@ -1,4 +1,4 @@
-package com.earth.testomania.tests.general.dto
+package com.earth.testomania.skills.dto
 
 import com.squareup.moshi.JsonClass
 
