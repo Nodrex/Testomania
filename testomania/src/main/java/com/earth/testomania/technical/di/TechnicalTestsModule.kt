@@ -1,5 +1,6 @@
 package com.earth.testomania.technical.di
 
+import com.earth.testomania.technical.data.source.remote.QuizApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,10 +22,11 @@ class TechnicalTestsModule {
     @Provides
     @Singleton
     @Named(QUIZ_API_NAME)
-    fun provideQuizAPIRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
+    fun provideQuizApi(okHttpClient: OkHttpClient): QuizApi = Retrofit.Builder()
         .baseUrl(QUIZ_API_BASE_URL)
         .client(okHttpClient)
         .addConverterFactory(MoshiConverterFactory.create())
         .build()
+        .create(QuizApi::class.java)
 
 }

@@ -1,6 +1,6 @@
-package com.earth.testomania.technical.domain.model
+package com.earth.testomania.technical.data.source.remote.dto
 
-data class Answers(
+data class AnswersDTO(
     val answer_a: String,
     val answer_b: String,
     val answer_c: Any,

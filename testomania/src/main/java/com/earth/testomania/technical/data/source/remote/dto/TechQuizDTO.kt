@@ -1,7 +1,7 @@
-package com.earth.testomania.technical.domain.model
+package com.earth.testomania.technical.data.source.remote.dto
 
-data class TechQuizItem(
-    val answers: Answers,
+data class TechQuizDTO(
+    val answers: AnswersDTO,
     val category: String,
     val correct_answer: String,
     val correct_answers: CorrectAnswersDTO,
@@ -11,6 +11,6 @@ data class TechQuizItem(
     val id: Int,
     val multiple_correct_answers: String,
     val question: String,
-    val tags: List<Tag>,
+    val tags: List<TagDTO>,
     val tip: Any
 )

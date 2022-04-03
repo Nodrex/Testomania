@@ -1,4 +1,4 @@
-package com.earth.testomania.technical.domain.model
+package com.earth.testomania.technical.data.source.remote.dto
 
 data class CorrectAnswersDTO(
     val answer_a_correct: String,
