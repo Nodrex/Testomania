@@ -1,6 +1,6 @@
 package com.earth.testomania.technical.domain.model
 
-data class CorrectAnswers(
+data class CorrectAnswersDTO(
     val answer_a_correct: String,
     val answer_b_correct: String,
     val answer_c_correct: String,

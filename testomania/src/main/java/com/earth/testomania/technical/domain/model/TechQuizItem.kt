@@ -4,7 +4,7 @@ data class TechQuizItem(
     val answers: Answers,
     val category: String,
     val correct_answer: String,
-    val correct_answers: CorrectAnswers,
+    val correct_answers: CorrectAnswersDTO,
     val description: Any,
     val difficulty: String,
     val explanation: Any,
