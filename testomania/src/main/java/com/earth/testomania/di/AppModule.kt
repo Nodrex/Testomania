@@ -15,7 +15,7 @@ object AppModule {
     //TODO provide DB instance and so on
     @Provides
     @Singleton
-    fun jsonSerializer(): Moshi {
+    fun provideMoshi(): Moshi {
         return Moshi.Builder()
             .addLast(KotlinJsonAdapterFactory())
             .build()
