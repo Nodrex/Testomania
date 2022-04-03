@@ -13,18 +13,17 @@ class QuizRepositoryImpl @Inject constructor(
     private val quizApi: QuizApi
 ) : QuizRepository {
 
-    override suspend fun getQuizList(): Flow<DataState<MetaData, List<TechQuizDTO>>> = flow {
+    override suspend fun getQuizList(): Flow<DataState<List<TechQuizDTO>>> = flow {
         try {
-            emit(DataState.Loading(LoadingData()))
+            emit(DataState.Loading(LoadingMetaData()))
             val result = quizApi.getQuizList()
             if (result.isSuccessful) {
-                emit(DataState.Success(LoadingData(), payload = result.body()))
-                emit(DataState.Success(SuccessData(), payload = result.body()))
+                emit(DataState.Success(SuccessMetaData(), payload = result.body()))
             } else {
-                emit(DataState.Error(ErrorData(null)))
+                emit(DataState.Error(ErrorMetaData(null)))
             }
         } catch (e: Exception) {
-            emit(DataState.Error(LoadingData()))
+            emit(DataState.Error(ErrorMetaData(e)))
         }
 
     }

@@ -11,7 +11,7 @@ class GetQuizListUseCase @Inject constructor(
     private val quizRepository: QuizRepository
 ) {
 
-    suspend operator fun invoke(): Flow<DataState<MetaData, List<TechQuizDTO>>> {
+    suspend operator fun invoke(): Flow<DataState<List<TechQuizDTO>>> {
         return quizRepository.getQuizList()
     }
 

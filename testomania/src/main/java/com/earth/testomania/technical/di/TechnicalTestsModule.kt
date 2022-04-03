@@ -4,6 +4,7 @@ import com.earth.testomania.technical.data.repository.QuizRepositoryImpl
 import com.earth.testomania.technical.data.source.remote.QuizApi
 import com.earth.testomania.technical.domain.repository.QuizRepository
 import com.earth.testomania.technical.domain.use_case.GetQuizListUseCase
+import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,10 +26,10 @@ class TechnicalTestsModule {
     @Provides
     @Singleton
     //@Named(QUIZ_API_NAME)
-    fun provideQuizApi(okHttpClient: OkHttpClient): QuizApi = Retrofit.Builder()
+    fun provideQuizApi(okHttpClient: OkHttpClient, moshi: Moshi): QuizApi = Retrofit.Builder()
         .baseUrl(QUIZ_API_BASE_URL)
         .client(okHttpClient)
-        .addConverterFactory(MoshiConverterFactory.create())
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
         .build()
         .create(QuizApi::class.java)
 

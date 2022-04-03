@@ -7,6 +7,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface QuizRepository {
 
-    suspend fun getQuizList(): Flow<DataState<MetaData, List<TechQuizDTO>>>
+    suspend fun getQuizList(): Flow<DataState<List<TechQuizDTO>>>
 
 }
