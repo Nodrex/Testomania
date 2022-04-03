@@ -6,7 +6,7 @@ import retrofit2.http.GET
 
 interface QuizApi {
 
-    @GET(" -G -d apiKey=rQY0VtcCgMPYMPxEL9f8bxZdmM2gfogf6QhkuKZa -d limit=10")
+    @GET(" -G -d apiKey=rQY0VtcCgMPYMPxEL9f8bxZdmM2gfogf6QhkuKZa -d limit=2")
     suspend fun getQuizList(): Response<List<TechQuizDTO>>
 
 }
