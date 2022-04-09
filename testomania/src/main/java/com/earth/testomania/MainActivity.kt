@@ -7,12 +7,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.earth.testomania.presentation.NavGraphs
 import com.earth.testomania.ui.theme.TestomaniaTheme
@@ -27,14 +22,14 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             TestomaniaTheme {
-                MainScreen()
+                Testomania()
             }
         }
     }
 }
 
 @Composable
-fun MainScreen() {
+fun Testomania() {
     val navController: NavHostController = rememberNavController()
 
     Scaffold(
@@ -42,7 +37,7 @@ fun MainScreen() {
             TopBar()
         },
     ) { innerPadding: PaddingValues ->
-        ExampleNavigation(
+        TestomaniaNavigation(
             innerPadding = innerPadding,
             navHostController = navController
         )
@@ -50,7 +45,7 @@ fun MainScreen() {
 }
 
 @Composable
-fun ExampleNavigation(
+fun TestomaniaNavigation(
     innerPadding: PaddingValues,
     navHostController: NavHostController,
 ) {
