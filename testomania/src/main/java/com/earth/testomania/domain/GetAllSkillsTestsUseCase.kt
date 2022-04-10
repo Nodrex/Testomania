@@ -12,7 +12,7 @@ class GetAllSkillsTestsUseCase @Inject constructor(
     fun execute(): List<GeneralMathematicalSkillsTest> {
         return repo.getAllTests().map { skillTest ->
             GeneralMathematicalSkillsTest(
-                question = skillTest.question.removePrefix("<p>").removeSuffix("</p>"),
+                question = skillTest.question,
                 possibleAnswers = skillTest.options.map { option ->
                     PossibleAnswer(text = option.option, isCorrect = option.correct == 1)
                 }
