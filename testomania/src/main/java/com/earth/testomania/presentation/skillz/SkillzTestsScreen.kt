@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -25,9 +26,9 @@ fun SkillzTestScreen() {
 
     Column(modifier = Modifier.fillMaxWidth()) {
         val currentTest = 25
-        Text(text = viewModel.state.getOrNull(currentTest)?.question ?: "")
+        Text(text = viewModel.state.collectAsState().value.getOrNull(currentTest)?.question ?: "")
         Spacer(modifier = Modifier.height(15.dp))
-        viewModel.state.getOrNull(currentTest)?.possibleAnswers?.forEach {
+        viewModel.state.collectAsState().value.getOrNull(currentTest)?.possibleAnswers?.forEach {
             Text(text = it.text)
         }
     }

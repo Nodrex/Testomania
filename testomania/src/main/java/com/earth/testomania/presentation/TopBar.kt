@@ -1,4 +1,4 @@
-package com.earth.testomania
+package com.earth.testomania.presentation
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,6 +15,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.*
+import com.earth.testomania.R
 
 @OptIn(ExperimentalUnitApi::class)
 @Preview
