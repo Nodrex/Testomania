@@ -3,4 +3,5 @@
     <string name="general_skills_tests">უნარების ტესტები</string>
     <string name="driving_license_tests">მარვის მოწმობის ტესტები</string>
     <string name="geography_tests">გეოგრაფიის ტესტები</string>
+    <string name="title_name">Testomania</string>
 </resources>
