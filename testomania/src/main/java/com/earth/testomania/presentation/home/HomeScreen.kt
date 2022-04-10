@@ -6,7 +6,9 @@ import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.earth.testomania.R
 import com.earth.testomania.presentation.destinations.SkillzTestScreenDestination
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -24,19 +26,19 @@ fun HomeScreen(
             onClick = {
                 navigator.navigate(SkillzTestScreenDestination())
             }) {
-            Text(text = "უნარების ტესტები")
+            Text(text = stringResource(id = R.string.general_skills_tests))
         }
         Button(
             onClick = {
 
             }) {
-            Text(text = "მარვის მოწმობის ტესტები")
+            Text(text = stringResource(id = R.string.driving_license_tests))
         }
         Button(
             onClick = {
 
             }) {
-            Text(text = "გეოგრაფიის ტესტები")
+            Text(text = stringResource(id = R.string.geography_tests))
         }
     }
 }
