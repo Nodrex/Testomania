@@ -40,7 +40,7 @@ class QuizViewModel @Inject constructor(
                         }
                     }
                     is DataState.Success -> {
-
+                        println("data => ${it.payload}")
                     }
                     is DataState.Error -> {
 

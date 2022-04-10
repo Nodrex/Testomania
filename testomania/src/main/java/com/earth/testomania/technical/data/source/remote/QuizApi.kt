@@ -3,10 +3,16 @@ package com.earth.testomania.technical.data.source.remote
 import com.earth.testomania.technical.data.source.remote.dto.TechQuizDTO
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Query
+
+const val API_KEY = "rQY0VtcCgMPYMPxEL9f8bxZdmM2gfogf6QhkuKZa"
 
 interface QuizApi {
 
-    @GET(" -G -d apiKey=rQY0VtcCgMPYMPxEL9f8bxZdmM2gfogf6QhkuKZa -d limit=2")
-    suspend fun getQuizList(): Response<List<TechQuizDTO>>
+    @GET("api/v1/questions")
+    suspend fun getQuizList(
+        @Query("apiKey") apiKey: String = API_KEY,
+        @Query("limit") questionCount: Int = 10
+    ): Response<List<TechQuizDTO>>
 
 }
