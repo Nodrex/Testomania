@@ -10,6 +10,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import okhttp3.OkHttpClient
+import kotlinx.coroutines.Dispatchers
 import javax.inject.Singleton
 
 @Module
