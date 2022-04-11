@@ -1,0 +1,1925 @@
+[
+  {
+    "id": 4453,
+    "test_id": 111,
+    "ordering": 1,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10e8\u10d4\u10d0\u10d3\u10d0\u10e0\u10d4\u10d7 \u10d4\u10e0\u10d7\u10db\u10d0\u10dc\u10d4\u10d7\u10e1 A \u10d3\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d4\u10d1\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d4\u10d1\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d4\u10d1\u10d8.\n<img src=\"\/photos\/1567\/61f2fed1e22fe.png\" alt=\"\" width=\"413\" height=\"77\" \/>\n&nbsp;",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 21987,
+        "question_id": 4453,
+        "option": "\u10d0) A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 \u10db\u10d4\u10e2\u10d8\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d6\u10d4; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 21988,
+        "question_id": 4453,
+        "option": "\u10d1) B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 \u10db\u10d4\u10e2\u10d8\u10d0 A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d6\u10d4; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 21989,
+        "question_id": 4453,
+        "option": "\u10d2) A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8\u10d0; ",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 21990,
+        "question_id": 4453,
+        "option": "\u10d3) \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10d8\u10dc\u10e4\u10dd\u10e0\u10db\u10d0\u10ea\u10d8\u10d0 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8 \u10d0\u10e0\u10d0\u10d0 \u10d8\u10db\u10d8\u10e1 \u10d3\u10d0\u10e1\u10d0\u10d3\u10d2\u10d4\u10dc\u10d0\u10d3, \u10e0\u10dd\u10db\u10d4\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d0 \u10db\u10d4\u10e2\u10d8.",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4454,
+    "test_id": 111,
+    "ordering": 2,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10e8\u10d4\u10d0\u10d3\u10d0\u10e0\u10d4\u10d7 \u10d4\u10e0\u10d7\u10db\u10d0\u10dc\u10d4\u10d7\u10e1 A \u10d3\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d4\u10d1\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d4\u10d1\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d4\u10d1\u10d8.\n<img src=\"\/photos\/1567\/61f2ff1986339.png\" alt=\"\" width=\"421\" height=\"79\" \/>\n&nbsp;",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 21983,
+        "question_id": 4454,
+        "option": "\u10d0) A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 \u10db\u10d4\u10e2\u10d8\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d6\u10d4; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 21984,
+        "question_id": 4454,
+        "option": "\u10d1) B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 \u10db\u10d4\u10e2\u10d8\u10d0 A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d6\u10d4; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 21985,
+        "question_id": 4454,
+        "option": "\u10d2) A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8\u10d0; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 21986,
+        "question_id": 4454,
+        "option": "\u10d3) \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10d8\u10dc\u10e4\u10dd\u10e0\u10db\u10d0\u10ea\u10d8\u10d0 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8 \u10d0\u10e0\u10d0\u10d0 \u10d8\u10db\u10d8\u10e1 \u10d3\u10d0\u10e1\u10d0\u10d3\u10d2\u10d4\u10dc\u10d0\u10d3, \u10e0\u10dd\u10db\u10d4\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d0 \u10db\u10d4\u10e2\u10d8.",
+        "correct": 1,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4455,
+    "test_id": 111,
+    "ordering": 3,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10e8\u10d4\u10d0\u10d3\u10d0\u10e0\u10d4\u10d7 \u10d4\u10e0\u10d7\u10db\u10d0\u10dc\u10d4\u10d7\u10e1 A \u10d3\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d4\u10d1\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d4\u10d1\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d4\u10d1\u10d8.\n<img src=\"\/photos\/1567\/61f2ff5857fd0.png\" alt=\"\" width=\"438\" height=\"116\" \/>",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 21979,
+        "question_id": 4455,
+        "option": "\u10d0) A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 \u10db\u10d4\u10e2\u10d8\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d6\u10d4; ",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 21980,
+        "question_id": 4455,
+        "option": "\u10d1) B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 \u10db\u10d4\u10e2\u10d8\u10d0 A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d6\u10d4; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 21981,
+        "question_id": 4455,
+        "option": "\u10d2) A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8\u10d0; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 21982,
+        "question_id": 4455,
+        "option": "\u10d3) \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10d8\u10dc\u10e4\u10dd\u10e0\u10db\u10d0\u10ea\u10d8\u10d0 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8 \u10d0\u10e0\u10d0\u10d0 \u10d8\u10db\u10d8\u10e1 \u10d3\u10d0\u10e1\u10d0\u10d3\u10d2\u10d4\u10dc\u10d0\u10d3, \u10e0\u10dd\u10db\u10d4\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d0 \u10db\u10d4\u10e2\u10d8.",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4456,
+    "test_id": 111,
+    "ordering": 4,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10e8\u10d4\u10d0\u10d3\u10d0\u10e0\u10d4\u10d7 \u10d4\u10e0\u10d7\u10db\u10d0\u10dc\u10d4\u10d7\u10e1 A \u10d3\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d4\u10d1\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d4\u10d1\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d4\u10d1\u10d8.\n<img src=\"\/photos\/1567\/61f2ffabf34cf.png\" alt=\"\" width=\"547\" height=\"112\" \/>",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 21991,
+        "question_id": 4456,
+        "option": "\u10d0) A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 \u10db\u10d4\u10e2\u10d8\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d6\u10d4; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 21992,
+        "question_id": 4456,
+        "option": "\u10d1) B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 \u10db\u10d4\u10e2\u10d8\u10d0 A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d6\u10d4; ",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 21993,
+        "question_id": 4456,
+        "option": "\u10d2) A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8\u10d0; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 21994,
+        "question_id": 4456,
+        "option": "\u10d3) \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10d8\u10dc\u10e4\u10dd\u10e0\u10db\u10d0\u10ea\u10d8\u10d0 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8 \u10d0\u10e0\u10d0\u10d0 \u10d8\u10db\u10d8\u10e1 \u10d3\u10d0\u10e1\u10d0\u10d3\u10d2\u10d4\u10dc\u10d0\u10d3, \u10e0\u10dd\u10db\u10d4\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d0 \u10db\u10d4\u10e2\u10d8.",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4457,
+    "test_id": 111,
+    "ordering": 5,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10e8\u10d4\u10d0\u10d3\u10d0\u10e0\u10d4\u10d7 \u10d4\u10e0\u10d7\u10db\u10d0\u10dc\u10d4\u10d7\u10e1 A \u10d3\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d4\u10d1\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d4\u10d1\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d4\u10d1\u10d8.\n<img src=\"\/photos\/1567\/61f30003c3853.png\" alt=\"\" width=\"429\" height=\"85\" \/>",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 21995,
+        "question_id": 4457,
+        "option": "\u10d0) A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 \u10db\u10d4\u10e2\u10d8\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d6\u10d4; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 21996,
+        "question_id": 4457,
+        "option": "\u10d1) B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 \u10db\u10d4\u10e2\u10d8\u10d0 A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d6\u10d4; ",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 21997,
+        "question_id": 4457,
+        "option": "\u10d2) A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8\u10d0; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 21998,
+        "question_id": 4457,
+        "option": "\u10d3) \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10d8\u10dc\u10e4\u10dd\u10e0\u10db\u10d0\u10ea\u10d8\u10d0 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8 \u10d0\u10e0\u10d0\u10d0 \u10d8\u10db\u10d8\u10e1 \u10d3\u10d0\u10e1\u10d0\u10d3\u10d2\u10d4\u10dc\u10d0\u10d3, \u10e0\u10dd\u10db\u10d4\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d0 \u10db\u10d4\u10e2\u10d8.",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4458,
+    "test_id": 111,
+    "ordering": 6,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10e8\u10d4\u10d0\u10d3\u10d0\u10e0\u10d4\u10d7 \u10d4\u10e0\u10d7\u10db\u10d0\u10dc\u10d4\u10d7\u10e1 A \u10d3\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d4\u10d1\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d4\u10d1\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d4\u10d1\u10d8.\n<img src=\"\/photos\/1567\/61f3004074557.png\" alt=\"\" width=\"475\" height=\"97\" \/>",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 21999,
+        "question_id": 4458,
+        "option": "\u10d0) A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 \u10db\u10d4\u10e2\u10d8\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d6\u10d4; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22000,
+        "question_id": 4458,
+        "option": "\u10d1) B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 \u10db\u10d4\u10e2\u10d8\u10d0 A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d6\u10d4; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22001,
+        "question_id": 4458,
+        "option": "\u10d2) A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8\u10d0; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22002,
+        "question_id": 4458,
+        "option": "\u10d3) \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10d8\u10dc\u10e4\u10dd\u10e0\u10db\u10d0\u10ea\u10d8\u10d0 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8 \u10d0\u10e0\u10d0\u10d0 \u10d8\u10db\u10d8\u10e1 \u10d3\u10d0\u10e1\u10d0\u10d3\u10d2\u10d4\u10dc\u10d0\u10d3, \u10e0\u10dd\u10db\u10d4\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d0 \u10db\u10d4\u10e2\u10d8.",
+        "correct": 1,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4459,
+    "test_id": 111,
+    "ordering": 7,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10d9\u10dd\u10db\u10de\u10d0\u10dc\u10d8\u10d0\u10db \u10d7\u10dd\u10e0\u10db\u10d4\u10e2 \u10db\u10d8\u10da\u10d8\u10dd\u10dc \u10da\u10d0\u10e0\u10d0\u10d3 \u10d0\u10d5\u10e2\u10dd\u10db\u10d0\u10dc\u10e5\u10d0\u10dc\u10d4\u10d1\u10d8 \u10e8\u10d4\u10d8\u10eb\u10d8\u10dc\u10d0. \u10d7\u10d8\u10d7\u10dd\u10d4\u10e3\u10da \u10d0\u10d5\u10e2\u10dd\u10db\u10d0\u10dc\u10e5\u10d0\u10dc\u10d0\u10e8\u10d8 \u10dd\u10e0\u10db\u10dd\u10ea\u10d8 \u10d0\u10d7\u10d0\u10e1\u10d8 \u10da\u10d0\u10e0\u10d8 \u10d2\u10d0\u10d3\u10d0\u10d8\u10ee\u10d0\u10d3\u10d0. \u10e0\u10d0\u10db\u10d3\u10d4\u10dc\u10d8 \u10d0\u10d5\u10e2\u10dd\u10db\u10d0\u10dc\u10e5\u10d0\u10dc\u10d0 \u10e8\u10d4\u10e3\u10eb\u10d4\u10dc\u10d8\u10d0 \u10d9\u10dd\u10db\u10de\u10d0\u10dc\u10d8\u10d0\u10e1?",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22003,
+        "question_id": 4459,
+        "option": "\u10d0) 30 ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22004,
+        "question_id": 4459,
+        "option": "\u10d1) 40 ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22005,
+        "question_id": 4459,
+        "option": "\u10d2) 300 ",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 22006,
+        "question_id": 4459,
+        "option": "\u10d3) 400&nbsp;",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22007,
+        "question_id": 4459,
+        "option": "\u10d4) 3000",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4460,
+    "test_id": 111,
+    "ordering": 8,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10d7\u10e3 3\ud835\udc65 &minus; 2\ud835\udc66 = &minus;1 \u10d3\u10d0 \ud835\udc65   3\ud835\udc66 = 7, \u10db\u10d0\u10e8\u10d8\u10dc \ud835\udc66   4\ud835\udc65 =",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22008,
+        "question_id": 4460,
+        "option": "\u10d0) \u22122 ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22009,
+        "question_id": 4460,
+        "option": "\u10d1) \u22124 ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22010,
+        "question_id": 4460,
+        "option": "\u10d2) 4 ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22011,
+        "question_id": 4460,
+        "option": "\u10d3) 6&nbsp;",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 22012,
+        "question_id": 4460,
+        "option": "\u10d4) 8",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4461,
+    "test_id": 111,
+    "ordering": 9,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10db\u10d0\u10e0\u10d7\u10d9\u10e3\u10d7\u10ee\u10d0 \u10e1\u10d0\u10d9\u10dd\u10dd\u10e0\u10d3\u10d8\u10dc\u10d0\u10e2\u10dd \u10e1\u10d8\u10d1\u10e0\u10e2\u10e7\u10d4\u10d6\u10d4 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8\u10d0 \u10db\u10d0\u10e0\u10d7\u10d9\u10e3\u10d7\u10ee\u10d0 \u10e1\u10d0\u10db\u10d9\u10e3\u10d7\u10ee\u10d4\u10d3\u10d8, \u10e0\u10dd\u10db\u10da\u10d8\u10e1 \u10d9\u10d0\u10d7\u10d4\u10e2\u10d4\u10d1\u10d8 \u10e1\u10d0\u10d9\u10dd\u10dd\u10e0\u10d3\u10d8\u10dc\u10d0\u10e2\u10dd \u10e6\u10d4\u10e0\u10eb\u10d4\u10d1\u10d8\u10e1 \u10de\u10d0\u10e0\u10d0\u10da\u10d4\u10da\u10e3\u10e0\u10d8\u10d0 (\u10d8\u10ee. \u10dc\u10d0\u10ee\u10d0\u10d6\u10d8). \u10e0\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8\u10d0 \u10d0\u10db \u10e1\u10d0\u10db\u10d9\u10e3\u10d7\u10ee\u10d4\u10d3\u10d8\u10e1 \u10db\u10d0\u10e0\u10d7\u10d8 \u10d9\u10e3\u10d7\u10ee\u10d8\u10e1 \u10ec\u10d5\u10d4\u10e0\u10dd\u10e1 \u10d9\u10dd\u10dd\u10e0\u10d3\u10d8\u10dc\u10d0\u10e2\u10d4\u10d1\u10d8, \u10d7\u10e3 \u10db\u10d0\u10ee\u10d5\u10d8\u10da\u10d8 \u10d9\u10e3\u10d7\u10ee\u10d4\u10d4\u10d1\u10d8\u10e1 \u10ec\u10d5\u10d4\u10e0\u10dd\u10d4\u10d1\u10d8\u10e1 \u10d9\u10dd\u10dd\u10e0\u10d3\u10d8\u10dc\u10d0\u10e2\u10d4\u10d1\u10d8\u10d0 (2; 4) \u10d3\u10d0 (7; 1)?\n<img src=\"\/photos\/1567\/61f301115f431.png\" alt=\"\" width=\"254\" height=\"161\" \/>",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22013,
+        "question_id": 4461,
+        "option": "\u10d0) (5; 3) ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22014,
+        "question_id": 4461,
+        "option": "\u10d1) (2; 7) ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22015,
+        "question_id": 4461,
+        "option": "\u10d2) (4; 2) ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22016,
+        "question_id": 4461,
+        "option": "\u10d3) (7; 4)&nbsp;",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 22017,
+        "question_id": 4461,
+        "option": "\u10d4) (9; 5)",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4462,
+    "test_id": 111,
+    "ordering": 10,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10e1\u10d0\u10db \u10d9\u10dd\u10da\u10dd\u10e4\u10e8\u10d8, \u10e0\u10dd\u10db\u10d4\u10da\u10d7\u10d0\u10d2\u10d0\u10dc \u10d0\u10e0\u10ea \u10d4\u10e0\u10d7\u10d8 \u10d0\u10e0\u10d0\u10d0 \u10ea\u10d0\u10e0\u10d8\u10d4\u10da\u10d8, \u10e1\u10e3\u10da 11 \u10ea\u10d0\u10da\u10d8 \u10e4\u10d0\u10dc\u10e5\u10d0\u10e0\u10d8 \u10d0\u10ec\u10e7\u10d5\u10d8\u10d0. \u10e7\u10d5\u10d4\u10da\u10d0\u10d6\u10d4 \u10dc\u10d0\u10d9\u10da\u10d4\u10d1\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d8\u10e1 \u10e4\u10d0\u10dc\u10e5\u10d0\u10e0\u10d8 \u10de\u10d8\u10e0\u10d5\u10d4\u10da \u10d9\u10dd\u10da\u10dd\u10e4\u10e8\u10d8\u10d0, \u10e7\u10d5\u10d4\u10da\u10d0\u10d6\u10d4 \u10db\u10d4\u10e2\u10d8 - \u10db\u10d4\u10e1\u10d0\u10db\u10d4 \u10d9\u10dd\u10da\u10dd\u10e4\u10e8\u10d8. \u10e9\u10d0\u10db\u10dd\u10d7\u10d5\u10da\u10d8\u10da\u10d7\u10d0\u10d2\u10d0\u10dc \u10e0\u10dd\u10db\u10da\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8 \u10e8\u10d4\u10d8\u10eb\u10da\u10d4\u10d1\u10d0 \u10d8\u10e7\u10dd\u10e1 \u10e4\u10d0\u10dc\u10e5\u10e0\u10d4\u10d1\u10d8\u10e1 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 \u10db\u10d4\u10dd\u10e0\u10d4 \u10d9\u10dd\u10da\u10dd\u10e4\u10e8\u10d8?",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22018,
+        "question_id": 4462,
+        "option": "\u10d0) 1-\u10d8\u10e1; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22019,
+        "question_id": 4462,
+        "option": "\u10d1) 3-\u10d8\u10e1; ",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 22020,
+        "question_id": 4462,
+        "option": "\u10d2) 5-\u10d8\u10e1; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22021,
+        "question_id": 4462,
+        "option": "\u10d3) 6-\u10d8\u10e1;&nbsp;",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22022,
+        "question_id": 4462,
+        "option": "\u10d4) 7-\u10d8\u10e1.",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4463,
+    "test_id": 111,
+    "ordering": 11,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10e5\u10d5\u10d4\u10db\u10dd\u10d7 \u10e9\u10d0\u10db\u10dd\u10d7\u10d5\u10da\u10d8\u10da\u10d8 \u10e0\u10d8\u10ea\u10ee\u10d5\u10d4\u10d1\u10d8\u10d3\u10d0\u10dc \u10e0\u10dd\u10db\u10d4\u10da\u10d8 \u10e8\u10d4\u10d8\u10eb\u10da\u10d4\u10d1\u10d0 \u10ec\u10d0\u10e0\u10db\u10dd\u10d5\u10d0\u10d3\u10d2\u10d8\u10dc\u10dd\u10d7 2<sup>\ud835\udc58<\/sup> &minus; 1 \u10e1\u10d0\u10ee\u10d8\u10d7, \u10e1\u10d0\u10d3\u10d0\u10ea k \u10dc\u10d0\u10e2\u10e3\u10e0\u10d0\u10da\u10e3\u10e0\u10d8 \u10e0\u10d8\u10ea\u10ee\u10d5\u10d8\u10d0?",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22023,
+        "question_id": 4463,
+        "option": "\u10d0) 9 ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22024,
+        "question_id": 4463,
+        "option": "\u10d1) 21 ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22025,
+        "question_id": 4463,
+        "option": "\u10d2) 33 ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22026,
+        "question_id": 4463,
+        "option": "\u10d3) 41&nbsp;",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22027,
+        "question_id": 4463,
+        "option": "\u10d4) 63",
+        "correct": 1,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4464,
+    "test_id": 111,
+    "ordering": 12,
+    "type_id": 1,
+    "text_id": null,
+    "question": "A, B, C \u10d3\u10d0 D \u10ec\u10d4\u10e0\u10e2\u10d8\u10da\u10d4\u10d1\u10d8 \u10d4\u10e0\u10d7 \u10ec\u10e0\u10e4\u10d4\u10d6\u10d4 \u10db\u10d3\u10d4\u10d1\u10d0\u10e0\u10d4\u10dd\u10d1\u10e1 (\u10d8\u10ee. \u10dc\u10d0\u10ee\u10d0\u10d6\u10d8). AC \u10db\u10dd\u10dc\u10d0\u10d9\u10d5\u10d4\u10d7\u10d8\u10e1 \u10e1\u10d8\u10d2\u10e0\u10eb\u10d4\u10d0 17 \u10e1\u10db, BD \u10db\u10dd\u10dc\u10d0\u10d9\u10d5\u10d4\u10d7\u10d8\u10e1\u10d0 &ndash; 21 \u10e1\u10db, \u10ee\u10dd\u10da\u10dd AD \u10db\u10dd\u10dc\u10d0\u10d9\u10d5\u10d4\u10d7\u10d8\u10e1\u10d0 &ndash; 29 \u10e1\u10db. \u10e0\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8\u10d0 BC \u10db\u10dd\u10dc\u10d0\u10d9\u10d5\u10d4\u10d7\u10d8\u10e1 \u10e1\u10d8\u10d2\u10e0\u10eb\u10d4?\n<img src=\"\/photos\/1567\/61f301df50284.png\" alt=\"\" width=\"253\" height=\"88\" \/>",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22028,
+        "question_id": 4464,
+        "option": "\u10d0) 4 \u10e1\u10db-\u10d8\u10e1; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22029,
+        "question_id": 4464,
+        "option": "\u10d1) 7 \u10e1\u10db-\u10d8\u10e1; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22030,
+        "question_id": 4464,
+        "option": "\u10d2) 8 \u10e1\u10db-\u10d8\u10e1; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22031,
+        "question_id": 4464,
+        "option": "\u10d3) 9 \u10e1\u10db-\u10d8\u10e1;&nbsp;",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 22032,
+        "question_id": 4464,
+        "option": "\u10d4) 12 \u10e1\u10db-\u10d8\u10e1.",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4465,
+    "test_id": 111,
+    "ordering": 13,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10d3\u10d8\u10d0\u10d2\u10e0\u10d0\u10db\u10d0\u10d6\u10d4 \u10ec\u10d4\u10e0\u10e2\u10d8\u10da\u10d4\u10d1\u10d8\u10e1 \u10e1\u10d0\u10e8\u10e3\u10d0\u10da\u10d4\u10d1\u10d8\u10d7 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8\u10d0 \u10d3\u10d0\u10ec\u10d4\u10e1\u10d4\u10d1\u10e3\u10da\u10d4\u10d1\u10d0\u10e8\u10d8 \u10db\u10dd\u10db\u10e3\u10e8\u10d0\u10d5\u10d4 \u10d7\u10d8\u10d7\u10dd\u10d4\u10e3\u10da\u10d8 \u10d7\u10d0\u10dc\u10d0\u10db\u10e8\u10e0\u10dd\u10db\u10da\u10d8\u10e1 \u10d0\u10e1\u10d0\u10d9\u10d8 \u10d3\u10d0 \u10ee\u10d4\u10da\u10e4\u10d0\u10e1\u10d8 (\u10e1\u10ee\u10d5\u10d0\u10d3\u10d0\u10e1\u10ee\u10d5\u10d0 \u10d7\u10d0\u10dc\u10d0\u10db\u10e8\u10e0\u10dd\u10db\u10d4\u10da\u10e1 \u10e1\u10ee\u10d5\u10d0\u10d3\u10d0\u10e1\u10ee\u10d5\u10d0 \u10ec\u10d4\u10e0\u10e2\u10d8\u10da\u10d8 \u10e8\u10d4\u10d4\u10e1\u10d0\u10d1\u10d0\u10db\u10d4\u10d1\u10d0).\n<img src=\"\/photos\/1567\/61f30243bb669.png\" alt=\"\" width=\"404\" height=\"211\" \/>\n\u10d3\u10d8\u10d0\u10d2\u10e0\u10d0\u10db\u10d8\u10e1 \u10db\u10d8\u10ee\u10d4\u10d3\u10d5\u10d8\u10d7 \u10e3\u10de\u10d0\u10e1\u10e3\u10ee\u10d4\u10d7 \u10e8\u10d4\u10db\u10d3\u10d4\u10d2&nbsp; \u10e8\u10d4\u10d9\u10d8\u10d7\u10ee\u10d5\u10d0\u10e1:\n&nbsp;\n\u10d7\u10d4\u10db\u10e3\u10e0\u10d8, \u10e1\u10d0\u10dc\u10d3\u10e0\u10dd \u10d3\u10d0 \u10d5\u10d0\u10df\u10d0 \u10d0\u10e1\u10d0\u10d9\u10d8\u10d7 \u10d7\u10d0\u10dc\u10d0\u10e2\u10dd\u10da\u10d4\u10d1\u10d8 \u10d0\u10e0\u10d8\u10d0\u10dc. \u10e1\u10d0\u10db\u10d8\u10d5\u10d4 \u10db\u10d0\u10d7\u10d2\u10d0\u10dc\u10d8 \u10d0\u10db \u10d3\u10d0\u10ec\u10d4\u10e1\u10d4\u10d1\u10e3\u10da\u10d4\u10d1\u10d0\u10e8\u10d8 \u10db\u10e3\u10e8\u10d0\u10dd\u10d1\u10e1. \u10e9\u10d0\u10db\u10dd\u10d7\u10d5\u10da\u10d8\u10da\u10d7\u10d0\u10d2\u10d0\u10dc \u10e0\u10dd\u10db\u10da\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8 \u10e8\u10d4\u10d8\u10eb\u10da\u10d4\u10d1\u10d0 \u10d8\u10e7\u10dd\u10e1 \u10e1\u10d0\u10dc\u10d3\u10e0\u10dd\u10e1 \u10ee\u10d4\u10da\u10e4\u10d0\u10e1\u10d8?",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22038,
+        "question_id": 4465,
+        "option": "\u10d0) 1500 \u10da\u10d0\u10e0\u10d8\u10e1; ",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 22039,
+        "question_id": 4465,
+        "option": "\u10d1) 1300 \u10da\u10d0\u10e0\u10d8\u10e1; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22040,
+        "question_id": 4465,
+        "option": "\u10d2) 1100 \u10da\u10d0\u10e0\u10d8\u10e1; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22041,
+        "question_id": 4465,
+        "option": "\u10d3) 1000 \u10da\u10d0\u10e0\u10d8\u10e1;",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22042,
+        "question_id": 4465,
+        "option": "\u10d4) 900 \u10da\u10d0\u10e0\u10d8\u10e1.",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4466,
+    "test_id": 111,
+    "ordering": 14,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10d3\u10d8\u10d0\u10d2\u10e0\u10d0\u10db\u10d0\u10d6\u10d4 \u10ec\u10d4\u10e0\u10e2\u10d8\u10da\u10d4\u10d1\u10d8\u10e1 \u10e1\u10d0\u10e8\u10e3\u10d0\u10da\u10d4\u10d1\u10d8\u10d7 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8\u10d0 \u10d3\u10d0\u10ec\u10d4\u10e1\u10d4\u10d1\u10e3\u10da\u10d4\u10d1\u10d0\u10e8\u10d8 \u10db\u10dd\u10db\u10e3\u10e8\u10d0\u10d5\u10d4 \u10d7\u10d8\u10d7\u10dd\u10d4\u10e3\u10da\u10d8 \u10d7\u10d0\u10dc\u10d0\u10db\u10e8\u10e0\u10dd\u10db\u10da\u10d8\u10e1 \u10d0\u10e1\u10d0\u10d9\u10d8 \u10d3\u10d0 \u10ee\u10d4\u10da\u10e4\u10d0\u10e1\u10d8 (\u10e1\u10ee\u10d5\u10d0\u10d3\u10d0\u10e1\u10ee\u10d5\u10d0 \u10d7\u10d0\u10dc\u10d0\u10db\u10e8\u10e0\u10dd\u10db\u10d4\u10da\u10e1 \u10e1\u10ee\u10d5\u10d0\u10d3\u10d0\u10e1\u10ee\u10d5\u10d0 \u10ec\u10d4\u10e0\u10e2\u10d8\u10da\u10d8 \u10e8\u10d4\u10d4\u10e1\u10d0\u10d1\u10d0\u10db\u10d4\u10d1\u10d0).\n<img src=\"\/photos\/1567\/61f30243bb669.png\" alt=\"\" width=\"304\" height=\"159\" \/>\n&nbsp;\n\u10d3\u10d8\u10d0\u10d2\u10e0\u10d0\u10db\u10d8\u10e1 \u10db\u10d8\u10ee\u10d4\u10d3\u10d5\u10d8\u10d7 \u10e3\u10de\u10d0\u10e1\u10e3\u10ee\u10d4\u10d7 \u10e8\u10d4\u10db\u10d3\u10d4\u10d2&nbsp; \u10e8\u10d4\u10d9\u10d8\u10d7\u10ee\u10d5\u10d0\u10e1:\n&nbsp;\n\u10e0\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8\u10d0 \u10d3\u10d0\u10ec\u10d4\u10e1\u10d4\u10d1\u10e3\u10da\u10d4\u10d1\u10d0\u10e8\u10d8 \u10db\u10dd\u10db\u10e3\u10e8\u10d0\u10d5\u10d4 \u10d8\u10db \u10d7\u10d0\u10dc\u10d0\u10db\u10e8\u10e0\u10dd\u10db\u10d4\u10da\u10d7\u10d0 \u10e1\u10d0\u10e8\u10e3\u10d0\u10da\u10dd \u10d0\u10e1\u10d0\u10d9\u10d8, \u10e0\u10dd\u10db\u10d4\u10da\u10d7\u10d0 \u10ee\u10d4\u10da\u10e4\u10d0\u10e1\u10d8 1500 \u10da\u10d0\u10e0\u10d6\u10d4 \u10db\u10d4\u10e2\u10d8\u10d0?",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22043,
+        "question_id": 4466,
+        "option": "\u10d0) 56 \u10ec\u10da\u10d8\u10e1; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22044,
+        "question_id": 4466,
+        "option": "\u10d1) 57 \u10ec\u10da\u10d8\u10e1; ",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 22045,
+        "question_id": 4466,
+        "option": "\u10d2) 58 \u10ec\u10da\u10d8\u10e1; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22046,
+        "question_id": 4466,
+        "option": "\u10d3) 59 \u10ec\u10da\u10d8\u10e1;&nbsp;",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22047,
+        "question_id": 4466,
+        "option": "\u10d4) 60 \u10ec\u10da\u10d8\u10e1.",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4467,
+    "test_id": 111,
+    "ordering": 15,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10d3\u10d8\u10d0\u10d2\u10e0\u10d0\u10db\u10d0\u10d6\u10d4 \u10ec\u10d4\u10e0\u10e2\u10d8\u10da\u10d4\u10d1\u10d8\u10e1 \u10e1\u10d0\u10e8\u10e3\u10d0\u10da\u10d4\u10d1\u10d8\u10d7 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8\u10d0 \u10d3\u10d0\u10ec\u10d4\u10e1\u10d4\u10d1\u10e3\u10da\u10d4\u10d1\u10d0\u10e8\u10d8 \u10db\u10dd\u10db\u10e3\u10e8\u10d0\u10d5\u10d4 \u10d7\u10d8\u10d7\u10dd\u10d4\u10e3\u10da\u10d8 \u10d7\u10d0\u10dc\u10d0\u10db\u10e8\u10e0\u10dd\u10db\u10da\u10d8\u10e1 \u10d0\u10e1\u10d0\u10d9\u10d8 \u10d3\u10d0 \u10ee\u10d4\u10da\u10e4\u10d0\u10e1\u10d8 (\u10e1\u10ee\u10d5\u10d0\u10d3\u10d0\u10e1\u10ee\u10d5\u10d0 \u10d7\u10d0\u10dc\u10d0\u10db\u10e8\u10e0\u10dd\u10db\u10d4\u10da\u10e1 \u10e1\u10ee\u10d5\u10d0\u10d3\u10d0\u10e1\u10ee\u10d5\u10d0 \u10ec\u10d4\u10e0\u10e2\u10d8\u10da\u10d8 \u10e8\u10d4\u10d4\u10e1\u10d0\u10d1\u10d0\u10db\u10d4\u10d1\u10d0).\n<img src=\"\/photos\/1567\/61f30243bb669.png\" alt=\"\" width=\"478\" height=\"250\" \/>\n\u10d3\u10d8\u10d0\u10d2\u10e0\u10d0\u10db\u10d8\u10e1 \u10db\u10d8\u10ee\u10d4\u10d3\u10d5\u10d8\u10d7 \u10e3\u10de\u10d0\u10e1\u10e3\u10ee\u10d4\u10d7 \u10e8\u10d4\u10db\u10d3\u10d4\u10d2&nbsp; \u10e8\u10d4\u10d9\u10d8\u10d7\u10ee\u10d5\u10d0\u10e1:\n&nbsp;\n\u10d3\u10d0\u10d7\u10dd, \u10d7\u10dd\u10e0\u10dc\u10d8\u10d9\u10d4 \u10d3\u10d0 \u10d6\u10e3\u10e0\u10d0\u10d1\u10d8 \u10d0\u10db \u10d3\u10d0\u10ec\u10d4\u10e1\u10d4\u10d1\u10e3\u10da\u10d4\u10d1\u10d0\u10e8\u10d8 \u10db\u10e3\u10e8\u10d0\u10dd\u10d1\u10d4\u10dc. \u10db\u10d0\u10d7\u10d2\u10d0\u10dc \u10e7\u10d5\u10d4\u10da\u10d0\u10d6\u10d4 \u10dc\u10d0\u10d9\u10da\u10d4\u10d1\u10d8 \u10ee\u10d4\u10da\u10e4\u10d0\u10e1\u10d8 \u10d3\u10d0\u10d7\u10dd\u10e1 \u10d0\u10e5\u10d5\u10e1. \u10d6\u10e3\u10e0\u10d0\u10d1\u10d8 \u10d3\u10d0\u10d7\u10dd\u10d6\u10d4\u10ea \u10d3\u10d0 \u10d7\u10dd\u10e0\u10dc\u10d8\u10d9\u10d4\u10d6\u10d4\u10ea 38 \u10ec\u10da\u10d8\u10d7 \u10e3\u10e4\u10e0\u10dd\u10e1\u10d8\u10d0. \u10e0\u10d0\u10db\u10d3\u10d4\u10dc\u10d8 \u10da\u10d0\u10e0\u10d8\u10d7 \u10db\u10d4\u10e2\u10d8\u10d0 \u10d6\u10e3\u10e0\u10d0\u10d1\u10d8\u10e1 \u10ee\u10d4\u10da\u10e4\u10d0\u10e1\u10d8 \u10d7\u10dd\u10e0\u10dc\u10d8\u10d9\u10d4\u10e1 \u10ee\u10d4\u10da\u10e4\u10d0\u10e1\u10d6\u10d4?",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22048,
+        "question_id": 4467,
+        "option": "\u10d0) 500 ",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 22049,
+        "question_id": 4467,
+        "option": "\u10d1) 600 ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22050,
+        "question_id": 4467,
+        "option": "\u10d2) 700 ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22051,
+        "question_id": 4467,
+        "option": "\u10d3) 800&nbsp;",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22052,
+        "question_id": 4467,
+        "option": "\u10d4) 900",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4468,
+    "test_id": 111,
+    "ordering": 16,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10e5\u10d5\u10d4\u10db\u10dd\u10d7 \u10e9\u10d0\u10db\u10dd\u10d7\u10d5\u10da\u10d8\u10da\u10d8 \u10ec\u10d8\u10da\u10d0\u10d3\u10d4\u10d1\u10d8\u10d3\u10d0\u10dc \u10e0\u10dd\u10db\u10d4\u10da\u10d8\u10d0 \u10e3\u10d3\u10d8\u10d3\u10d4\u10e1\u10d8?",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22053,
+        "question_id": 4468,
+        "option": "\u10d0)\n<img src=\"\/photos\/1567\/61f303b51aa1e.png\" alt=\"\" width=\"57\" height=\"53\" \/>",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 22054,
+        "question_id": 4468,
+        "option": "\u10d1)\n<img src=\"\/photos\/1567\/61f303b557107.png\" alt=\"\" width=\"50\" height=\"40\" \/>",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22055,
+        "question_id": 4468,
+        "option": "\u10d2)\n<img src=\"\/photos\/1567\/61f303b57795c.png\" alt=\"\" width=\"54\" height=\"47\" \/>",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22056,
+        "question_id": 4468,
+        "option": "\u10d3)\n<img src=\"\/photos\/1567\/61f303b57c7e2.png\" alt=\"\" width=\"80\" height=\"48\" \/>",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22057,
+        "question_id": 4468,
+        "option": "\u10d4)\n<img src=\"\/photos\/1567\/61f303b57700b.png\" alt=\"\" width=\"81\" height=\"45\" \/>",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4469,
+    "test_id": 111,
+    "ordering": 17,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10d4\u10e0\u10d7 \u10d9\u10d0\u10da\u10d0\u10d7\u10d0\u10e8\u10d8 3-\u10d8\u10d7 \u10db\u10d4\u10e2\u10d8 \u10d5\u10d0\u10e8\u10da\u10d8\u10d0, \u10d5\u10d8\u10d3\u10e0\u10d4 \u10db\u10d4\u10dd\u10e0\u10d4\u10e8\u10d8. \u10e0\u10d0\u10db\u10d3\u10d4\u10dc\u10d8 \u10d5\u10d0\u10e8\u10da\u10d8\u10d0 \u10db\u10d4\u10dd\u10e0\u10d4 \u10d9\u10d0\u10da\u10d0\u10d7\u10d0\u10e8\u10d8, \u10d7\u10e3 \u10dd\u10e0\u10d8\u10d5\u10d4\u10e8\u10d8 \u10d4\u10e0\u10d7\u10d0\u10d3 \u10d5\u10d0\u10e8\u10da\u10d4\u10d1\u10d8\u10e1 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 \ud835\udc5a-\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8\u10d0?",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22058,
+        "question_id": 4469,
+        "option": "\u10d0)\n<img src=\"\/photos\/1567\/61f3043fa63e7.png\" alt=\"\" width=\"101\" height=\"55\" \/>",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22059,
+        "question_id": 4469,
+        "option": "\u10d1)\n<img src=\"\/photos\/1567\/61f3043fc1943.png\" alt=\"\" width=\"78\" height=\"40\" \/>",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22060,
+        "question_id": 4469,
+        "option": "\u10d2)\n<img src=\"\/photos\/1567\/61f3043fc923c.png\" alt=\"\" width=\"80\" height=\"47\" \/>",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 22061,
+        "question_id": 4469,
+        "option": "\u10d3)\n<img src=\"\/photos\/1567\/61f3043fcb2ab.png\" alt=\"\" width=\"88\" height=\"45\" \/>",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22062,
+        "question_id": 4469,
+        "option": "\u10d4)\n<img src=\"\/photos\/1567\/61f304400d769.png\" alt=\"\" width=\"83\" height=\"49\" \/>",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4470,
+    "test_id": 111,
+    "ordering": 18,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10d9\u10d0\u10e1\u10e0\u10e8\u10d8 \ud835\udc5b \u10da\u10d8\u10e2\u10e0\u10d8 \u10e6\u10d5\u10d8\u10dc\u10dd \u10d8\u10e7\u10dd. \u10d6\u10d0\u10d6\u10d0\u10e1 \u10db\u10ee\u10dd\u10da\u10dd\u10d3 6-\u10da\u10d8\u10e2\u10e0\u10d8\u10d0\u10dc\u10d8 \u10d3\u10d0 7-\u10da\u10d8\u10e2\u10e0\u10d8\u10d0\u10dc\u10d8 \u10ed\u10e3\u10e0\u10ed\u10da\u10d4\u10d1\u10d8 \u10d0\u10e5\u10d5\u10e1. \u10db\u10d0\u10dc \u10d9\u10d0\u10e1\u10e0\u10d8\u10d3\u10d0\u10dc \u10d2\u10d0\u10d3\u10db\u10dd\u10e6\u10d4\u10d1\u10e3\u10da\u10d8 \u10e6\u10d5\u10d8\u10dc\u10d8\u10d7 \u10e0\u10d0\u10db\u10d3\u10d4\u10dc\u10d8\u10db\u10d4 \u10ed\u10e3\u10e0\u10ed\u10d4\u10da\u10d8 \u10e8\u10d4\u10d0\u10d5\u10e1\u10dd. \u10d0\u10db\u10d8\u10e1 \u10e8\u10d4\u10db\u10d3\u10d4\u10d2 \u10d9\u10d0\u10e1\u10e0\u10e8\u10d8 40 \u10da\u10d8\u10e2\u10e0\u10d8 \u10e6\u10d5\u10d8\u10dc\u10dd \u10d3\u10d0\u10e0\u10e9\u10d0. \u10e9\u10d0\u10db\u10dd\u10d7\u10d5\u10da\u10d8\u10da\u10d7\u10d0\u10d2\u10d0\u10dc \u10e0\u10dd\u10db\u10da\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8 <span style=\"text-decoration: underline;\"><strong>\u10d0\u10e0 \u10e8\u10d4\u10d8\u10eb\u10da\u10d4\u10d1\u10d0<\/strong><\/span> \u10d8\u10e7\u10dd\u10e1 \ud835\udc5b ?",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22063,
+        "question_id": 4470,
+        "option": "\u10d0) 53-\u10d8\u10e1; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22064,
+        "question_id": 4470,
+        "option": "\u10d1) 59-\u10d8\u10e1; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22065,
+        "question_id": 4470,
+        "option": "\u10d2) 60-\u10d8\u10e1; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22066,
+        "question_id": 4470,
+        "option": "\u10d3) 62-\u10d8\u10e1;&nbsp;",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 22067,
+        "question_id": 4470,
+        "option": "\u10d4) 66-\u10d8\u10e1.",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4471,
+    "test_id": 111,
+    "ordering": 19,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10d9\u10d5\u10d0\u10d3\u10e0\u10d0\u10e2\u10d8\u10e1 \u10db\u10d4\u10d6\u10dd\u10d1\u10d4\u10da\u10d8 \u10d2\u10d5\u10d4\u10e0\u10d3\u10d4\u10d1\u10d8\u10e1 \u10e8\u10e3\u10d0\u10ec\u10d4\u10e0\u10e2\u10d8\u10da\u10d4\u10d1\u10d8\u10e1\u10d0 \u10d3\u10d0 \u10dd\u10e0\u10d8 \u10db\u10dd\u10de\u10d8\u10e0\u10d3\u10d0\u10de\u10d8\u10e0\u10d4 \u10ec\u10d5\u10d4\u10e0\u10dd\u10e1 \u10e8\u10d4\u10d4\u10e0\u10d7\u10d4\u10d1\u10d8\u10d7 \u10db\u10d8\u10e6\u10d4\u10d1\u10e3\u10da\u10d8 \u10d2\u10d0\u10db\u10e3\u10e5\u10d4\u10d1\u10e3\u10da\u10d8 \u10dd\u10d7\u10ee\u10d9\u10e3\u10d7\u10ee\u10d4\u10d3\u10d8\u10e1 \u10e4\u10d0\u10e0\u10d7\u10dd\u10d1\u10d8 12 \u10e1\u10db2-\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8\u10d0 (\u10d8\u10ee. \u10dc\u10d0\u10ee\u10d0\u10d6\u10d8).\n\u10e0\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8\u10d0 \u10d0\u10db \u10d9\u10d5\u10d0\u10d3\u10e0\u10d0\u10e2\u10d8\u10e1 \u10e4\u10d0\u10e0\u10d7\u10dd\u10d1\u10d8?\n<img src=\"\/photos\/1567\/61f30512a43dd.png\" alt=\"\" width=\"208\" height=\"217\" \/>",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22068,
+        "question_id": 4471,
+        "option": "\u10d0) 18 \u10e1\u10db2-\u10d8\u10e1; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22069,
+        "question_id": 4471,
+        "option": "\u10d1) 21 \u10e1\u10db2-\u10d8\u10e1; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22070,
+        "question_id": 4471,
+        "option": "\u10d2) 24 \u10e1\u10db2-\u10d8\u10e1; ",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 22071,
+        "question_id": 4471,
+        "option": "\u10d3) 27 \u10e1\u10db2-\u10d8\u10e1;&nbsp;",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22072,
+        "question_id": 4471,
+        "option": "\u10d4) 30 \u10e1\u10db2-\u10d8\u10e1.",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4472,
+    "test_id": 111,
+    "ordering": 20,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10dc\u10d0\u10e2\u10e3\u10e0\u10d0\u10da\u10e3\u10e0\u10d8 \u10e0\u10d8\u10ea\u10ee\u10d5\u10d8\u10e1 \u10e0\u10dd\u10d2\u10dd\u10e0\u10ea 4-\u10d6\u10d4, \u10d0\u10e1\u10d4\u10d5\u10d4 6-\u10d6\u10d4 \u10d2\u10d0\u10e7\u10dd\u10e4\u10d8\u10e1\u10d0\u10e1 \u10db\u10d8\u10e6\u10d4\u10d1\u10e3\u10da\u10d8 \u10dc\u10d0\u10e8\u10d7\u10d8 2-\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8\u10d0. \u10e9\u10d0\u10db\u10dd\u10d7\u10d5\u10da\u10d8\u10da\u10d7\u10d0\u10d2\u10d0\u10dc \u10e0\u10dd\u10db\u10da\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8 \u10e8\u10d4\u10d8\u10eb\u10da\u10d4\u10d1\u10d0 \u10d8\u10e7\u10dd\u10e1 \u10d0\u10db\u10d0\u10d5\u10d4 \u10e0\u10d8\u10ea\u10ee\u10d5\u10d8\u10e1 24-\u10d6\u10d4 \u10d2\u10d0\u10e7\u10dd\u10e4\u10d8\u10e1\u10d0\u10e1 \u10db\u10d8\u10e6\u10d4\u10d1\u10e3\u10da\u10d8 \u10dc\u10d0\u10e8\u10d7\u10d8?",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22073,
+        "question_id": 4472,
+        "option": "\u10d0) 6-\u10d8\u10e1; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22074,
+        "question_id": 4472,
+        "option": "\u10d1) 8-\u10d8\u10e1; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22075,
+        "question_id": 4472,
+        "option": "\u10d2) 10-\u10d8\u10e1; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22076,
+        "question_id": 4472,
+        "option": "\u10d3) 12-\u10d8\u10e1;&nbsp;",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22077,
+        "question_id": 4472,
+        "option": "\u10d4) 14-\u10d8\u10e1",
+        "correct": 1,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4473,
+    "test_id": 111,
+    "ordering": 21,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10e8\u10d4\u10d0\u10d3\u10d0\u10e0\u10d4\u10d7 \u10d4\u10e0\u10d7\u10db\u10d0\u10dc\u10d4\u10d7\u10e1 A \u10d3\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d4\u10d1\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d4\u10d1\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d4\u10d1\u10d8.\n<img src=\"\/photos\/1567\/61f305fb400ea.png\" alt=\"\" width=\"429\" height=\"128\" \/>",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22078,
+        "question_id": 4473,
+        "option": "\u10d0) A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 \u10db\u10d4\u10e2\u10d8\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d6\u10d4; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22079,
+        "question_id": 4473,
+        "option": "\u10d1) B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 \u10db\u10d4\u10e2\u10d8\u10d0 A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d6\u10d4; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22080,
+        "question_id": 4473,
+        "option": "\u10d2) A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8\u10d0; ",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 22081,
+        "question_id": 4473,
+        "option": "\u10d3) \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10d8\u10dc\u10e4\u10dd\u10e0\u10db\u10d0\u10ea\u10d8\u10d0 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8 \u10d0\u10e0\u10d0\u10d0 \u10d8\u10db\u10d8\u10e1 \u10d3\u10d0\u10e1\u10d0\u10d3\u10d2\u10d4\u10dc\u10d0\u10d3, \u10e0\u10dd\u10db\u10d4\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d0 \u10db\u10d4\u10e2\u10d8.",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4474,
+    "test_id": 111,
+    "ordering": 22,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10e8\u10d4\u10d0\u10d3\u10d0\u10e0\u10d4\u10d7 \u10d4\u10e0\u10d7\u10db\u10d0\u10dc\u10d4\u10d7\u10e1 A \u10d3\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d4\u10d1\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d4\u10d1\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d4\u10d1\u10d8.\n<img src=\"\/photos\/1567\/61f30d7de37ce.png\" alt=\"\" width=\"578\" height=\"191\" \/>",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22082,
+        "question_id": 4474,
+        "option": "\u10d0) A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 \u10db\u10d4\u10e2\u10d8\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d6\u10d4; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22083,
+        "question_id": 4474,
+        "option": "\u10d1) B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 \u10db\u10d4\u10e2\u10d8\u10d0 A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d6\u10d4; ",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 22084,
+        "question_id": 4474,
+        "option": "\u10d2) A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8\u10d0; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22085,
+        "question_id": 4474,
+        "option": "\u10d3) \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10d8\u10dc\u10e4\u10dd\u10e0\u10db\u10d0\u10ea\u10d8\u10d0 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8 \u10d0\u10e0\u10d0\u10d0 \u10d8\u10db\u10d8\u10e1 \u10d3\u10d0\u10e1\u10d0\u10d3\u10d2\u10d4\u10dc\u10d0\u10d3, \u10e0\u10dd\u10db\u10d4\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d0 \u10db\u10d4\u10e2\u10d8.",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4475,
+    "test_id": 111,
+    "ordering": 23,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10e8\u10d4\u10d0\u10d3\u10d0\u10e0\u10d4\u10d7 \u10d4\u10e0\u10d7\u10db\u10d0\u10dc\u10d4\u10d7\u10e1 A \u10d3\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d4\u10d1\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d4\u10d1\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d4\u10d1\u10d8.\n<img src=\"\/photos\/1567\/61f30dcd48877.png\" alt=\"\" width=\"511\" height=\"191\" \/>",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22086,
+        "question_id": 4475,
+        "option": "\u10d0) A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 \u10db\u10d4\u10e2\u10d8\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d6\u10d4; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22087,
+        "question_id": 4475,
+        "option": "\u10d1) B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 \u10db\u10d4\u10e2\u10d8\u10d0 A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d6\u10d4; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22088,
+        "question_id": 4475,
+        "option": "\u10d2) A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8\u10d0; ",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 22089,
+        "question_id": 4475,
+        "option": "\u10d3) \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10d8\u10dc\u10e4\u10dd\u10e0\u10db\u10d0\u10ea\u10d8\u10d0 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8 \u10d0\u10e0\u10d0\u10d0 \u10d8\u10db\u10d8\u10e1 \u10d3\u10d0\u10e1\u10d0\u10d3\u10d2\u10d4\u10dc\u10d0\u10d3, \u10e0\u10dd\u10db\u10d4\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d0 \u10db\u10d4\u10e2\u10d8.",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4476,
+    "test_id": 111,
+    "ordering": 24,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10e8\u10d4\u10d0\u10d3\u10d0\u10e0\u10d4\u10d7 \u10d4\u10e0\u10d7\u10db\u10d0\u10dc\u10d4\u10d7\u10e1 A \u10d3\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d4\u10d1\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d4\u10d1\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d4\u10d1\u10d8.\n<img src=\"\/photos\/1567\/61f30e075d34a.png\" alt=\"\" width=\"409\" height=\"100\" \/>",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22090,
+        "question_id": 4476,
+        "option": "\u10d0) A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 \u10db\u10d4\u10e2\u10d8\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d6\u10d4; ",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 22091,
+        "question_id": 4476,
+        "option": "\u10d1) B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 \u10db\u10d4\u10e2\u10d8\u10d0 A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d6\u10d4; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22092,
+        "question_id": 4476,
+        "option": "\u10d2) A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8\u10d0; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22093,
+        "question_id": 4476,
+        "option": "\u10d3) \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10d8\u10dc\u10e4\u10dd\u10e0\u10db\u10d0\u10ea\u10d8\u10d0 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8 \u10d0\u10e0\u10d0\u10d0 \u10d8\u10db\u10d8\u10e1 \u10d3\u10d0\u10e1\u10d0\u10d3\u10d2\u10d4\u10dc\u10d0\u10d3, \u10e0\u10dd\u10db\u10d4\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d0 \u10db\u10d4\u10e2\u10d8.",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4477,
+    "test_id": 111,
+    "ordering": 25,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10e8\u10d4\u10d0\u10d3\u10d0\u10e0\u10d4\u10d7 \u10d4\u10e0\u10d7\u10db\u10d0\u10dc\u10d4\u10d7\u10e1 A \u10d3\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d4\u10d1\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d4\u10d1\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d4\u10d1\u10d8.\n<img src=\"\/photos\/1567\/61f30e4b36e88.png\" alt=\"\" width=\"595\" height=\"124\" \/>",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22094,
+        "question_id": 4477,
+        "option": "\u10d0) A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 \u10db\u10d4\u10e2\u10d8\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d6\u10d4; ",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 22095,
+        "question_id": 4477,
+        "option": "\u10d1) B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 \u10db\u10d4\u10e2\u10d8\u10d0 A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d6\u10d4; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22096,
+        "question_id": 4477,
+        "option": "\u10d2) A \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 B \u10e1\u10d5\u10d4\u10e2\u10d8\u10e1 \u10e3\u10ef\u10e0\u10d0\u10e8\u10d8 \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8\u10d0; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22097,
+        "question_id": 4477,
+        "option": "\u10d3) \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10d8\u10dc\u10e4\u10dd\u10e0\u10db\u10d0\u10ea\u10d8\u10d0 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8 \u10d0\u10e0\u10d0\u10d0 \u10d8\u10db\u10d8\u10e1 \u10d3\u10d0\u10e1\u10d0\u10d3\u10d2\u10d4\u10dc\u10d0\u10d3, \u10e0\u10dd\u10db\u10d4\u10da\u10d8 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d0 \u10db\u10d4\u10e2\u10d8.",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4478,
+    "test_id": 111,
+    "ordering": 26,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10ef\u10d2\u10e3\u10e4\u10e8\u10d8 \u10d5\u10d0\u10df\u10d4\u10d1\u10d8\u10e1 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0 1-\u10d8\u10d7 \u10db\u10d4\u10e2\u10d8\u10d0 \u10d2\u10dd\u10d2\u10dd\u10dc\u10d4\u10d1\u10d8\u10e1 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0\u10d6\u10d4. \u10e9\u10d0\u10db\u10dd\u10d7\u10d5\u10da\u10d8\u10da\u10d7\u10d0\u10d2\u10d0\u10dc \u10e0\u10dd\u10db\u10da\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8 \u10e8\u10d4\u10d8\u10eb\u10da\u10d4\u10d1\u10d0 \u10d8\u10e7\u10dd\u10e1 \u10ef\u10d2\u10e3\u10e4\u10e8\u10d8 \u10d2\u10dd\u10d2\u10dd\u10dc\u10d4\u10d1\u10d8\u10e1 \u10de\u10e0\u10dd\u10ea\u10d4\u10dc\u10e2\u10e3\u10da\u10d8 \u10ec\u10d8\u10da\u10d8?",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22098,
+        "question_id": 4478,
+        "option": "\u10d0) 10%-\u10d8\u10e1; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22099,
+        "question_id": 4478,
+        "option": "\u10d1) 20%-\u10d8\u10e1; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22100,
+        "question_id": 4478,
+        "option": "\u10d2) 30%-\u10d8\u10e1; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22101,
+        "question_id": 4478,
+        "option": "\u10d3) 40%-\u10d8\u10e1;&nbsp;",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 22102,
+        "question_id": 4478,
+        "option": "\u10d4) 50%-\u10d8\u10e1.",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4479,
+    "test_id": 111,
+    "ordering": 27,
+    "type_id": 1,
+    "text_id": null,
+    "question": "<img src=\"\/photos\/1567\/61f30f8eaf3f8.png\" alt=\"\" width=\"254\" height=\"69\" \/>",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22103,
+        "question_id": 4479,
+        "option": "\u10d0) \u22122 ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22104,
+        "question_id": 4479,
+        "option": "\u10d1) \u22121 ",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 22105,
+        "question_id": 4479,
+        "option": "\u10d2) 0 ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22106,
+        "question_id": 4479,
+        "option": "\u10d3) 1&nbsp;",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22107,
+        "question_id": 4479,
+        "option": "\u10d4) 2",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4480,
+    "test_id": 111,
+    "ordering": 28,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10db\u10d0\u10e0\u10d7\u10d9\u10e3\u10d7\u10ee\u10d4\u10d3\u10d8\u10d3\u10d0\u10dc, \u10e0\u10dd\u10db\u10da\u10d8\u10e1 \u10e1\u10d8\u10d2\u10e0\u10eb\u10d4\u10d0 11 \u10e1\u10db, \u10ee\u10dd\u10da\u10dd \u10e1\u10d8\u10d2\u10d0\u10dc\u10d4 &ndash; 4 \u10e1\u10db, \u10d0\u10db\u10dd\u10d9\u10d5\u10d4\u10d7\u10d8\u10da\u10d8\u10d0 \u10dd\u10e0\u10d8 \u10e2\u10dd\u10da\u10d8 \u10ec\u10e0\u10d4. <span style=\"text-decoration: underline;\"><strong>\u10db\u10d0\u10e5\u10e1\u10d8\u10db\u10e3\u10db<\/strong><\/span> \u10e0\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8 \u10e8\u10d4\u10d8\u10eb\u10da\u10d4\u10d1\u10d0 \u10d8\u10e7\u10dd\u10e1 \u10d0\u10db \u10ec\u10e0\u10d4\u10d4\u10d1\u10d8\u10e1 \u10e4\u10d0\u10e0\u10d7\u10dd\u10d1\u10d7\u10d0 \u10ef\u10d0\u10db\u10d8?\n<img src=\"\/photos\/1567\/61f316e78e814.png\" alt=\"\" width=\"277\" height=\"149\" \/>",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22108,
+        "question_id": 4480,
+        "option": "\u10d0) 7\ud835\udf0b \u10e1\u10db<sup>2<\/sup>-\u10d8\u10e1;",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22109,
+        "question_id": 4480,
+        "option": "\u10d1) 8\ud835\udf0b \u10e1\u10db<sup>2<\/sup>-\u10d8\u10e1;",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 22110,
+        "question_id": 4480,
+        "option": "\u10d2) 9\ud835\udf0b \u10e1\u10db<sup>2<\/sup>-\u10d8\u10e1;",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22111,
+        "question_id": 4480,
+        "option": "\u10d3) 10\ud835\udf0b \u10e1\u10db<sup>2<\/sup>-\u10d8\u10e1;&nbsp;",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22112,
+        "question_id": 4480,
+        "option": "\u10d4) 11\ud835\udf0b \u10e1\u10db<sup>2<\/sup>-\u10d8\u10e1.",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4481,
+    "test_id": 111,
+    "ordering": 29,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10e0\u10d0\u10db\u10d3\u10d4\u10dc\u10d8\u10db\u10d4 \u10dc\u10d0\u10e2\u10e3\u10e0\u10d0\u10da\u10e3\u10e0\u10d8 \u10e0\u10d8\u10ea\u10ee\u10d5\u10d8\u10e1 \u10dc\u10d0\u10db\u10e0\u10d0\u10d5\u10da\u10d8 420-\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8\u10d0. \u10e9\u10d0\u10db\u10dd\u10d7\u10d5\u10da\u10d8\u10da\u10d7\u10d0\u10d2\u10d0\u10dc \u10e0\u10dd\u10db\u10da\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8 <span style=\"text-decoration: underline;\"><strong>\u10d0\u10e0 \u10e8\u10d4\u10d8\u10eb\u10da\u10d4\u10d1\u10d0<\/strong><\/span> \u10d8\u10e7\u10dd\u10e1 \u10d0\u10db \u10e0\u10d8\u10ea\u10ee\u10d5\u10d4\u10d1\u10d8\u10d3\u10d0\u10dc \u10e0\u10dd\u10db\u10d4\u10da\u10d8\u10db\u10d4 2-\u10d8\u10e1 \u10ef\u10d0\u10db\u10d8?",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22113,
+        "question_id": 4481,
+        "option": "\u10d0) 8-\u10d8\u10e1; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22114,
+        "question_id": 4481,
+        "option": "\u10d1) 10-\u10d8\u10e1; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22115,
+        "question_id": 4481,
+        "option": "\u10d2) 11-\u10d8\u10e1; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22116,
+        "question_id": 4481,
+        "option": "\u10d3) 12-\u10d8\u10e1;&nbsp;",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22117,
+        "question_id": 4481,
+        "option": "\u10d4) 14-\u10d8\u10e1.",
+        "correct": 1,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4482,
+    "test_id": 111,
+    "ordering": 30,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\ud835\udc4e, \ud835\udc4f, \ud835\udc50 \u10db\u10d8\u10db\u10d3\u10d4\u10d5\u10e0\u10dd\u10d1\u10d8\u10e1 \u10de\u10d8\u10e0\u10d5\u10d4\u10da\u10d8 \u10ec\u10d4\u10d5\u10e0\u10d8 \u10dc\u10d0\u10e2\u10e3\u10e0\u10d0\u10da\u10e3\u10e0\u10d8 \u10e0\u10d8\u10ea\u10ee\u10d5\u10d8\u10d0, \u10e7\u10dd\u10d5\u10d4\u10da\u10d8 \u10db\u10dd\u10db\u10d3\u10d4\u10d5\u10dc\u10dd \u10ec\u10d4\u10d5\u10e0\u10d8 \u10d9\u10d8 \u10ec\u10d8\u10dc\u10d0 \u10ec\u10d4\u10d5\u10e0\u10d6\u10d4 3-\u10d8\u10d7 \u10db\u10d4\u10e2\u10d8\u10d0. \u10e9\u10d0\u10db\u10dd\u10d7\u10d5\u10da\u10d8\u10da\u10d7\u10d0\u10d2\u10d0\u10dc \u10e0\u10dd\u10db\u10d4\u10da\u10d8\u10d0 \u10db\u10d0\u10e0\u10d7\u10d4\u10d1\u10e3\u10da\u10d8?\n<img src=\"\/photos\/1567\/61f31e272ccba.png\" alt=\"\" width=\"242\" height=\"106\" \/>",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22118,
+        "question_id": 4482,
+        "option": "\u10d0) \u10db\u10ee\u10dd\u10da\u10dd\u10d3 I; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22119,
+        "question_id": 4482,
+        "option": "\u10d1) \u10db\u10ee\u10dd\u10da\u10dd\u10d3 I \u10d3\u10d0 III; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22120,
+        "question_id": 4482,
+        "option": "\u10d2) \u10db\u10ee\u10dd\u10da\u10dd\u10d3 II \u10d3\u10d0 III; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22121,
+        "question_id": 4482,
+        "option": "\u10d3) \u10db\u10ee\u10dd\u10da\u10dd\u10d3 I \u10d3\u10d0 II;&nbsp;",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22122,
+        "question_id": 4482,
+        "option": "\u10d4) I, II \u10d3\u10d0 III.",
+        "correct": 1,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4483,
+    "test_id": 111,
+    "ordering": 31,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10d7\u10d8\u10dc\u10d0\u10e1 \u10e1\u10d0\u10ee\u10da\u10d8\u10d3\u10d0\u10dc \u10e1\u10d9\u10dd\u10da\u10d0\u10e8\u10d8 \u10db\u10d8\u10e1\u10d5\u10da\u10d0 \u10d3\u10d0 \u10e3\u10d9\u10d0\u10dc \u10d3\u10d0\u10d1\u10e0\u10e3\u10dc\u10d4\u10d1\u10d0 \u10dd\u10e0\u10d8 \u10d2\u10d6\u10d8\u10d7 \u10e8\u10d4\u10e3\u10eb\u10da\u10d8\u10d0, \u10e0\u10dd\u10db\u10d4\u10da\u10d7\u10d0\u10d2\u10d0\u10dc \u10d4\u10e0\u10d7\u10d8 \u10e3\u10e4\u10e0\u10dd \u10db\u10dd\u10d9\u10da\u10d4\u10d0. \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8\u10d0 \u10dd\u10e0\u10d8 \u10de\u10d8\u10e0\u10dd\u10d1\u10d0:\nI. \u10d7\u10e3 \u10d7\u10d8\u10dc\u10d0 \u10e1\u10d0\u10ee\u10da\u10d8\u10d3\u10d0\u10dc \u10e1\u10d9\u10dd\u10da\u10d0\u10e8\u10d8 \u10db\u10dd\u10d9\u10da\u10d4 \u10d2\u10d6\u10d8\u10d7 \u10ec\u10d0\u10d5\u10d0, \u10e3\u10d9\u10d0\u10dc \u10d9\u10d8 \u10d2\u10e0\u10eb\u10d4\u10da\u10d8 \u10d2\u10d6\u10d8\u10d7 \u10d3\u10d0\u10d1\u10e0\u10e3\u10dc\u10d3\u10d4\u10d1\u10d0, \u10db\u10d0\u10e1 \u10e1\u10e3\u10da 940 \u10db\u10d4\u10e2\u10e0\u10d8\u10e1 \u10d2\u10d0\u10d5\u10da\u10d0 \u10db\u10dd\u10e3\u10ec\u10d4\u10d5\u10e1.\nII. \u10d7\u10e3 \u10d7\u10d8\u10dc\u10d0 \u10e1\u10d0\u10ee\u10da\u10d8\u10d3\u10d0\u10dc \u10e1\u10d9\u10dd\u10da\u10d0\u10e8\u10d8 \u10db\u10dd\u10d9\u10da\u10d4 \u10d2\u10d6\u10d8\u10d7 \u10ec\u10d0\u10d5\u10d0 \u10d3\u10d0 \u10e3\u10d9\u10d0\u10dc\u10d0\u10ea \u10d8\u10db\u10d0\u10d5\u10d4 \u10d2\u10d6\u10d8\u10d7 \u10d3\u10d0\u10d1\u10e0\u10e3\u10dc\u10d3\u10d4\u10d1\u10d0, \u10db\u10d0\u10e1 \u10e1\u10e3\u10da 780 \u10db\u10d4\u10e2\u10e0\u10d8\u10e1 \u10d2\u10d0\u10d5\u10da\u10d0 \u10db\u10dd\u10e3\u10ec\u10d4\u10d5\u10e1.\n\u10d8\u10db\u10d8\u10e1 \u10d2\u10d0\u10e1\u10d0\u10e0\u10d9\u10d5\u10d4\u10d5\u10d0\u10d3, \u10d7\u10e3 \u10e0\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8\u10d0 \u10d7\u10d8\u10dc\u10d0\u10e1 \u10e1\u10d0\u10ee\u10da\u10d8\u10d3\u10d0\u10dc \u10e1\u10d9\u10dd\u10da\u10d0\u10db\u10d3\u10d4 \u10db\u10d8\u10e1\u10d0\u10e1\u10d5\u10da\u10d4\u10da\u10d8 \u10d2\u10e0\u10eb\u10d4\u10da\u10d8 \u10d2\u10d6\u10d8\u10e1 \u10e1\u10d8\u10d2\u10e0\u10eb\u10d4:",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22133,
+        "question_id": 4483,
+        "option": "\u10d0) I \u10de\u10d8\u10e0\u10dd\u10d1\u10d0 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8\u10d0, II \u10d9\u10d8 \u2013 \u10d0\u10e0\u10d0; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22134,
+        "question_id": 4483,
+        "option": "\u10d1) II \u10de\u10d8\u10e0\u10dd\u10d1\u10d0 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8\u10d0, I \u10d9\u10d8 \u2013 \u10d0\u10e0\u10d0; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22135,
+        "question_id": 4483,
+        "option": "\u10d2) I \u10d3\u10d0 II \u10de\u10d8\u10e0\u10dd\u10d1\u10d0 \u10d4\u10e0\u10d7\u10d0\u10d3 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8\u10d0, \u10ea\u10d0\u10da-\u10ea\u10d0\u10da\u10d9\u10d4 \u10d0\u10e0\u10ea \u10d4\u10e0\u10d7\u10d8 \u10d0\u10e0 \u10d0\u10e0\u10d8\u10e1 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8; ",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 22136,
+        "question_id": 4483,
+        "option": "\u10d3) \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8\u10d0 \u10ea\u10d0\u10da-\u10ea\u10d0\u10da\u10d9\u10d4 \u10e0\u10dd\u10d2\u10dd\u10e0\u10ea I, \u10d0\u10e1\u10d4\u10d5\u10d4, II \u10de\u10d8\u10e0\u10dd\u10d1\u10d0;&nbsp;",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22137,
+        "question_id": 4483,
+        "option": "\u10d4) \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10de\u10d8\u10e0\u10dd\u10d1\u10d4\u10d1\u10d8 \u10d0\u10e0 \u10d0\u10e0\u10d8\u10e1 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8.",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4484,
+    "test_id": 111,
+    "ordering": 32,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\ud835\udc65 \u10d3\u10d0 \ud835\udc66 \u10dc\u10e3\u10da\u10d8\u10e1\u10d2\u10d0\u10dc \u10d2\u10d0\u10dc\u10e1\u10ee\u10d5\u10d0\u10d5\u10d4\u10d1\u10e3\u10da\u10d8 \u10e0\u10d8\u10ea\u10ee\u10d5\u10d4\u10d1\u10d8\u10d0.\n\u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8\u10d0 \u10dd\u10e0\u10d8 \u10de\u10d8\u10e0\u10dd\u10d1\u10d0:\nI. \ud835\udc65\ud835\udc66 &lt; 0.\nII. \ud835\udc65   \ud835\udc66 &gt; 0.\n\u10d8\u10db\u10d8\u10e1 \u10d2\u10d0\u10e1\u10d0\u10e0\u10d9\u10d5\u10d4\u10d5\u10d0\u10d3, \ud835\udc65\/\ud835\udc66 \u10db\u10d4\u10e2\u10d8\u10d0 \u10d7\u10e3 \u10d0\u10e0\u10d0 (&minus;1)-\u10d6\u10d4:",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22128,
+        "question_id": 4484,
+        "option": "\u10d0) I \u10de\u10d8\u10e0\u10dd\u10d1\u10d0 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8\u10d0, II \u10d9\u10d8 \u2013 \u10d0\u10e0\u10d0; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22129,
+        "question_id": 4484,
+        "option": "\u10d1) II \u10de\u10d8\u10e0\u10dd\u10d1\u10d0 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8\u10d0, I \u10d9\u10d8 \u2013 \u10d0\u10e0\u10d0; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22130,
+        "question_id": 4484,
+        "option": "\u10d2) I \u10d3\u10d0 II \u10de\u10d8\u10e0\u10dd\u10d1\u10d0 \u10d4\u10e0\u10d7\u10d0\u10d3 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8\u10d0, \u10ea\u10d0\u10da-\u10ea\u10d0\u10da\u10d9\u10d4 \u10d0\u10e0\u10ea \u10d4\u10e0\u10d7\u10d8 \u10d0\u10e0 \u10d0\u10e0\u10d8\u10e1 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22131,
+        "question_id": 4484,
+        "option": "\u10d3) \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8\u10d0 \u10ea\u10d0\u10da-\u10ea\u10d0\u10da\u10d9\u10d4 \u10e0\u10dd\u10d2\u10dd\u10e0\u10ea I, \u10d0\u10e1\u10d4\u10d5\u10d4, II \u10de\u10d8\u10e0\u10dd\u10d1\u10d0;&nbsp;",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22132,
+        "question_id": 4484,
+        "option": "\u10d4) \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10de\u10d8\u10e0\u10dd\u10d1\u10d4\u10d1\u10d8 \u10d0\u10e0 \u10d0\u10e0\u10d8\u10e1 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8.",
+        "correct": 1,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4485,
+    "test_id": 111,
+    "ordering": 33,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10db\u10d0\u10e0\u10d7\u10d9\u10e3\u10d7\u10ee\u10d4\u10d3\u10d8\u10e1 \u10e4\u10dd\u10e0\u10db\u10d8\u10e1 \u10dc\u10d0\u10d9\u10d5\u10d4\u10d7\u10d8 \u10e8\u10d4\u10db\u10dd\u10e1\u10d0\u10d6\u10e6\u10d5\u10e0\u10e3\u10da\u10d8\u10d0 \u10e6\u10dd\u10d1\u10d8\u10d7.\n\u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8\u10d0 \u10dd\u10e0\u10d8 \u10de\u10d8\u10e0\u10dd\u10d1\u10d0:\nI. \u10dc\u10d0\u10d9\u10d5\u10d4\u10d7\u10d8\u10e1 \u10e1\u10d8\u10d2\u10e0\u10eb\u10d4 2-\u10ef\u10d4\u10e0 \u10db\u10d4\u10e2\u10d8\u10d0 \u10dc\u10d0\u10d9\u10d5\u10d4\u10d7\u10d8\u10e1 \u10e1\u10d8\u10d2\u10d0\u10dc\u10d4\u10d6\u10d4.\nII. \u10dc\u10d0\u10d9\u10d5\u10d4\u10d7\u10d8\u10e1 \u10e8\u10d4\u10db\u10dd\u10db\u10e1\u10d0\u10d6\u10e6\u10d5\u10e0\u10d4\u10da\u10d8 \u10e6\u10dd\u10d1\u10d8\u10e1 \u10e1\u10d8\u10d2\u10e0\u10eb\u10d4 6-\u10ef\u10d4\u10e0 \u10db\u10d4\u10e2\u10d8\u10d0 \u10dc\u10d0\u10d9\u10d5\u10d4\u10d7\u10d8\u10e1 \u10e1\u10d8\u10d2\u10d0\u10dc\u10d4\u10d6\u10d4.\n\u10d8\u10db\u10d8\u10e1 \u10d2\u10d0\u10e1\u10d0\u10e0\u10d9\u10d5\u10d4\u10d5\u10d0\u10d3, \u10d7\u10e3 \u10e0\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8\u10d0 \u10dc\u10d0\u10d9\u10d5\u10d4\u10d7\u10d8\u10e1 \u10e8\u10d4\u10db\u10dd\u10db\u10e1\u10d0\u10d6\u10e6\u10d5\u10e0\u10d4\u10da\u10d8 \u10e6\u10dd\u10d1\u10d8\u10e1 \u10e1\u10d8\u10d2\u10e0\u10eb\u10d4:",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22138,
+        "question_id": 4485,
+        "option": "\u10d0) I \u10de\u10d8\u10e0\u10dd\u10d1\u10d0 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8\u10d0, II \u10d9\u10d8 \u2013 \u10d0\u10e0\u10d0; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22139,
+        "question_id": 4485,
+        "option": "\u10d1) II \u10de\u10d8\u10e0\u10dd\u10d1\u10d0 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8\u10d0, I \u10d9\u10d8 \u2013 \u10d0\u10e0\u10d0; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22140,
+        "question_id": 4485,
+        "option": "\u10d2) I \u10d3\u10d0 II \u10de\u10d8\u10e0\u10dd\u10d1\u10d0 \u10d4\u10e0\u10d7\u10d0\u10d3 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8\u10d0, \u10ea\u10d0\u10da-\u10ea\u10d0\u10da\u10d9\u10d4 \u10d0\u10e0\u10ea \u10d4\u10e0\u10d7\u10d8 \u10d0\u10e0 \u10d0\u10e0\u10d8\u10e1 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22141,
+        "question_id": 4485,
+        "option": "\u10d3) \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8\u10d0 \u10ea\u10d0\u10da-\u10ea\u10d0\u10da\u10d9\u10d4 \u10e0\u10dd\u10d2\u10dd\u10e0\u10ea I, \u10d0\u10e1\u10d4\u10d5\u10d4, II \u10de\u10d8\u10e0\u10dd\u10d1\u10d0;",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22142,
+        "question_id": 4485,
+        "option": "\u10d4) \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10de\u10d8\u10e0\u10dd\u10d1\u10d4\u10d1\u10d8 \u10d0\u10e0 \u10d0\u10e0\u10d8\u10e1 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8.",
+        "correct": 1,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4486,
+    "test_id": 111,
+    "ordering": 34,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\ud835\udc4e \u10e0\u10d8\u10ea\u10ee\u10d5\u10d8\u10d0.\n\u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8\u10d0 \u10dd\u10e0\u10d8 \u10de\u10d8\u10e0\u10dd\u10d1\u10d0:\nI. 2\ud835\udc4e   3 = 0.\nII. (\ud835\udc4e   3)<sup>2<\/sup> = \ud835\udc4e<sup>2<\/sup> .\n\u10d8\u10db\u10d8\u10e1 \u10d2\u10d0\u10e1\u10d0\u10e0\u10d9\u10d5\u10d4\u10d5\u10d0\u10d3, \u10d7\u10e3 \u10e0\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8\u10d0 \ud835\udc4e:",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22143,
+        "question_id": 4486,
+        "option": "\u10d0) I \u10de\u10d8\u10e0\u10dd\u10d1\u10d0 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8\u10d0, II \u10d9\u10d8 \u2013 \u10d0\u10e0\u10d0; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22144,
+        "question_id": 4486,
+        "option": "\u10d1) II \u10de\u10d8\u10e0\u10dd\u10d1\u10d0 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8\u10d0, I \u10d9\u10d8 \u2013 \u10d0\u10e0\u10d0; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22145,
+        "question_id": 4486,
+        "option": "\u10d2) I \u10d3\u10d0 II \u10de\u10d8\u10e0\u10dd\u10d1\u10d0 \u10d4\u10e0\u10d7\u10d0\u10d3 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8\u10d0, \u10ea\u10d0\u10da-\u10ea\u10d0\u10da\u10d9\u10d4 \u10d0\u10e0\u10ea \u10d4\u10e0\u10d7\u10d8 \u10d0\u10e0 \u10d0\u10e0\u10d8\u10e1 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22146,
+        "question_id": 4486,
+        "option": "\u10d3) \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8\u10d0 \u10ea\u10d0\u10da-\u10ea\u10d0\u10da\u10d9\u10d4 \u10e0\u10dd\u10d2\u10dd\u10e0\u10ea I, \u10d0\u10e1\u10d4\u10d5\u10d4, II \u10de\u10d8\u10e0\u10dd\u10d1\u10d0;&nbsp;",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 22147,
+        "question_id": 4486,
+        "option": "\u10d4) \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10de\u10d8\u10e0\u10dd\u10d1\u10d4\u10d1\u10d8 \u10d0\u10e0 \u10d0\u10e0\u10d8\u10e1 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8.",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4487,
+    "test_id": 111,
+    "ordering": 35,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\ud835\udc4e \u10d3\u10d0 \ud835\udc4f \u10d3\u10d0\u10d3\u10d4\u10d1\u10d8\u10d7\u10d8 \u10e0\u10d8\u10ea\u10ee\u10d5\u10d4\u10d1\u10d8\u10d0.\nI. 2\ud835\udc4e-\u10e1\u10d0 \u10d3\u10d0 2\ud835\udc4f-\u10e1 \u10e1\u10d0\u10e8\u10e3\u10d0\u10da\u10dd \u10d0\u10e0\u10d8\u10d7\u10db\u10d4\u10e2\u10d8\u10d9\u10e3\u10da\u10d8 15-\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8\u10d0.\nII. 2\ud835\udc4e-\u10e1\u10d0 \u10d3\u10d0 4\ud835\udc4f-\u10e1 \u10e1\u10d0\u10e8\u10e3\u10d0\u10da\u10dd \u10d0\u10e0\u10d8\u10d7\u10db\u10d4\u10e2\u10d8\u10d9\u10e3\u10da\u10d8 17-\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8\u10d0.\n\u10d8\u10db\u10d8\u10e1 \u10d2\u10d0\u10e1\u10d0\u10e0\u10d9\u10d5\u10d4\u10d5\u10d0\u10d3, \u10e0\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8\u10d0 \ud835\udc4e \u10d3\u10d0 \ud835\udc4f \u10e0\u10d8\u10ea\u10ee\u10d5\u10d4\u10d1\u10d8\u10e1 \u10e1\u10d0\u10e8\u10e3\u10d0\u10da\u10dd \u10d0\u10e0\u10d8\u10d7\u10db\u10d4\u10e2\u10d8\u10d9\u10e3\u10da\u10d8:",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22148,
+        "question_id": 4487,
+        "option": "\u10d0) I \u10de\u10d8\u10e0\u10dd\u10d1\u10d0 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8\u10d0, II \u10d9\u10d8 \u2013 \u10d0\u10e0\u10d0; ",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 22149,
+        "question_id": 4487,
+        "option": "\u10d1) II \u10de\u10d8\u10e0\u10dd\u10d1\u10d0 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8\u10d0, I \u10d9\u10d8 \u2013 \u10d0\u10e0\u10d0; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22150,
+        "question_id": 4487,
+        "option": "\u10d2) I \u10d3\u10d0 II \u10de\u10d8\u10e0\u10dd\u10d1\u10d0 \u10d4\u10e0\u10d7\u10d0\u10d3 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8\u10d0, \u10ea\u10d0\u10da-\u10ea\u10d0\u10da\u10d9\u10d4 \u10d0\u10e0\u10ea \u10d4\u10e0\u10d7\u10d8 \u10d0\u10e0 \u10d0\u10e0\u10d8\u10e1 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22151,
+        "question_id": 4487,
+        "option": "\u10d3) \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8\u10d0 \u10ea\u10d0\u10da-\u10ea\u10d0\u10da\u10d9\u10d4 \u10e0\u10dd\u10d2\u10dd\u10e0\u10ea I, \u10d0\u10e1\u10d4\u10d5\u10d4, II \u10de\u10d8\u10e0\u10dd\u10d1\u10d0;&nbsp;",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22152,
+        "question_id": 4487,
+        "option": "\u10d4) \u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10de\u10d8\u10e0\u10dd\u10d1\u10d4\u10d1\u10d8 \u10d0\u10e0 \u10d0\u10e0\u10d8\u10e1 \u10e1\u10d0\u10d9\u10db\u10d0\u10e0\u10d8\u10e1\u10d8.",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4488,
+    "test_id": 111,
+    "ordering": 36,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10d9\u10e3\u10d1\u10d8\u10e1\u10d2\u10d0\u10dc \u10db\u10d0\u10e0\u10d7\u10d9\u10e3\u10d7\u10ee\u10d0 \u10de\u10d0\u10e0\u10d0\u10da\u10d4\u10da\u10d4\u10de\u10d8\u10de\u10d4\u10d3\u10d8\u10e1 \u10e9\u10d0\u10db\u10dd\u10ed\u10e0\u10d8\u10d7 \u10db\u10d8\u10e6\u10d4\u10d1\u10e3\u10da\u10d8 \u10e1\u10ee\u10d4\u10e3\u10da\u10d8\u10e1 \u10d6\u10dd\u10db\u10d4\u10d1\u10d8 \u10db\u10d8\u10d7\u10d8\u10d7\u10d4\u10d1\u10e3\u10da\u10d8\u10d0 \u10dc\u10d0\u10ee\u10d0\u10d6\u10d6\u10d4:\n\u10e0\u10d0\u10db\u10d3\u10d4\u10dc\u10d8 \u10d9\u10e3\u10d1\u10e3\u10e0\u10d8 \u10e1\u10d0\u10dc\u10e2\u10d8\u10db\u10d4\u10e2\u10e0\u10d8\u10d0 \u10d0\u10db \u10e1\u10ee\u10d4\u10e3\u10da\u10d8\u10e1 \u10db\u10dd\u10ea\u10e3\u10da\u10dd\u10d1\u10d0?\n<img src=\"\/photos\/1567\/61f31f6b0fdb6.png\" alt=\"\" width=\"183\" height=\"198\" \/>",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22158,
+        "question_id": 4488,
+        "option": "\u10d0) 105 ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22159,
+        "question_id": 4488,
+        "option": "\u10d1) 110 ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22160,
+        "question_id": 4488,
+        "option": "\u10d2) 115 ",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 22161,
+        "question_id": 4488,
+        "option": "\u10d3) 120&nbsp;",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22162,
+        "question_id": 4488,
+        "option": "\u10d4) 125",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4489,
+    "test_id": 111,
+    "ordering": 37,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10d8\u10e0\u10db\u10d0\u10e1 \u10dc\u10d8\u10d9\u10d0\u10e1\u10d7\u10d0\u10dc \u10e8\u10d4\u10d3\u10d0\u10e0\u10d4\u10d1\u10d8\u10d7 25%-\u10d8\u10d7 \u10db\u10d4\u10e2\u10d8 \u10ee\u10d4\u10da\u10e4\u10d0\u10e1\u10d8 \u10d0\u10e5\u10d5\u10e1. \u10e0\u10d0\u10db\u10d3\u10d4\u10dc\u10d8 \u10de\u10e0\u10dd\u10ea\u10d4\u10dc\u10e2\u10d8\u10d7 \u10dc\u10d0\u10d9\u10da\u10d4\u10d1\u10d8 \u10ee\u10d4\u10da\u10e4\u10d0\u10e1\u10d8 \u10d0\u10e5\u10d5\u10e1 \u10dc\u10d8\u10d9\u10d0\u10e1 \u10d8\u10e0\u10db\u10d0\u10e1\u10d7\u10d0\u10dc \u10e8\u10d4\u10d3\u10d0\u10e0\u10d4\u10d1\u10d8\u10d7?",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22163,
+        "question_id": 4489,
+        "option": "\u10d0) 15%-\u10d8\u10d7; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22164,
+        "question_id": 4489,
+        "option": "\u10d1) 20%-\u10d8\u10d7; ",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 22165,
+        "question_id": 4489,
+        "option": "\u10d2) 25%-\u10d8\u10d7; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22166,
+        "question_id": 4489,
+        "option": "\u10d3) 30%-\u10d8\u10d7;&nbsp;",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22167,
+        "question_id": 4489,
+        "option": "\u10d4) 35%-\u10d8\u10d7.",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4490,
+    "test_id": 111,
+    "ordering": 38,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10ea\u10d8\u10e4\u10e0\u10d4\u10d1\u10d8\u10d7 4, 5, 6 \u10d3\u10d0 8 \u10e9\u10d0\u10ec\u10d4\u10e0\u10d4\u10e1 \u10e7\u10d5\u10d4\u10da\u10d0 \u10e8\u10d4\u10e1\u10d0\u10eb\u10da\u10dd <strong>\u10da\u10e3\u10ec\u10d8<\/strong> \u10e1\u10d0\u10db\u10dc\u10d8\u10e8\u10dc\u10d0 \u10e0\u10d8\u10ea\u10ee\u10d5\u10d8 \u10d8\u10e1\u10d4, \u10e0\u10dd\u10db \u10d7\u10d8\u10d7\u10dd\u10d4\u10e3\u10da\u10d8 \u10e0\u10d8\u10ea\u10ee\u10d5\u10d8\u10e1 \u10e9\u10d0\u10dc\u10d0\u10ec\u10d4\u10e0\u10e8\u10d8 \u10e1\u10d0\u10db\u10d8\u10d5\u10d4 \u10ea\u10d8\u10e4\u10e0\u10d8 \u10d4\u10e0\u10d7\u10db\u10d0\u10dc\u10d4\u10d7\u10d8\u10e1\u10d2\u10d0\u10dc \u10d2\u10d0\u10dc\u10e1\u10ee\u10d5\u10d0\u10d5\u10d4\u10d1\u10e3\u10da\u10d8 \u10d8\u10e7\u10dd. \u10e1\u10e3\u10da \u10e0\u10d0\u10db\u10d3\u10d4\u10dc\u10d8 \u10e0\u10d8\u10ea\u10ee\u10d5\u10d8 \u10e9\u10d0\u10e3\u10ec\u10d4\u10e0\u10d8\u10d0\u10d7?",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22168,
+        "question_id": 4490,
+        "option": "\u10d0) 6 ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22169,
+        "question_id": 4490,
+        "option": "\u10d1) 8 ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22170,
+        "question_id": 4490,
+        "option": "\u10d2) 12 ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22171,
+        "question_id": 4490,
+        "option": "\u10d3) 18&nbsp;",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 22172,
+        "question_id": 4490,
+        "option": "\u10d4) 24",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4491,
+    "test_id": 111,
+    "ordering": 39,
+    "type_id": 1,
+    "text_id": null,
+    "question": "\u10db\u10d0\u10e0\u10d7\u10d9\u10e3\u10d7\u10ee\u10d4\u10d3\u10d8 \u10d3\u10d0\u10e7\u10dd\u10e4\u10d8\u10da\u10d8\u10d0 \u10db\u10d0\u10e0\u10d7\u10d9\u10e3\u10d7\u10ee\u10d4\u10d3\u10d0\u10d3 \u10d3\u10d0 \u10d4\u10e5\u10d5\u10e1\u10d9\u10e3\u10d7\u10ee\u10d4\u10d3\u10d0\u10d3, \u10e0\u10dd\u10db\u10da\u10d8\u10e1 \u10d6\u10dd\u10d2\u10d8\u10d4\u10e0\u10d7\u10d8 \u10d2\u10d5\u10d4\u10e0\u10d3\u10d8\u10e1 \u10e1\u10d8\u10d2\u10e0\u10eb\u10d4 \u10dc\u10d0\u10ee\u10d0\u10d6\u10d6\u10d4\u10d0 \u10db\u10d8\u10d7\u10d8\u10d7\u10d4\u10d1\u10e3\u10da\u10d8. \u10d4\u10e5\u10d5\u10e1\u10d9\u10e3\u10d7\u10ee\u10d4\u10d3\u10d8\u10e1 \u10e4\u10d0\u10e0\u10d7\u10dd\u10d1\u10d8\u10d0 4 \u10e1\u10db2. \u10e0\u10d8\u10e1 \u10e2\u10dd\u10da\u10d8\u10d0 \u10d0\u10db \u10d4\u10e5\u10d5\u10e1\u10d9\u10e3\u10d7\u10ee\u10d4\u10d3\u10d8\u10e1 \u10de\u10d4\u10e0\u10d8\u10db\u10d4\u10e2\u10e0\u10d8?\n<img src=\"\/photos\/1567\/61f31fd3cf019.png\" alt=\"\" width=\"176\" height=\"208\" \/>",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22173,
+        "question_id": 4491,
+        "option": "\u10d0) 6 \u10e1\u10db-\u10d8\u10e1; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22174,
+        "question_id": 4491,
+        "option": "\u10d1) 7 \u10e1\u10db-\u10d8\u10e1; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22175,
+        "question_id": 4491,
+        "option": "\u10d2) 8 \u10e1\u10db-\u10d8\u10e1; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22176,
+        "question_id": 4491,
+        "option": "\u10d3) 9 \u10e1\u10db-\u10d8\u10e1;&nbsp;",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22177,
+        "question_id": 4491,
+        "option": "\u10d4) 10 \u10e1\u10db-\u10d8\u10e1.",
+        "correct": 1,
+        "timeline": null
+      }
+    ]
+  },
+  {
+    "id": 4492,
+    "test_id": 111,
+    "ordering": 40,
+    "type_id": 1,
+    "text_id": null,
+    "question": "<img src=\"\/photos\/1567\/61f3202373ccf.png\" alt=\"\" width=\"567\" height=\"125\" \/>",
+    "active": 1,
+    "description": null,
+    "grade": null,
+    "subject_id": null,
+    "creator_id": null,
+    "options": [
+      {
+        "id": 22178,
+        "question_id": 4492,
+        "option": "\u10d0) 6-\u10d8\u10e1; ",
+        "correct": 1,
+        "timeline": null
+      },
+      {
+        "id": 22179,
+        "question_id": 4492,
+        "option": "\u10d1) 7-\u10d8\u10e1; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22180,
+        "question_id": 4492,
+        "option": "\u10d2) 8-\u10d8\u10e1; ",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22181,
+        "question_id": 4492,
+        "option": "\u10d3) 9-\u10d8\u10e1;&nbsp;",
+        "correct": 0,
+        "timeline": null
+      },
+      {
+        "id": 22182,
+        "question_id": 4492,
+        "option": "\u10d4) 10-\u10d8\u10e1.",
+        "correct": 0,
+        "timeline": null
+      }
+    ]
+  }
+]
