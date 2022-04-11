@@ -25,7 +25,6 @@ class QuizRepositoryImpl @Inject constructor(
         } catch (e: Exception) {
             emit(DataState.Error(ErrorMetaData(e)))
         }
-
     }
 
 }
