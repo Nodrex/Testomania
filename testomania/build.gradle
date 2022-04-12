@@ -75,10 +75,6 @@ dependencies {
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
 
-    //Glide
-    implementation 'com.github.bumptech.glide:glide:4.13.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
-
     // Serialization
     implementation("com.squareup.moshi:moshi-kotlin:1.13.0")
     kapt("com.squareup.moshi:moshi-kotlin-codegen:1.13.0")
