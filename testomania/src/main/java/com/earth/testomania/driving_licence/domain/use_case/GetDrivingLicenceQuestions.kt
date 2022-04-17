@@ -10,6 +10,10 @@ class GetDrivingLicenceQuestions(
 ) {
 
     operator fun invoke(): Flow<Resource<List<DrivingLicenceQuestion>>> {
-        return repository.getQuestions(30)
+        return repository.getQuestions(DEFAULT_QUESTION_COUNT)
+    }
+
+    companion object {
+        const val DEFAULT_QUESTION_COUNT = 30
     }
 }
