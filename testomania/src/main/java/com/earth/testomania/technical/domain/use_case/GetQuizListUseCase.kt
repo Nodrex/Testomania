@@ -4,6 +4,7 @@ import com.earth.testomania.core.DataState
 import com.earth.testomania.core.ErrorMetaData
 import com.earth.testomania.core.LoadingMetaData
 import com.earth.testomania.core.SuccessMetaData
+import com.earth.testomania.technical.data.source.remote.dto.TagDTO
 import com.earth.testomania.technical.data.source.remote.dto.TechQuizDTO
 import com.earth.testomania.technical.domain.model.AnswerKey
 import com.earth.testomania.technical.domain.model.TechQuiz
@@ -24,9 +25,9 @@ class GetQuizListUseCase @Inject constructor(
                     is DataState.Error -> emit(error(it))
                     is DataState.Loading -> emit(loading(it))
                 }
+            }.catch {
+                emit(DataState.Error(ErrorMetaData(it.cause as Exception?)))
             }.collect()
-
-            println("interesting")
         } catch (e: Exception) {
             emit(DataState.Error(ErrorMetaData(e)))
         }
@@ -41,12 +42,28 @@ class GetQuizListUseCase @Inject constructor(
         return@with TechQuiz(
             id = id,
             question = question ?: "",
-            category = "$category/" + (tags?.map { it.name }?.joinToString(separator = "/")),
+            category = addTagsToCategory(category, tags),
             explanation = explanation ?: "",
             hasMultiAnswer = multiple_correct_answers?.toBoolean() ?: false,
             possibleAnswers = createPossibleAnswerMap(possibleAnswersList),
             correctAnswers = createCorrectAnswerMap(correctAnswersList)
         )
+    }
+
+    private fun addTagsToCategory(category: String?, tags: List<TagDTO>?): String {
+        val joinedTags = tags?.mapNotNull {
+            it.takeIf {
+                !(it.name.equals(
+                    category,
+                    ignoreCase = true
+                ))
+            }?.name
+        }?.joinToString(separator = "/")
+        return when {
+            category.isNullOrEmpty() -> joinedTags ?: ""
+            joinedTags.isNullOrEmpty() -> category
+            else -> "$category/$joinedTags"
+        }
     }
 
     private fun generatePossibleAnswersList(techQuizDTO: TechQuizDTO) = with(techQuizDTO) {
@@ -96,20 +113,19 @@ class GetQuizListUseCase @Inject constructor(
         DataState.Success(
             SuccessMetaData(),
             list?.mapNotNull { techQuiz ->
-                val tmp = convertTechQuizDTOtoDataObject(techQuiz)
-                println("interesting => $tmp")
-                tmp
+                convertTechQuizDTOtoDataObject(techQuiz)
             })
 
-    //TODO move to extension
+    //TODO maybe for later i will move this to extension
     private fun error(dataState: DataState<List<TechQuizDTO>>) = DataState.Error(
         dataState.metaData as ErrorMetaData,
         emptyList<TechQuiz>()
     )
 
-    //TODO move to extension
+    //TODO maybe for later i will move this to extension
     private fun loading(dataState: DataState<List<TechQuizDTO>>) = DataState.Loading(
         dataState.metaData as LoadingMetaData,
         emptyList<TechQuiz>()
     )
+
 }

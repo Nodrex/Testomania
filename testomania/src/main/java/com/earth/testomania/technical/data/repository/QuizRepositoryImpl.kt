@@ -14,7 +14,6 @@ class QuizRepositoryImpl @Inject constructor(
 ) : QuizRepository {
 
     override suspend fun getQuizList(): Flow<DataState<List<TechQuizDTO>>> = flow {
-        println("what")
         quizApi.getQuizList().apply {
             if (isSuccessful) emit(DataState.Success(SuccessMetaData(), payload = body()))
             else emit(DataState.Error(ErrorMetaData(null)))

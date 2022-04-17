@@ -22,7 +22,6 @@ class QuizViewModel @Inject constructor(
     }
 
     private fun getQuizList() {
-        println("interesting getQuizList")
         viewModelScope.launch(dispatcher + defaultCoroutineExceptionHandler) {
             getQuizListUseCase().collectLatest {
                 when (it) {
@@ -32,7 +31,7 @@ class QuizViewModel @Inject constructor(
                     is DataState.Success -> {
                         //TODO show tests
                         val result = it.payload
-                        println("data => ${result}")
+                        println("data => $result")
                     }
                     is DataState.Error -> {
                         //TODO show error
