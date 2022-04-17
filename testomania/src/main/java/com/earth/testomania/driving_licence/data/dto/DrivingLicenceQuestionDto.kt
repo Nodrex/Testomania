@@ -1,6 +1,7 @@
 package com.earth.testomania.driving_licence.data.dto
 
 import com.earth.testomania.driving_licence.data.entity.DrivingLicenceQuestionEntity
+import com.earth.testomania.driving_licence.data.util.AnswersListConverter
 
 data class DrivingLicenceQuestionDto(
     val answers: List<Answer>,
@@ -12,10 +13,10 @@ data class DrivingLicenceQuestionDto(
     val question: String,
     val subjectId: Int?
 ) {
-    fun toDrivingLicenceEntity(): DrivingLicenceQuestionEntity {
+    fun toDrivingLicenceEntity(typeConverter: AnswersListConverter): DrivingLicenceQuestionEntity {
         return DrivingLicenceQuestionEntity(
             id = id,
-            answers = answers,
+            answers = typeConverter.fromAnswersToJson(answers),
             description = description,
             image = image,
             question = question
