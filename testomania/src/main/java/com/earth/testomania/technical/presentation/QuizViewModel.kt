@@ -21,32 +21,23 @@ class QuizViewModel @Inject constructor(
         getQuizList()
     }
 
-    private fun getQuizList(){
+    private fun getQuizList() {
+        println("interesting getQuizList")
         viewModelScope.launch(dispatcher + defaultCoroutineExceptionHandler) {
             getQuizListUseCase().collectLatest {
-                when(it){
+                when (it) {
                     is DataState.Loading -> {
-                        when(it.metaData){
-                            is SuccessMetaData -> {
-
-                            }
-                            is LoadingMetaData -> {
-
-                            }
-
-                            null -> {
-
-                            }
-                        }
+                        //TODO show progressbar
                     }
                     is DataState.Success -> {
-                        println("data => ${it.payload}")
+                        //TODO show tests
+                        val result = it.payload
+                        println("data => ${result}")
                     }
                     is DataState.Error -> {
-
+                        //TODO show error
                     }
                 }
-                println(it)
             }
         }
     }
