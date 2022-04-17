@@ -7,25 +7,5 @@ data class TechQuiz(
     val explanation: String = "",
     val hasMultiAnswer: Boolean = false,
     val possibleAnswers: Map<String, String> = emptyMap(),
-    val correctAnswers: List<String> = emptyList(),
-)
-
-class ANSWER {
-    companion object {
-        val A = "answer_a"
-        val B = "answer_b"
-        val C = "answer_c"
-        val D = "answer_d"
-        val E = "answer_e"
-        val F = "answer_f"
-    }
-}
-
-val answerKeyList = listOf(
-    ANSWER.A,
-    ANSWER.B,
-    ANSWER.C,
-    ANSWER.D,
-    ANSWER.E,
-    ANSWER.F,
+    val correctAnswers: Map<String, Boolean> = emptyMap(),
 )

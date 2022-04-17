@@ -45,9 +45,6 @@ class QuizViewModel @Inject constructor(
                     is DataState.Error -> {
 
                     }
-                    /*is DataState.Unusual -> {
-
-                    }*/
                 }
                 println(it)
             }
