@@ -7,7 +7,10 @@ import com.earth.testomania.core.coroutines.defaultCoroutineExceptionHandler
 import com.earth.testomania.technical.domain.use_case.GetQuizListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -17,24 +20,37 @@ class QuizViewModel @Inject constructor(
     private val dispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
+    private var getQuizListJob: Job? = null
+
     init {
         getQuizList()
     }
 
     private fun getQuizList() {
-        viewModelScope.launch(dispatcher + defaultCoroutineExceptionHandler) {
-            getQuizListUseCase().collectLatest {
+        getQuizListJob?.cancel()
+        getQuizListJob = viewModelScope.launch(dispatcher + defaultCoroutineExceptionHandler) {
+            getQuizListUseCase().catch {
+                if (isActive) {
+                    //TODO update ui accordingly
+                }
+            }.collectLatest {
                 when (it) {
                     is DataState.Loading -> {
-                        //TODO show progressbar
+                        if (isActive) {
+                            //TODO show progressbar
+                        }
                     }
                     is DataState.Success -> {
-                        //TODO show tests
-                        val result = it.payload
-                        println("data => $result")
+                        if (isActive) {
+                            //TODO show tests
+                            val result = it.payload
+                            println("data => $result")
+                        }
                     }
                     is DataState.Error -> {
-                        //TODO show error
+                        if (isActive) {
+                            //TODO show error
+                        }
                     }
                 }
             }
