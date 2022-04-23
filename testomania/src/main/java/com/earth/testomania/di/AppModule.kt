@@ -8,13 +8,17 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
+import okhttp3.OkHttpClient
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-    //TODO provide DB instance and so on
+    @Provides
+    @Singleton
+    fun provideOkHttpClient() = OkHttpClient()
+
     @Provides
     @Singleton
     fun provideMoshi(): Moshi {
@@ -25,6 +29,6 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun dispatcher(): CoroutineDispatcher = Dispatchers.IO
+    fun provideIoDispatcher(): CoroutineDispatcher = Dispatchers.IO
 
 }
