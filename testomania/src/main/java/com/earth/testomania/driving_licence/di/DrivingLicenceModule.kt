@@ -10,7 +10,7 @@ import com.earth.testomania.driving_licence.data.util.AnswersListConverter
 import com.earth.testomania.driving_licence.data.util.JsonParser
 import com.earth.testomania.driving_licence.data.util.MoshiParser
 import com.earth.testomania.driving_licence.domain.repository.DrivingLicenceRepo
-import com.earth.testomania.driving_licence.domain.use_case.GetDrivingLicenceQuestions
+import com.earth.testomania.driving_licence.domain.use_case.GetDrivingLicenceQuestionsUseCase
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -46,8 +46,8 @@ object DrivingLicenceModule {
 
     @Provides
     @Singleton
-    fun provideGetDrivingLicenceQuestions(repo: DrivingLicenceRepo): GetDrivingLicenceQuestions =
-        GetDrivingLicenceQuestions(repo)
+    fun provideGetDrivingLicenceQuestions(repo: DrivingLicenceRepo): GetDrivingLicenceQuestionsUseCase =
+        GetDrivingLicenceQuestionsUseCase(repo)
 
     @Provides
     @Singleton
