@@ -2,6 +2,6 @@
     <string name="app_name">Testomania</string>
     <string name="general_skills_tests">უნარების ტესტები</string>
     <string name="driving_license_tests">მარვის მოწმობის ტესტები</string>
-    <string name="geography_tests">გეოგრაფიის ტესტები</string>
+    <string name="technical_tests">Technical Tests</string>
     <string name="title_name">Testomania</string>
 </resources>

@@ -2,7 +2,7 @@ package com.earth.testomania.technical.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.earth.testomania.core.*
+import com.earth.testomania.core.DataState
 import com.earth.testomania.core.coroutines.defaultCoroutineExceptionHandler
 import com.earth.testomania.technical.domain.use_case.GetQuizListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel

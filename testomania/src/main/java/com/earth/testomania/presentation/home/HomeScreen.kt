@@ -10,7 +10,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.earth.testomania.R
-import com.earth.testomania.presentation.destinations.SkillzTestScreenDestination
+import com.earth.testomania.destinations.SkillzTestScreenDestination
+import com.earth.testomania.destinations.TechnicalTestsScreenDestination
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
@@ -38,9 +39,9 @@ fun HomeScreen(
         }
         Button(
             onClick = {
-
+                navigator?.navigate(TechnicalTestsScreenDestination())
             }) {
-            Text(text = stringResource(id = R.string.geography_tests))
+            Text(text = stringResource(id = R.string.technical_tests))
         }
     }
 }
