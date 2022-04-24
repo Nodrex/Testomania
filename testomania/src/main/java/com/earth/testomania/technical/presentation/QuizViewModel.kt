@@ -6,12 +6,9 @@ import com.earth.testomania.core.DataState
 import com.earth.testomania.core.coroutines.defaultCoroutineExceptionHandler
 import com.earth.testomania.technical.domain.use_case.GetQuizListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Job
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.isActive
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -30,27 +27,21 @@ class QuizViewModel @Inject constructor(
         getQuizListJob?.cancel()
         getQuizListJob = viewModelScope.launch(dispatcher + defaultCoroutineExceptionHandler) {
             getQuizListUseCase().catch {
-                if (isActive) {
-                    //TODO update ui accordingly
-                }
+                ensureActive()
+                //TODO update ui accordingly
             }.collectLatest {
+                ensureActive()
                 when (it) {
                     is DataState.Loading -> {
-                        if (isActive) {
-                            //TODO show progressbar
-                        }
+                        //TODO show progressbar
                     }
                     is DataState.Success -> {
-                        if (isActive) {
-                            //TODO show tests
-                            val result = it.payload
-                            println("data => $result")
-                        }
+                        //TODO show tests
+                        val result = it.payload
+                        println("data => $result")
                     }
                     is DataState.Error -> {
-                        if (isActive) {
-                            //TODO show error
-                        }
+                        //TODO show error
                     }
                 }
             }
