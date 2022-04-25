@@ -1,13 +1,13 @@
 package com.earth.testomania.technical.presentation.ui_parts
 
-import androidx.compose.foundation.background
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Divider
 import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -23,30 +23,20 @@ fun CreateQuizOverallProgressUI() {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(start = 10.dp, end = 10.dp, top = 10.dp, bottom = 20.dp)
     ) {
-        Box(
+        LinearProgressIndicator(
             modifier = Modifier
-                .wrapContentSize(Alignment.Center)
-        ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(10.dp))
-                    .background(Color.Black)
-                    .height(17.dp)
-            )
-            LinearProgressIndicator(
-                modifier = Modifier
-                    .padding(all = 1.dp)
-                    .fillMaxWidth()
-                    .height(15.dp)
-                    .clip(RoundedCornerShape(20.dp)),
-                backgroundColor = LightGray,
-                color = Orange,
-                progress = 0.1f
-            )
-        }
+                .fillMaxWidth()
+                .height(15.dp)
+                .clip(RoundedCornerShape(20.dp))
+                .border(
+                    border = BorderStroke(1.5.dp, Color.Black),
+                    shape = RoundedCornerShape(20.dp)
+                ),
+            backgroundColor = LightGray,
+            color = Orange,
+            progress = 0.1f
+        )
         Spacer(modifier = Modifier.height(10.dp))
         Row(
             modifier = Modifier
@@ -66,6 +56,7 @@ fun CreateQuizOverallProgressUI() {
         }
         Spacer(modifier = Modifier.height(10.dp))
         Divider(modifier = Modifier.fillMaxWidth(), color = Color.Black)
+        Spacer(modifier = Modifier.height(20.dp))
     }
 }
 
