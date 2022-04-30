@@ -2,31 +2,33 @@ package com.earth.testomania.technical.presentation.ui_parts
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Divider
 import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.earth.testomania.ui.theme.Gray
-import com.earth.testomania.ui.theme.LightDark
 import com.earth.testomania.ui.theme.LightGray
 import com.earth.testomania.ui.theme.Orange
 
 @Composable
 fun CreateQuizOverallProgressUI() {
-    Column(
+    Box(
         modifier = Modifier
             .fillMaxWidth()
     ) {
         LinearProgressIndicator(
             modifier = Modifier
-                .fillMaxWidth()
+                .matchParentSize()
                 .height(15.dp)
                 .clip(RoundedCornerShape(20.dp))
                 .border(
@@ -37,27 +39,14 @@ fun CreateQuizOverallProgressUI() {
             color = Orange,
             progress = 0.1f
         )
-        Spacer(modifier = Modifier.height(10.dp))
-        Row(
-            modifier = Modifier
-                .fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Text(
-                modifier = Modifier.padding(start = 3.dp),
-                color = Gray,
-                text = "Progress"
-            )
-            Text(
-                modifier = Modifier.padding(end = 3.dp),
-                color = LightDark,
-                text = "5/10"
-            )
-        }
-        Spacer(modifier = Modifier.height(10.dp))
-        Divider(modifier = Modifier.fillMaxWidth(), color = Color.Black)
-        Spacer(modifier = Modifier.height(20.dp))
+        Text(
+            modifier = Modifier.align(Alignment.Center),
+            color = Color.Black,
+            text = "1/10",
+            fontWeight = FontWeight.Bold
+        )
     }
+    Spacer(modifier = Modifier.height(10.dp))
 }
 
 
