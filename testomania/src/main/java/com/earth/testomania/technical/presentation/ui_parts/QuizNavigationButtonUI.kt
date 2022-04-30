@@ -1,6 +1,7 @@
 package com.earth.testomania.technical.presentation.ui_parts
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Button
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -12,25 +13,26 @@ import androidx.compose.ui.unit.dp
 import com.earth.testomania.R
 
 @Composable
-fun CreateQuizUI() {
+fun CreateQuizNavigationButtonUI() {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(all = 10.dp)
     ) {
-        Icon(
-            painter = painterResource(id = R.drawable.ic_question_mark),
-            contentDescription = null,
-            tint = Color.Unspecified,
-        )
-        Spacer(modifier = Modifier.width(10.dp))
-        Text(text = "Some big question to answer with possible multiple answers from which one or more can be correct")
+        Button(onClick = { }) {
+            Text(text = "Prev")
+        }
+        Button(onClick = { }) {
+            Text(text = "Done")
+        }
+        Button(onClick = { }) {
+            Text(text = "Next")
+        }
     }
-    Spacer(modifier = Modifier.height(20.dp))
 }
 
 @Preview
 @Composable
 private fun Preview() {
-    CreateQuizUI()
+    CreateQuizNavigationButtonUI()
 }

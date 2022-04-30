@@ -12,25 +12,23 @@ import androidx.compose.ui.unit.dp
 import com.earth.testomania.R
 
 @Composable
-fun CreateQuizUI() {
+fun CreateQuizExplanationUI() {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(all = 10.dp)
     ) {
-        Icon(
-            painter = painterResource(id = R.drawable.ic_question_mark),
+        Icon(painter = painterResource(id = R.drawable.ic_explanation),
             contentDescription = null,
             tint = Color.Unspecified,
         )
         Spacer(modifier = Modifier.width(10.dp))
-        Text(text = "Some big question to answer with possible multiple answers from which one or more can be correct")
+        Text(text = "Some information to explain")
     }
-    Spacer(modifier = Modifier.height(20.dp))
 }
 
 @Preview
 @Composable
 private fun Preview() {
-    CreateQuizUI()
+    CreateQuizExplanationUI()
 }

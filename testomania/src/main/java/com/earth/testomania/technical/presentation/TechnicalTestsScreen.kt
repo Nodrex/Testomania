@@ -9,10 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.earth.testomania.technical.presentation.ui_parts.CreateQuizAnswerUI
-import com.earth.testomania.technical.presentation.ui_parts.CreateQuizInfoUI
-import com.earth.testomania.technical.presentation.ui_parts.CreateQuizOverallProgressUI
-import com.earth.testomania.technical.presentation.ui_parts.CreateQuizUI
+import com.earth.testomania.technical.presentation.ui_parts.*
 import com.ramcosta.composedestinations.annotation.Destination
 
 @OptIn(ExperimentalAnimationApi::class)
@@ -36,9 +33,11 @@ private fun CreateScreen() {
         CreateQuizOverallProgressUI()
         CreateQuizInfoUI()
         CreateQuizUI()
-        for (i in 0..4){
+        for (i in 0..4) {
             CreateQuizAnswerUI()
         }
+        //CreateQuizExplanationUI()
+        CreateQuizNavigationButtonUI()
     }
 }
 

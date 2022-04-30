@@ -5,6 +5,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -17,7 +18,11 @@ fun CreateQuizInfoUI() {
             .fillMaxWidth()
             .padding(all = 10.dp)
     ) {
-        Icon(painter = painterResource(id = R.drawable.ic_category), contentDescription = null)
+        Icon(
+            painter = painterResource(id = R.drawable.ic_category),
+            contentDescription = null,
+            tint = Color.Unspecified,
+        )
         Spacer(modifier = Modifier.width(10.dp))
         Text(text = "Category/SubCategory")
     }

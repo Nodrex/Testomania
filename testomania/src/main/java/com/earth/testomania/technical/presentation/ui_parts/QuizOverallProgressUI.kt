@@ -37,12 +37,12 @@ fun CreateQuizOverallProgressUI() {
                 ),
             backgroundColor = LightGray,
             color = Orange,
-            progress = 0.1f
+            progress = 0.7f
         )
         Text(
             modifier = Modifier.align(Alignment.Center),
             color = Color.Black,
-            text = "1/10",
+            text = "7/10",
             fontWeight = FontWeight.Bold
         )
     }
