@@ -4,6 +4,7 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -31,12 +32,20 @@ private fun CreateScreen() {
             .padding(all = 10.dp)
     ) {
         CreateQuizOverallProgressUI()
+        //TODO this should be in view pager
         CreateQuizInfoUI()
         CreateQuizUI()
-        for (i in 0..4) {
-            CreateQuizAnswerUI()
+
+        LazyColumn {
+            for (i in 0..4) {
+                item {
+                    CreateQuizAnswerUI()
+                }
+            }
         }
+
         //CreateQuizExplanationUI()
+        //TODO viewpager
         CreateQuizNavigationButtonUI()
     }
 }
