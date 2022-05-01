@@ -10,9 +10,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.earth.testomania.R
+import com.earth.testomania.core.helper.defaultTechQuiz
+import com.earth.testomania.technical.domain.model.TechQuiz
 
 @Composable
-fun CreateQuizInfoUI() {
+fun CreateQuizInfoUI(techQuiz: TechQuiz) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -24,12 +26,12 @@ fun CreateQuizInfoUI() {
             tint = Color.Unspecified,
         )
         Spacer(modifier = Modifier.width(10.dp))
-        Text(text = "Category/SubCategory")
+        Text(text = techQuiz.category)
     }
 }
 
 @Preview
 @Composable
 private fun Preview() {
-    CreateQuizInfoUI()
+    CreateQuizInfoUI(defaultTechQuiz())
 }

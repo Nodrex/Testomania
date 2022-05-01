@@ -2,13 +2,17 @@ package com.earth.testomania.technical.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.earth.testomania.R
 import com.earth.testomania.core.DataState
 import com.earth.testomania.core.coroutines.defaultCoroutineExceptionHandler
+import com.earth.testomania.technical.domain.model.TechQuiz
 import com.earth.testomania.technical.domain.use_case.GetQuizListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.ensureActive
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -19,6 +23,15 @@ class QuizViewModel @Inject constructor(
 
     private var getQuizListJob: Job? = null
 
+    private val _data = MutableStateFlow<List<TechQuiz>>(emptyList())
+    private val data = _data.asStateFlow()
+
+    private val _loading = MutableStateFlow(false)
+    private val loading = _loading.asStateFlow()
+
+    private val _error = MutableSharedFlow<Int>()
+    private val error = _loading.asStateFlow()
+
     init {
         getQuizList()
     }
@@ -28,21 +41,15 @@ class QuizViewModel @Inject constructor(
         getQuizListJob = viewModelScope.launch(dispatcher + defaultCoroutineExceptionHandler) {
             getQuizListUseCase().catch {
                 ensureActive()
-                //TODO update ui accordingly
+                _error.emit(R.string.error_generic)
             }.collectLatest {
                 ensureActive()
                 when (it) {
-                    is DataState.Loading -> {
-                        //TODO show progressbar
+                    is DataState.Loading -> _loading.value = true
+                    is DataState.Success -> it.payload?.apply {
+                        _data.value = this
                     }
-                    is DataState.Success -> {
-                        //TODO show tests
-                        val result = it.payload
-                        println("data => $result")
-                    }
-                    is DataState.Error -> {
-                        //TODO show error
-                    }
+                    is DataState.Error -> _error.emit(R.string.error_load)
                 }
             }
         }

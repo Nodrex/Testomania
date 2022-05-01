@@ -4,4 +4,6 @@
     <string name="driving_license_tests">მარვის მოწმობის ტესტები</string>
     <string name="technical_tests">Technical Tests</string>
     <string name="title_name">Testomania</string>
+    <string name="error_load">Was not able to load tests, please try again later</string>
+    <string name="error_generic">Some Error occurred, please try again later</string>
 </resources>

@@ -14,10 +14,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.earth.testomania.R
+import com.earth.testomania.core.helper.defaultTechQuiz
 import kotlin.random.Random
 
 @Composable
-fun CreateQuizAnswerUI() {
+fun CreateQuizAnswerUI(possibleAnswer: Map.Entry<String, String>) {
     Box {
         Row(
             modifier = Modifier
@@ -38,7 +39,7 @@ fun CreateQuizAnswerUI() {
                     .padding(start = 12.dp, end = 12.dp, top = 6.dp, bottom = 6.dp)
             ) {
                 Text(
-                    text = "A"
+                    text = possibleAnswer.key
                 )
             }
             Spacer(modifier = Modifier.width(15.dp))
@@ -50,16 +51,18 @@ fun CreateQuizAnswerUI() {
                 //.padding(top = 5.dp)
                 ,
                 //text = "Some12345678901234567890123456789 possible answer kjsdjjjsd sdjkf sdjfskjdhf jksdhfkhskdjf kjshdfkhskjdf ksjdfkjhsdkjf kjsdhfkjhskjdfh jksbdfkbsjkdbfkjsbdf kjsbdfkjbskfbfk kjsbdffkjsbkfjb"
-                text = "Some possible answer"
+                text = possibleAnswer.value
             )
 
         }
-        Icon(
+
+        //TODO draw after click
+        /*Icon(
             modifier = Modifier.align(Alignment.TopEnd),
-            painter = painterResource(id = tmp() /*R.drawable.ic_correct*/),
+            painter = painterResource(id = tmp() *//*R.drawable.ic_correct*//*),
             contentDescription = null,
             tint = Color.Unspecified
-        )
+        )*/
     }
     Spacer(modifier = Modifier.height(15.dp))
 }
@@ -70,5 +73,7 @@ private fun tmp() =
 @Preview
 @Composable
 private fun Preview() {
-    CreateQuizAnswerUI()
+    CreateQuizAnswerUI(defaultTechQuiz().possibleAnswers.firstNotNullOf {
+        it
+    })
 }

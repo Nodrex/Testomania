@@ -10,9 +10,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.earth.testomania.R
+import com.earth.testomania.core.helper.defaultTechQuiz
+import com.earth.testomania.technical.domain.model.TechQuiz
 
 @Composable
-fun CreateQuizUI() {
+fun CreateQuizUI(techQuiz: TechQuiz) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -24,7 +26,7 @@ fun CreateQuizUI() {
             tint = Color.Unspecified,
         )
         Spacer(modifier = Modifier.width(10.dp))
-        Text(text = "Some big question to answer with possible multiple answers from which one or more can be correct")
+        Text(text = techQuiz.question)
     }
     Spacer(modifier = Modifier.height(20.dp))
 }
@@ -32,5 +34,5 @@ fun CreateQuizUI() {
 @Preview
 @Composable
 private fun Preview() {
-    CreateQuizUI()
+    CreateQuizUI(defaultTechQuiz())
 }
