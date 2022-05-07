@@ -37,7 +37,7 @@
  ## Networking
  - Retrofit
  - Moshi as Json convertor  
- - Glide to download images
+ - Coil to download images
 
  ## Tools
  - LeakCanary

@@ -1,4 +1,4 @@
-package com.earth.testomania
+package com.earth.testomania.skills
 
 import com.earth.testomania.skills.data.GeneralSkillsMathematicalRepo
 import com.google.common.truth.Truth
@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 @RunWith(RobolectricTestRunner::class)
 @HiltAndroidTest
-class GeneralSkillsTest {
+class GeneralSkillsMathematicalRepoTest {
 
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
@@ -39,4 +39,5 @@ class GeneralSkillsTest {
         Truth.assertThat(repo.getRandomTests(count))
             .hasSize(count)
     }
+
 }
