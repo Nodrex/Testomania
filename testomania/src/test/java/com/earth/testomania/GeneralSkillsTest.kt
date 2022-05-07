@@ -1,6 +1,6 @@
 package com.earth.testomania
 
-import com.earth.testomania.skills.GeneralSkillsMathematicalRepo
+import com.earth.testomania.skills.data.GeneralSkillsMathematicalRepo
 import com.google.common.truth.Truth
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
