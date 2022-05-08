@@ -1,12 +1,15 @@
 package com.earth.testomania.technical.presentation
 
+import android.widget.Toast
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -17,6 +20,7 @@ import com.earth.testomania.technical.presentation.ui_parts.*
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.ramcosta.composedestinations.annotation.Destination
+import kotlinx.coroutines.flow.collectLatest
 
 @OptIn(ExperimentalAnimationApi::class)
 @Destination(
@@ -25,7 +29,17 @@ import com.ramcosta.composedestinations.annotation.Destination
 @Composable
 fun TechnicalTestsScreen() {
     val viewmodel: QuizViewModel = hiltViewModel()
+
+    val scaffoldState = rememberScaffoldState()
+
+    LaunchedEffect(key1 = true ) {
+        viewmodel.data.collectLatest {
+            //scaffoldState.snackbarHostState.showSnackbar("data => ${it.size}")
+        }
+    }
+
     CreateScreen(listOf(defaultTechQuiz()))
+
 }
 
 @OptIn(ExperimentalPagerApi::class)

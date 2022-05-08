@@ -24,13 +24,13 @@ class QuizViewModel @Inject constructor(
     private var getQuizListJob: Job? = null
 
     private val _data = MutableStateFlow<List<TechQuiz>>(emptyList())
-    private val data = _data.asStateFlow()
+    val data = _data.asStateFlow()
 
     private val _loading = MutableStateFlow(false)
-    private val loading = _loading.asStateFlow()
+    val loading = _loading.asStateFlow()
 
     private val _error = MutableSharedFlow<Int>()
-    private val error = _loading.asStateFlow()
+    val error = _loading.asStateFlow()
 
     init {
         getQuizList()
