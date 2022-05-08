@@ -26,7 +26,6 @@ class MainActivity : ComponentActivity() {
         
         setContent {
             TestomaniaTheme {
-              val viewmodel: QuizViewModel = hiltViewModel()
                 Testomania()
             }
         }

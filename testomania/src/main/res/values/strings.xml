@@ -2,6 +2,8 @@
     <string name="app_name">Testomania</string>
     <string name="general_skills_tests">უნარები (მათემატიკური)</string>
     <string name="driving_license_tests">მართვის მოწმობა</string>
-    <string name="geography_tests">გეოგრაფია</string>
+    <string name="technical_tests">ინფორმაციული ტექნოლოგიები</string>
     <string name="title_name">Testomania</string>
+    <string name="error_load">Was not able to load tests, please try again later</string>
+    <string name="error_generic">Some Error occurred, please try again later</string>
 </resources>
