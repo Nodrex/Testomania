@@ -1,8 +1,8 @@
-package com.earth.testomania.skills
+package com.earth.testomania.skills.data
 
 import android.content.Context
 import com.earth.testomania.R
-import com.earth.testomania.skills.dto.GeneralTestItemDTO
+import com.earth.testomania.skills.data.dto.GeneralTestItemDTO
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapter

@@ -1,8 +1,8 @@
-package com.earth.testomania.domain
+package com.earth.testomania.skills.domain
 
 import com.earth.testomania.domain.models.GeneralMathematicalSkillsTest
 import com.earth.testomania.domain.models.PossibleAnswer
-import com.earth.testomania.skills.GeneralSkillsMathematicalRepo
+import com.earth.testomania.skills.data.GeneralSkillsMathematicalRepo
 import javax.inject.Inject
 
 class GetAllSkillsTestsUseCase @Inject constructor(

@@ -7,15 +7,12 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.hilt.navigation.compose.hiltViewModel
-import com.earth.testomania.technical.presentation.QuizViewModel
-import com.earth.testomania.ui.theme.TestomaniaTheme
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.earth.testomania.presentation.NavGraphs
 import com.earth.testomania.presentation.TopBar
+import com.earth.testomania.technical.presentation.QuizViewModel
 import com.earth.testomania.ui.theme.TestomaniaTheme
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.rememberNavHostEngine
