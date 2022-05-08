@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "com.earth.testomania"
-        minSdk 21
+        minSdk 23
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -89,7 +89,7 @@ dependencies {
     implementation 'io.github.raamcosta.compose-destinations:core:1.4.3-beta'
     implementation 'io.github.raamcosta.compose-destinations:animations-core:1.4.3-beta'
     ksp 'io.github.raamcosta.compose-destinations:ksp:1.4.3-beta'
-
+    implementation "kiwi.orbit.compose:ui:0.13.0"
 
     // Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0'
