@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.earth.testomania.R
 import com.earth.testomania.destinations.DummyScreenDestination
 import com.earth.testomania.destinations.SkillzTestScreenDestination
+import com.earth.testomania.destinations.TechnicalTestsScreenDestination
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -18,9 +19,9 @@ class HomeScreenViewModel @Inject constructor(
             destination = SkillzTestScreenDestination
         ),
         HomeDestinations(
-            name = R.string.geography_tests,
-            icon = R.drawable.ic_geo,
-            destination = DummyScreenDestination
+            name = R.string.technical_tests,
+            icon = R.drawable.ic_laptop,
+            destination = TechnicalTestsScreenDestination
         ),
         HomeDestinations(
             name = R.string.driving_license_tests,
