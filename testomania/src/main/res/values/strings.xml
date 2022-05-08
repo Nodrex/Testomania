@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Testomania</string>
-    <string name="general_skills_tests">უნარების მათემატიკური ტესტები</string>
-    <string name="driving_license_tests">მართვის მოწმობის ტესტები</string>
-    <string name="geography_tests">გეოგრაფიის ტესტები</string>
+    <string name="general_skills_tests">უნარების მათემატიკური</string>
+    <string name="driving_license_tests">მართვის მოწმობის</string>
+    <string name="geography_tests">გეოგრაფიის</string>
     <string name="title_name">Testomania</string>
 </resources>
