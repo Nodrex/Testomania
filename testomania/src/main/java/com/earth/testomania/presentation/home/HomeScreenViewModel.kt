@@ -2,8 +2,8 @@ package com.earth.testomania.presentation.home
 
 import androidx.lifecycle.ViewModel
 import com.earth.testomania.R
-import com.earth.testomania.presentation.destinations.DummyScreenDestination
-import com.earth.testomania.presentation.destinations.SkillzTestScreenDestination
+import com.earth.testomania.destinations.DummyScreenDestination
+import com.earth.testomania.destinations.SkillzTestScreenDestination
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

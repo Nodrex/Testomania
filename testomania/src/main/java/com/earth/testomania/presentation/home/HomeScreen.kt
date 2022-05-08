@@ -32,6 +32,7 @@ fun HomeScreen(
 
     val viewModel: HomeScreenViewModel = hiltViewModel()
 
+
     val contentPadding = 20.dp
     @OptIn(ExperimentalFoundationApi::class)
     LazyVerticalGrid(cells = GridCells.Fixed(2),
