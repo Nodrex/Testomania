@@ -3,36 +3,67 @@ package com.earth.testomania
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.earth.testomania.technical.presentation.QuizViewModel
 import com.earth.testomania.ui.theme.TestomaniaTheme
+import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.earth.testomania.presentation.NavGraphs
+import com.earth.testomania.presentation.TopBar
+import com.earth.testomania.ui.theme.TestomaniaTheme
+import com.ramcosta.composedestinations.DestinationsNavHost
+import com.ramcosta.composedestinations.rememberNavHostEngine
+import com.ramcosta.composedestinations.spec.NavHostEngine
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        
         setContent {
             TestomaniaTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colors.background) {
-                    Greeting("Hello Testomania World")
-                }
+              val viewmodel: QuizViewModel = hiltViewModel()
+                Testomania()
             }
         }
     }
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = name)
+fun Testomania() {
+    val navController: NavHostController = rememberNavController()
+
+    Scaffold(
+        topBar = {
+            TopBar()
+        },
+    ) { innerPadding: PaddingValues ->
+        TestomaniaNavigation(
+            innerPadding = innerPadding,
+            navHostController = navController
+        )
+    }
 }
 
-@Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
-    TestomaniaTheme {
-        Greeting("Android")
-    }
+fun TestomaniaNavigation(
+    innerPadding: PaddingValues,
+    navHostController: NavHostController,
+) {
+
+    val navHostEngine: NavHostEngine = rememberNavHostEngine()
+
+    DestinationsNavHost(
+        modifier = Modifier.padding(bottom = innerPadding.calculateBottomPadding()),
+        navGraph = NavGraphs.root,
+        engine = navHostEngine,
+        navController = navHostController,
+    )
 }
