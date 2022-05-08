@@ -19,7 +19,7 @@ import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kiwi.orbit.compose.ui.controls.Card
 
-@Preview
+@Preview(showSystemUi = true)
 @Destination(
     route = "home",
     start = true
@@ -48,15 +48,17 @@ fun CardButton(
     destinationInfo: HomeDestinations,
     navigator: DestinationsNavigator? = null,
 ) {
-    Card(onClick = {
+    Card(modifier = Modifier.size(125.dp), onClick = {
         navigator?.navigate(destinationInfo.destination)
     }) {
         Column(Modifier.padding(10.dp), horizontalAlignment = Alignment.CenterHorizontally) {
             Image(painter = painterResource(id = destinationInfo.icon),
                 modifier = Modifier.size(40.dp),
                 contentDescription = null)
-            Text(text = stringResource(id = destinationInfo.name),
-                Modifier.padding(start = 10.dp), textAlign = TextAlign.Center)
+            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                Text(text = stringResource(id = destinationInfo.name), textAlign = TextAlign.Center)
+            }
+
         }
     }
 }
