@@ -11,7 +11,7 @@ import javax.inject.Inject
 class HomeScreenViewModel @Inject constructor(
 
 ) : ViewModel() {
-    val destinations = listOf<HomeDestinations>(
+    val destinations = listOf(
         HomeDestinations(
             name = R.string.general_skills_tests,
             icon = R.drawable.ic_math,

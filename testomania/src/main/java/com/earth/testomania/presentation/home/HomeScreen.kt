@@ -32,11 +32,12 @@ fun HomeScreen(
 
     val viewModel: HomeScreenViewModel = hiltViewModel()
 
+    val contentPadding = 20.dp
     @OptIn(ExperimentalFoundationApi::class)
     LazyVerticalGrid(cells = GridCells.Fixed(2),
-        contentPadding = PaddingValues(10.dp),
-        horizontalArrangement = Arrangement.spacedBy(10.dp),
-        verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        contentPadding = PaddingValues(contentPadding),
+        horizontalArrangement = Arrangement.spacedBy(contentPadding),
+        verticalArrangement = Arrangement.spacedBy(contentPadding)) {
         items(viewModel.destinations.size) { index ->
             val item = viewModel.destinations[index]
             CardButton(item, navigator)
