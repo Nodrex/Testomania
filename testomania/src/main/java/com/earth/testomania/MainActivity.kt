@@ -13,7 +13,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.earth.testomania.driving_licence.presentation.DrivingLicenceViewModel
-import com.earth.testomania.presentation.NavGraphs
 import com.earth.testomania.presentation.TopBar
 import com.earth.testomania.technical.presentation.QuizViewModel
 import com.earth.testomania.ui.theme.TestomaniaTheme
