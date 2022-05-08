@@ -5,6 +5,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -38,7 +39,7 @@ fun HomeScreen(
         verticalArrangement = Arrangement.spacedBy(10.dp)) {
         items(viewModel.destinations.size) { index ->
             val item = viewModel.destinations[index]
-            CardButton(item)
+            CardButton(item, navigator)
         }
     }
 }
@@ -48,7 +49,7 @@ fun CardButton(
     destinationInfo: HomeDestinations,
     navigator: DestinationsNavigator? = null,
 ) {
-    Card(modifier = Modifier.size(125.dp), onClick = {
+    Card(modifier = Modifier.size(125.dp), shape = RoundedCornerShape(10.dp), onClick = {
         navigator?.navigate(destinationInfo.destination)
     }) {
         Column(Modifier.padding(10.dp), horizontalAlignment = Alignment.CenterHorizontally) {
