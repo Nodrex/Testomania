@@ -1,16 +1,16 @@
 package com.earth.testomania.technical.presentation.ui_parts
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
+import androidx.compose.material.Card
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.earth.testomania.R
@@ -19,16 +19,37 @@ import kotlin.random.Random
 
 @Composable
 fun CreateQuizAnswerUI(possibleAnswer: Map.Entry<String, String>) {
-    Box {
+
+    var selected by remember {
+        mutableStateOf(false)
+    }
+
+    val color by animateColorAsState(
+        targetValue = when (selected) {
+            true -> Color.Green
+            false -> Color.Black
+        }
+    )
+
+    Card(
+        shape = RoundedCornerShape(10.dp),
+        elevation = 2.dp
+    ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 10.dp, end = 10.dp, top = 8.dp)
+
                 .border(
-                    border = BorderStroke(1.5.dp, Color.Black),
-                    shape = RoundedCornerShape(10.dp)
+                    shape = RoundedCornerShape(10.dp),
+                    border = BorderStroke(1.5.dp, color /*Color.Black*/),
                 )
-                .padding(all = 12.dp),
+                .clickable(
+                    onClick = {
+                        selected = !selected
+                    }
+                )
+                .padding(start = 10.dp, end = 10.dp, top = 8.dp)
+                .padding(all = 12.dp)
         ) {
             Box(
                 Modifier

@@ -48,6 +48,9 @@ private fun CreateScreen(techQuizList: List<TechQuiz>) {
             .fillMaxSize()
             .padding(all = 10.dp)
     ) {
+
+        CreateKiwiUI() //TODO tmp
+
         CreateQuizOverallProgressUI()
 
         HorizontalPager(
