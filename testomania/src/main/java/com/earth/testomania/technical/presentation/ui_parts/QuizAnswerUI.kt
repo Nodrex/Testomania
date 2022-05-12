@@ -11,16 +11,18 @@ import androidx.compose.material.Card
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
 import com.earth.testomania.R
 import com.earth.testomania.core.helper.defaultTechQuiz
 import kotlin.random.Random
+
 
 @Composable
 fun CreateQuizAnswerUI(possibleAnswer: Map.Entry<String, String>) {
@@ -36,14 +38,14 @@ fun CreateQuizAnswerUI(possibleAnswer: Map.Entry<String, String>) {
         }
     )
 
-    val possibleAnswerIndicatorBackColor by animateColorAsState(
+    val possibleAnswerIndexBackColor by animateColorAsState(
         targetValue = when (selected) {
             true -> Color.Green
             false -> Color.Transparent
         }
     )
 
-    val possibleAnswerIndicatorTextColor by animateColorAsState(
+    val possibleAnswerIndexTextColor by animateColorAsState(
         targetValue = when (selected) {
             true -> Color.White
             false -> Color.Black
@@ -69,48 +71,65 @@ fun CreateQuizAnswerUI(possibleAnswer: Map.Entry<String, String>) {
                 )
                 .padding(all = 12.dp)
         ) {
-
-
-            Box(
-                Modifier
-                    .border(
-                        border = BorderStroke(1.5.dp, Color.Black),
-                        shape = RoundedCornerShape(10.dp)
-                    )
-                    .padding(top = 4.dp)
-                    .background(
-                        color = possibleAnswerIndicatorBackColor,
-                        shape = RoundedCornerShape(10.dp)
-                    )
-                    .padding(start = 12.dp, end = 12.dp, top = 2.dp, bottom = 6.dp)
+            ConstraintLayout(
+                modifier = Modifier.fillMaxWidth()
             ) {
+
+                val (index, question, indicator) = createRefs()
+
+                Box(
+                    Modifier
+                        .border(
+                            border = BorderStroke(1.5.dp, Color.Black),
+                            shape = RoundedCornerShape(10.dp)
+                        )
+                        .padding(top = 4.dp)
+                        .background(
+                            color = possibleAnswerIndexBackColor,
+                            shape = RoundedCornerShape(10.dp)
+                        )
+                        .padding(start = 12.dp, end = 12.dp, top = 2.dp, bottom = 6.dp)
+                        .constrainAs(index) {
+                            start.linkTo(parent.start)
+                        }
+                ) {
+                    Text(
+                        text = possibleAnswer.key,
+                        fontWeight = FontWeight.Bold,
+                        color = possibleAnswerIndexTextColor
+                    )
+                }
+
+
+                //TODO not suited well fro multi line answer, need refactoring for that
                 Text(
-                    text = possibleAnswer.key,
-                    fontWeight = FontWeight.Bold,
-                    color = possibleAnswerIndicatorTextColor
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .constrainAs(question) {
+                            start.linkTo(index.end)
+                            end.linkTo(indicator.start)
+                            width = Dimension.fillToConstraints
+                        },
+                    text = possibleAnswer.value,
+                    fontWeight = FontWeight(499)
                 )
+
+                Icon(
+                    modifier = Modifier.constrainAs(indicator) {
+                        end.linkTo(parent.end)
+                        bottom.linkTo(parent.bottom)
+                    },
+                    painter = painterResource(id = tmp()),
+                    contentDescription = null,
+                    tint = Color.Unspecified
+                )
+
             }
-            Spacer(modifier = Modifier.width(15.dp))
-
-            //TODO not suited well fro multi line answer, need refactoring for that
-            Text(
-                modifier = Modifier
-                    .wrapContentSize(),
-                text = possibleAnswer.value,
-                fontWeight = FontWeight(499)
-            )
-
-            /*
-            Icon(
-                modifier = Modifier.align(Alignment.Top),
-                painter = painterResource(id = tmp() ),
-                contentDescription = null,
-                tint = Color.Unspecified
-            )*/
         }
     }
     Spacer(modifier = Modifier.height(15.dp))
 }
+
 
 private fun tmp() =
     if (Random(System.currentTimeMillis()).nextBoolean()) R.drawable.ic_correct else R.drawable.ic_wrong
