@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.earth.testomania.R
@@ -27,7 +28,11 @@ fun CreateQuizUI(techQuiz: TechQuiz) {
             tint = Color.Unspecified,
         )
         Spacer(modifier = Modifier.width(10.dp))
-        Text(text = techQuiz.question)
+        Text(
+            text =
+            techQuiz.category + "\n" + techQuiz.question,
+            fontWeight = FontWeight(499)
+        )
     }
     Spacer(modifier = Modifier.height(20.dp))
 }

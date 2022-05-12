@@ -79,7 +79,7 @@ private fun CreateScreen(techQuizList: List<TechQuiz>) {
                     .wrapContentHeight()
                     .padding(all = 10.dp)
             ) {
-                CreateQuizInfoUI(techQuizList[page])
+                //CreateQuizInfoUI(techQuizList[page])
                 CreateQuizUI(techQuizList[page])
                 LazyColumn(
                     modifier = Modifier.wrapContentHeight()
