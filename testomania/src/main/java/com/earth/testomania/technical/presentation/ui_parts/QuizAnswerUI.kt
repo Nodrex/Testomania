@@ -52,6 +52,8 @@ fun CreateQuizAnswerUI(possibleAnswer: Map.Entry<String, String>) {
         }
     )
 
+    var textOverflow by remember { mutableStateOf(2) }
+
     Card(
         shape = RoundedCornerShape(15.dp),
         elevation = 2.dp
@@ -100,30 +102,34 @@ fun CreateQuizAnswerUI(possibleAnswer: Map.Entry<String, String>) {
                     )
                 }
 
-
-                //TODO not suited well fro multi line answer, need refactoring for that
                 Text(
                     modifier = Modifier
                         .fillMaxWidth()
                         .constrainAs(question) {
-                            start.linkTo(index.end)
-                            end.linkTo(indicator.start)
+                            start.linkTo(index.end, margin = 8.dp)
+                            if (selected) end.linkTo(indicator.start, margin = 6.dp)
+                            else end.linkTo(parent.end, margin = 6.dp)
+                            if (textOverflow == 1) centerVerticallyTo(parent)
                             width = Dimension.fillToConstraints
                         },
                     text = possibleAnswer.value,
-                    fontWeight = FontWeight(499)
-                )
-
-                Icon(
-                    modifier = Modifier.constrainAs(indicator) {
-                        end.linkTo(parent.end)
-                        bottom.linkTo(parent.bottom)
+                    fontWeight = FontWeight(499),
+                    onTextLayout = { textLayoutResult ->
+                        textOverflow = textLayoutResult.lineCount
                     },
-                    painter = painterResource(id = tmp()),
-                    contentDescription = null,
-                    tint = Color.Unspecified
                 )
 
+                if (selected) {
+                    Icon(
+                        modifier = Modifier.constrainAs(indicator) {
+                            end.linkTo(parent.end)
+                            bottom.linkTo(parent.bottom)
+                        },
+                        painter = painterResource(id = tmp()),
+                        contentDescription = null,
+                        tint = Color.Unspecified
+                    )
+                }
             }
         }
     }
