@@ -18,6 +18,7 @@ fun CreateQuizUI(techQuiz: TechQuiz) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .wrapContentHeight()
             .padding(all = 10.dp)
     ) {
         Icon(

@@ -5,6 +5,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -13,11 +14,12 @@ import androidx.compose.ui.unit.dp
 import com.earth.testomania.R
 
 @Composable
-fun CreateQuizNavigationButtonUI() {
+fun CreateQuizNavigationButtonUI(modifier: Modifier) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
-            .padding(all = 10.dp)
+            .padding(all = 10.dp),
+        horizontalArrangement = Arrangement.Center,
     ) {
         Button(onClick = { }) {
             Text(text = "Prev")
@@ -34,5 +36,5 @@ fun CreateQuizNavigationButtonUI() {
 @Preview
 @Composable
 private fun Preview() {
-    CreateQuizNavigationButtonUI()
+    CreateQuizNavigationButtonUI(Modifier)
 }

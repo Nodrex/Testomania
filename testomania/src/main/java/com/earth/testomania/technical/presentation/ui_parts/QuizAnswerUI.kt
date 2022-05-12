@@ -11,7 +11,9 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.earth.testomania.R
 import com.earth.testomania.core.helper.defaultTechQuiz
@@ -38,10 +40,10 @@ fun CreateQuizAnswerUI(possibleAnswer: Map.Entry<String, String>) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-
+                .wrapContentHeight()
                 .border(
                     shape = RoundedCornerShape(10.dp),
-                    border = BorderStroke(1.5.dp, color /*Color.Black*/),
+                    border = BorderStroke(1.5.dp, color),
                 )
                 .clickable(
                     onClick = {

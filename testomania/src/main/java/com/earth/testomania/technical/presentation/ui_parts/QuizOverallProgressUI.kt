@@ -21,9 +21,9 @@ import com.earth.testomania.ui.theme.LightGray
 import com.earth.testomania.ui.theme.Orange
 
 @Composable
-fun CreateQuizOverallProgressUI() {
+fun CreateQuizOverallProgressUI(modifier: Modifier) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
     ) {
         LinearProgressIndicator(
@@ -53,5 +53,5 @@ fun CreateQuizOverallProgressUI() {
 @Preview
 @Composable
 private fun Preview() {
-    CreateQuizOverallProgressUI()
+    CreateQuizOverallProgressUI(Modifier)
 }

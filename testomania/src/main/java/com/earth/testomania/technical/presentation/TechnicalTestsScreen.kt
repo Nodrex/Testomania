@@ -1,15 +1,14 @@
 package com.earth.testomania.technical.presentation
 
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.core.helper.defaultTechQuiz
 import com.earth.testomania.technical.domain.model.TechQuiz
@@ -43,41 +42,58 @@ fun TechnicalTestsScreen() {
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 private fun CreateScreen(techQuizList: List<TechQuiz>) {
-    Column(
+    ConstraintLayout(
         modifier = Modifier
             .fillMaxSize()
-            .padding(all = 10.dp)
+            .padding(all = 10.dp),
     ) {
+        val (progress, horizontalPager, navigation) = createRefs()
 
-        CreateKiwiUI() //TODO tmp
+        //CreateKiwiUI() //TODO tmp
 
-        CreateQuizOverallProgressUI()
+        CreateQuizOverallProgressUI(
+            Modifier.constrainAs(progress) {
+                top.linkTo(parent.top /*margin = 0.dp*/)
+            }
+        )
+
+        CreateQuizNavigationButtonUI(
+            Modifier.constrainAs(navigation) {
+                bottom.linkTo(parent.bottom)
+            }
+        )
 
         HorizontalPager(
-            modifier = Modifier.wrapContentSize(),
-            count = techQuizList.size
+            verticalAlignment = Alignment.Bottom,
+            modifier = Modifier
+                .wrapContentHeight()
+                .fillMaxWidth()
+                .constrainAs(horizontalPager) {
+                    bottom.linkTo(navigation.top, margin = 1.dp)
+                },
+            count = techQuizList.size,
         ) { page ->
             Column(
                 modifier = Modifier
-                    .fillMaxSize()
+                    .fillMaxWidth()
+                    .wrapContentHeight()
                     .padding(all = 10.dp)
             ) {
                 CreateQuizInfoUI(techQuizList[page])
                 CreateQuizUI(techQuizList[page])
-
-                LazyColumn {
+                LazyColumn(
+                    modifier = Modifier.wrapContentHeight()
+                ) {
                     techQuizList[page].possibleAnswers.forEach { possibleAnswer ->
                         item {
                             CreateQuizAnswerUI(possibleAnswer)
                         }
                     }
                 }
-
-                //CreateQuizExplanationUI()
             }
         }
 
-        CreateQuizNavigationButtonUI()
+
     }
 }
 
