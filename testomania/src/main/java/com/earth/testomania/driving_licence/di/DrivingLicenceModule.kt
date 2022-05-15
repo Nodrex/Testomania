@@ -1,7 +1,6 @@
 package com.earth.testomania.driving_licence.di
 
 import android.app.Application
-import android.content.Context
 import androidx.room.Room
 import com.earth.testomania.driving_licence.data.DrivingLicenceDao
 import com.earth.testomania.driving_licence.data.DrivingLicenceDatabase
@@ -46,23 +45,20 @@ object DrivingLicenceModule {
 
     @Provides
     @Singleton
-    fun provideGetDrivingLicenceQuestions(repo: DrivingLicenceRepo): GetDrivingLicenceQuestionsUseCase =
-        GetDrivingLicenceQuestionsUseCase(repo)
+    fun provideGetDrivingLicenceQuestions(
+        converter: AnswersListConverter,
+        repo: DrivingLicenceRepo
+    ): GetDrivingLicenceQuestionsUseCase =
+        GetDrivingLicenceQuestionsUseCase(converter, repo)
 
     @Provides
     @Singleton
-    fun provideDrivingLicenceRepo(converter: AnswersListConverter, dao: DrivingLicenceDao): DrivingLicenceRepo =
-        DrivingLicenceRepoImpl(converter, dao)
+    fun provideDrivingLicenceRepo(dao: DrivingLicenceDao): DrivingLicenceRepo =
+        DrivingLicenceRepoImpl(dao)
 
     @Provides
     @Singleton
     fun provideApplicationScope() = CoroutineScope(SupervisorJob())
-
-    @Provides
-    @Singleton
-    fun provideContext(app: Application): Context {
-        return app
-    }
 
     @Provides
     @Singleton

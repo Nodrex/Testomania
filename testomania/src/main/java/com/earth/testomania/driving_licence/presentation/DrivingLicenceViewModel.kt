@@ -9,6 +9,7 @@ import com.earth.testomania.driving_licence.data.DrivingLicenceDao
 import com.earth.testomania.driving_licence.domain.use_case.GetDrivingLicenceQuestionsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -21,8 +22,11 @@ class DrivingLicenceViewModel @Inject constructor(
     private val dispatcher: CoroutineDispatcher,
 ) : ViewModel() {
 
+    private var getQuestionsJob: Job? = null
+
     fun startNewTest() {
-        viewModelScope.launch(dispatcher + defaultCoroutineExceptionHandler) {
+        getQuestionsJob?.cancel()
+        getQuestionsJob = viewModelScope.launch(dispatcher + defaultCoroutineExceptionHandler) {
             // for testing purposes
             dao.getSingleQuestions(1)
             delay(3000)

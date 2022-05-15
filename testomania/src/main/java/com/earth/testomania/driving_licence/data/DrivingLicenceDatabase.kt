@@ -11,6 +11,7 @@ import com.earth.testomania.driving_licence.data.util.AnswersListConverter
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapter
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -30,7 +31,7 @@ abstract class DrivingLicenceDatabase : RoomDatabase() {
     class CallBack @Inject constructor(
         private val database: Provider<DrivingLicenceDatabase>,
         private val applicationScope: CoroutineScope,
-        private val appContext: Context,
+        @ApplicationContext private val appContext: Context,
         private val moshi: Moshi,
         private val converter: AnswersListConverter,
     ) : RoomDatabase.Callback() {
