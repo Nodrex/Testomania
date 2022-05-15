@@ -1,4 +1,4 @@
-package com.earth.testomania.presentation.skillz
+package com.earth.testomania.skills.presentation.skillz
 
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Column

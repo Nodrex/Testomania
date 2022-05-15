@@ -1,9 +1,9 @@
-package com.earth.testomania.presentation.skillz
+package com.earth.testomania.skills.presentation.skillz
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.earth.testomania.domain.GetAllSkillsTestsUseCase
 import com.earth.testomania.domain.models.GeneralMathematicalSkillsTest
+import com.earth.testomania.skills.domain.GetAllSkillsTestsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow

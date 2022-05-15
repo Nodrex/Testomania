@@ -10,6 +10,7 @@ import com.earth.testomania.technical.domain.model.AnswerKey
 import com.earth.testomania.technical.domain.model.TechQuiz
 import com.earth.testomania.technical.domain.repository.QuizRepository
 import kotlinx.coroutines.flow.*
+import java.util.concurrent.CancellationException
 import javax.inject.Inject
 
 class GetQuizListUseCase @Inject constructor(
@@ -29,6 +30,7 @@ class GetQuizListUseCase @Inject constructor(
                 emit(DataState.Error(ErrorMetaData(it.cause as Exception?)))
             }.collect()
         } catch (e: Exception) {
+            if(e is CancellationException) throw e
             emit(DataState.Error(ErrorMetaData(e)))
         }
     }

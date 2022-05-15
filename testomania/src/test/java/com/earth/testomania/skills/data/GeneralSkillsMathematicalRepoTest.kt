@@ -1,4 +1,4 @@
-package com.earth.testomania.skills
+package com.earth.testomania.skills.data
 
 import com.google.common.truth.Truth
 import dagger.hilt.android.testing.HiltAndroidRule
