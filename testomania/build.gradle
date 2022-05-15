@@ -91,6 +91,7 @@ dependencies {
     ksp 'io.github.raamcosta.compose-destinations:ksp:1.4.3-beta'
     implementation "com.google.accompanist:accompanist-pager:0.19.0"
     implementation "kiwi.orbit.compose:ui:0.13.0"
+    implementation "com.google.accompanist:accompanist-systemuicontroller:0.24.8-beta"
 
     // Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0'
