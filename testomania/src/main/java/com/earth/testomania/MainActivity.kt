@@ -4,12 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.core.view.WindowCompat
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
@@ -27,6 +25,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+
         setContent {
             val systemUiController = rememberSystemUiController()
             val isSystemInDarkTheme = isSystemInDarkTheme()
@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
             SideEffect {
                 systemUiController.setSystemBarsColor(
                     color = Color.Transparent,
-                    darkIcons = isSystemInDarkTheme,
+                    darkIcons = !isSystemInDarkTheme,
                 )
             }
 
@@ -49,9 +49,8 @@ class MainActivity : ComponentActivity() {
 fun Testomania() {
     val navController: NavHostController = rememberNavController()
 
-    Scaffold { innerPadding: PaddingValues ->
+    Scaffold {
         TestomaniaNavigation(
-            innerPadding = innerPadding,
             navHostController = navController
         )
     }
@@ -59,14 +58,12 @@ fun Testomania() {
 
 @Composable
 fun TestomaniaNavigation(
-    innerPadding: PaddingValues,
     navHostController: NavHostController,
 ) {
 
     val navHostEngine: NavHostEngine = rememberNavHostEngine()
 
     DestinationsNavHost(
-        modifier = Modifier.padding(bottom = innerPadding.calculateBottomPadding()),
         navGraph = NavGraphs.root,
         engine = navHostEngine,
         navController = navHostController,
