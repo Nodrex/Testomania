@@ -42,14 +42,15 @@ fun TechnicalTestsScreen() {
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 private fun CreateScreen(techQuizList: List<TechQuiz>) {
+
+    //CreateKiwiUI() //TODO tmp
+
     ConstraintLayout(
         modifier = Modifier
             .fillMaxSize()
             .padding(all = 10.dp),
     ) {
         val (progress, horizontalPager, navigation) = createRefs()
-
-        //CreateKiwiUI() //TODO tmp
 
         CreateQuizOverallProgressUI(
             Modifier.constrainAs(progress) {
