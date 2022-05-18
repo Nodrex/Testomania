@@ -15,6 +15,7 @@ import com.earth.testomania.technical.domain.model.TechQuiz
 import com.earth.testomania.technical.presentation.ui_parts.*
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
+import com.google.accompanist.pager.rememberPagerState
 import com.ramcosta.composedestinations.annotation.Destination
 import kotlinx.coroutines.flow.collectLatest
 
@@ -45,6 +46,21 @@ private fun CreateScreen(techQuizList: List<TechQuiz>) {
 
     //CreateKiwiUI() //TODO tmp
 
+    val pagerState = rememberPagerState()
+
+    var currentProgress by remember {
+        mutableStateOf(0)
+    }
+
+    LaunchedEffect(pagerState) {
+        // Collect from the pager state a snapshotFlow reading the currentPage
+        println("currentProgress => ${pagerState.currentPage} []")
+        snapshotFlow { pagerState.currentPage }.collect { page ->
+            println("currentProgress => ${page + 1}")
+            currentProgress = page + 1
+        }
+    }
+
     ConstraintLayout(
         modifier = Modifier
             .fillMaxSize()
@@ -55,7 +71,9 @@ private fun CreateScreen(techQuizList: List<TechQuiz>) {
         CreateQuizOverallProgressUI(
             Modifier.constrainAs(progress) {
                 top.linkTo(parent.top /*margin = 0.dp*/)
-            }
+            },
+            currentProgress,
+            techQuizList.size
         )
 
         CreateQuizNavigationButtonUI(
@@ -73,6 +91,7 @@ private fun CreateScreen(techQuizList: List<TechQuiz>) {
                     bottom.linkTo(navigation.top, margin = 1.dp)
                 },
             count = techQuizList.size,
+            state = pagerState,
         ) { page ->
             Column(
                 modifier = Modifier
