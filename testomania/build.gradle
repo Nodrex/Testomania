@@ -92,6 +92,7 @@ dependencies {
     implementation "com.google.accompanist:accompanist-pager:0.24.8-beta"
     implementation "kiwi.orbit.compose:ui:0.13.0"
     implementation "androidx.constraintlayout:constraintlayout-compose:1.0.0"
+    implementation "com.google.accompanist:accompanist-systemuicontroller:0.24.8-beta"
 
     // Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1'

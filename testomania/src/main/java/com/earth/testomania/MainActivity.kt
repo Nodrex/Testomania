@@ -3,29 +3,42 @@ package com.earth.testomania
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Scaffold
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.Color
+import androidx.core.view.WindowCompat
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.earth.testomania.presentation.TopBar
-import com.earth.testomania.technical.presentation.QuizViewModel
-import com.earth.testomania.ui.theme.TestomaniaTheme
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.rememberNavHostEngine
 import com.ramcosta.composedestinations.spec.NavHostEngine
 import dagger.hilt.android.AndroidEntryPoint
+import kiwi.orbit.compose.ui.OrbitTheme
+import kiwi.orbit.compose.ui.controls.Scaffold
+import kiwi.orbit.compose.ui.foundation.darkColors
+import kiwi.orbit.compose.ui.foundation.lightColors
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        
+
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+
         setContent {
-            TestomaniaTheme {
+            val systemUiController = rememberSystemUiController()
+            val isSystemInDarkTheme = isSystemInDarkTheme()
+
+            SideEffect {
+                systemUiController.setSystemBarsColor(
+                    color = Color.Transparent,
+                    darkIcons = !isSystemInDarkTheme,
+                )
+            }
+
+            OrbitTheme(colors = if (isSystemInDarkTheme) darkColors() else lightColors()) {
                 Testomania()
             }
         }
@@ -36,13 +49,8 @@ class MainActivity : ComponentActivity() {
 fun Testomania() {
     val navController: NavHostController = rememberNavController()
 
-    Scaffold(
-        topBar = {
-            TopBar()
-        },
-    ) { innerPadding: PaddingValues ->
+    Scaffold {
         TestomaniaNavigation(
-            innerPadding = innerPadding,
             navHostController = navController
         )
     }
@@ -50,14 +58,12 @@ fun Testomania() {
 
 @Composable
 fun TestomaniaNavigation(
-    innerPadding: PaddingValues,
     navHostController: NavHostController,
 ) {
 
     val navHostEngine: NavHostEngine = rememberNavHostEngine()
 
     DestinationsNavHost(
-        modifier = Modifier.padding(bottom = innerPadding.calculateBottomPadding()),
         navGraph = NavGraphs.root,
         engine = navHostEngine,
         navController = navHostController,
