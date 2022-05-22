@@ -33,7 +33,6 @@ fun CreateQuizAnswerUI(
 ) {
 
     val viewModel: QuizViewModel = hiltViewModel()
-    println("viewModel => $viewModel")
 
     var selected by remember {
         mutableStateOf(false)

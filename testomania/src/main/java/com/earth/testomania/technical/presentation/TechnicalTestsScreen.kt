@@ -47,11 +47,10 @@ fun TechnicalTestsScreen() {
     LaunchedEffect(key1 = true) {
         viewModel.showCorrectAnswer.collectLatest {
             showCorrectAnswer = it
-            println("showCorrectAnswer [$it]")
         }
     }
 
-    CreateScreen(data, showCorrectAnswer)
+    if(data.isNotEmpty()) CreateScreen(data, showCorrectAnswer)
 }
 
 @OptIn(ExperimentalPagerApi::class)
