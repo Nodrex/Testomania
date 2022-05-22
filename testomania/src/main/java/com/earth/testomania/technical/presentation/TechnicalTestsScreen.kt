@@ -44,8 +44,6 @@ fun TechnicalTestsScreen() {
 @Composable
 private fun CreateScreen(techQuizList: List<TechQuiz>) {
 
-    //CreateKiwiUI() //TODO tmp
-
     val pagerState = rememberPagerState()
 
     var currentProgress by remember {
@@ -53,10 +51,7 @@ private fun CreateScreen(techQuizList: List<TechQuiz>) {
     }
 
     LaunchedEffect(pagerState) {
-        // Collect from the pager state a snapshotFlow reading the currentPage
-        println("currentProgress => ${pagerState.currentPage} []")
         snapshotFlow { pagerState.currentPage }.collect { page ->
-            println("currentProgress => ${page + 1}")
             currentProgress = page + 1
         }
     }
@@ -71,7 +66,7 @@ private fun CreateScreen(techQuizList: List<TechQuiz>) {
 
         CreateQuizOverallProgressUI(
             Modifier.constrainAs(progress) {
-                top.linkTo(parent.top /*margin = 0.dp*/)
+                top.linkTo(parent.top)
             },
             currentProgress,
             techQuizList.size
@@ -100,7 +95,6 @@ private fun CreateScreen(techQuizList: List<TechQuiz>) {
                     .wrapContentHeight()
                     .padding(all = 10.dp)
             ) {
-                //CreateQuizInfoUI(techQuizList[page])
                 CreateQuizUI(techQuizList[page])
                 LazyColumn(
                     modifier = Modifier.wrapContentHeight()

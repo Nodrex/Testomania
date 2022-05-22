@@ -22,9 +22,6 @@ import com.earth.testomania.ui.theme.Orange
 
 @Composable
 fun CreateQuizOverallProgressUI(modifier: Modifier, currentProgress: Int, maxProgress: Int) {
-
-    //println("currentProgress => $currentProgress [][]")
-
     Box(
         modifier = modifier
             .fillMaxWidth()
