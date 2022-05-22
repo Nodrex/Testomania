@@ -21,9 +21,9 @@ import com.earth.testomania.ui.theme.LightGray
 import com.earth.testomania.ui.theme.Orange
 
 @Composable
-fun CreateQuizOverallProgressUI() {
+fun CreateQuizOverallProgressUI(modifier: Modifier, currentProgress: Int, maxProgress: Int) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
     ) {
         LinearProgressIndicator(
@@ -37,12 +37,12 @@ fun CreateQuizOverallProgressUI() {
                 ),
             backgroundColor = LightGray,
             color = Orange,
-            progress = 0.7f
+            progress = if(currentProgress == 0) 0f else (currentProgress.toFloat()/maxProgress.toFloat())
         )
         Text(
             modifier = Modifier.align(Alignment.Center),
             color = Color.Black,
-            text = "7/10",
+            text = "$currentProgress/$maxProgress",
             fontWeight = FontWeight.Bold
         )
     }
@@ -53,5 +53,5 @@ fun CreateQuizOverallProgressUI() {
 @Preview
 @Composable
 private fun Preview() {
-    CreateQuizOverallProgressUI()
+    CreateQuizOverallProgressUI(Modifier, 7, 10)
 }
