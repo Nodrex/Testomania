@@ -12,7 +12,10 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.core.helper.defaultTechQuiz
 import com.earth.testomania.technical.domain.model.TechQuiz
-import com.earth.testomania.technical.presentation.ui_parts.*
+import com.earth.testomania.technical.presentation.ui_parts.CreateQuizAnswerUI
+import com.earth.testomania.technical.presentation.ui_parts.CreateQuizNavigationButtonUI
+import com.earth.testomania.technical.presentation.ui_parts.CreateQuizOverallProgressUI
+import com.earth.testomania.technical.presentation.ui_parts.CreateQuizUI
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
@@ -99,9 +102,14 @@ private fun CreateScreen(techQuizList: List<TechQuiz>) {
                 LazyColumn(
                     modifier = Modifier.wrapContentHeight()
                 ) {
-                    techQuizList[page].possibleAnswers.forEach { possibleAnswer ->
-                        item {
-                            CreateQuizAnswerUI(possibleAnswer)
+                    techQuizList[page].apply {
+                        possibleAnswers.forEach { possibleAnswer ->
+                            item {
+                                CreateQuizAnswerUI(
+                                    correctAnswers[possibleAnswer.key] ?: false,
+                                    possibleAnswer
+                                )
+                            }
                         }
                     }
                 }

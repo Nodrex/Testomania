@@ -21,11 +21,10 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.earth.testomania.R
 import com.earth.testomania.core.helper.defaultTechQuiz
-import kotlin.random.Random
 
 
 @Composable
-fun CreateQuizAnswerUI(possibleAnswer: Map.Entry<String, String>) {
+fun CreateQuizAnswerUI(isCorrect: Boolean, possibleAnswer: Map.Entry<String, String>) {
 
     var selected by remember {
         mutableStateOf(false)
@@ -120,12 +119,18 @@ fun CreateQuizAnswerUI(possibleAnswer: Map.Entry<String, String>) {
                 )
 
                 if (selected) {
+                    val infoIcon = if (isCorrect) R.drawable.ic_correct
+                    else {
+                        findCorrectAnswer()
+                        R.drawable.ic_wrong
+                    }
+
                     Icon(
                         modifier = Modifier.constrainAs(indicator) {
                             end.linkTo(parent.end)
                             bottom.linkTo(parent.bottom)
                         },
-                        painter = painterResource(id = tmp()),
+                        painter = painterResource(id = infoIcon),
                         contentDescription = null,
                         tint = Color.Unspecified
                     )
@@ -136,14 +141,15 @@ fun CreateQuizAnswerUI(possibleAnswer: Map.Entry<String, String>) {
     Spacer(modifier = Modifier.height(15.dp))
 }
 
-
-private fun tmp() =
-    if (Random(System.currentTimeMillis()).nextBoolean()) R.drawable.ic_correct else R.drawable.ic_wrong
+fun findCorrectAnswer() {
+    //TODO
+}
 
 @Preview
 @Composable
 private fun Preview() {
-    CreateQuizAnswerUI(defaultTechQuiz().possibleAnswers.firstNotNullOf {
-        it
-    })
+    CreateQuizAnswerUI(true,
+        defaultTechQuiz().possibleAnswers.firstNotNullOf {
+            it
+        })
 }
