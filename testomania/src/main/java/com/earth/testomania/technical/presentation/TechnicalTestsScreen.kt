@@ -34,7 +34,7 @@ fun TechnicalTestsScreen() {
         mutableStateOf<List<TechQuizWrapper>>(emptyList())
     }
 
-    var refresh by remember {
+    var refresh by remember() {
         mutableStateOf(true)
     }
 
@@ -54,6 +54,8 @@ fun TechnicalTestsScreen() {
     println("whaaaaaaat => ${data.size}  $refresh")
     if(data.isNotEmpty() && refresh) {
         CreateScreen(data, refresh)
+        //refresh = false
+        println("whaaaaaaat => ${data.size}")
     }
 }
 
@@ -115,7 +117,7 @@ private fun CreateScreen(techQuizList: List<TechQuizWrapper>, refresh: Boolean) 
                     techQuizList[page].quiz.apply {
                         possibleAnswers.forEach { possibleAnswer ->
                             val isCorrect = correctAnswers[possibleAnswer.key] ?: false
-                            item {
+                            item(key = possibleAnswer.key) {
                                 CreateQuizAnswerUI(
                                     techQuizList[page],
                                     possibleAnswer,
