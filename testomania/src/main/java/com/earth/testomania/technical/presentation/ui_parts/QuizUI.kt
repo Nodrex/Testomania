@@ -11,11 +11,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.earth.testomania.R
-import com.earth.testomania.core.helper.defaultTechQuiz
-import com.earth.testomania.technical.domain.model.TechQuiz
+import com.earth.testomania.core.helper.defaultTechQuizWrapper
+import com.earth.testomania.technical.domain.model.TechQuizWrapper
 
 @Composable
-fun CreateQuizUI(techQuiz: TechQuiz) {
+fun CreateQuizUI(techQuiz: TechQuizWrapper) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -29,8 +29,7 @@ fun CreateQuizUI(techQuiz: TechQuiz) {
         )
         Spacer(modifier = Modifier.width(10.dp))
         Text(
-            text =
-            techQuiz.category + "\n" + techQuiz.question,
+            text = techQuiz.quiz.let { it.category + "\n" + it.question },
             fontWeight = FontWeight(499)
         )
     }
@@ -40,5 +39,5 @@ fun CreateQuizUI(techQuiz: TechQuiz) {
 @Preview
 @Composable
 private fun Preview() {
-    CreateQuizUI(defaultTechQuiz())
+    CreateQuizUI(defaultTechQuizWrapper())
 }

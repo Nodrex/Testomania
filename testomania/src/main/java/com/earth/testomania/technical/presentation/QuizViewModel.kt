@@ -6,6 +6,7 @@ import com.earth.testomania.R
 import com.earth.testomania.core.DataState
 import com.earth.testomania.core.coroutines.defaultCoroutineExceptionHandler
 import com.earth.testomania.technical.domain.model.TechQuiz
+import com.earth.testomania.technical.domain.model.TechQuizWrapper
 import com.earth.testomania.technical.domain.use_case.GetQuizListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
@@ -23,7 +24,7 @@ class QuizViewModel @Inject constructor(
 
     private var getQuizListJob: Job? = null
 
-    private val _data = MutableStateFlow<List<TechQuiz>>(emptyList())
+    private val _data = MutableStateFlow<List<TechQuizWrapper>>(emptyList())
     val data = _data.asStateFlow()
 
     private val _loading = MutableStateFlow(false)

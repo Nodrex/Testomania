@@ -10,8 +10,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.earth.testomania.core.helper.defaultTechQuiz
-import com.earth.testomania.technical.domain.model.TechQuiz
+import com.earth.testomania.core.helper.defaultTechQuizWrapper
+import com.earth.testomania.technical.domain.model.TechQuizWrapper
 import com.earth.testomania.technical.presentation.ui_parts.CreateQuizAnswerUI
 import com.earth.testomania.technical.presentation.ui_parts.CreateQuizNavigationButtonUI
 import com.earth.testomania.technical.presentation.ui_parts.CreateQuizUI
@@ -31,7 +31,7 @@ fun TechnicalTestsScreen() {
     val viewModel: QuizViewModel = hiltViewModel()
 
     var data by remember {
-        mutableStateOf<List<TechQuiz>>(emptyList())
+        mutableStateOf<List<TechQuizWrapper>>(emptyList())
     }
 
     var showCorrectAnswer by remember {
@@ -55,7 +55,7 @@ fun TechnicalTestsScreen() {
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-private fun CreateScreen(techQuizList: List<TechQuiz>, showCorrectAnswer: Boolean) {
+private fun CreateScreen(techQuizList: List<TechQuizWrapper>, showCorrectAnswer: Boolean) {
 
     val pagerState = rememberPagerState()
 
@@ -106,7 +106,7 @@ private fun CreateScreen(techQuizList: List<TechQuiz>, showCorrectAnswer: Boolea
                 LazyColumn(
                     modifier = Modifier.wrapContentHeight()
                 ) {
-                    techQuizList[page].apply {
+                    techQuizList[page].quiz.apply {
                         possibleAnswers.forEach { possibleAnswer ->
                             val isCorrect = correctAnswers[possibleAnswer.key] ?: false
                             item {
@@ -127,5 +127,5 @@ private fun CreateScreen(techQuizList: List<TechQuiz>, showCorrectAnswer: Boolea
 @Preview
 @Composable
 private fun PreviewComposeUI() {
-    CreateScreen(listOf(defaultTechQuiz()), false)
+    CreateScreen(listOf(defaultTechQuizWrapper()), false)
 }

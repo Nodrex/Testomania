@@ -21,7 +21,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.R
-import com.earth.testomania.core.helper.defaultTechQuiz
+import com.earth.testomania.core.helper.defaultTechQuizWrapper
 import com.earth.testomania.technical.presentation.QuizViewModel
 
 
@@ -153,7 +153,7 @@ fun CreateQuizAnswerUI(
 @Composable
 private fun Preview() {
     CreateQuizAnswerUI(
-        defaultTechQuiz().possibleAnswers.firstNotNullOf {
+        defaultTechQuizWrapper().quiz.possibleAnswers.firstNotNullOf {
             it
         },
         true,
