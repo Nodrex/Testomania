@@ -90,8 +90,8 @@ dependencies {
     implementation 'io.github.raamcosta.compose-destinations:animations-core:1.4.3-beta'
     ksp 'io.github.raamcosta.compose-destinations:ksp:1.4.3-beta'
     implementation "com.google.accompanist:accompanist-pager:0.24.8-beta"
-    implementation "kiwi.orbit.compose:ui:0.13.0"
-    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.0"
+    implementation "kiwi.orbit.compose:ui:0.14.0"
+    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
     implementation "com.google.accompanist:accompanist-systemuicontroller:0.24.8-beta"
 
     // Coroutines
