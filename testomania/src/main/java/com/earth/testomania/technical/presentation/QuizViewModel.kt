@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import com.earth.testomania.R
 import com.earth.testomania.core.DataState
 import com.earth.testomania.core.coroutines.defaultCoroutineExceptionHandler
-import com.earth.testomania.technical.domain.model.TechQuiz
 import com.earth.testomania.technical.domain.model.TechQuizWrapper
 import com.earth.testomania.technical.domain.use_case.GetQuizListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -33,8 +32,8 @@ class QuizViewModel @Inject constructor(
     private val _error = MutableSharedFlow<Int>()
     val error = _loading.asStateFlow()
 
-    private val _showCorrectAnswer = MutableStateFlow(false)
-    val showCorrectAnswer = _showCorrectAnswer.asStateFlow()
+    private val _refreshQuiz = MutableStateFlow(true)
+    val refreshQuiz = _refreshQuiz.asStateFlow()
 
     init {
         getQuizList()
@@ -59,9 +58,12 @@ class QuizViewModel @Inject constructor(
         }
     }
 
-    fun showCorrectAnswer(){
-        _showCorrectAnswer.value = true
-        println("showCorrectAnswer (${_showCorrectAnswer.value})")
+    fun refreshQuiz(techQuizWrapper: TechQuizWrapper, selectedAnswers: List<String>) {
+        data.value.find { it.quiz.id == techQuizWrapper.quiz.id }?.userSelectedAnswers?.addAll(
+            selectedAnswers
+        )
+        _refreshQuiz.value = true
+        println("whaaaaaaat => ___refresh  ${refreshQuiz.value}")
     }
 
 }

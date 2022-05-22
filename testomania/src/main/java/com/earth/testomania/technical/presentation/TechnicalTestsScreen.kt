@@ -34,28 +34,34 @@ fun TechnicalTestsScreen() {
         mutableStateOf<List<TechQuizWrapper>>(emptyList())
     }
 
-    var showCorrectAnswer by remember {
-        mutableStateOf(false)
+    var refresh by remember {
+        mutableStateOf(true)
     }
 
-    LaunchedEffect(key1 = true) {
+    LaunchedEffect(Unit) {
         viewModel.data.collectLatest {
             data = it
         }
     }
 
     LaunchedEffect(key1 = true) {
-        viewModel.showCorrectAnswer.collectLatest {
-            showCorrectAnswer = it
+        viewModel.refreshQuiz.collectLatest {
+            println("whaaaaaaat => refresh  $it")
+            refresh = it
         }
     }
 
-    if(data.isNotEmpty()) CreateScreen(data, showCorrectAnswer)
+    println("whaaaaaaat => ${data.size}  $refresh")
+    if(data.isNotEmpty() && refresh) {
+        CreateScreen(data, refresh)
+    }
 }
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-private fun CreateScreen(techQuizList: List<TechQuizWrapper>, showCorrectAnswer: Boolean) {
+private fun CreateScreen(techQuizList: List<TechQuizWrapper>, refresh: Boolean) {
+
+    println("aba tu daixateba tavidan")
 
     val pagerState = rememberPagerState()
 
@@ -111,9 +117,11 @@ private fun CreateScreen(techQuizList: List<TechQuizWrapper>, showCorrectAnswer:
                             val isCorrect = correctAnswers[possibleAnswer.key] ?: false
                             item {
                                 CreateQuizAnswerUI(
+                                    techQuizList[page],
                                     possibleAnswer,
                                     isCorrect,
-                                    isCorrect && showCorrectAnswer
+                                    /*isCorrect && true*/
+                                false,
                                 )
                             }
                         }

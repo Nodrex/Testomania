@@ -22,11 +22,13 @@ import androidx.constraintlayout.compose.Dimension
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.R
 import com.earth.testomania.core.helper.defaultTechQuizWrapper
+import com.earth.testomania.technical.domain.model.TechQuizWrapper
 import com.earth.testomania.technical.presentation.QuizViewModel
 
 
 @Composable
 fun CreateQuizAnswerUI(
+    techQuizWrapper: TechQuizWrapper,
     possibleAnswer: Map.Entry<String, String>,
     isCorrect: Boolean,
     highlightCorrectAnswer: Boolean
@@ -129,7 +131,7 @@ fun CreateQuizAnswerUI(
                 if (selected || highlightCorrectAnswer) {
                     val infoIcon = if (isCorrect) R.drawable.ic_correct
                     else {
-                        viewModel.showCorrectAnswer()
+                        viewModel.refreshQuiz(techQuizWrapper, listOf(possibleAnswer.key))
                         R.drawable.ic_wrong
                     }
 
@@ -153,6 +155,7 @@ fun CreateQuizAnswerUI(
 @Composable
 private fun Preview() {
     CreateQuizAnswerUI(
+        defaultTechQuizWrapper(),
         defaultTechQuizWrapper().quiz.possibleAnswers.firstNotNullOf {
             it
         },
