@@ -12,7 +12,10 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.core.helper.defaultTechQuiz
 import com.earth.testomania.technical.domain.model.TechQuiz
-import com.earth.testomania.technical.presentation.ui_parts.*
+import com.earth.testomania.technical.presentation.ui_parts.CreateQuizAnswerUI
+import com.earth.testomania.technical.presentation.ui_parts.CreateQuizNavigationButtonUI
+import com.earth.testomania.technical.presentation.ui_parts.CreateQuizUI
+import com.earth.testomania.technical.presentation.ui_parts.OverallProgress
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
@@ -62,15 +65,9 @@ private fun CreateScreen(techQuizList: List<TechQuiz>) {
             .systemBarsPadding()
             .padding(all = 10.dp),
     ) {
-        val (progress, horizontalPager, navigation) = createRefs()
+        val (horizontalPager, navigation) = createRefs()
 
-        CreateQuizOverallProgressUI(
-            Modifier.constrainAs(progress) {
-                top.linkTo(parent.top)
-            },
-            currentProgress,
-            techQuizList.size
-        )
+        OverallProgress(currentProgress, techQuizList.size)
 
         CreateQuizNavigationButtonUI(
             Modifier.constrainAs(navigation) {
