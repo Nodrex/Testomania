@@ -19,33 +19,42 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.R
 import com.earth.testomania.core.helper.defaultTechQuiz
+import com.earth.testomania.technical.presentation.QuizViewModel
 
 
 @Composable
-fun CreateQuizAnswerUI(isCorrect: Boolean, possibleAnswer: Map.Entry<String, String>) {
+fun CreateQuizAnswerUI(
+    possibleAnswer: Map.Entry<String, String>,
+    isCorrect: Boolean,
+    highlightCorrectAnswer: Boolean
+) {
+
+    val viewModel: QuizViewModel = hiltViewModel()
+    println("viewModel => $viewModel")
 
     var selected by remember {
         mutableStateOf(false)
     }
 
     val color by animateColorAsState(
-        targetValue = when (selected) {
+        targetValue = when (selected || highlightCorrectAnswer) {
             true -> Color.Green
             false -> Color.Black
         }
     )
 
     val possibleAnswerIndexBackColor by animateColorAsState(
-        targetValue = when (selected) {
+        targetValue = when (selected || highlightCorrectAnswer) {
             true -> Color.Green
             false -> Color.Transparent
         }
     )
 
     val possibleAnswerIndexTextColor by animateColorAsState(
-        targetValue = when (selected) {
+        targetValue = when (selected || highlightCorrectAnswer) {
             true -> Color.White
             false -> Color.Black
         }
@@ -106,7 +115,7 @@ fun CreateQuizAnswerUI(isCorrect: Boolean, possibleAnswer: Map.Entry<String, Str
                         .fillMaxWidth()
                         .constrainAs(question) {
                             start.linkTo(index.end, margin = 8.dp)
-                            if (selected) end.linkTo(indicator.start, margin = 6.dp)
+                            if (selected || highlightCorrectAnswer) end.linkTo(indicator.start, margin = 6.dp)
                             else end.linkTo(parent.end, margin = 6.dp)
                             if (textOverflow == 1) centerVerticallyTo(parent)
                             width = Dimension.fillToConstraints
@@ -118,10 +127,10 @@ fun CreateQuizAnswerUI(isCorrect: Boolean, possibleAnswer: Map.Entry<String, Str
                     },
                 )
 
-                if (selected) {
+                if (selected || highlightCorrectAnswer) {
                     val infoIcon = if (isCorrect) R.drawable.ic_correct
                     else {
-                        findCorrectAnswer()
+                        viewModel.showCorrectAnswer()
                         R.drawable.ic_wrong
                     }
 
@@ -141,15 +150,14 @@ fun CreateQuizAnswerUI(isCorrect: Boolean, possibleAnswer: Map.Entry<String, Str
     Spacer(modifier = Modifier.height(15.dp))
 }
 
-fun findCorrectAnswer() {
-    //TODO
-}
-
 @Preview
 @Composable
 private fun Preview() {
-    CreateQuizAnswerUI(true,
+    CreateQuizAnswerUI(
         defaultTechQuiz().possibleAnswers.firstNotNullOf {
             it
-        })
+        },
+        true,
+        false
+    )
 }

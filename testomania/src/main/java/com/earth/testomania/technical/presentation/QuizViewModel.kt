@@ -32,6 +32,9 @@ class QuizViewModel @Inject constructor(
     private val _error = MutableSharedFlow<Int>()
     val error = _loading.asStateFlow()
 
+    private val _showCorrectAnswer = MutableStateFlow(false)
+    val showCorrectAnswer = _showCorrectAnswer.asStateFlow()
+
     init {
         getQuizList()
     }
@@ -53,6 +56,11 @@ class QuizViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    fun showCorrectAnswer(){
+        _showCorrectAnswer.value = true
+        println("showCorrectAnswer (${_showCorrectAnswer.value})")
     }
 
 }
