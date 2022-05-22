@@ -15,8 +15,8 @@ import kiwi.orbit.compose.ui.controls.Text
 
 @Preview
 @Composable
-fun OverallProgress(currentProgress: Int = 2, maxProgress: Int = 4) {
-    Box {
+fun OverallProgress(modifier: Modifier = Modifier, currentProgress: Int = 2, maxProgress: Int = 4) {
+    Box(modifier = modifier) {
         LinearProgressIndicator(
             progress = (currentProgress.toFloat() / maxProgress.toFloat()),
             modifier = Modifier
