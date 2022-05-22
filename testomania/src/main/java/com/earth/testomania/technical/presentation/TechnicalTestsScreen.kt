@@ -64,6 +64,7 @@ private fun CreateScreen(techQuizList: List<TechQuiz>) {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxSize()
+            .systemBarsPadding()
             .padding(all = 10.dp),
     ) {
         val (progress, horizontalPager, navigation) = createRefs()
