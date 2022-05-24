@@ -1,6 +1,5 @@
 package com.earth.testomania.skills.presentation.skillz
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,11 +11,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.ramcosta.composedestinations.annotation.DeepLink
 import com.ramcosta.composedestinations.annotation.Destination
 
-@OptIn(ExperimentalAnimationApi::class)
 @Destination(
-    route = "home/skillz"
+    route = "home/skillz",
+    deepLinks = [
+        DeepLink(uriPattern = "testomania://home/skillz")
+    ]
 )
 @Composable
 @Preview
