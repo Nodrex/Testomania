@@ -1,11 +1,13 @@
 package com.earth.testomania.technical.presentation
 
+import android.util.Log
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.earth.testomania.R
 import com.earth.testomania.core.DataState
 import com.earth.testomania.core.coroutines.defaultCoroutineExceptionHandler
+import com.earth.testomania.core.log
 import com.earth.testomania.technical.domain.model.TechQuizWrapper
 import com.earth.testomania.technical.domain.use_case.GetQuizListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -59,11 +61,13 @@ class QuizViewModel @Inject constructor(
     fun saveAnswer(techQuizWrapper: TechQuizWrapper, selectedAnswerKey: String) {
         val index = _data.indexOf(techQuizWrapper)
         _data[index] = _data[index].let {
+            log("old quiz ${it.hashCode()}")
             it.copy(
                 quiz = it.quiz,
                 userSelectedAnswers = it.userSelectedAnswers.apply { add(selectedAnswerKey) }
             )
         }
+        log("new obj ${_data[index].hashCode()}")
         println("=> selected answer was added $selectedAnswerKey")
     }
 
@@ -73,6 +77,7 @@ class QuizViewModel @Inject constructor(
     ) = techQuizWrapper.quiz.correctAnswers[possibleAnswerKey] ?: false
 
     fun wasSelected(techQuizWrapper: TechQuizWrapper, possibleAnswerKey: String) =
+        //TODO jer dasamatebelia logika multiselectioze
         techQuizWrapper.userSelectedAnswers.contains(possibleAnswerKey) ||
                 (techQuizWrapper.userSelectedAnswers.isNotEmpty() &&
                         !techQuizWrapper.quiz.hasMultiAnswer &&
