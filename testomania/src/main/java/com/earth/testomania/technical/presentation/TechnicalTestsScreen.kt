@@ -12,15 +12,11 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.core.helper.defaultTechQuizWrapper
 import com.earth.testomania.technical.domain.model.TechQuizWrapper
-import com.earth.testomania.technical.presentation.ui_parts.CreateQuizAnswerUI
-import com.earth.testomania.technical.presentation.ui_parts.CreateQuizNavigationButtonUI
-import com.earth.testomania.technical.presentation.ui_parts.CreateQuizUI
-import com.earth.testomania.technical.presentation.ui_parts.OverallProgress
+import com.earth.testomania.technical.presentation.ui_parts.*
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import com.ramcosta.composedestinations.annotation.Destination
-import kotlinx.coroutines.flow.collectLatest
 
 @OptIn(ExperimentalAnimationApi::class)
 @Destination(
@@ -30,40 +26,16 @@ import kotlinx.coroutines.flow.collectLatest
 fun TechnicalTestsScreen() {
     val viewModel: QuizViewModel = hiltViewModel()
 
-    var data by remember {
-        mutableStateOf<List<TechQuizWrapper>>(emptyList())
-    }
+    val data = viewModel.data
 
-    var refresh by remember() {
-        mutableStateOf(true)
-    }
-
-    LaunchedEffect(Unit) {
-        viewModel.data.collectLatest {
-            data = it
-        }
-    }
-
-    LaunchedEffect(key1 = true) {
-        viewModel.refreshQuiz.collectLatest {
-            println("whaaaaaaat => refresh  $it")
-            refresh = it
-        }
-    }
-
-    println("whaaaaaaat => ${data.size}  $refresh")
-    if(data.isNotEmpty() && refresh) {
-        CreateScreen(data, refresh)
-        //refresh = false
-        println("whaaaaaaat => ${data.size}")
-    }
+    if (data.isNotEmpty()) CreateScreen(data)
 }
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-private fun CreateScreen(techQuizList: List<TechQuizWrapper>, refresh: Boolean) {
+private fun CreateScreen(techQuizList: List<TechQuizWrapper>) {
 
-    println("aba tu daixateba tavidan")
+    println("=> aba tu daixateba tavidan")
 
     val pagerState = rememberPagerState()
 
@@ -87,11 +59,9 @@ private fun CreateScreen(techQuizList: List<TechQuizWrapper>, refresh: Boolean) 
 
         OverallProgress(currentProgress, techQuizList.size)
 
-        CreateQuizNavigationButtonUI(
-            Modifier.constrainAs(navigation) {
-                bottom.linkTo(parent.bottom)
-            }
-        )
+        val multiAnswerQuizFinishButtonConstraint = Modifier.constrainAs(navigation) {
+            bottom.linkTo(parent.bottom)
+        }
 
         HorizontalPager(
             verticalAlignment = Alignment.Bottom,
@@ -116,18 +86,17 @@ private fun CreateScreen(techQuizList: List<TechQuizWrapper>, refresh: Boolean) 
                 ) {
                     techQuizList[page].quiz.apply {
                         possibleAnswers.forEach { possibleAnswer ->
-                            val isCorrect = correctAnswers[possibleAnswer.key] ?: false
                             item(key = possibleAnswer.key) {
                                 CreateQuizAnswerUI(
                                     techQuizList[page],
                                     possibleAnswer,
-                                    isCorrect,
-                                    /*isCorrect && true*/
-                                false,
                                 )
                             }
                         }
                     }
+                }
+                if(techQuizList[page].quiz.hasMultiAnswer){
+                    CreateMultiAnswerQuizFinishButton(multiAnswerQuizFinishButtonConstraint)
                 }
             }
         }
@@ -137,5 +106,5 @@ private fun CreateScreen(techQuizList: List<TechQuizWrapper>, refresh: Boolean) 
 @Preview
 @Composable
 private fun PreviewComposeUI() {
-    CreateScreen(listOf(defaultTechQuizWrapper()), false)
+    CreateScreen(listOf(defaultTechQuizWrapper()))
 }

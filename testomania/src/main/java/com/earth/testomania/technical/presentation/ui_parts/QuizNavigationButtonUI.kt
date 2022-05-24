@@ -12,7 +12,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun CreateQuizNavigationButtonUI(modifier: Modifier) {
+fun CreateMultiAnswerQuizFinishButton(modifier: Modifier) {
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -20,13 +20,7 @@ fun CreateQuizNavigationButtonUI(modifier: Modifier) {
         horizontalArrangement = Arrangement.Center,
     ) {
         Button(onClick = { }) {
-            Text(text = "Prev")
-        }
-        Button(onClick = { }) {
             Text(text = "Done")
-        }
-        Button(onClick = { }) {
-            Text(text = "Next")
         }
     }
 }
@@ -34,5 +28,5 @@ fun CreateQuizNavigationButtonUI(modifier: Modifier) {
 @Preview
 @Composable
 private fun Preview() {
-    CreateQuizNavigationButtonUI(Modifier)
+    CreateMultiAnswerQuizFinishButton(Modifier)
 }

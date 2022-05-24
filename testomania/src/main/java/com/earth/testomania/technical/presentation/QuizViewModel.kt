@@ -1,5 +1,6 @@
 package com.earth.testomania.technical.presentation
 
+import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.earth.testomania.R
@@ -23,17 +24,14 @@ class QuizViewModel @Inject constructor(
 
     private var getQuizListJob: Job? = null
 
-    private val _data = MutableStateFlow<List<TechQuizWrapper>>(emptyList())
-    val data = _data.asStateFlow()
+    private val _data = mutableStateListOf<TechQuizWrapper>()
+    val data: List<TechQuizWrapper> = _data
 
     private val _loading = MutableStateFlow(false)
     val loading = _loading.asStateFlow()
 
     private val _error = MutableSharedFlow<Int>()
     val error = _loading.asStateFlow()
-
-    private val _refreshQuiz = MutableStateFlow(true)
-    val refreshQuiz = _refreshQuiz.asStateFlow()
 
     init {
         getQuizList()
@@ -50,7 +48,7 @@ class QuizViewModel @Inject constructor(
                 when (it) {
                     is DataState.Loading -> _loading.value = true
                     is DataState.Success -> it.payload?.apply {
-                        _data.value = this
+                        _data.addAll(this)
                     }
                     is DataState.Error -> _error.emit(R.string.error_load)
                 }
@@ -58,12 +56,29 @@ class QuizViewModel @Inject constructor(
         }
     }
 
-    fun refreshQuiz(techQuizWrapper: TechQuizWrapper, selectedAnswers: List<String>) {
-        data.value.find { it.quiz.id == techQuizWrapper.quiz.id }?.userSelectedAnswers?.addAll(
-            selectedAnswers
-        )
-        _refreshQuiz.value = true
-        println("whaaaaaaat => ___refresh  ${refreshQuiz.value}")
+    fun saveAnswer(techQuizWrapper: TechQuizWrapper, selectedAnswerKey: String) {
+        val index = _data.indexOf(techQuizWrapper)
+        _data[index] = _data[index].let {
+            it.copy(
+                quiz = it.quiz,
+                userSelectedAnswers = it.userSelectedAnswers.apply { add(selectedAnswerKey) }
+            )
+        }
+        println("=> selected answer was added $selectedAnswerKey")
     }
+
+    fun isCorrectAnswer(
+        techQuizWrapper: TechQuizWrapper,
+        possibleAnswerKey: String
+    ) = techQuizWrapper.quiz.correctAnswers[possibleAnswerKey] ?: false
+
+    fun wasSelected(techQuizWrapper: TechQuizWrapper, possibleAnswerKey: String) =
+        techQuizWrapper.userSelectedAnswers.contains(possibleAnswerKey) ||
+                (techQuizWrapper.userSelectedAnswers.isNotEmpty() &&
+                        !techQuizWrapper.quiz.hasMultiAnswer &&
+                        isCorrectAnswer(
+                            techQuizWrapper,
+                            possibleAnswerKey
+                        ))
 
 }

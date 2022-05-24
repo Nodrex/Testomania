@@ -30,32 +30,27 @@ import com.earth.testomania.technical.presentation.QuizViewModel
 fun CreateQuizAnswerUI(
     techQuizWrapper: TechQuizWrapper,
     possibleAnswer: Map.Entry<String, String>,
-    isCorrect: Boolean,
-    highlightCorrectAnswer: Boolean
 ) {
-
     val viewModel: QuizViewModel = hiltViewModel()
 
-    var selected by remember {
-        mutableStateOf(false)
-    }
+    val selected = viewModel.wasSelected(techQuizWrapper, possibleAnswer.key)
 
     val color by animateColorAsState(
-        targetValue = when (selected || highlightCorrectAnswer) {
+        targetValue = when (selected) {
             true -> Color.Green
             false -> Color.Black
         }
     )
 
     val possibleAnswerIndexBackColor by animateColorAsState(
-        targetValue = when (selected || highlightCorrectAnswer) {
+        targetValue = when (selected) {
             true -> Color.Green
             false -> Color.Transparent
         }
     )
 
     val possibleAnswerIndexTextColor by animateColorAsState(
-        targetValue = when (selected || highlightCorrectAnswer) {
+        targetValue = when (selected) {
             true -> Color.White
             false -> Color.Black
         }
@@ -77,7 +72,7 @@ fun CreateQuizAnswerUI(
                 )
                 .clickable(
                     onClick = {
-                        selected = !selected
+                        viewModel.saveAnswer(techQuizWrapper, possibleAnswer.key)
                     }
                 )
                 .padding(all = 12.dp)
@@ -116,7 +111,7 @@ fun CreateQuizAnswerUI(
                         .fillMaxWidth()
                         .constrainAs(question) {
                             start.linkTo(index.end, margin = 8.dp)
-                            if (selected || highlightCorrectAnswer) end.linkTo(indicator.start, margin = 6.dp)
+                            if (selected) end.linkTo(indicator.start, margin = 6.dp)
                             else end.linkTo(parent.end, margin = 6.dp)
                             if (textOverflow == 1) centerVerticallyTo(parent)
                             width = Dimension.fillToConstraints
@@ -128,12 +123,13 @@ fun CreateQuizAnswerUI(
                     },
                 )
 
-                if (selected || highlightCorrectAnswer) {
-                    val infoIcon = if (isCorrect) R.drawable.ic_correct
-                    else {
-                        viewModel.refreshQuiz(techQuizWrapper, listOf(possibleAnswer.key))
-                        R.drawable.ic_wrong
-                    }
+                if (selected) {
+                    val infoIcon = if (viewModel.isCorrectAnswer(
+                            techQuizWrapper,
+                            possibleAnswer.key
+                        )
+                    ) R.drawable.ic_correct
+                    else R.drawable.ic_wrong
 
                     Icon(
                         modifier = Modifier.constrainAs(indicator) {
@@ -158,8 +154,6 @@ private fun Preview() {
         defaultTechQuizWrapper(),
         defaultTechQuizWrapper().quiz.possibleAnswers.firstNotNullOf {
             it
-        },
-        true,
-        false
+        }
     )
 }
