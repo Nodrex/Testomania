@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_math"
+        android:shortcutId="Math"
+        android:shortcutLongLabel="@string/general_skills_tests"
+        android:shortcutShortLabel="@string/general_skills_tests_short_name">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="testomania://home/skillz"
+            android:targetClass="com.earth.testomania.MainActivity"
+            android:targetPackage="com.earth.testomania" />
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_laptop"
+        android:shortcutId="ComputerScience"
+        android:shortcutLongLabel="@string/technical_tests"
+        android:shortcutShortLabel="@string/technical_tests_short_name">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="testomania://home/technical_tests"
+            android:targetClass="com.earth.testomania.MainActivity"
+            android:targetPackage="com.earth.testomania" />
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_driver_license"
+        android:shortcutId="Driver License"
+        android:shortcutLongLabel="@string/driving_license_tests"
+        android:shortcutShortLabel="@string/driving_license_tests">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.earth.testomania.MainActivity"
+            android:targetPackage="com.earth.testomania" />
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+
+</shortcuts>

@@ -1,6 +1,5 @@
 package com.earth.testomania.technical.presentation
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.*
@@ -19,12 +18,15 @@ import com.earth.testomania.technical.presentation.ui_parts.OverallProgress
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
+import com.ramcosta.composedestinations.annotation.DeepLink
 import com.ramcosta.composedestinations.annotation.Destination
 import kotlinx.coroutines.flow.collectLatest
 
-@OptIn(ExperimentalAnimationApi::class)
 @Destination(
-    route = "home/technical_tests"
+    route = "home/technical_tests",
+    deepLinks = [
+        DeepLink(uriPattern = "testomania://home/technical_tests")
+    ]
 )
 @Composable
 fun TechnicalTestsScreen() {
