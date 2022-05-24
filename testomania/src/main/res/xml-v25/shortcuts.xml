@@ -12,7 +12,6 @@
             android:data="testomania://home/skillz"
             android:targetClass="com.earth.testomania.MainActivity"
             android:targetPackage="com.earth.testomania" />
-        <categories android:name="android.shortcut.conversation" />
     </shortcut>
 
     <shortcut
@@ -26,7 +25,6 @@
             android:data="testomania://home/technical_tests"
             android:targetClass="com.earth.testomania.MainActivity"
             android:targetPackage="com.earth.testomania" />
-        <categories android:name="android.shortcut.conversation" />
     </shortcut>
 
     <shortcut
@@ -39,7 +37,6 @@
             android:action="android.intent.action.VIEW"
             android:targetClass="com.earth.testomania.MainActivity"
             android:targetPackage="com.earth.testomania" />
-        <categories android:name="android.shortcut.conversation" />
     </shortcut>
 
 </shortcuts>
