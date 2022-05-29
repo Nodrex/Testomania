@@ -95,7 +95,6 @@ private fun QuestionAndAnswers(
         count = techQuizList.size,
         state = pagerState,
     ) { page ->
-
         ConstraintLayout(modifier = Modifier.fillMaxSize()) {
             val (question, answers) = createRefs()
 
@@ -115,6 +114,8 @@ private fun QuestionAndAnswers(
                         linkTo(question.bottom, parent.bottom, bias = 1f)
                     }
             ) {
+
+
                 techQuizList[page].possibleAnswers.forEach { possibleAnswer ->
                     item {
                         CreateQuizAnswerUI(possibleAnswer)
