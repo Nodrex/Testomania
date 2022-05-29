@@ -11,12 +11,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.earth.testomania.core.helper.defaultTechQuiz
+import com.earth.testomania.core.helper.defaultTechQuizWrapper
+import com.earth.testomania.core.log
 import com.earth.testomania.technical.domain.model.TechQuiz
-import com.earth.testomania.technical.presentation.ui_parts.CreateQuizAnswerUI
-import com.earth.testomania.technical.presentation.ui_parts.CreateQuizNavigationButtonUI
-import com.earth.testomania.technical.presentation.ui_parts.CreateQuizUI
-import com.earth.testomania.technical.presentation.ui_parts.OverallProgress
+import com.earth.testomania.technical.domain.model.TechQuizWrapper
+import com.earth.testomania.technical.presentation.ui_parts.*
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
@@ -110,7 +109,7 @@ private fun CreateScreen(techQuizList: List<TechQuizWrapper>) {
                     }
                 }
                 if(techQuizList[page].quiz.hasMultiAnswer){
-                    CreateMultiAnswerQuizFinishButton(multiAnswerQuizFinishButtonConstraint)
+                    //CreateMultiAnswerQuizFinishButton(multiAnswerQuizFinishButtonConstraint)
                 }
             }
         }

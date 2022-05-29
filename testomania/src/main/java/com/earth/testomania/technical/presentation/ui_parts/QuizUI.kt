@@ -24,12 +24,16 @@ fun CreateQuizUI(modifier: Modifier = Modifier, techQuiz: TechQuizWrapper) {
             .padding(all = 10.dp)
             .padding(top = 10.dp)
     ) {
-        val style = AnnotatedString.Range(SpanStyle(fontWeight = FontWeight.Bold),
+        val style = AnnotatedString.Range(
+            SpanStyle(fontWeight = FontWeight.Bold),
             0,
-            techQuiz.category.length)
+            techQuiz.quiz.category.length
+        )
 
-        val text = AnnotatedString(techQuiz.quiz.let { it.category + "\n" + it.question },
-            spanStyles = listOf(style))
+        val text = AnnotatedString(
+            techQuiz.quiz.let { it.category + "\n" + it.question },
+            spanStyles = listOf(style)
+        )
 
         Text(text = text)
     }
@@ -39,5 +43,7 @@ fun CreateQuizUI(modifier: Modifier = Modifier, techQuiz: TechQuizWrapper) {
 @Preview
 @Composable
 private fun Preview() {
-    CreateQuizUI(techQuiz = defaultTechQuiz())
+    CreateQuizUI(
+        techQuiz = defaultTechQuizWrapper()
+    )
 }
