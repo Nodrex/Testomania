@@ -18,6 +18,7 @@ import com.earth.testomania.technical.presentation.ui_parts.CreateQuizUI
 import com.earth.testomania.technical.presentation.ui_parts.OverallProgress
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
+import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
 import com.ramcosta.composedestinations.annotation.DeepLink
 import com.ramcosta.composedestinations.annotation.Destination
@@ -74,40 +75,49 @@ private fun CreateScreen(techQuizList: List<TechQuiz>) {
             top.linkTo(parent.top)
         }, currentProgress, techQuizList.size)
 
-        HorizontalPager(
-            modifier = Modifier
-                .fillMaxSize()
-                .constrainAs(pager) {
-                    top.linkTo(progressBar.bottom, margin = 10.dp)
-                    bottom.linkTo(parent.bottom)
-                },
-            count = techQuizList.size,
-            state = pagerState,
-        ) { page ->
+        QuestionAndAnswers(modifier = Modifier.constrainAs(pager) {
+            top.linkTo(progressBar.bottom, margin = 10.dp)
+            bottom.linkTo(parent.bottom)
+        }, techQuizList, pagerState)
+    }
+}
 
-            ConstraintLayout(modifier = Modifier.fillMaxSize()) {
-                val (question, answers) = createRefs()
+@OptIn(ExperimentalPagerApi::class)
+@Composable
+private fun QuestionAndAnswers(
+    modifier: Modifier,
+    techQuizList: List<TechQuiz>,
+    pagerState: PagerState,
+) {
+    HorizontalPager(
+        modifier = modifier
+            .fillMaxSize(),
+        count = techQuizList.size,
+        state = pagerState,
+    ) { page ->
 
-                CreateQuizUI(modifier = Modifier
-                    .constrainAs(question) {
-                        top.linkTo(parent.top)
+        ConstraintLayout(modifier = Modifier.fillMaxSize()) {
+            val (question, answers) = createRefs()
+
+            CreateQuizUI(modifier = Modifier
+                .constrainAs(question) {
+                    top.linkTo(parent.top)
+                }
+                .fillMaxWidth(), techQuizList[page])
+
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .constrainAs(answers) {
+                        top.linkTo(question.bottom)
+                        bottom.linkTo(parent.bottom)
+
+                        linkTo(question.bottom, parent.bottom, bias = 1f)
                     }
-                    .fillMaxWidth(), techQuizList[page])
-
-                LazyColumn(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .constrainAs(answers) {
-                            top.linkTo(question.bottom)
-                            bottom.linkTo(parent.bottom)
-
-                            linkTo(question.bottom, parent.bottom, bias = 1f)
-                        }
-                ) {
-                    techQuizList[page].possibleAnswers.forEach { possibleAnswer ->
-                        item {
-                            CreateQuizAnswerUI(possibleAnswer)
-                        }
+            ) {
+                techQuizList[page].possibleAnswers.forEach { possibleAnswer ->
+                    item {
+                        CreateQuizAnswerUI(possibleAnswer)
                     }
                 }
             }
