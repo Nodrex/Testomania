@@ -2,7 +2,6 @@ package com.earth.testomania.technical.presentation
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.*
@@ -67,7 +66,6 @@ private fun CreateScreen(techQuizList: List<TechQuiz>) {
         modifier = Modifier
             .fillMaxSize()
             .systemBarsPadding()
-            .padding(all = 10.dp),
     ) {
         val (progressBar, pager) = createRefs()
 
@@ -114,7 +112,6 @@ private fun QuestionAndAnswers(
                         linkTo(question.bottom, parent.bottom, bias = 1f)
                     }
             ) {
-
 
                 techQuizList[page].possibleAnswers.forEach { possibleAnswer ->
                     item {

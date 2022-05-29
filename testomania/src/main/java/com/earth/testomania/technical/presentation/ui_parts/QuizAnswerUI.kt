@@ -2,11 +2,13 @@ package com.earth.testomania.technical.presentation.ui_parts
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.earth.testomania.core.helper.defaultTechQuiz
 import kiwi.orbit.compose.ui.controls.ChoiceTile
 import kiwi.orbit.compose.ui.controls.Text
@@ -28,7 +30,11 @@ fun CreateQuizAnswerUI(possibleAnswer: Map.Entry<String, String>) {
 
     var isSelected by remember { mutableStateOf(false) }
 
+    val answerPadding = 10.dp
     ChoiceTile(
+        modifier = Modifier.padding(top = answerPadding,
+            end = answerPadding,
+            start = answerPadding),
         selected = isSelected,
         onSelect = { isSelected = !isSelected },
         title = {
