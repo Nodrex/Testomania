@@ -1,43 +1,43 @@
 package com.earth.testomania.technical.presentation.ui_parts
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.Icon
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.earth.testomania.R
 import com.earth.testomania.core.helper.defaultTechQuizWrapper
 import com.earth.testomania.technical.domain.model.TechQuizWrapper
 
 @Composable
-fun CreateQuizUI(techQuiz: TechQuizWrapper) {
+fun CreateQuizUI(modifier: Modifier = Modifier, techQuiz: TechQuizWrapper) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .wrapContentHeight()
             .padding(all = 10.dp)
+            .padding(top = 10.dp)
     ) {
-        Icon(
-            painter = painterResource(id = R.drawable.ic_question_mark),
-            contentDescription = null,
-            tint = Color.Unspecified,
-        )
-        Spacer(modifier = Modifier.width(10.dp))
-        Text(
-            text = techQuiz.quiz.let { it.category + "\n" + it.question },
-            fontWeight = FontWeight(499)
-        )
+        val style = AnnotatedString.Range(SpanStyle(fontWeight = FontWeight.Bold),
+            0,
+            techQuiz.category.length)
+
+        val text = AnnotatedString(techQuiz.quiz.let { it.category + "\n" + it.question },
+            spanStyles = listOf(style))
+
+        Text(text = text)
     }
-    Spacer(modifier = Modifier.height(20.dp))
 }
+
 
 @Preview
 @Composable
 private fun Preview() {
-    CreateQuizUI(defaultTechQuizWrapper())
+    CreateQuizUI(techQuiz = defaultTechQuiz())
 }
