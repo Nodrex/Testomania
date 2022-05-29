@@ -11,6 +11,7 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.core.helper.defaultTechQuizWrapper
+import com.earth.testomania.core.log
 import com.earth.testomania.technical.domain.model.TechQuizWrapper
 import com.earth.testomania.technical.presentation.ui_parts.*
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -35,7 +36,7 @@ fun TechnicalTestsScreen() {
 @Composable
 private fun CreateScreen(techQuizList: List<TechQuizWrapper>) {
 
-    println("=> aba tu daixateba tavidan")
+    log("=> aba tu daixateba tavidan")
 
     val pagerState = rememberPagerState()
 

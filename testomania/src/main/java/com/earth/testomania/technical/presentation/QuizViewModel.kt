@@ -60,15 +60,16 @@ class QuizViewModel @Inject constructor(
 
     fun saveAnswer(techQuizWrapper: TechQuizWrapper, selectedAnswerKey: String) {
         val index = _data.indexOf(techQuizWrapper)
-        _data[index] = _data[index].let {
+        val newItem = _data.removeAt(index).let {
             log("old quiz ${it.hashCode()}")
             it.copy(
                 quiz = it.quiz,
                 userSelectedAnswers = it.userSelectedAnswers.apply { add(selectedAnswerKey) }
             )
         }
+        _data.add(index, newItem)
         log("new obj ${_data[index].hashCode()}")
-        println("=> selected answer was added $selectedAnswerKey")
+        log("=> selected answer was added $selectedAnswerKey")
     }
 
     fun isCorrectAnswer(
