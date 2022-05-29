@@ -1,6 +1,9 @@
 package com.earth.testomania.technical.presentation
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -76,18 +79,30 @@ private fun CreateScreen(techQuizList: List<TechQuiz>) {
                 .fillMaxSize()
                 .constrainAs(pager) {
                     top.linkTo(progressBar.bottom, margin = 10.dp)
+                    bottom.linkTo(parent.bottom)
                 },
             count = techQuizList.size,
             state = pagerState,
         ) { page ->
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(all = 10.dp)
-            ) {
-                CreateQuizUI(techQuizList[page])
+
+            ConstraintLayout(modifier = Modifier.fillMaxSize()) {
+                val (question, answers) = createRefs()
+
+                CreateQuizUI(modifier = Modifier
+                    .constrainAs(question) {
+                        top.linkTo(parent.top)
+                    }
+                    .fillMaxWidth(), techQuizList[page])
+
                 LazyColumn(
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .constrainAs(answers) {
+                            top.linkTo(question.bottom)
+                            bottom.linkTo(parent.bottom)
+
+                            linkTo(question.bottom, parent.bottom, bias = 1f)
+                        }
                 ) {
                     techQuizList[page].possibleAnswers.forEach { possibleAnswer ->
                         item {
