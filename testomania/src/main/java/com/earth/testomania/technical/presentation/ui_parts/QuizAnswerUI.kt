@@ -58,9 +58,10 @@ fun CreateQuizAnswerUI(
 
     var textOverflow by remember { mutableStateOf(2) }
 
+    val enabled = viewModel.enableAnswerSelection(techQuizWrapper)
     Card(
         shape = RoundedCornerShape(15.dp),
-        elevation = 2.dp
+        elevation = 2.dp,
     ) {
         Row(
             modifier = Modifier
@@ -70,7 +71,11 @@ fun CreateQuizAnswerUI(
                     shape = RoundedCornerShape(15.dp),
                     border = BorderStroke(1.5.dp, color),
                 )
+                .background(
+                    if (enabled) Color.Transparent else Color.LightGray
+                )
                 .clickable(
+                    enabled = enabled,
                     onClick = {
                         viewModel.saveAnswer(techQuizWrapper, possibleAnswer.key)
                     }
