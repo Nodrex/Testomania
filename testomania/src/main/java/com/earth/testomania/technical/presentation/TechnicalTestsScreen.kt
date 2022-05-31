@@ -105,7 +105,7 @@ private fun CreateScreen(techQuizList: List<TechQuizWrapper>) {
                     }
                 }
                 if(techQuizList[page].quiz.hasMultiAnswer){
-                    CreateMultiAnswerQuizFinishButton(Modifier)
+                    CreateMultiAnswerQuizFinishButton(Modifier, techQuizList[page])
                 }
             }
         }

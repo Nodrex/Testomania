@@ -129,12 +129,14 @@ fun CreateQuizAnswerUI(
                 )
 
                 if (selected) {
-                    val infoIcon = if (viewModel.isCorrectAnswer(
+                    val infoIcon = when {
+                        techQuizWrapper.quiz.hasMultiAnswer && !techQuizWrapper.multiSelectionWasDone -> R.drawable.ic_selected
+                        viewModel.isCorrectAnswer(
                             techQuizWrapper,
                             possibleAnswer.key
-                        )
-                    ) R.drawable.ic_correct
-                    else R.drawable.ic_wrong
+                        ) -> R.drawable.ic_correct
+                        else -> R.drawable.ic_wrong
+                    }
 
                     Icon(
                         modifier = Modifier.constrainAs(indicator) {
