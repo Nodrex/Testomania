@@ -1,6 +1,5 @@
 package com.earth.testomania.technical.presentation.ui_parts
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -24,13 +23,12 @@ fun CreateMultiAnswerQuizFinishButton(modifier: Modifier, techQuizWrapper: TechQ
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(all = 10.dp)
-            .clickable {
-                viewModel.multiSelectionWasDone(techQuizWrapper)
-            },
+            .padding(all = 10.dp),
         horizontalArrangement = Arrangement.Center,
     ) {
-        Button(onClick = { }) {
+        Button(onClick = {
+            viewModel.multiSelectionWasDone(techQuizWrapper)
+        }) {
             Text(text = "Done")
         }
     }

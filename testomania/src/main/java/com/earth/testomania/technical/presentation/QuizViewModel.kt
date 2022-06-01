@@ -82,10 +82,10 @@ class QuizViewModel @Inject constructor(
                         ))
 
     fun enableAnswerSelection(techQuizWrapper: TechQuizWrapper) =
-        if (techQuizWrapper.quiz.hasMultiAnswer) !techQuizWrapper.multiSelectionWasDone else techQuizWrapper.userSelectedAnswers.isEmpty()
+        if (techQuizWrapper.quiz.hasMultiAnswer) !techQuizWrapper.multiSelectionWasDone.value else techQuizWrapper.userSelectedAnswers.isEmpty()
 
     fun multiSelectionWasDone(techQuizWrapper: TechQuizWrapper) {
-        techQuizWrapper.multiSelectionWasDone = true
+        techQuizWrapper.multiSelectionWasDone.value = true
     }
 
 }

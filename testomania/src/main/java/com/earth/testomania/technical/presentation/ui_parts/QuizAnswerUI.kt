@@ -130,7 +130,7 @@ fun CreateQuizAnswerUI(
 
                 if (selected) {
                     val infoIcon = when {
-                        techQuizWrapper.quiz.hasMultiAnswer && !techQuizWrapper.multiSelectionWasDone -> R.drawable.ic_selected
+                        techQuizWrapper.quiz.hasMultiAnswer && !techQuizWrapper.multiSelectionWasDone.value -> R.drawable.ic_selected
                         viewModel.isCorrectAnswer(
                             techQuizWrapper,
                             possibleAnswer.key
