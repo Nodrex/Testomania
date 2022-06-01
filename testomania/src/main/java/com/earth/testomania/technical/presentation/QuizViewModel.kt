@@ -103,4 +103,8 @@ class QuizViewModel @Inject constructor(
         techQuizWrapper.point = 1
     }
 
+    fun getQuizResult() = data.sumOf {
+        it.point
+    }
+
 }
