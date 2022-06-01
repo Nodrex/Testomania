@@ -57,6 +57,7 @@ class QuizViewModel @Inject constructor(
     }
 
     fun saveAnswer(techQuizWrapper: TechQuizWrapper, selectedAnswerKey: String) {
+        saveQuizPoint(techQuizWrapper, selectedAnswerKey)
         val index = _data.indexOf(techQuizWrapper)
         val newItem = _data.removeAt(index).let {
             it.copy(
@@ -65,6 +66,11 @@ class QuizViewModel @Inject constructor(
             )
         }
         _data.add(index, newItem)
+    }
+
+    private fun saveQuizPoint(techQuizWrapper: TechQuizWrapper, selectedAnswerKey: String) {
+        if (techQuizWrapper.quiz.hasMultiAnswer) return
+        if (isCorrectAnswer(techQuizWrapper, selectedAnswerKey)) techQuizWrapper.point = 1
     }
 
     fun isCorrectAnswer(
@@ -85,7 +91,16 @@ class QuizViewModel @Inject constructor(
         if (techQuizWrapper.quiz.hasMultiAnswer) !techQuizWrapper.multiSelectionWasDone.value else techQuizWrapper.userSelectedAnswers.isEmpty()
 
     fun multiSelectionWasDone(techQuizWrapper: TechQuizWrapper) {
+        saveMultiSelectQuizPoint(techQuizWrapper)
         techQuizWrapper.multiSelectionWasDone.value = true
+    }
+
+    private fun saveMultiSelectQuizPoint(techQuizWrapper: TechQuizWrapper) {
+        if (!techQuizWrapper.quiz.hasMultiAnswer) return
+        techQuizWrapper.userSelectedAnswers.forEach {
+            if (!isCorrectAnswer(techQuizWrapper, it)) return
+        }
+        techQuizWrapper.point = 1
     }
 
 }
