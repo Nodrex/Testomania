@@ -1,14 +1,14 @@
 package com.earth.testomania.technical.domain.model
 
+private const val A = "A"
+private const val B = "B"
+private const val C = "C"
+private const val D = "D"
+private const val E = "E"
+private const val F = "F"
+
 class AnswerKey {
     companion object {
-        const val A = "A"
-        const val B = "B"
-        const val C = "C"
-        const val D = "D"
-        const val E = "E"
-        const val F = "F"
-
         val list = listOf(A, B, C, D, E, F)
     }
 }

@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.earth.testomania.R
 import com.earth.testomania.core.DataState
 import com.earth.testomania.core.coroutines.defaultCoroutineExceptionHandler
+import com.earth.testomania.technical.domain.model.SelectedAnswer
 import com.earth.testomania.technical.domain.model.TechQuizWrapper
 import com.earth.testomania.technical.domain.use_case.GetQuizListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -62,7 +63,7 @@ class QuizViewModel @Inject constructor(
         val newItem = _data.removeAt(index).let {
             it.copy(
                 quiz = it.quiz,
-                userSelectedAnswers = it.userSelectedAnswers.apply { add(selectedAnswerKey) }
+                selectedAnswers = it.selectedAnswers.apply { add(SelectedAnswer(selectedAnswerKey, true)) }
             )
         }
         _data.add(index, newItem)
@@ -79,8 +80,8 @@ class QuizViewModel @Inject constructor(
     ) = techQuizWrapper.quiz.correctAnswers[possibleAnswerKey] ?: false
 
     fun wasSelected(techQuizWrapper: TechQuizWrapper, possibleAnswerKey: String) =
-        techQuizWrapper.userSelectedAnswers.contains(possibleAnswerKey) ||
-                (techQuizWrapper.userSelectedAnswers.isNotEmpty() &&
+        techQuizWrapper.selectedAnswers.find { it.selectedKey == possibleAnswerKey } != null ||
+                (techQuizWrapper.selectedAnswers.isNotEmpty() &&
                         !techQuizWrapper.quiz.hasMultiAnswer &&
                         isCorrectAnswer(
                             techQuizWrapper,
@@ -88,7 +89,7 @@ class QuizViewModel @Inject constructor(
                         ))
 
     fun enableAnswerSelection(techQuizWrapper: TechQuizWrapper) =
-        if (techQuizWrapper.quiz.hasMultiAnswer) !techQuizWrapper.multiSelectionWasDone.value else techQuizWrapper.userSelectedAnswers.isEmpty()
+        if (techQuizWrapper.quiz.hasMultiAnswer) !techQuizWrapper.multiSelectionWasDone.value else techQuizWrapper.selectedAnswers.isEmpty()
 
     fun multiSelectionWasDone(techQuizWrapper: TechQuizWrapper) {
         saveMultiSelectQuizPoint(techQuizWrapper)
@@ -97,8 +98,8 @@ class QuizViewModel @Inject constructor(
 
     private fun saveMultiSelectQuizPoint(techQuizWrapper: TechQuizWrapper) {
         if (!techQuizWrapper.quiz.hasMultiAnswer) return
-        techQuizWrapper.userSelectedAnswers.forEach {
-            if (!isCorrectAnswer(techQuizWrapper, it)) return
+        techQuizWrapper.selectedAnswers.forEach {
+            if (!isCorrectAnswer(techQuizWrapper, it.selectedKey)) return
         }
         techQuizWrapper.point = 1
     }
