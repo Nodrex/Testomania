@@ -5,9 +5,12 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import com.earth.testomania.core.helper.defaultTechQuiz
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.earth.testomania.core.helper.defaultTechQuizWrapper
 import com.earth.testomania.core.presentation.custom.AnswerTileState
 import com.earth.testomania.core.presentation.custom.TestomaniaChoiceTile
+import com.earth.testomania.technical.domain.model.TechQuizWrapper
+import com.earth.testomania.technical.presentation.QuizViewModel
 import kiwi.orbit.compose.ui.controls.Text
 
 

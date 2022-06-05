@@ -12,8 +12,6 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.earth.testomania.core.helper.defaultTechQuiz
-import com.earth.testomania.technical.domain.model.TechQuiz
 import com.earth.testomania.core.helper.defaultTechQuizWrapper
 import com.earth.testomania.technical.domain.model.TechQuizWrapper
 
@@ -30,7 +28,7 @@ fun CreateQuizUI(modifier: Modifier = Modifier, techQuiz: TechQuizWrapper) {
             0,
             techQuiz.quiz.category.length)
 
-        val text = AnnotatedString(techQuiz.quiz.category + "\n" + techQuiz.question,
+        val text = AnnotatedString(techQuiz.quiz.category + "\n" + techQuiz.quiz.question,
             spanStyles = listOf(style))
 
         Text(text = text)

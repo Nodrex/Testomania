@@ -74,7 +74,7 @@ private fun CreateScreen(techQuizList: List<TechQuizWrapper>) {
 @Composable
 private fun QuestionAndAnswers(
     modifier: Modifier,
-    techQuizList: List<TechQuiz>,
+    techQuizList: List<TechQuizWrapper>,
     pagerState: PagerState,
 ) {
     val answerPadding = 10.dp
