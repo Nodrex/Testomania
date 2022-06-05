@@ -1,14 +1,13 @@
 package com.earth.testomania.technical.presentation
 
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.core.helper.defaultTechQuiz
 import com.earth.testomania.technical.domain.model.TechQuiz
@@ -69,9 +68,11 @@ private fun CreateScreen(techQuizList: List<TechQuiz>) {
     ) {
         val (progressBar, pager) = createRefs()
 
-        OverallProgress(modifier = Modifier.constrainAs(progressBar) {
-            top.linkTo(parent.top)
-        }, currentProgress, techQuizList.size)
+        OverallProgress(modifier = Modifier
+            .constrainAs(progressBar) {
+                top.linkTo(parent.top)
+            }
+            .padding(start = 10.dp, end = 10.dp), currentProgress, techQuizList.size)
 
         QuestionAndAnswers(modifier = Modifier.constrainAs(pager) {
             top.linkTo(progressBar.bottom, margin = 10.dp)
@@ -87,9 +88,10 @@ private fun QuestionAndAnswers(
     techQuizList: List<TechQuiz>,
     pagerState: PagerState,
 ) {
+    val answerPadding = 10.dp
+
     HorizontalPager(
-        modifier = modifier
-            .fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         count = techQuizList.size,
         state = pagerState,
     ) { page ->
@@ -108,11 +110,12 @@ private fun QuestionAndAnswers(
                     .constrainAs(answers) {
                         top.linkTo(question.bottom)
                         bottom.linkTo(parent.bottom)
-
+                        height = Dimension.preferredWrapContent
                         linkTo(question.bottom, parent.bottom, bias = 1f)
-                    }
+                    },
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                contentPadding = PaddingValues(all = answerPadding),
             ) {
-
                 techQuizList[page].possibleAnswers.forEach { possibleAnswer ->
                     item {
                         CreateQuizAnswerUI(possibleAnswer)
