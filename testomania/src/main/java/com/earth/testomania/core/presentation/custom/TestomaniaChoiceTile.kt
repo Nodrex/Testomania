@@ -1,4 +1,4 @@
-package com.earth.testomania.technical.presentation.custom
+package com.earth.testomania.core.presentation.custom
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
