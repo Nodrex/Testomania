@@ -14,6 +14,8 @@ import kotlinx.coroutines.flow.*
 import java.util.concurrent.CancellationException
 import javax.inject.Inject
 
+private const val FALSE_STR = "false"
+
 class GetQuizListUseCase @Inject constructor(
     private val quizRepository: QuizRepository
 ) {
@@ -117,7 +119,11 @@ class GetQuizListUseCase @Inject constructor(
     private fun success(list: List<TechQuizDTO>?) =
         DataState.Success(
             SuccessMetaData(),
-            list?.mapNotNull { techQuiz ->
+            list?.filter {
+                it.multiple_correct_answers == FALSE_STR
+                //TODO this filter is temporarily to disable multi answer quiz,
+                // but we wel remove this constraint for future on next releases of App
+            }?.mapNotNull { techQuiz ->
                 convertTechQuizDTOtoDataObject(techQuiz)
             })
 
