@@ -168,25 +168,12 @@ private fun DrawScope.drawRadio(borderWidth: Dp, borderColor: Color, backgroundC
         style = Stroke(borderWidthPx))
 }
 
-private fun DrawScope.drawError(strokeColor: Color, shadowColor: Color, alpha: Float) {
-    if (alpha == 0f) return
-
-    val shadowWidth = 4.dp.toPx()
-    val shadowRadius = ErrorShadowRadius.toPx() - shadowWidth / 2
-    drawCircle(shadowColor, shadowRadius, alpha = alpha, style = Stroke(shadowWidth))
-
-    val strokeWidth = 2.dp.toPx()
-    val strokeRadius = RadioRadiusSize.toPx() - strokeWidth / 2
-    drawCircle(strokeColor, strokeRadius, alpha = alpha, style = Stroke(strokeWidth))
-}
-
 private const val RadioAnimationDuration = 100
 
 private val RadioSize = 20.dp
 private val RadioRadiusSize = RadioSize / 2
 private val RadioRippleRadius = 20.dp
 private val ErrorShadowSize = 24.dp
-private val ErrorShadowRadius = ErrorShadowSize / 2
 
 enum class AnswerTileState {
     NEUTRAL, INCORRECT, CORRECT;
