@@ -79,7 +79,7 @@ class QuizViewModel @Inject constructor(
         possibleAnswerKey: String
     ) = techQuizWrapper.quiz.correctAnswers[possibleAnswerKey] ?: false
 
-    fun wasSelected(techQuizWrapper: TechQuizWrapper, possibleAnswerKey: String) =
+    fun wasAlreadyAnswered(techQuizWrapper: TechQuizWrapper, possibleAnswerKey: String) =
         techQuizWrapper.selectedAnswers.find { it.selectedKey == possibleAnswerKey } != null ||
                 (techQuizWrapper.selectedAnswers.isNotEmpty() &&
                         !techQuizWrapper.quiz.hasMultiAnswer &&
