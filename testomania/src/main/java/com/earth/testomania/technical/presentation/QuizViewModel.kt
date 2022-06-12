@@ -63,7 +63,14 @@ class QuizViewModel @Inject constructor(
         val newItem = _data.removeAt(index).let {
             it.copy(
                 quiz = it.quiz,
-                selectedAnswers = it.selectedAnswers.apply { add(SelectedAnswer(selectedAnswerKey, true)) }
+                selectedAnswers = it.selectedAnswers.apply {
+                    add(
+                        SelectedAnswer(
+                            selectedAnswerKey,
+                            true
+                        )
+                    )
+                }
             )
         }
         _data.add(index, newItem)

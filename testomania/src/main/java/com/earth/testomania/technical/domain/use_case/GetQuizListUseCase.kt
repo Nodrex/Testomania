@@ -14,8 +14,6 @@ import kotlinx.coroutines.flow.*
 import java.util.concurrent.CancellationException
 import javax.inject.Inject
 
-private const val FALSE_STR = "false"
-
 class GetQuizListUseCase @Inject constructor(
     private val quizRepository: QuizRepository
 ) {
@@ -140,3 +138,5 @@ class GetQuizListUseCase @Inject constructor(
     )
 
 }
+
+private const val FALSE_STR = "false"
