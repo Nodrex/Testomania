@@ -31,6 +31,7 @@ import kiwi.orbit.compose.ui.foundation.ProvideMergedTextStyle
 @Composable
 fun TestomaniaChoiceTile(
     selected: Boolean,
+    enabled: Boolean,
     title: String,
     toggleColorType: AnswerTileState,
     onSelect: () -> Unit,
@@ -45,6 +46,7 @@ fun TestomaniaChoiceTile(
         }
     )
     Card(
+        enabled = enabled,
         onClick = onSelect,
         border = BorderStroke(2.dp, color),
         modifier = modifier.semantics {
@@ -166,9 +168,11 @@ private fun Radio(
 private fun DrawScope.drawRadio(borderWidth: Dp, borderColor: Color, backgroundColor: Color) {
     val borderWidthPx = borderWidth.toPx()
     drawCircle(backgroundColor, RadioRadiusSize.toPx(), style = Fill)
-    drawCircle(borderColor,
+    drawCircle(
+        borderColor,
         RadioRadiusSize.toPx() - borderWidthPx / 2,
-        style = Stroke(borderWidthPx))
+        style = Stroke(borderWidthPx)
+    )
 }
 
 private const val RadioAnimationDuration = 100
@@ -181,3 +185,6 @@ private val ErrorShadowSize = 24.dp
 enum class AnswerTileState {
     NEUTRAL, INCORRECT, CORRECT;
 }
+
+fun getAnswerTileState(answer: Boolean) =
+    if (answer) AnswerTileState.CORRECT else AnswerTileState.INCORRECT

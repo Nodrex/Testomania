@@ -63,7 +63,14 @@ class QuizViewModel @Inject constructor(
         val newItem = _data.removeAt(index).let {
             it.copy(
                 quiz = it.quiz,
-                selectedAnswers = it.selectedAnswers.apply { add(SelectedAnswer(selectedAnswerKey, true)) }
+                selectedAnswers = it.selectedAnswers.apply {
+                    add(
+                        SelectedAnswer(
+                            selectedAnswerKey,
+                            true
+                        )
+                    )
+                }
             )
         }
         _data.add(index, newItem)
@@ -79,7 +86,7 @@ class QuizViewModel @Inject constructor(
         possibleAnswerKey: String
     ) = techQuizWrapper.quiz.correctAnswers[possibleAnswerKey] ?: false
 
-    fun wasSelected(techQuizWrapper: TechQuizWrapper, possibleAnswerKey: String) =
+    fun wasAlreadyAnswered(techQuizWrapper: TechQuizWrapper, possibleAnswerKey: String) =
         techQuizWrapper.selectedAnswers.find { it.selectedKey == possibleAnswerKey } != null ||
                 (techQuizWrapper.selectedAnswers.isNotEmpty() &&
                         !techQuizWrapper.quiz.hasMultiAnswer &&

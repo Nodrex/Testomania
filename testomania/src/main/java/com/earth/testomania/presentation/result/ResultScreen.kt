@@ -106,6 +106,7 @@ fun IncorrectAnsweredQuestion(item: IncorrectAnsweredQuestionModel) {
             )
             TestomaniaChoiceTile(
                 selected = false,
+                enabled = false,
                 onSelect = {},
                 title = item.choiceIndex,
                 toggleColorType = AnswerTileState.INCORRECT,
@@ -120,6 +121,7 @@ fun IncorrectAnsweredQuestion(item: IncorrectAnsweredQuestionModel) {
             )
             TestomaniaChoiceTile(
                 selected = false,
+                enabled = false,
                 onSelect = {},
                 title = item.correctAnswerIndex,
                 toggleColorType = AnswerTileState.CORRECT,
@@ -215,8 +217,8 @@ fun MainResultItem(
                     .fillMaxWidth()
                     .padding(top = 3.dp)
                     .height(8.dp),
-                indicatorColor = mainColor,
-                trackColor = lightColor
+                color = mainColor,
+                backgroundColor = lightColor
             )
         }
         Image(
