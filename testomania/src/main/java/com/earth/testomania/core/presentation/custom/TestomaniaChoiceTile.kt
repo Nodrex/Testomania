@@ -53,7 +53,7 @@ fun TestomaniaChoiceTile(
         },
     ) {
         Column(
-            modifier.padding(12.dp), //TODO should be modified to make beautiful, by using kiwi
+            Modifier.padding(12.dp),
             verticalArrangement = Arrangement.SpaceBetween,
         ) {
             ProvideMergedTextStyle(value = OrbitTheme.typography.title3) {

@@ -37,9 +37,9 @@ fun CreateQuizAnswerUI(
 
     TestomaniaChoiceTile(
         //TODO replace with KIWI style
-        modifier = Modifier.background(
+        /*modifier = Modifier.background(
             if (enabled) Color.Transparent else Color.LightGray
-        ),
+        ),*/
         selected = isSelected,
         enabled = enabled,
         onSelect = {
