@@ -3,6 +3,7 @@ package com.earth.testomania.presentation.home
 import androidx.lifecycle.ViewModel
 import com.earth.testomania.R
 import com.earth.testomania.destinations.DummyScreenDestination
+import com.earth.testomania.destinations.ResultScreenDestination
 import com.earth.testomania.destinations.SkillzTestScreenDestination
 import com.earth.testomania.destinations.TechnicalTestsScreenDestination
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -26,7 +27,7 @@ class HomeScreenViewModel @Inject constructor(
         HomeDestinations(
             name = R.string.driving_license_tests,
             icon = R.drawable.ic_driver_license,
-            destination = DummyScreenDestination
+            destination = ResultScreenDestination
         )
     )
 }

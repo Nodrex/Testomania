@@ -3,6 +3,7 @@ package com.earth.testomania.presentation.result
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
@@ -18,9 +19,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.R
+import com.earth.testomania.core.presentation.custom.AnswerTileState
+import com.earth.testomania.core.presentation.custom.TestomaniaChoiceTile
 import com.ramcosta.composedestinations.annotation.DeepLink
 import com.ramcosta.composedestinations.annotation.Destination
-import dagger.hilt.android.lifecycle.HiltViewModel
+import kiwi.orbit.compose.ui.OrbitTheme
+import kiwi.orbit.compose.ui.controls.Card
 import kiwi.orbit.compose.ui.controls.LinearProgressIndicator
 import kiwi.orbit.compose.ui.controls.Text
 
@@ -31,6 +35,7 @@ import kiwi.orbit.compose.ui.controls.Text
         DeepLink(uriPattern = "testomania://home/result")
     ]
 )
+
 @Composable
 fun ResultScreen() {
 
@@ -40,13 +45,16 @@ fun ResultScreen() {
         if (viewModel.isTestDone) R.drawable.il_orbit_success else R.drawable.il_orbit_error
 
     Column(
-        modifier = Modifier.padding(8.dp)
+        modifier = Modifier
+            .fillMaxSize()
+            .systemBarsPadding()
+            .padding(8.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         Spacer(modifier = Modifier.size(30.dp))
-        Text(text = "hi there")
         MainResultItem(
             "test name",
-//            mainColor = Color.Magenta,
+            mainColor = OrbitTheme.colors.info.normal,
             progress = 0.65f
         )
         Image(
@@ -56,15 +64,112 @@ fun ResultScreen() {
                 .fillMaxWidth()
                 .padding(top = 4.dp)
         )
+        LazyColumn(
+            modifier = Modifier,
+        ) {
+            viewModel.incorrectQuestions.forEach { item ->
+                item(key = item.id) {
+                    IncorrectAnsweredQuestion(item = item)
+                }
+            }
+        }
     }
 
 }
 
 @Preview
 @Composable
+fun PrevIncorrect() {
+    val viewModel: ResultScreenViewModel = hiltViewModel()
+    viewModel.incorrectQuestions.firstOrNull()?.let {
+        IncorrectAnsweredQuestion(it)
+    }
+}
+
+@Composable
+fun IncorrectAnsweredQuestion(item: IncorrectAnsweredQuestionModel) {
+    Card(
+        modifier = Modifier
+            .padding(0.dp, 6.dp)
+            .fillMaxWidth(),
+    ) {
+        Column(
+            modifier = Modifier
+//                .background(Color(0x335c5cbb))
+                .padding(8.dp)
+                .fillMaxWidth(),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            Text(
+                text = "Question: ${item.questionText}",
+                fontSize = 20.sp
+            )
+            TestomaniaChoiceTile(
+                selected = false,
+                onSelect = {},
+                title = item.choiceIndex,
+                toggleColorType = AnswerTileState.INCORRECT,
+                content = {
+                    Text(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = item.choiceText,
+                        fontWeight = FontWeight(499),
+                    )
+                },
+                indicateWithoutSelection = true
+            )
+            TestomaniaChoiceTile(
+                selected = false,
+                onSelect = {},
+                title = item.correctAnswerIndex,
+                toggleColorType = AnswerTileState.CORRECT,
+                content = {
+                    Text(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = item.correctAnswerText,
+                        fontWeight = FontWeight(499),
+                    )
+                },
+                indicateWithoutSelection = true
+            )
+        }
+    }
+
+}
+
+@Composable
+fun AnswerItem(type: AnswerType, index: String, text: String) {
+    val typeColor = when (type) {
+        AnswerType.CORRECT -> OrbitTheme.colors.success.normal
+        AnswerType.CHOICE -> OrbitTheme.colors.critical.normalAlt
+    }
+    Column(
+        verticalArrangement = Arrangement.spacedBy(4.dp),
+    ) {
+        Text(
+            text = "${type.text}: $index",
+            color = typeColor,
+            fontSize = 16.sp,
+            fontWeight = FontWeight.Bold
+        )
+        Text(
+            text = text,
+            modifier = Modifier.padding(start = 16.dp),
+            fontSize = 14.sp
+        )
+    }
+}
+
+enum class AnswerType(val text: String) {
+    CORRECT("correct"),
+    CHOICE("your choice")
+}
+
+@Preview
+@Composable
 fun MainResultItem(
-    testName: String = "test",
-    mainColor: Color = Color.Blue,
+    testName: String = "",
+    mainColor: Color = OrbitTheme.colors.info.normal,
     progress: Float = 0.0f
 ) {
 
@@ -123,6 +228,4 @@ fun MainResultItem(
             colorFilter = ColorFilter.tint(Color.Gray)
         )
     }
-
-
 }
