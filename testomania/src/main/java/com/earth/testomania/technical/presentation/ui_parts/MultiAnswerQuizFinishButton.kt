@@ -10,23 +10,26 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.earth.testomania.core.helper.defaultTechQuizWrapper
+import com.earth.testomania.technical.domain.model.TechQuizWrapper
+import com.earth.testomania.technical.presentation.QuizViewModel
 
 @Composable
-fun CreateQuizNavigationButtonUI(modifier: Modifier) {
+fun CreateMultiAnswerQuizFinishButton(modifier: Modifier, techQuizWrapper: TechQuizWrapper) {
+
+    val viewModel: QuizViewModel = hiltViewModel()
+
     Row(
         modifier = modifier
             .fillMaxWidth()
             .padding(all = 10.dp),
         horizontalArrangement = Arrangement.Center,
     ) {
-        Button(onClick = { }) {
-            Text(text = "Prev")
-        }
-        Button(onClick = { }) {
+        Button(onClick = {
+            viewModel.multiSelectionWasDone(techQuizWrapper)
+        }) {
             Text(text = "Done")
-        }
-        Button(onClick = { }) {
-            Text(text = "Next")
         }
     }
 }
@@ -34,5 +37,5 @@ fun CreateQuizNavigationButtonUI(modifier: Modifier) {
 @Preview
 @Composable
 private fun Preview() {
-    CreateQuizNavigationButtonUI(Modifier)
+    CreateMultiAnswerQuizFinishButton(Modifier, defaultTechQuizWrapper())
 }

@@ -12,7 +12,7 @@ interface QuizApi {
     @GET("api/v1/questions")
     suspend fun getQuizList(
         @Query("apiKey") apiKey: String = API_KEY,
-        @Query("limit") questionCount: Int = 10
+        @Query("limit") questionCount: Int = 20
     ): Response<List<TechQuizDTO>>
 
 }

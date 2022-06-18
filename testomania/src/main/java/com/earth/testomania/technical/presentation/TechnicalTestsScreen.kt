@@ -9,18 +9,16 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.earth.testomania.core.helper.defaultTechQuiz
-import com.earth.testomania.technical.domain.model.TechQuiz
-import com.earth.testomania.technical.presentation.ui_parts.CreateQuizAnswerUI
-import com.earth.testomania.technical.presentation.ui_parts.CreateQuizUI
-import com.earth.testomania.technical.presentation.ui_parts.OverallProgress
+import com.earth.testomania.core.helper.defaultTechQuizWrapper
+import com.earth.testomania.core.log
+import com.earth.testomania.technical.domain.model.TechQuizWrapper
+import com.earth.testomania.technical.presentation.ui_parts.*
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
 import com.ramcosta.composedestinations.annotation.DeepLink
 import com.ramcosta.composedestinations.annotation.Destination
-import kotlinx.coroutines.flow.collectLatest
 
 @Destination(
     route = "home/technical_tests",
@@ -32,23 +30,14 @@ import kotlinx.coroutines.flow.collectLatest
 fun TechnicalTestsScreen() {
     val viewModel: QuizViewModel = hiltViewModel()
 
-    var data by remember {
-        mutableStateOf<List<TechQuiz>>(emptyList())
-    }
+    val data = viewModel.data
 
-    LaunchedEffect(key1 = true) {
-        viewModel.data.collectLatest {
-            data = it
-        }
-    }
-
-    CreateScreen(data)
+    if (data.isNotEmpty()) CreateScreen(data)
 }
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-private fun CreateScreen(techQuizList: List<TechQuiz>) {
-
+private fun CreateScreen(techQuizList: List<TechQuizWrapper>) {
     val pagerState = rememberPagerState()
 
     var currentProgress by remember {
@@ -85,7 +74,7 @@ private fun CreateScreen(techQuizList: List<TechQuiz>) {
 @Composable
 private fun QuestionAndAnswers(
     modifier: Modifier,
-    techQuizList: List<TechQuiz>,
+    techQuizList: List<TechQuizWrapper>,
     pagerState: PagerState,
 ) {
     val answerPadding = 10.dp
@@ -116,18 +105,25 @@ private fun QuestionAndAnswers(
                 verticalArrangement = Arrangement.spacedBy(8.dp),
                 contentPadding = PaddingValues(all = answerPadding),
             ) {
-                techQuizList[page].possibleAnswers.forEach { possibleAnswer ->
-                    item {
-                        CreateQuizAnswerUI(possibleAnswer)
+                techQuizList[page].quiz.apply {
+                    possibleAnswers.forEach { possibleAnswer ->
+                        item(key = possibleAnswer.key) {
+                            CreateQuizAnswerUI(
+                                techQuizList[page],
+                                possibleAnswer,
+                            )
+                        }
                     }
                 }
             }
         }
+
+
     }
 }
 
 @Preview
 @Composable
 private fun PreviewComposeUI() {
-    CreateScreen(listOf(defaultTechQuiz()))
+    CreateScreen(listOf(defaultTechQuizWrapper()))
 }
