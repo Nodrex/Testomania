@@ -10,9 +10,11 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.core.helper.defaultTechQuizWrapper
-import com.earth.testomania.core.log
 import com.earth.testomania.technical.domain.model.TechQuizWrapper
-import com.earth.testomania.technical.presentation.ui_parts.*
+import com.earth.testomania.technical.presentation.ui_parts.CategoryIllustration
+import com.earth.testomania.technical.presentation.ui_parts.CreateQuizAnswerUI
+import com.earth.testomania.technical.presentation.ui_parts.CreateQuizUI
+import com.earth.testomania.technical.presentation.ui_parts.OverallProgress
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
@@ -85,13 +87,17 @@ private fun QuestionAndAnswers(
         state = pagerState,
     ) { page ->
         ConstraintLayout(modifier = Modifier.fillMaxSize()) {
-            val (question, answers) = createRefs()
+            val (question, answers, illustration) = createRefs()
 
             CreateQuizUI(modifier = Modifier
                 .constrainAs(question) {
                     top.linkTo(parent.top)
                 }
                 .fillMaxWidth(), techQuizList[page])
+
+            CategoryIllustration(modifier = Modifier.constrainAs(illustration) {
+                top.linkTo(question.bottom)
+            }, techQuizList[page].quiz.category)
 
             LazyColumn(
                 modifier = Modifier
