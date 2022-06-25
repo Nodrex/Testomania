@@ -34,12 +34,13 @@ fun TechnicalTestsScreen() {
 
     val data = viewModel.data
 
-    if (data.isNotEmpty()) CreateScreen(data)
+    if (data.isEmpty()) CreateLoadingScreen()
+    else CreateQuizScreen(data)
 }
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-private fun CreateScreen(techQuizList: List<TechQuizWrapper>) {
+private fun CreateQuizScreen(techQuizList: List<TechQuizWrapper>) {
     val pagerState = rememberPagerState()
 
     var currentProgress by remember {
@@ -128,8 +129,13 @@ private fun QuestionAndAnswers(
     }
 }
 
+@Composable
+private fun CreateLoadingScreen() {
+
+}
+
 @Preview
 @Composable
 private fun PreviewComposeUI() {
-    CreateScreen(listOf(defaultTechQuizWrapper()))
+    CreateQuizScreen(listOf(defaultTechQuizWrapper()))
 }
