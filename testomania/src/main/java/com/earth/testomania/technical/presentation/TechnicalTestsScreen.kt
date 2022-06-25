@@ -14,6 +14,8 @@ import androidx.constraintlayout.compose.Dimension
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.R
 import com.earth.testomania.core.helper.defaultTechQuizWrapper
+import com.earth.testomania.core.presentation.custom.TestomaniaInlineLoading
+import com.earth.testomania.technical.domain.model.TechCategory
 import com.earth.testomania.technical.domain.model.TechQuizWrapper
 import com.earth.testomania.technical.presentation.ui_parts.CategoryIllustration
 import com.earth.testomania.technical.presentation.ui_parts.CreateQuizAnswerUI
@@ -25,7 +27,8 @@ import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
 import com.ramcosta.composedestinations.annotation.DeepLink
 import com.ramcosta.composedestinations.annotation.Destination
-import kiwi.orbit.compose.ui.controls.InlineLoading
+import kotlinx.coroutines.delay
+import java.util.concurrent.TimeUnit
 
 @Destination(
     route = "home/technical_tests",
@@ -146,14 +149,27 @@ private fun CreateLoadingScreen() {
     ) {
         val (progressBar, illustration) = createRefs()
 
-        InlineLoading(modifier = Modifier
+        TestomaniaInlineLoading(modifier = Modifier
             .constrainAs(progressBar) {
                 top.linkTo(parent.top)
                 start.linkTo(parent.start)
                 end.linkTo(parent.end)
             }
-            .padding(top = 10.dp)
+            .padding(top = 50.dp),
+            circleSize = 18.dp,
+            distanceBetweenCircles = 10.dp
         )
+
+        var illustrationDrawableId by remember {
+            mutableStateOf(R.drawable.il_unknown2)
+        }
+
+        LaunchedEffect(key1 = true) {
+            while (true) {
+                illustrationDrawableId = TechCategory.values().random().illustration
+                delay(TimeUnit.SECONDS.toMillis(2))
+            }
+        }
 
         Image(
             modifier = Modifier
@@ -163,8 +179,10 @@ private fun CreateLoadingScreen() {
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
                 }
-                .fillMaxWidth(), contentScale = ContentScale.Crop,
-            painter = painterResource(id = R.drawable.il_wordpress), contentDescription = ""
+                .fillMaxWidth(),
+            contentScale = ContentScale.Crop,
+            painter = painterResource(id = illustrationDrawableId /*R.drawable.il_wordpress*/),
+            contentDescription = ""
         )
     }
 }
