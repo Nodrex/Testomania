@@ -1,14 +1,18 @@
 package com.earth.testomania.technical.presentation
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.earth.testomania.R
 import com.earth.testomania.core.helper.defaultTechQuizWrapper
 import com.earth.testomania.technical.domain.model.TechQuizWrapper
 import com.earth.testomania.technical.presentation.ui_parts.CategoryIllustration
@@ -21,6 +25,7 @@ import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
 import com.ramcosta.composedestinations.annotation.DeepLink
 import com.ramcosta.composedestinations.annotation.Destination
+import kiwi.orbit.compose.ui.controls.InlineLoading
 
 @Destination(
     route = "home/technical_tests",
@@ -34,8 +39,11 @@ fun TechnicalTestsScreen() {
 
     val data = viewModel.data
 
-    if (data.isEmpty()) CreateLoadingScreen()
-    else CreateQuizScreen(data)
+    CreateLoadingScreen()
+    return
+
+    /*if (data.isEmpty()) CreateLoadingScreen()
+    else CreateQuizScreen(data)*/
 }
 
 @OptIn(ExperimentalPagerApi::class)
@@ -131,7 +139,34 @@ private fun QuestionAndAnswers(
 
 @Composable
 private fun CreateLoadingScreen() {
+    ConstraintLayout(
+        modifier = Modifier
+            .fillMaxSize()
+            .systemBarsPadding()
+    ) {
+        val (progressBar, illustration) = createRefs()
 
+        InlineLoading(modifier = Modifier
+            .constrainAs(progressBar) {
+                top.linkTo(parent.top)
+                start.linkTo(parent.start)
+                end.linkTo(parent.end)
+            }
+            .padding(top = 10.dp)
+        )
+
+        Image(
+            modifier = Modifier
+                .constrainAs(illustration) {
+                    top.linkTo(parent.top)
+                    bottom.linkTo(parent.bottom)
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                }
+                .fillMaxWidth(), contentScale = ContentScale.Crop,
+            painter = painterResource(id = R.drawable.il_wordpress), contentDescription = ""
+        )
+    }
 }
 
 @Preview
