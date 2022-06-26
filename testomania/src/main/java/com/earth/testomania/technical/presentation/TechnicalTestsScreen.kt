@@ -1,34 +1,23 @@
 package com.earth.testomania.technical.presentation
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.earth.testomania.R
 import com.earth.testomania.core.helper.defaultTechQuizWrapper
-import com.earth.testomania.core.presentation.custom.TestomaniaInlineLoading
-import com.earth.testomania.technical.domain.model.TechCategory
 import com.earth.testomania.technical.domain.model.TechQuizWrapper
-import com.earth.testomania.technical.presentation.ui_parts.CategoryIllustration
-import com.earth.testomania.technical.presentation.ui_parts.CreateQuizAnswerUI
-import com.earth.testomania.technical.presentation.ui_parts.CreateQuizUI
-import com.earth.testomania.technical.presentation.ui_parts.OverallProgress
+import com.earth.testomania.technical.presentation.ui_parts.*
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
 import com.ramcosta.composedestinations.annotation.DeepLink
 import com.ramcosta.composedestinations.annotation.Destination
-import kotlinx.coroutines.delay
-import java.util.concurrent.TimeUnit
 
 @Destination(
     route = "home/technical_tests",
@@ -42,11 +31,8 @@ fun TechnicalTestsScreen() {
 
     val data = viewModel.data
 
-    CreateLoadingScreen()
-    return
-
-    /*if (data.isEmpty()) CreateLoadingScreen()
-    else CreateQuizScreen(data)*/
+    if (data.isEmpty()) CreateLoadingScreen()
+    else CreateQuizScreen(data)
 }
 
 @OptIn(ExperimentalPagerApi::class)
@@ -135,55 +121,6 @@ private fun QuestionAndAnswers(
                 }
             }
         }
-
-
-    }
-}
-
-@Composable
-private fun CreateLoadingScreen() {
-    ConstraintLayout(
-        modifier = Modifier
-            .fillMaxSize()
-            .systemBarsPadding()
-    ) {
-        val (progressBar, illustration) = createRefs()
-
-        TestomaniaInlineLoading(modifier = Modifier
-            .constrainAs(progressBar) {
-                top.linkTo(parent.top)
-                start.linkTo(parent.start)
-                end.linkTo(parent.end)
-            }
-            .padding(top = 50.dp),
-            circleSize = 18.dp,
-            distanceBetweenCircles = 10.dp
-        )
-
-        var illustrationDrawableId by remember {
-            mutableStateOf(R.drawable.il_unknown2)
-        }
-
-        LaunchedEffect(key1 = true) {
-            while (true) {
-                illustrationDrawableId = TechCategory.values().random().illustration
-                delay(TimeUnit.SECONDS.toMillis(2))
-            }
-        }
-
-        Image(
-            modifier = Modifier
-                .constrainAs(illustration) {
-                    top.linkTo(parent.top)
-                    bottom.linkTo(parent.bottom)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
-                }
-                .fillMaxWidth(),
-            contentScale = ContentScale.Crop,
-            painter = painterResource(id = illustrationDrawableId /*R.drawable.il_wordpress*/),
-            contentDescription = ""
-        )
     }
 }
 
