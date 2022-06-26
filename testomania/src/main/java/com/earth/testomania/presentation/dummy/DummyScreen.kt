@@ -4,7 +4,9 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import com.ramcosta.composedestinations.annotation.Destination
 
-@Destination(route = "home/dummy")
+const val DUMMY_ROUT = "home/dummy"
+
+@Destination(route = DUMMY_ROUT)
 @Composable
 fun DummyScreen() {
     Text(text = "hello empty screen")

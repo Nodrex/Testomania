@@ -18,6 +18,8 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.R
+import com.earth.testomania.presentation.dummy.DUMMY_ROUT
+import com.earth.testomania.skills.presentation.skillz.SKILLZ_ROUT
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kiwi.orbit.compose.ui.controls.Card
@@ -80,7 +82,10 @@ fun CardButton(
     navigator: DestinationsNavigator? = null,
 ) {
     Card(modifier = Modifier.size(125.dp), shape = RoundedCornerShape(10.dp), onClick = {
-        navigator?.navigate(destinationInfo.destination)
+        when (destinationInfo.destination.route) {
+            SKILLZ_ROUT, DUMMY_ROUT -> return@Card
+            else -> navigator?.navigate(destinationInfo.destination)
+        }
     }) {
         Column(Modifier.padding(10.dp), horizontalAlignment = Alignment.CenterHorizontally) {
             val name = stringResource(id = destinationInfo.name)

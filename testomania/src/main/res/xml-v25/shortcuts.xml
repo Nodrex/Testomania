@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <shortcut
+    <!--<shortcut
         android:enabled="true"
         android:icon="@drawable/ic_math"
         android:shortcutId="Math"
@@ -12,14 +12,14 @@
             android:data="testomania://home/skillz"
             android:targetClass="com.earth.testomania.MainActivity"
             android:targetPackage="com.earth.testomania" />
-    </shortcut>
+    </shortcut>-->
 
     <shortcut
         android:enabled="true"
-        android:icon="@drawable/ic_laptop"
+        android:icon="@drawable/ic_orbit_dashboard"
         android:shortcutId="ComputerScience"
         android:shortcutLongLabel="@string/technical_tests"
-        android:shortcutShortLabel="@string/technical_tests_short_name">
+        android:shortcutShortLabel="@string/technical_tests">
         <intent
             android:action="android.intent.action.VIEW"
             android:data="testomania://home/technical_tests"
@@ -27,7 +27,7 @@
             android:targetPackage="com.earth.testomania" />
     </shortcut>
 
-    <shortcut
+    <!--<shortcut
         android:enabled="true"
         android:icon="@drawable/ic_driver_license"
         android:shortcutId="Driver License"
@@ -37,6 +37,6 @@
             android:action="android.intent.action.VIEW"
             android:targetClass="com.earth.testomania.MainActivity"
             android:targetPackage="com.earth.testomania" />
-    </shortcut>
+    </shortcut>-->
 
 </shortcuts>
