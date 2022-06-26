@@ -1,5 +1,6 @@
 package com.earth.testomania.presentation.home
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -8,12 +9,15 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.earth.testomania.R
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kiwi.orbit.compose.ui.controls.Card
@@ -28,22 +32,45 @@ import kiwi.orbit.compose.ui.controls.Icon
 fun HomeScreen(
     navigator: DestinationsNavigator? = null,
 ) {
-
     val viewModel: HomeScreenViewModel = hiltViewModel()
 
-    val contentPadding = 20.dp
-
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(2),
-        modifier = Modifier.systemBarsPadding(),
-        contentPadding = PaddingValues(contentPadding),
-        horizontalArrangement = Arrangement.spacedBy(contentPadding),
-        verticalArrangement = Arrangement.spacedBy(contentPadding)
+    ConstraintLayout(
+        modifier = Modifier
+            .fillMaxSize()
+            .systemBarsPadding()
     ) {
-        items(viewModel.destinations.size) { index ->
-            val item = viewModel.destinations[index]
-            CardButton(item, navigator)
+        val (grid, illustration) = createRefs()
+
+        val contentPadding = 20.dp
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+            modifier = Modifier
+                .constrainAs(grid) {
+                    bottom.linkTo(parent.bottom)
+                }
+                .systemBarsPadding(),
+            contentPadding = PaddingValues(contentPadding),
+            horizontalArrangement = Arrangement.spacedBy(contentPadding),
+            verticalArrangement = Arrangement.spacedBy(contentPadding)
+        ) {
+            items(viewModel.destinations.size) { index ->
+                val item = viewModel.destinations[index]
+                CardButton(item, navigator)
+            }
         }
+
+        Image(
+            modifier = Modifier
+                .constrainAs(illustration) {
+                    bottom.linkTo(grid.top)
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                }
+                .fillMaxWidth(),
+            contentScale = ContentScale.Crop,
+            painter = painterResource(id = R.drawable.il_testomania),
+            contentDescription = null
+        )
     }
 }
 
