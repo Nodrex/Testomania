@@ -20,7 +20,7 @@ class HomeScreenViewModel @Inject constructor(
         ),
         HomeDestinations(
             name = R.string.technical_tests,
-            icon = R.drawable.ic_laptop,
+            icon = R.drawable.ic_orbit_dashboard,
             destination = TechnicalTestsScreenDestination
         ),
         HomeDestinations(

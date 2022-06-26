@@ -1,6 +1,5 @@
 package com.earth.testomania.presentation.home
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -18,6 +17,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kiwi.orbit.compose.ui.controls.Card
+import kiwi.orbit.compose.ui.controls.Icon
 
 @Preview(showSystemUi = true)
 @Destination(
@@ -33,11 +33,13 @@ fun HomeScreen(
 
     val contentPadding = 20.dp
 
-    LazyVerticalGrid(columns = GridCells.Fixed(2),
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(2),
         modifier = Modifier.systemBarsPadding(),
         contentPadding = PaddingValues(contentPadding),
         horizontalArrangement = Arrangement.spacedBy(contentPadding),
-        verticalArrangement = Arrangement.spacedBy(contentPadding)) {
+        verticalArrangement = Arrangement.spacedBy(contentPadding)
+    ) {
         items(viewModel.destinations.size) { index ->
             val item = viewModel.destinations[index]
             CardButton(item, navigator)
@@ -54,11 +56,14 @@ fun CardButton(
         navigator?.navigate(destinationInfo.destination)
     }) {
         Column(Modifier.padding(10.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-            Image(painter = painterResource(id = destinationInfo.icon),
-                modifier = Modifier.size(40.dp),
-                contentDescription = null)
+            val name = stringResource(id = destinationInfo.name)
+            Icon(
+                painter = painterResource(id = destinationInfo.icon),
+                contentDescription = name,
+                Modifier.size(40.dp)
+            )
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                Text(text = stringResource(id = destinationInfo.name), textAlign = TextAlign.Center)
+                Text(text = name, textAlign = TextAlign.Center)
             }
         }
     }
