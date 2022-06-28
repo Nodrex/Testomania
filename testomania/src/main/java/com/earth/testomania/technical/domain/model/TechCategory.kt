@@ -15,6 +15,7 @@ enum class TechCategory(val strValue: String, val illustration: Int) {
     WordPress("wordpress", R.drawable.il_wordpress),
     Code("code", R.drawable.il_code),
     DevOps("devops", R.drawable.il_devops),
+    CSS("css", R.drawable.il_css),
     UNKNOWN("unknown", R.drawable.il_unknown);
 
     companion object {
