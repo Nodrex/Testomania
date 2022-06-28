@@ -13,8 +13,9 @@ enum class TechCategory(val strValue: String, val illustration: Int) {
     HTML("HTML", R.drawable.il_html),
     SQL("SQL", R.drawable.il_sql),
     WordPress("wordpress", R.drawable.il_wordpress),
-    UNKNOWN("unknown", R.drawable.il_unknown),
-    Code("code", R.drawable.il_code);
+    Code("code", R.drawable.il_code),
+    DevOps("devops", R.drawable.il_devops),
+    UNKNOWN("unknown", R.drawable.il_unknown);
 
     companion object {
         fun findIllustrationByCategory(category: String) =
