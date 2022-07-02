@@ -1,0 +1,4 @@
+<resources>
+
+    <style name="Theme.Testomania" parent="android:Theme.Material.NoActionBar" />
+</resources>
