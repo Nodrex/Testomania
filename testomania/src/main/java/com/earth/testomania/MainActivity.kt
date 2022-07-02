@@ -59,7 +59,7 @@ fun Testomania() {
 
     BottomSheetScaffold(
         scaffoldState = state,
-        sheetPeekHeight = 0.dp,
+        //sheetPeekHeight = 0.dp,
         sheetContent = {
             CreateAboutBottomSheet()
         }) {
