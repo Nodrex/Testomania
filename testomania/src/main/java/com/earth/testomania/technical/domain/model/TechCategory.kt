@@ -17,7 +17,7 @@ enum class TechCategory(val strValue: String, val illustration: Int) {
     Code("code", R.drawable.il_code);
 
     companion object {
-        fun findIllustrationByCategory(category: String) =
+        fun findIllustrationFrom(category: String) =
             values().find {
                 category.contains(it.strValue, ignoreCase = true)
             } ?: UNKNOWN
