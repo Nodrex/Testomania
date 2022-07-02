@@ -13,4 +13,6 @@
         On the other hand, this App is useful to kill time while learning new things.
         App\'s code is open source and everyone can contribute, add his own category, fix bugs, or add features.
     Enjoy and for more information see App on Github:</string>
+    <string name="app_github_url">https://github.com/Nodrex/Testomania</string>
+    <string name="creator_developers">Creator Developers:</string>
 </resources>
