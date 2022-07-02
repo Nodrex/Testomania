@@ -27,6 +27,11 @@ class HomeScreenViewModel @Inject constructor(
             name = R.string.driving_license_tests,
             icon = R.drawable.ic_driver_license,
             destination = DummyScreenDestination
+        ),
+        HomeDestinations(
+            name = R.string.about,
+            icon = R.drawable.ic_orbit_information_circle,
+            destination = DummyScreenDestination
         )
     )
 }

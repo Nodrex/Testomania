@@ -3,6 +3,7 @@
     <string name="general_skills_tests_short_name">Skills</string>
     <string name="general_skills_tests">Skills (Math)</string>
     <string name="driving_license_tests">Driving licence</string>
+    <string name="about">About</string>
     <string name="technical_tests">Informational technologies</string>
     <string name="title_name">Testomania</string>
     <string name="error_load">Was not able to load tests, please try again later</string>
