@@ -10,12 +10,12 @@ import com.earth.testomania.technical.domain.model.TechCategory
 
 @Composable
 fun CategoryIllustration(modifier: Modifier, category: String) {
-    TechCategory.findIllustrationFrom(category).apply {
+    TechCategory.findSpecific(category).apply {
         Image(
             modifier = modifier.fillMaxWidth(),
             contentScale = ContentScale.Crop,
             painter = painterResource(id = illustration),
-            contentDescription = strValue
+            contentDescription = this.category
         )
     }
 }

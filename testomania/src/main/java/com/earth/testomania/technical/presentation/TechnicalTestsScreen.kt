@@ -31,7 +31,7 @@ fun TechnicalTestsScreen() {
 
     val data = viewModel.data
 
-    if (data.isEmpty()) CreateLoadingScreen()
+    if (data.isEmpty()) LoadingScreen()
     else CreateQuizScreen(data)
 }
 

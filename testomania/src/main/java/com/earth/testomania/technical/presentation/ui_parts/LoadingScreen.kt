@@ -14,10 +14,10 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import com.earth.testomania.core.presentation.custom.TestomaniaInlineLoading
 import com.earth.testomania.technical.domain.model.TechCategory
 import kotlinx.coroutines.delay
-import java.util.concurrent.TimeUnit
+import kotlin.time.Duration.Companion.seconds
 
 @Composable
-fun CreateLoadingScreen() {
+fun LoadingScreen() {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxSize()
@@ -43,7 +43,7 @@ fun CreateLoadingScreen() {
         LaunchedEffect(key1 = true) {
             while (true) {
                 techCategory = TechCategory.values().random()
-                delay(TimeUnit.SECONDS.toMillis(2))
+                delay(2.seconds)
             }
         }
 
@@ -58,7 +58,7 @@ fun CreateLoadingScreen() {
                 .fillMaxWidth(),
             contentScale = ContentScale.Crop,
             painter = painterResource(id = techCategory.illustration),
-            contentDescription = techCategory.strValue
+            contentDescription = techCategory.category
         )
     }
 }
