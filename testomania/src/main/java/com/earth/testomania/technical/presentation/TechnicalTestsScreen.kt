@@ -6,6 +6,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -87,8 +88,8 @@ private fun CreateScreen(techQuizList: List<TechQuizWrapper>) {
                 bottom.linkTo(parent.bottom)
             }, horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.End)) {
 
-            ButtonSecondary(onClick = { /*TODO*/ }, Modifier.weight(1f)) {
-                Text(text = "Finish")
+            ButtonSecondary(onClick = { /*TODO show finish screen*/ }, Modifier.weight(1f)) {
+                Text(text = stringResource(R.string.navigation_finish))
 
             }
             val scope = rememberCoroutineScope()
@@ -98,7 +99,7 @@ private fun CreateScreen(techQuizList: List<TechQuizWrapper>) {
                     pagerState.animateScrollToPage(pagerState.currentPage + 1)
                 }
             }, Modifier.weight(1f)) {
-                Text(text = "Next")
+                Text(text = stringResource(R.string.navigation_next))
                 Icon(painter = painterResource(id = R.drawable.ic_orbit_chevron_right),
                     contentDescription = "")
             }
