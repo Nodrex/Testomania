@@ -9,7 +9,7 @@ import androidx.compose.ui.res.painterResource
 import com.earth.testomania.technical.domain.model.TechCategory
 
 @Composable
-fun CategoryIllustration(modifier: Modifier, category: String) {
+fun CategoryIllustration(modifier: Modifier = Modifier, category: String) {
     TechCategory.findSpecific(category).apply {
         Image(
             modifier = modifier.fillMaxWidth(),
