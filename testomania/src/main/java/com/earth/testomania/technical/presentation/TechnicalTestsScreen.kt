@@ -11,10 +11,7 @@ import androidx.constraintlayout.compose.Dimension
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.core.helper.defaultTechQuizWrapper
 import com.earth.testomania.technical.domain.model.TechQuizWrapper
-import com.earth.testomania.technical.presentation.ui_parts.CategoryIllustration
-import com.earth.testomania.technical.presentation.ui_parts.CreateQuizAnswerUI
-import com.earth.testomania.technical.presentation.ui_parts.CreateQuizUI
-import com.earth.testomania.technical.presentation.ui_parts.OverallProgress
+import com.earth.testomania.technical.presentation.ui_parts.*
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
@@ -34,12 +31,13 @@ fun TechnicalTestsScreen() {
 
     val data = viewModel.data
 
-    if (data.isNotEmpty()) CreateScreen(data)
+    if (data.isEmpty()) LoadingScreen()
+    else CreateQuizScreen(data)
 }
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-private fun CreateScreen(techQuizList: List<TechQuizWrapper>) {
+private fun CreateQuizScreen(techQuizList: List<TechQuizWrapper>) {
     val pagerState = rememberPagerState()
 
     var currentProgress by remember {
@@ -123,13 +121,11 @@ private fun QuestionAndAnswers(
                 }
             }
         }
-
-
     }
 }
 
 @Preview
 @Composable
 private fun PreviewComposeUI() {
-    CreateScreen(listOf(defaultTechQuizWrapper()))
+    CreateQuizScreen(listOf(defaultTechQuizWrapper()))
 }

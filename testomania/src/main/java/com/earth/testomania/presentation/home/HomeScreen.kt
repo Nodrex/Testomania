@@ -1,6 +1,5 @@
 package com.earth.testomania.presentation.home
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -34,7 +33,6 @@ fun HomeScreen(
 
     val contentPadding = 20.dp
 
-    @OptIn(ExperimentalFoundationApi::class)
     LazyVerticalGrid(columns = GridCells.Fixed(2),
         modifier = Modifier.systemBarsPadding(),
         contentPadding = PaddingValues(contentPadding),
