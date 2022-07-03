@@ -28,6 +28,7 @@ import kiwi.orbit.compose.ui.controls.ButtonPrimary
 import kiwi.orbit.compose.ui.controls.ButtonSecondary
 import kiwi.orbit.compose.ui.controls.Icon
 import kiwi.orbit.compose.ui.controls.Text
+import kotlinx.coroutines.launch
 
 @Destination(
     route = "home/technical_tests",
@@ -90,7 +91,13 @@ private fun CreateScreen(techQuizList: List<TechQuizWrapper>) {
                 Text(text = "Finish")
 
             }
-            ButtonPrimary(onClick = { /*TODO*/ }, Modifier.weight(1f)) {
+            val scope = rememberCoroutineScope()
+
+            ButtonPrimary(onClick = {
+                scope.launch {
+                    pagerState.animateScrollToPage(pagerState.currentPage + 1)
+                }
+            }, Modifier.weight(1f)) {
                 Text(text = "Next")
                 Icon(painter = painterResource(id = R.drawable.ic_orbit_chevron_right),
                     contentDescription = "")
