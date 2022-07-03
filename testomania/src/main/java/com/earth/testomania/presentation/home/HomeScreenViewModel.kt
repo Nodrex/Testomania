@@ -14,9 +14,9 @@ class HomeScreenViewModel @Inject constructor(
 ) : ViewModel() {
     val destinations = listOf(
         HomeDestinations(
-            name = R.string.general_skills_tests,
-            icon = R.drawable.ic_math,
-            destination = SkillzTestScreenDestination
+            name = R.string.about,
+            icon = R.drawable.ic_orbit_information_circle,
+            destination = DummyScreenDestination
         ),
         HomeDestinations(
             name = R.string.technical_tests,
@@ -24,13 +24,13 @@ class HomeScreenViewModel @Inject constructor(
             destination = TechnicalTestsScreenDestination
         ),
         HomeDestinations(
-            name = R.string.driving_license_tests,
-            icon = R.drawable.ic_driver_license,
-            destination = DummyScreenDestination
+            name = R.string.general_skills_tests,
+            icon = R.drawable.ic_math,
+            destination = SkillzTestScreenDestination
         ),
         HomeDestinations(
-            name = R.string.about,
-            icon = R.drawable.ic_orbit_information_circle,
+            name = R.string.driving_license_tests,
+            icon = R.drawable.ic_driver_license,
             destination = DummyScreenDestination
         )
     )

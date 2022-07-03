@@ -9,7 +9,7 @@
     <string name="error_load">Was not able to load tests, please try again later</string>
     <string name="error_generic">Some Error occurred, please try again later</string>
     <string name="about_app">This App\'s main purpose is to demonstrate code excellence for android with
-        Bob Uncle\'s clean architecture and modern latest libraries and components.
+        clean architecture and modern latest libraries and components.
         On the other hand, this App is useful to kill time while learning new things.
         App\'s code is open source and everyone can contribute, add his own category, fix bugs, or add features.
     Enjoy and for more information see App on Github:</string>

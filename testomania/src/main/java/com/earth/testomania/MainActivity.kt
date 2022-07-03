@@ -59,7 +59,10 @@ fun Testomania() {
 
     BottomSheetScaffold(
         scaffoldState = state,
-        //sheetPeekHeight = 0.dp,
+        sheetPeekHeight = 0.dp,
+        /*snackbarHost = {
+            state.snackbarHostState
+        },*/
         sheetContent = {
             CreateAboutBottomSheet()
         }) {

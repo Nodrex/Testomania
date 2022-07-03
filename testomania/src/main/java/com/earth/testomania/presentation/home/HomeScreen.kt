@@ -5,8 +5,12 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.SnackbarHostState
 import androidx.compose.material.Text
+import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -24,6 +28,7 @@ import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kiwi.orbit.compose.ui.controls.Card
 import kiwi.orbit.compose.ui.controls.Icon
+import kotlinx.coroutines.launch
 
 @Preview(showSystemUi = true)
 @Destination(
@@ -81,9 +86,21 @@ fun CardButton(
     destinationInfo: HomeDestinations,
     navigator: DestinationsNavigator? = null,
 ) {
+
+    val scope = rememberCoroutineScope()
+    //val snackbarHostState = remember { SnackbarHostState() }
+
+    //val scaffoldState =  rememberScaffoldState()
+
     Card(modifier = Modifier.size(125.dp), shape = RoundedCornerShape(10.dp), onClick = {
         when (destinationInfo.destination.route) {
-            SKILLZ_ROUT, DUMMY_ROUT -> return@Card
+            SKILLZ_ROUT, DUMMY_ROUT -> {
+                scope.launch {
+                    //snackbarHostState.showSnackbar("Coming soon...")
+                    //scaffoldState.snackbarHostState.showSnackbar("Coming soon...")
+                }
+                return@Card
+            }
             else -> navigator?.navigate(destinationInfo.destination)
         }
     }) {
