@@ -128,9 +128,15 @@ private fun QuestionAndAnswers(
                 }
                 .fillMaxWidth(), techQuizList[page])
 
-            CategoryIllustration(modifier = Modifier.constrainAs(illustration) {
+            BoxWithConstraints(modifier = Modifier.constrainAs(illustration) {
                 top.linkTo(question.bottom)
-            }, techQuizList[page].quiz.category)
+                bottom.linkTo(answers.top)
+                height = Dimension.fillToConstraints
+            }) {
+                if (maxHeight > 100.dp) {
+                    CategoryIllustration(category = techQuizList[page].quiz.category)
+                }
+            }
 
             LazyColumn(
                 modifier = Modifier
