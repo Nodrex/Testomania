@@ -58,7 +58,7 @@ fun CreateAboutBottomSheet() {
     }
 
     Text(
-        modifier = Modifier.padding(start = 12.dp, bottom = 8.dp),
+        modifier = Modifier.padding(start = 12.dp, bottom = 8.dp, end = 10.dp),
         fontSize = 14.sp,
         maxLines = 1,
         overflow = TextOverflow.Ellipsis,

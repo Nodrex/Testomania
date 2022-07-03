@@ -2,7 +2,7 @@ package com.earth.testomania.technical.domain.model
 
 import com.earth.testomania.R
 
-enum class TechCategory(val strValue: String, val illustration: Int) {
+enum class TechCategory(val category: String, val illustration: Int) {
     Linux("Linux", R.drawable.il_os),
     JavaScript("javascript", R.drawable.il_js),
     PHP("PHP", R.drawable.il_html),
@@ -20,7 +20,7 @@ enum class TechCategory(val strValue: String, val illustration: Int) {
     companion object {
         fun findSpecific(category: String) =
             values().find {
-                category.contains(it.strValue, ignoreCase = true)
+                category.contains(it.category, ignoreCase = true)
             } ?: UNKNOWN
     }
 }
