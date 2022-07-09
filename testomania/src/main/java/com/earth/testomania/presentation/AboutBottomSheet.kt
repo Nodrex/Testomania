@@ -18,12 +18,15 @@ import androidx.core.content.ContextCompat.startActivity
 import com.earth.testomania.R
 import com.earth.testomania.core.Developer
 import com.earth.testomania.core.developers
+import com.ramcosta.composedestinations.annotation.Destination
 import kiwi.orbit.compose.ui.controls.ChoiceTile
 import kiwi.orbit.compose.ui.controls.Icon
 
+const val ABOUT_ROUT = "home/about"
 
+@Destination(route = ABOUT_ROUT)
 @Composable
-fun CreateAboutBottomSheet() {
+fun AboutBottomSheet() {
 
     val context = LocalContext.current
     val appGithubUrl = stringResource(id = R.string.app_github_url)

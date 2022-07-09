@@ -2,6 +2,7 @@ package com.earth.testomania.presentation.home
 
 import androidx.lifecycle.ViewModel
 import com.earth.testomania.R
+import com.earth.testomania.destinations.AboutBottomSheetDestination
 import com.earth.testomania.destinations.DummyScreenDestination
 import com.earth.testomania.destinations.SkillzTestScreenDestination
 import com.earth.testomania.destinations.TechnicalTestsScreenDestination
@@ -16,7 +17,7 @@ class HomeScreenViewModel @Inject constructor(
         HomeDestinations(
             name = R.string.about,
             icon = R.drawable.ic_orbit_information_circle,
-            destination = DummyScreenDestination
+            destination = AboutBottomSheetDestination
         ),
         HomeDestinations(
             name = R.string.technical_tests,

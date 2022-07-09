@@ -21,7 +21,8 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.R
-import com.earth.testomania.presentation.CreateAboutBottomSheet
+import com.earth.testomania.presentation.ABOUT_ROUT
+import com.earth.testomania.presentation.AboutBottomSheet
 import com.earth.testomania.presentation.dummy.DUMMY_ROUT
 import com.earth.testomania.skills.presentation.skillz.SKILLZ_ROUT
 import com.ramcosta.composedestinations.annotation.Destination
@@ -46,30 +47,23 @@ fun HomeScreen(
         sheetPeekHeight = 0.dp,
         scaffoldState = scaffoldState,
         sheetContent = {
-            CreateAboutBottomSheet()
+            AboutBottomSheet()
         }) {
-
-        HomeScreenContent(navigator, scaffoldState)
-
-        /*Button(onClick = {
-            coroutineScope.launch {
-                if (sheetState.isCollapsed) sheetState.expand()
-                else sheetState.collapse()
-            }
-        }) {
-
-        }*/
+        HomeScreenContent(
+            navigator,
+            scaffoldState,
+            bottomSheetState
+        )
     }
-
 
 }
 
 @Composable
 fun HomeScreenContent(
     navigator: DestinationsNavigator?,
-    scaffoldState: BottomSheetScaffoldState
+    scaffoldState: BottomSheetScaffoldState,
+    bottomSheetState: BottomSheetState
 ) {
-
     val viewModel: HomeScreenViewModel = hiltViewModel()
 
     ConstraintLayout(
@@ -93,7 +87,12 @@ fun HomeScreenContent(
         ) {
             items(viewModel.destinations.size) { index ->
                 val item = viewModel.destinations[index]
-                CardButton(item, navigator, scaffoldState)
+                CardButton(
+                    item,
+                    navigator,
+                    scaffoldState,
+                    bottomSheetState
+                )
             }
         }
 
@@ -116,7 +115,8 @@ fun HomeScreenContent(
 fun CardButton(
     destinationInfo: HomeDestinations,
     navigator: DestinationsNavigator? = null,
-    scaffoldState: BottomSheetScaffoldState
+    scaffoldState: BottomSheetScaffoldState,
+    bottomSheetState: BottomSheetState
 ) {
     val scope = rememberCoroutineScope()
 
@@ -127,6 +127,12 @@ fun CardButton(
                     scaffoldState.snackbarHostState.showSnackbar("Coming soon...") //TODO enrich, like add dismissible 
                 }
                 return@Card
+            }
+            ABOUT_ROUT -> {
+                scope.launch {
+                    if (bottomSheetState.isCollapsed) bottomSheetState.expand()
+                    else bottomSheetState.collapse()
+                }
             }
             else -> navigator?.navigate(destinationInfo.destination)
         }
