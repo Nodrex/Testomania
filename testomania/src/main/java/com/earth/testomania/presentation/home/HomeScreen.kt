@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalMaterialApi::class)
+
 package com.earth.testomania.presentation.home
 
 import androidx.compose.foundation.Image
@@ -5,11 +7,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.SnackbarHostState
-import androidx.compose.material.Text
-import androidx.compose.material.rememberScaffoldState
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.R
+import com.earth.testomania.presentation.CreateAboutBottomSheet
 import com.earth.testomania.presentation.dummy.DUMMY_ROUT
 import com.earth.testomania.skills.presentation.skillz.SKILLZ_ROUT
 import com.ramcosta.composedestinations.annotation.Destination
@@ -39,6 +39,37 @@ import kotlinx.coroutines.launch
 fun HomeScreen(
     navigator: DestinationsNavigator? = null,
 ) {
+    val bottomSheetState = rememberBottomSheetState(initialValue = BottomSheetValue.Collapsed)
+    val scaffoldState = rememberBottomSheetScaffoldState(bottomSheetState = bottomSheetState)
+
+    BottomSheetScaffold(
+        sheetPeekHeight = 0.dp,
+        scaffoldState = scaffoldState,
+        sheetContent = {
+            CreateAboutBottomSheet()
+        }) {
+
+        HomeScreenContent(navigator, scaffoldState)
+
+        /*Button(onClick = {
+            coroutineScope.launch {
+                if (sheetState.isCollapsed) sheetState.expand()
+                else sheetState.collapse()
+            }
+        }) {
+
+        }*/
+    }
+
+
+}
+
+@Composable
+fun HomeScreenContent(
+    navigator: DestinationsNavigator?,
+    scaffoldState: BottomSheetScaffoldState
+) {
+
     val viewModel: HomeScreenViewModel = hiltViewModel()
 
     ConstraintLayout(
@@ -62,7 +93,7 @@ fun HomeScreen(
         ) {
             items(viewModel.destinations.size) { index ->
                 val item = viewModel.destinations[index]
-                CardButton(item, navigator)
+                CardButton(item, navigator, scaffoldState)
             }
         }
 
@@ -85,19 +116,15 @@ fun HomeScreen(
 fun CardButton(
     destinationInfo: HomeDestinations,
     navigator: DestinationsNavigator? = null,
+    scaffoldState: BottomSheetScaffoldState
 ) {
-
     val scope = rememberCoroutineScope()
-    //val snackbarHostState = remember { SnackbarHostState() }
-
-    //val scaffoldState =  rememberScaffoldState()
 
     Card(modifier = Modifier.size(125.dp), shape = RoundedCornerShape(10.dp), onClick = {
         when (destinationInfo.destination.route) {
             SKILLZ_ROUT, DUMMY_ROUT -> {
                 scope.launch {
-                    //snackbarHostState.showSnackbar("Coming soon...")
-                    //scaffoldState.snackbarHostState.showSnackbar("Coming soon...")
+                    scaffoldState.snackbarHostState.showSnackbar("Coming soon...") //TODO enrich, like add dismissible 
                 }
                 return@Card
             }

@@ -48,38 +48,13 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun Testomania() {
     val navController: NavHostController = rememberNavController()
 
-    val sheetState = rememberBottomSheetState(initialValue = BottomSheetValue.Collapsed)
-    val state = rememberBottomSheetScaffoldState(bottomSheetState = sheetState)
-    val coroutineScope = rememberCoroutineScope()
-
-    BottomSheetScaffold(
-        scaffoldState = state,
-        sheetPeekHeight = 0.dp,
-        /*snackbarHost = {
-            state.snackbarHostState
-        },*/
-        sheetContent = {
-            CreateAboutBottomSheet()
-        }) {
-
-        TestomaniaNavigation(
-            navHostController = navController
-        )
-
-        /*Button(onClick = {
-            coroutineScope.launch {
-                if (sheetState.isCollapsed) sheetState.expand()
-                else sheetState.collapse()
-            }
-        }) {
-
-        }*/
-    }
+    TestomaniaNavigation(
+        navHostController = navController
+    )
 }
 
 @Composable
