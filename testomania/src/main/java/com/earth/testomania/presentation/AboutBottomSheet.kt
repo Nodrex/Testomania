@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat.startActivity
 import com.earth.testomania.R
 import com.earth.testomania.core.Developer
+import com.earth.testomania.core.developers
 import kiwi.orbit.compose.ui.controls.ChoiceTile
 import kiwi.orbit.compose.ui.controls.Icon
 
@@ -65,11 +66,9 @@ fun CreateAboutBottomSheet() {
         text = stringResource(id = R.string.creator_developers)
     )
 
-    AboutDeveloper(Developer.GIORGI_SHALVASHVILI)
-    AboutDeveloper(Developer.KARTLOS_DIAKONIDZE)
-    AboutDeveloper(Developer.NODAR_TCHUMBADZE)
-    AboutDeveloper(Developer.NIKA_MGALOBLISHVILI)
-    AboutDeveloper(Developer.LIKA_GLONTI)
+    developers.forEach {
+        AboutDeveloper(it)
+    }
 }
 
 @Composable
