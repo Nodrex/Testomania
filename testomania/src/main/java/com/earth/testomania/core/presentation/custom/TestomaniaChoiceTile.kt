@@ -37,6 +37,7 @@ fun TestomaniaChoiceTile(
     onSelect: () -> Unit,
     modifier: Modifier = Modifier,
     content: @Composable (() -> Unit)? = null,
+    indicateWithoutSelection: Boolean = false,
 ) {
     val color by animateColorAsState(
         targetValue = when (selected) {
@@ -63,6 +64,7 @@ fun TestomaniaChoiceTile(
                 toggleColorType = toggleColorType,
                 content = content,
                 selected = selected,
+                indicateWithoutSelection = indicateWithoutSelection
             )
         }
     }
@@ -73,6 +75,7 @@ private fun ChoiceTileFooter(
     toggleColorType: AnswerTileState,
     content: @Composable (() -> Unit)?,
     selected: Boolean,
+    indicateWithoutSelection: Boolean = false,
 ) {
     Row(
         Modifier.padding(top = 12.dp)
@@ -95,7 +98,7 @@ private fun ChoiceTileFooter(
         }
 
         Radio(
-            selected = selected,
+            selected = selected || indicateWithoutSelection,
             onClick = null,
             toggleColorType = toggleColorType,
             modifier = Modifier

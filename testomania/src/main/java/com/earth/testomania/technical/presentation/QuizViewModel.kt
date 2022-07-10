@@ -7,7 +7,7 @@ import com.earth.testomania.R
 import com.earth.testomania.core.DataState
 import com.earth.testomania.core.coroutines.defaultCoroutineExceptionHandler
 import com.earth.testomania.technical.domain.model.SelectedAnswer
-import com.earth.testomania.technical.domain.model.TechQuizWrapper
+import com.earth.testomania.technical.domain.model.TechQuizItemWrapper
 import com.earth.testomania.technical.domain.use_case.GetQuizListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
@@ -25,8 +25,8 @@ class QuizViewModel @Inject constructor(
 
     private var getQuizListJob: Job? = null
 
-    private val _data = mutableStateListOf<TechQuizWrapper>()
-    val data: List<TechQuizWrapper> = _data
+    private val _data = mutableStateListOf<TechQuizItemWrapper>()
+    val data: List<TechQuizItemWrapper> = _data
 
     private val _loading = MutableStateFlow(false)
     val loading = _loading.asStateFlow()
@@ -57,9 +57,9 @@ class QuizViewModel @Inject constructor(
         }
     }
 
-    fun saveAnswer(techQuizWrapper: TechQuizWrapper, selectedAnswerKey: String) {
-        saveQuizPoint(techQuizWrapper, selectedAnswerKey)
-        val index = _data.indexOf(techQuizWrapper)
+    fun saveAnswer(techQuizItemWrapper: TechQuizItemWrapper, selectedAnswerKey: String) {
+        saveQuizPoint(techQuizItemWrapper, selectedAnswerKey)
+        val index = _data.indexOf(techQuizItemWrapper)
         val newItem = _data.removeAt(index).let {
             it.copy(
                 quiz = it.quiz,
@@ -76,39 +76,39 @@ class QuizViewModel @Inject constructor(
         _data.add(index, newItem)
     }
 
-    private fun saveQuizPoint(techQuizWrapper: TechQuizWrapper, selectedAnswerKey: String) {
-        if (techQuizWrapper.quiz.hasMultiAnswer) return
-        if (isCorrectAnswer(techQuizWrapper, selectedAnswerKey)) techQuizWrapper.point = 1
+    private fun saveQuizPoint(techQuizItemWrapper: TechQuizItemWrapper, selectedAnswerKey: String) {
+        if (techQuizItemWrapper.quiz.hasMultiAnswer) return
+        if (isCorrectAnswer(techQuizItemWrapper, selectedAnswerKey)) techQuizItemWrapper.point = 1
     }
 
     fun isCorrectAnswer(
-        techQuizWrapper: TechQuizWrapper,
+        techQuizItemWrapper: TechQuizItemWrapper,
         possibleAnswerKey: String
-    ) = techQuizWrapper.quiz.correctAnswers[possibleAnswerKey] ?: false
+    ) = techQuizItemWrapper.quiz.correctAnswers[possibleAnswerKey] ?: false
 
-    fun wasAlreadyAnswered(techQuizWrapper: TechQuizWrapper, possibleAnswerKey: String) =
-        techQuizWrapper.selectedAnswers.find { it.selectedKey == possibleAnswerKey } != null ||
-                (techQuizWrapper.selectedAnswers.isNotEmpty() &&
-                        !techQuizWrapper.quiz.hasMultiAnswer &&
+    fun wasAlreadyAnswered(techQuizItemWrapper: TechQuizItemWrapper, possibleAnswerKey: String) =
+        techQuizItemWrapper.selectedAnswers.find { it.selectedKey == possibleAnswerKey } != null ||
+                (techQuizItemWrapper.selectedAnswers.isNotEmpty() &&
+                        !techQuizItemWrapper.quiz.hasMultiAnswer &&
                         isCorrectAnswer(
-                            techQuizWrapper,
+                            techQuizItemWrapper,
                             possibleAnswerKey
                         ))
 
-    fun enableAnswerSelection(techQuizWrapper: TechQuizWrapper) =
-        if (techQuizWrapper.quiz.hasMultiAnswer) !techQuizWrapper.multiSelectionWasDone.value else techQuizWrapper.selectedAnswers.isEmpty()
+    fun enableAnswerSelection(techQuizItemWrapper: TechQuizItemWrapper) =
+        if (techQuizItemWrapper.quiz.hasMultiAnswer) !techQuizItemWrapper.multiSelectionWasDone.value else techQuizItemWrapper.selectedAnswers.isEmpty()
 
-    fun multiSelectionWasDone(techQuizWrapper: TechQuizWrapper) {
-        saveMultiSelectQuizPoint(techQuizWrapper)
-        techQuizWrapper.multiSelectionWasDone.value = true
+    fun multiSelectionWasDone(techQuizItemWrapper: TechQuizItemWrapper) {
+        saveMultiSelectQuizPoint(techQuizItemWrapper)
+        techQuizItemWrapper.multiSelectionWasDone.value = true
     }
 
-    private fun saveMultiSelectQuizPoint(techQuizWrapper: TechQuizWrapper) {
-        if (!techQuizWrapper.quiz.hasMultiAnswer) return
-        techQuizWrapper.selectedAnswers.forEach {
-            if (!isCorrectAnswer(techQuizWrapper, it.selectedKey)) return
+    private fun saveMultiSelectQuizPoint(techQuizItemWrapper: TechQuizItemWrapper) {
+        if (!techQuizItemWrapper.quiz.hasMultiAnswer) return
+        techQuizItemWrapper.selectedAnswers.forEach {
+            if (!isCorrectAnswer(techQuizItemWrapper, it.selectedKey)) return
         }
-        techQuizWrapper.point = 1
+        techQuizItemWrapper.point = 1
     }
 
     fun getQuizResult() = data.sumOf {

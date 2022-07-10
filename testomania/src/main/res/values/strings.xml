@@ -1,13 +1,20 @@
 <resources>
     <string name="app_name">Testomania</string>
-    <string name="general_skills_tests_short_name">უნარები</string>
-    <string name="general_skills_tests">უნარები (მათემატიკური)</string>
-    <string name="driving_license_tests">მართვის მოწმობა</string>
-    <string name="technical_tests">ინფორმაციული ტექნოლოგიები</string>
-    <string name="technical_tests_short_name">ისტი</string>
+    <string name="general_skills_tests_short_name">Skills</string>
+    <string name="general_skills_tests">Skills (Math)</string>
+    <string name="driving_license_tests">Driving licence</string>
+    <string name="about">About</string>
+    <string name="technical_tests">Informational technologies</string>
     <string name="title_name">Testomania</string>
     <string name="error_load">Was not able to load tests, please try again later</string>
     <string name="error_generic">Some Error occurred, please try again later</string>
+    <string name="about_app">This App\'s main purpose is to demonstrate code excellence for android with
+        clean architecture and modern latest libraries and components.
+        On the other hand, this App is useful to kill time while learning new things.
+        App\'s code is open source and everyone can contribute, add his own category, fix bugs, or add features.
+    Enjoy and for more information see App on Github:</string>
+    <string name="app_github_url">https://github.com/Nodrex/Testomania</string>
+    <string name="creator_developers">Creator Developers:</string>
     <string name="navigation_finish">Finish</string>
     <string name="navigation_next">Next</string>
 </resources>

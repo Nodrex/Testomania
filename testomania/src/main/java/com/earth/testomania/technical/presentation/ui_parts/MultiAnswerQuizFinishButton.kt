@@ -12,11 +12,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.core.helper.defaultTechQuizWrapper
-import com.earth.testomania.technical.domain.model.TechQuizWrapper
+import com.earth.testomania.technical.domain.model.TechQuizItemWrapper
 import com.earth.testomania.technical.presentation.QuizViewModel
 
 @Composable
-fun CreateMultiAnswerQuizFinishButton(modifier: Modifier, techQuizWrapper: TechQuizWrapper) {
+fun CreateMultiAnswerQuizFinishButton(modifier: Modifier, techQuizItemWrapper: TechQuizItemWrapper) {
 
     val viewModel: QuizViewModel = hiltViewModel()
 
@@ -27,7 +27,7 @@ fun CreateMultiAnswerQuizFinishButton(modifier: Modifier, techQuizWrapper: TechQ
         horizontalArrangement = Arrangement.Center,
     ) {
         Button(onClick = {
-            viewModel.multiSelectionWasDone(techQuizWrapper)
+            viewModel.multiSelectionWasDone(techQuizItemWrapper)
         }) {
             Text(text = "Done")
         }
