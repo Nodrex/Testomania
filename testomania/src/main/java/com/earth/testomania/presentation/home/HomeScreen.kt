@@ -119,12 +119,13 @@ fun CardButton(
     bottomSheetState: BottomSheetState
 ) {
     val scope = rememberCoroutineScope()
+    val comingSoonStr = stringResource(id = R.string.coming_soon)
 
     Card(modifier = Modifier.size(125.dp), shape = RoundedCornerShape(10.dp), onClick = {
         when (destinationInfo.destination.route) {
             SKILLZ_ROUT, DUMMY_ROUT -> {
                 scope.launch {
-                    scaffoldState.snackbarHostState.showSnackbar("Coming soon...") //TODO enrich, like add dismissible
+                    scaffoldState.snackbarHostState.showSnackbar(comingSoonStr)
                 }
                 return@Card
             }
