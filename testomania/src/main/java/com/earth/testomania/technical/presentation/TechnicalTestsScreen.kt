@@ -97,6 +97,7 @@ private fun CreateQuizScreen(
 
             ButtonSecondary(
                 onClick = {
+                    navigator.navigateUp()
                     navigator.navigate(
                         ResultScreenDestination(
                             ResultDataCollectorUseCase().getTechnicalTestResult(techQuizList)
