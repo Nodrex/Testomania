@@ -1,6 +1,5 @@
 package com.earth.testomania.presentation.home
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -16,7 +15,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.earth.testomania.destinations.ResultScreenDestination
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kiwi.orbit.compose.ui.controls.Card
@@ -35,7 +33,6 @@ fun HomeScreen(
 
     val contentPadding = 20.dp
 
-    @OptIn(ExperimentalFoundationApi::class)
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         modifier = Modifier.systemBarsPadding(),

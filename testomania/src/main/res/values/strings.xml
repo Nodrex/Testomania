@@ -8,4 +8,6 @@
     <string name="title_name">Testomania</string>
     <string name="error_load">Was not able to load tests, please try again later</string>
     <string name="error_generic">Some Error occurred, please try again later</string>
+    <string name="navigation_finish">Finish</string>
+    <string name="navigation_next">Next</string>
 </resources>
