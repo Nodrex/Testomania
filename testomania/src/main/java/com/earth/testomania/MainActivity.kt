@@ -16,7 +16,6 @@ import com.ramcosta.composedestinations.rememberNavHostEngine
 import com.ramcosta.composedestinations.spec.NavHostEngine
 import dagger.hilt.android.AndroidEntryPoint
 import kiwi.orbit.compose.ui.OrbitTheme
-import kiwi.orbit.compose.ui.controls.Scaffold
 import kiwi.orbit.compose.ui.foundation.darkColors
 import kiwi.orbit.compose.ui.foundation.lightColors
 
@@ -49,11 +48,9 @@ class MainActivity : ComponentActivity() {
 fun Testomania() {
     val navController: NavHostController = rememberNavController()
 
-    Scaffold {
-        TestomaniaNavigation(
-            navHostController = navController
-        )
-    }
+    TestomaniaNavigation(
+        navHostController = navController
+    )
 }
 
 @Composable
