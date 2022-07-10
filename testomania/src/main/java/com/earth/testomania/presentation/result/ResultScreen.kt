@@ -103,7 +103,7 @@ fun IncorrectAnsweredQuestion(item: IncorrectAnsweredQuestionModel) {
     ) {
         Column(
             modifier = Modifier
-                .background(if (isSystemInDarkTheme()) IncorrectBkgDark else IncorrectBkg)
+                .background(OrbitTheme.colors.surface.main)
                 .padding(8.dp)
                 .fillMaxWidth(),
             verticalArrangement = Arrangement.spacedBy(8.dp),

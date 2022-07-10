@@ -10,10 +10,14 @@ class ResultDataCollectorUseCase {
             quizItem.selectedAnswers.isNotEmpty()
         } / techQuizList.size.toFloat()
 
+        val correctProgress = techQuizList.count {
+            it.point > 0
+        } / techQuizList.size.toFloat()
+
         val resultData = ResultData(
             "TechnicalTests",
             progress,
-            progress > 0.5,
+            correctProgress > 0.5,
             techQuizList
                 .filter {
                     it.selectedAnswers.isNotEmpty() && it.point == 0
