@@ -113,7 +113,15 @@ private fun CreateQuizScreen(
 
             ButtonPrimary(onClick = {
                 scope.launch {
-                    pagerState.animateScrollToPage(pagerState.currentPage + 1)
+                    if (pagerState.pageCount == pagerState.currentPage + 1) {
+                        val unansweredQuestion =
+                            findFirstIndexOfUnansweredQuestion(techQuizList, pagerState)
+
+                        pagerState.animateScrollToPage(unansweredQuestion)
+
+                    } else {
+                        pagerState.animateScrollToPage(pagerState.currentPage + 1)
+                    }
                 }
             }, Modifier.weight(1f)) {
                 Text(text = stringResource(R.string.navigation_next))
@@ -184,6 +192,16 @@ private fun QuestionAndAnswers(
             }
         }
     }
+}
+
+@OptIn(ExperimentalPagerApi::class)
+private fun findFirstIndexOfUnansweredQuestion(
+    techQuizList: List<TechQuizWrapper>,
+    pagerState: PagerState,
+): Int {
+    return techQuizList.indexOfFirst {
+        it.selectedAnswers.isEmpty()
+    }.takeIf { it >= 0 } ?: pagerState.currentPage
 }
 
 @Preview
