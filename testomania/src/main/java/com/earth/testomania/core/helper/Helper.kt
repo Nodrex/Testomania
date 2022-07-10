@@ -1,9 +1,9 @@
 package com.earth.testomania.core.helper
 
 import com.earth.testomania.technical.domain.model.TechQuiz
-import com.earth.testomania.technical.domain.model.TechQuizWrapper
+import com.earth.testomania.technical.domain.model.TechQuizItemWrapper
 
-fun defaultTechQuizWrapper() = TechQuizWrapper(
+fun defaultTechQuizWrapper() = TechQuizItemWrapper(
     TechQuiz(
         question = "Which is best os on the earth",
         category = "Tech/OS",

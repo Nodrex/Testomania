@@ -14,10 +14,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.earth.testomania.core.helper.defaultTechQuizWrapper
-import com.earth.testomania.technical.domain.model.TechQuizWrapper
+import com.earth.testomania.technical.domain.model.TechQuizItemWrapper
 
 @Composable
-fun CreateQuizUI(modifier: Modifier = Modifier, techQuiz: TechQuizWrapper) {
+fun CreateQuizUI(modifier: Modifier = Modifier, techQuiz: TechQuizItemWrapper) {
     Row(
         modifier = modifier
             .fillMaxWidth()

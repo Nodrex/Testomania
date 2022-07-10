@@ -13,10 +13,9 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.R
-import com.earth.testomania.core.helper.defaultTechQuizWrapper
 import com.earth.testomania.destinations.ResultScreenDestination
-import com.earth.testomania.presentation.result.ResultData
-import com.earth.testomania.technical.domain.model.TechQuizWrapper
+import com.earth.testomania.presentation.result.ResultDataCollectorUseCase
+import com.earth.testomania.technical.domain.model.TechQuizItemWrapper
 import com.earth.testomania.technical.presentation.ui_parts.*
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
@@ -45,16 +44,16 @@ fun TechnicalTestsScreen(
 
     val data = viewModel.data
 
-    val resultData = ResultData("TechnicalTests", 0.3f, false)
-    navigator.navigate(ResultScreenDestination(resultData))
-
     if (data.isEmpty()) LoadingScreen()
-    else CreateQuizScreen(data)
+    else CreateQuizScreen(data, navigator)
 }
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-private fun CreateQuizScreen(techQuizList: List<TechQuizWrapper>) {
+private fun CreateQuizScreen(
+    techQuizList: List<TechQuizItemWrapper>,
+    navigator: DestinationsNavigator
+) {
     val pagerState = rememberPagerState()
 
     var currentProgress by remember {
@@ -86,15 +85,26 @@ private fun CreateQuizScreen(techQuizList: List<TechQuizWrapper>) {
             height = Dimension.fillToConstraints
         }, techQuizList, pagerState)
 
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .padding(10.dp)
-            .constrainAs(navigation) {
-                top.linkTo(pager.bottom)
-                bottom.linkTo(parent.bottom)
-            }, horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.End)) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(10.dp)
+                .constrainAs(navigation) {
+                    top.linkTo(pager.bottom)
+                    bottom.linkTo(parent.bottom)
+                }, horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.End)
+        ) {
 
-            ButtonSecondary(onClick = { /*TODO show finish screen*/ }, Modifier.weight(1f)) {
+            ButtonSecondary(
+                onClick = {
+                    navigator.navigate(
+                        ResultScreenDestination(
+                            ResultDataCollectorUseCase().getTechnicalTestResult(techQuizList)
+                        )
+                    )
+                },
+                Modifier.weight(1f)
+            ) {
                 Text(text = stringResource(R.string.navigation_finish))
 
             }
@@ -106,8 +116,10 @@ private fun CreateQuizScreen(techQuizList: List<TechQuizWrapper>) {
                 }
             }, Modifier.weight(1f)) {
                 Text(text = stringResource(R.string.navigation_next))
-                Icon(painter = painterResource(id = R.drawable.ic_orbit_chevron_right),
-                    contentDescription = "")
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_orbit_chevron_right),
+                    contentDescription = ""
+                )
             }
         }
     }
@@ -117,7 +129,7 @@ private fun CreateQuizScreen(techQuizList: List<TechQuizWrapper>) {
 @Composable
 private fun QuestionAndAnswers(
     modifier: Modifier,
-    techQuizList: List<TechQuizWrapper>,
+    techQuizList: List<TechQuizItemWrapper>,
     pagerState: PagerState,
 ) {
     val answerPadding = 10.dp
@@ -176,5 +188,5 @@ private fun QuestionAndAnswers(
 @Preview
 @Composable
 private fun PreviewComposeUI() {
-    CreateQuizScreen(listOf(defaultTechQuizWrapper()))
+//    CreateQuizScreen(listOf(defaultTechQuizWrapper()))
 }

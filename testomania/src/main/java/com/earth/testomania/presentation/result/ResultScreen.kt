@@ -28,13 +28,11 @@ import kiwi.orbit.compose.ui.OrbitTheme
 import kiwi.orbit.compose.ui.controls.Card
 import kiwi.orbit.compose.ui.controls.LinearProgressIndicator
 import kiwi.orbit.compose.ui.controls.Text
+import kotlin.math.roundToInt
 
 @Preview(showSystemUi = true)
 @Destination(
     route = "home/result"
-//    deepLinks = [
-//        DeepLink(uriPattern = "testomania://home/result/resultData")
-//    ]
 )
 @Composable
 fun ResultScreen(
@@ -215,7 +213,7 @@ fun MainResultItem(
             Text(
                 color = mainColor,
                 fontSize = 12.sp,
-                text = "$progress% correct"
+                text = "${(progress * 10000).roundToInt() / 100}% correct"
             )
             LinearProgressIndicator(
                 progress = progress,
