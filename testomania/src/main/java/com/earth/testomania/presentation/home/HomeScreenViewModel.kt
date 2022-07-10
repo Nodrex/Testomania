@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.earth.testomania.R
 import com.earth.testomania.destinations.AboutBottomSheetDestination
 import com.earth.testomania.destinations.DummyScreenDestination
+import com.earth.testomania.destinations.ResultScreenDestination
 import com.earth.testomania.destinations.SkillzTestScreenDestination
 import com.earth.testomania.destinations.TechnicalTestsScreenDestination
 import dagger.hilt.android.lifecycle.HiltViewModel

@@ -8,7 +8,7 @@ import com.earth.testomania.technical.data.source.remote.dto.TagDTO
 import com.earth.testomania.technical.data.source.remote.dto.TechQuizDTO
 import com.earth.testomania.technical.domain.model.AnswerKey
 import com.earth.testomania.technical.domain.model.TechQuiz
-import com.earth.testomania.technical.domain.model.TechQuizWrapper
+import com.earth.testomania.technical.domain.model.TechQuizItemWrapper
 import com.earth.testomania.technical.domain.repository.QuizRepository
 import kotlinx.coroutines.flow.*
 import java.util.concurrent.CancellationException
@@ -18,7 +18,7 @@ class GetQuizListUseCase @Inject constructor(
     private val quizRepository: QuizRepository
 ) {
 
-    suspend operator fun invoke(): Flow<DataState<List<TechQuizWrapper>>> = flow {
+    suspend operator fun invoke(): Flow<DataState<List<TechQuizItemWrapper>>> = flow {
         try {
             emit(DataState.Loading(LoadingMetaData()))
             quizRepository.getQuizList().map {
@@ -42,7 +42,7 @@ class GetQuizListUseCase @Inject constructor(
         val correctAnswersList =
             generateCorrectAnswersList(techQuizDTO, possibleAnswersList.size) ?: return@with null
 
-        return@with TechQuizWrapper(
+        return@with TechQuizItemWrapper(
             TechQuiz(
                 id = id,
                 question = question ?: "",
@@ -128,13 +128,13 @@ class GetQuizListUseCase @Inject constructor(
     //TODO maybe for later i will move this to extension
     private fun error(dataState: DataState<List<TechQuizDTO>>) = DataState.Error(
         dataState.metaData as ErrorMetaData,
-        emptyList<TechQuizWrapper>()
+        emptyList<TechQuizItemWrapper>()
     )
 
     //TODO maybe for later i will move this to extension
     private fun loading(dataState: DataState<List<TechQuizDTO>>) = DataState.Loading(
         dataState.metaData as LoadingMetaData,
-        emptyList<TechQuizWrapper>()
+        emptyList<TechQuizItemWrapper>()
     )
 
 }

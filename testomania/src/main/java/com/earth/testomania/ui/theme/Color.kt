@@ -11,3 +11,6 @@ val Orange = Color(0xFFffbb38)
 val LightGray = Color(0xFFe8e8e8)
 val Gray = Color(0xFF9c9c9c)
 val LightDark = Color(0xFF676767)
+
+val IncorrectBkg = Color(0xfff6f7f9)
+val IncorrectBkgDark = Color(0xff363739)

@@ -1,10 +1,8 @@
 package com.earth.testomania.technical.presentation.ui_parts
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -12,24 +10,24 @@ import com.earth.testomania.core.helper.defaultTechQuizWrapper
 import com.earth.testomania.core.presentation.custom.AnswerTileState
 import com.earth.testomania.core.presentation.custom.TestomaniaChoiceTile
 import com.earth.testomania.core.presentation.custom.getAnswerTileState
-import com.earth.testomania.technical.domain.model.TechQuizWrapper
+import com.earth.testomania.technical.domain.model.TechQuizItemWrapper
 import com.earth.testomania.technical.presentation.QuizViewModel
 import kiwi.orbit.compose.ui.controls.Text
 
 
 @Composable
 fun CreateQuizAnswerUI(
-    techQuizWrapper: TechQuizWrapper,
+    techQuizItemWrapper: TechQuizItemWrapper,
     possibleAnswer: Map.Entry<String, String>,
 ) {
     val viewModel: QuizViewModel = hiltViewModel()
-    val isSelected = viewModel.wasAlreadyAnswered(techQuizWrapper, possibleAnswer.key)
-    val enabled = viewModel.enableAnswerSelection(techQuizWrapper)
+    val isSelected = viewModel.wasAlreadyAnswered(techQuizItemWrapper, possibleAnswer.key)
+    val enabled = viewModel.enableAnswerSelection(techQuizItemWrapper)
 
     val answerState = if (isSelected) {
         getAnswerTileState(
             viewModel.isCorrectAnswer(
-                techQuizWrapper,
+                techQuizItemWrapper,
                 possibleAnswer.key
             )
         )
@@ -43,7 +41,7 @@ fun CreateQuizAnswerUI(
         selected = isSelected,
         enabled = enabled,
         onSelect = {
-            viewModel.saveAnswer(techQuizWrapper, possibleAnswer.key)
+            viewModel.saveAnswer(techQuizItemWrapper, possibleAnswer.key)
         },
         title = possibleAnswer.key,
         toggleColorType = answerState,
