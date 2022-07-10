@@ -196,7 +196,7 @@ private fun QuestionAndAnswers(
 
 @OptIn(ExperimentalPagerApi::class)
 private fun findFirstIndexOfUnansweredQuestion(
-    techQuizList: List<TechQuizWrapper>,
+    techQuizList: List<TechQuizItemWrapper>,
     pagerState: PagerState,
 ): Int {
     return techQuizList.indexOfFirst {
