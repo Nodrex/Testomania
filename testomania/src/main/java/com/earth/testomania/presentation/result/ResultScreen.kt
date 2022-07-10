@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -30,19 +31,21 @@ import kiwi.orbit.compose.ui.controls.Text
 
 @Preview(showSystemUi = true)
 @Destination(
-    route = "home/result",
-    deepLinks = [
-        DeepLink(uriPattern = "testomania://home/result")
-    ]
+    route = "home/result"
+//    deepLinks = [
+//        DeepLink(uriPattern = "testomania://home/result/resultData")
+//    ]
 )
-
 @Composable
-fun ResultScreen() {
+fun ResultScreen(
+    resultData: ResultData
+) {
 
     val viewModel: ResultScreenViewModel = hiltViewModel()
+    viewModel.resultData = resultData
 
     val illustrationRes =
-        if (viewModel.isTestDone) R.drawable.il_orbit_success else R.drawable.il_orbit_error
+        if (viewModel.resultData.isTestDone) R.drawable.il_orbit_success else R.drawable.il_orbit_error
 
     Column(
         modifier = Modifier
@@ -53,9 +56,9 @@ fun ResultScreen() {
     ) {
         Spacer(modifier = Modifier.size(30.dp))
         MainResultItem(
-            "test name",
+            viewModel.resultData.testName,
             mainColor = OrbitTheme.colors.info.normal,
-            progress = 0.65f
+            progress = viewModel.resultData.overallProgress
         )
         Image(
             painter = painterResource(id = illustrationRes),
@@ -67,7 +70,7 @@ fun ResultScreen() {
         LazyColumn(
             modifier = Modifier,
         ) {
-            viewModel.incorrectQuestions.forEach { item ->
+            viewModel.resultData.incorrectQuestions.forEach { item ->
                 item(key = item.id) {
                     IncorrectAnsweredQuestion(item = item)
                 }
@@ -95,14 +98,15 @@ fun IncorrectAnsweredQuestion(item: IncorrectAnsweredQuestionModel) {
     ) {
         Column(
             modifier = Modifier
-//                .background(Color(0x335c5cbb))
+                .background(Color(0xfff6f7f9))
                 .padding(8.dp)
                 .fillMaxWidth(),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             Text(
                 text = "Question: ${item.questionText}",
-                fontSize = 20.sp
+                fontSize = 20.sp,
+                color = MaterialTheme.colors.onBackground
             )
             TestomaniaChoiceTile(
                 selected = false,
@@ -139,6 +143,7 @@ fun IncorrectAnsweredQuestion(item: IncorrectAnsweredQuestionModel) {
 
 }
 
+/*
 @Composable
 fun AnswerItem(type: AnswerType, index: String, text: String) {
     val typeColor = when (type) {
@@ -166,6 +171,7 @@ enum class AnswerType(val text: String) {
     CORRECT("correct"),
     CHOICE("your choice")
 }
+*/
 
 @Preview
 @Composable
@@ -217,8 +223,8 @@ fun MainResultItem(
                     .fillMaxWidth()
                     .padding(top = 3.dp)
                     .height(8.dp),
-                color = mainColor,
-                backgroundColor = lightColor
+//                color = mainColor,
+//                backgroundColor = lightColor
             )
         }
         Image(

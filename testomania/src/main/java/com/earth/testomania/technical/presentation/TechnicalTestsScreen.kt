@@ -10,15 +10,19 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.core.helper.defaultTechQuizWrapper
-import com.earth.testomania.core.log
+import com.earth.testomania.destinations.ResultScreenDestination
+import com.earth.testomania.presentation.result.ResultData
 import com.earth.testomania.technical.domain.model.TechQuizWrapper
-import com.earth.testomania.technical.presentation.ui_parts.*
+import com.earth.testomania.technical.presentation.ui_parts.CreateQuizAnswerUI
+import com.earth.testomania.technical.presentation.ui_parts.CreateQuizUI
+import com.earth.testomania.technical.presentation.ui_parts.OverallProgress
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
 import com.ramcosta.composedestinations.annotation.DeepLink
 import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @Destination(
     route = "home/technical_tests",
@@ -27,11 +31,15 @@ import com.ramcosta.composedestinations.annotation.Destination
     ]
 )
 @Composable
-fun TechnicalTestsScreen() {
+fun TechnicalTestsScreen(
+    navigator: DestinationsNavigator
+) {
     val viewModel: QuizViewModel = hiltViewModel()
 
     val data = viewModel.data
 
+    val resultData = ResultData("TechnicalTests", 0.3f, false)
+    navigator.navigate(ResultScreenDestination(resultData))
     if (data.isNotEmpty()) CreateScreen(data)
 }
 

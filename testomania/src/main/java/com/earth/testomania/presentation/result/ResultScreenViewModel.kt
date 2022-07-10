@@ -7,7 +7,8 @@ import javax.inject.Inject
 @HiltViewModel
 class ResultScreenViewModel @Inject constructor(): ViewModel() {
 
-    val isTestDone = true
+    lateinit var resultData: ResultData
+
 
     val incorrectQuestions = listOf(
         IncorrectAnsweredQuestionModel(
