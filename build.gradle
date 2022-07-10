@@ -2,7 +2,7 @@
 buildscript {
     ext {
         compose_version = '1.2.0-rc02'
-        hilt_version = '2.41'
+        hilt_version = '2.42'
     }
     repositories {
         google()
