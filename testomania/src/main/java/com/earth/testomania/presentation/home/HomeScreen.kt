@@ -2,6 +2,7 @@
 
 package com.earth.testomania.presentation.home
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -42,6 +43,13 @@ fun HomeScreen(
 ) {
     val bottomSheetState = rememberBottomSheetState(initialValue = BottomSheetValue.Collapsed)
     val scaffoldState = rememberBottomSheetScaffoldState(bottomSheetState = bottomSheetState)
+    val scope = rememberCoroutineScope()
+
+    BackHandler(enabled = bottomSheetState.isCollapsed.not()) {
+        scope.launch {
+            bottomSheetState.collapse()
+        }
+    }
 
     BottomSheetScaffold(
         modifier = Modifier.systemBarsPadding(),
