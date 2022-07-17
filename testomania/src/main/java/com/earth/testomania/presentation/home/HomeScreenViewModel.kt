@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import com.earth.testomania.R
 import com.earth.testomania.destinations.AboutBottomSheetDestination
 import com.earth.testomania.destinations.DummyScreenDestination
-import com.earth.testomania.destinations.ResultScreenDestination
 import com.earth.testomania.destinations.SkillzTestScreenDestination
 import com.earth.testomania.destinations.TechnicalTestsScreenDestination
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,7 +16,7 @@ class HomeScreenViewModel @Inject constructor(
     val destinations = listOf(
         HomeDestinations(
             name = R.string.about,
-            icon = R.drawable.ic_orbit_information_circle,
+            icon = R.drawable.ic_outline_info,
             destination = AboutBottomSheetDestination
         ),
         HomeDestinations(

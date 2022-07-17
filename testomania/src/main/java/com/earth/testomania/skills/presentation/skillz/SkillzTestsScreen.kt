@@ -14,12 +14,12 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.ramcosta.composedestinations.annotation.DeepLink
 import com.ramcosta.composedestinations.annotation.Destination
 
-const val SKILLZ_ROUT = "home/skillz"
+const val SKILLZ_ROUTE = "home/skillz"
 
 @Destination(
-    route = SKILLZ_ROUT,
+    route = SKILLZ_ROUTE,
     deepLinks = [
-        DeepLink(uriPattern = "testomania://$SKILLZ_ROUT")
+        DeepLink(uriPattern = "testomania://$SKILLZ_ROUTE")
     ]
 )
 @Composable
