@@ -44,6 +44,7 @@ fun HomeScreen(
     val scaffoldState = rememberBottomSheetScaffoldState(bottomSheetState = bottomSheetState)
 
     BottomSheetScaffold(
+        modifier = Modifier.systemBarsPadding(),
         sheetPeekHeight = 0.dp,
         scaffoldState = scaffoldState,
         sheetContent = {
@@ -62,14 +63,13 @@ fun HomeScreen(
 fun HomeScreenContent(
     navigator: DestinationsNavigator?,
     scaffoldState: BottomSheetScaffoldState,
-    bottomSheetState: BottomSheetState
+    bottomSheetState: BottomSheetState,
 ) {
     val viewModel: HomeScreenViewModel = hiltViewModel()
 
     ConstraintLayout(
         modifier = Modifier
             .fillMaxSize()
-            .systemBarsPadding()
     ) {
         val (grid, illustration) = createRefs()
 
@@ -116,7 +116,7 @@ fun CardButton(
     destinationInfo: HomeDestinations,
     navigator: DestinationsNavigator? = null,
     scaffoldState: BottomSheetScaffoldState,
-    bottomSheetState: BottomSheetState
+    bottomSheetState: BottomSheetState,
 ) {
     val scope = rememberCoroutineScope()
     val comingSoonStr = stringResource(id = R.string.coming_soon)
