@@ -16,7 +16,7 @@ class ResultDataCollectorUseCase {
 
         val resultData = ResultData(
             "TechnicalTests",
-            progress,
+            correctProgress,
             correctProgress > 0.5,
             techQuizList
                 .filter {
@@ -36,7 +36,7 @@ class ResultDataCollectorUseCase {
                         correctIndex,
                         qItem.quiz.possibleAnswers[correctIndex] ?: "",
                         incIndex,
-                        qItem.quiz.possibleAnswers[correctIndex] ?: ""
+                        qItem.quiz.possibleAnswers[incIndex] ?: ""
                     )
                 }
         )
