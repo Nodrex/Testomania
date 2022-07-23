@@ -14,6 +14,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -53,7 +54,8 @@ fun ResultScreen(
     ) {
         Spacer(modifier = Modifier.size(30.dp))
         MainResultItem(
-            viewModel.resultData.testName,
+            viewModel.resultData.testIconRes,
+            stringResource(id = viewModel.resultData.testNameRes),
             mainColor = OrbitTheme.colors.info.normal,
             progress = viewModel.resultData.overallProgress
         )
@@ -142,6 +144,7 @@ fun IncorrectAnsweredQuestion(item: IncorrectAnsweredQuestionModel) {
 @Preview
 @Composable
 fun MainResultItem(
+    testIconRes: Int,
     testName: String = "",
     mainColor: Color = OrbitTheme.colors.info.normal,
     progress: Float = 0.0f
@@ -164,7 +167,7 @@ fun MainResultItem(
                 .clip(RoundedCornerShape(20.dp))
                 .background(lightColor)
                 .padding(10.dp),
-            painter = painterResource(id = R.drawable.ic_driver_license),
+            painter = painterResource(id = testIconRes),
             contentDescription = "",
             colorFilter = ColorFilter.tint(mainColor)
         )
