@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1030642677508",
+    "project_id": "testomania-e42a4",
+    "storage_bucket": "testomania-e42a4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1030642677508:android:113b8e007791a69f69c251",
+        "android_client_info": {
+          "package_name": "com.earth.testomania"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1030642677508-oijlbbap9sbqjn7g0d0c3c4kfp0aiugd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbzccSKRT-dXQe5nmr5qFGxSGF_CTpGM8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1030642677508-oijlbbap9sbqjn7g0d0c3c4kfp0aiugd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
