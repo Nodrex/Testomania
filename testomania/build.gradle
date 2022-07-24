@@ -5,6 +5,8 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
     id 'com.google.devtools.ksp' version '1.7.0-1.0.6'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
 }
 
 android {
@@ -24,6 +26,9 @@ android {
     }
 
     buildTypes {
+        debug {
+            ext.enableCrashlytics=false
+        }
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -129,5 +134,9 @@ dependencies {
     implementation "androidx.navigation:navigation-compose:2.5.0"
 
     implementation "io.coil-kt:coil-compose:2.1.0"
+
+    implementation platform('com.google.firebase:firebase-bom:30.3.0')
+    implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-analytics'
 
 }
