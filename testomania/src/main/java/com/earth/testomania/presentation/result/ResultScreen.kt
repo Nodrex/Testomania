@@ -2,7 +2,6 @@ package com.earth.testomania.presentation.result
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CornerSize
@@ -15,6 +14,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -23,18 +23,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.R
 import com.earth.testomania.core.presentation.custom.AnswerTileState
 import com.earth.testomania.core.presentation.custom.TestomaniaChoiceTile
-import com.earth.testomania.ui.theme.IncorrectBkg
-import com.earth.testomania.ui.theme.IncorrectBkgDark
-import com.earth.testomania.ui.theme.Purple200
-import com.earth.testomania.ui.theme.TestomaniaTheme
-import com.ramcosta.composedestinations.annotation.DeepLink
 import com.ramcosta.composedestinations.annotation.Destination
 import kiwi.orbit.compose.ui.OrbitTheme
 import kiwi.orbit.compose.ui.controls.Card
 import kiwi.orbit.compose.ui.controls.LinearProgressIndicator
 import kiwi.orbit.compose.ui.controls.Text
-import kiwi.orbit.compose.ui.foundation.darkColors
-import kiwi.orbit.compose.ui.foundation.lightColors
 import kotlin.math.roundToInt
 
 @Preview(showSystemUi = true)
@@ -61,7 +54,8 @@ fun ResultScreen(
     ) {
         Spacer(modifier = Modifier.size(30.dp))
         MainResultItem(
-            viewModel.resultData.testName,
+            viewModel.resultData.testIconRes,
+            stringResource(id = viewModel.resultData.testNameRes),
             mainColor = OrbitTheme.colors.info.normal,
             progress = viewModel.resultData.overallProgress
         )
@@ -150,6 +144,7 @@ fun IncorrectAnsweredQuestion(item: IncorrectAnsweredQuestionModel) {
 @Preview
 @Composable
 fun MainResultItem(
+    testIconRes: Int,
     testName: String = "",
     mainColor: Color = OrbitTheme.colors.info.normal,
     progress: Float = 0.0f
@@ -172,8 +167,8 @@ fun MainResultItem(
                 .clip(RoundedCornerShape(20.dp))
                 .background(lightColor)
                 .padding(10.dp),
-            painter = painterResource(id = R.drawable.ic_driver_license),
-            contentDescription = "Test icon",
+            painter = painterResource(id = testIconRes),
+            contentDescription = "",
             colorFilter = ColorFilter.tint(mainColor)
         )
         Column(
@@ -197,17 +192,7 @@ fun MainResultItem(
                     .fillMaxWidth()
                     .padding(top = 3.dp)
                     .height(8.dp),
-//                color = mainColor,
-//                backgroundColor = lightColor
             )
         }
-        Image(
-            modifier = Modifier
-                .size(40.dp)
-                .padding(10.dp),
-            painter = painterResource(id = R.drawable.ic_forward),
-            contentDescription = "no action",
-            colorFilter = ColorFilter.tint(Color.Gray)
-        )
     }
 }
