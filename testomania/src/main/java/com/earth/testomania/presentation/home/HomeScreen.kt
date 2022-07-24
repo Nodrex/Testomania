@@ -4,6 +4,7 @@ package com.earth.testomania.presentation.home
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -14,6 +15,8 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.PointerInputScope
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -31,6 +34,7 @@ import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kiwi.orbit.compose.ui.controls.Card
 import kiwi.orbit.compose.ui.controls.Icon
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @Preview(showSystemUi = true)
@@ -53,7 +57,11 @@ fun HomeScreen(
     }
 
     BottomSheetScaffold(
-        modifier = Modifier.systemBarsPadding(),
+        modifier = Modifier
+            .systemBarsPadding()
+            .pointerInput(Unit) {
+                closeAboutBottomSheetOnOutsideTouch(bottomSheetState, scope)
+            },
         sheetPeekHeight = 0.dp,
         scaffoldState = scaffoldState,
         backgroundColor = Color.Transparent,
@@ -67,6 +75,21 @@ fun HomeScreen(
         )
     }
 
+}
+
+private suspend fun PointerInputScope.closeAboutBottomSheetOnOutsideTouch(
+    bottomSheetState: BottomSheetState,
+    scope: CoroutineScope
+) {
+    detectTapGestures(onTap = {
+        scope.launch {
+            if (bottomSheetState.isCollapsed) {
+                bottomSheetState.expand()
+            } else {
+                bottomSheetState.collapse()
+            }
+        }
+    })
 }
 
 @Composable
@@ -148,10 +171,12 @@ fun CardButton(
             else -> navigator?.navigate(destinationInfo.destination)
         }
     }) {
-        Column(Modifier
-            .padding(10.dp)
-            .padding(top = 10.dp),
-            horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(
+            Modifier
+                .padding(10.dp)
+                .padding(top = 10.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             val name = stringResource(id = destinationInfo.name)
             Icon(
                 painter = painterResource(id = destinationInfo.icon),
