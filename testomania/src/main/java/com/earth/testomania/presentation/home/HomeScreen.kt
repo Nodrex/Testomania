@@ -2,9 +2,9 @@
 
 package com.earth.testomania.presentation.home
 
+import android.annotation.SuppressLint
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -15,8 +15,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.pointer.PointerInputScope
-import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -34,9 +32,9 @@ import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kiwi.orbit.compose.ui.controls.Card
 import kiwi.orbit.compose.ui.controls.Icon
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Preview(showSystemUi = true)
 @Destination(
     route = "home",
@@ -46,57 +44,49 @@ import kotlinx.coroutines.launch
 fun HomeScreen(
     navigator: DestinationsNavigator? = null,
 ) {
-    val bottomSheetState = rememberBottomSheetState(initialValue = BottomSheetValue.Collapsed)
-    val scaffoldState = rememberBottomSheetScaffoldState(bottomSheetState = bottomSheetState)
+    val modalBottomSheetState = rememberModalBottomSheetState(
+        initialValue = ModalBottomSheetValue.Hidden,
+        skipHalfExpanded = true
+    )
+    val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
 
-    BackHandler(enabled = bottomSheetState.isCollapsed.not()) {
+    BackHandler(enabled = modalBottomSheetState.isVisible) {
         scope.launch {
-            bottomSheetState.collapse()
+            modalBottomSheetState.hide()
         }
     }
 
-    BottomSheetScaffold(
+    ModalBottomSheetLayout(
         modifier = Modifier
-            .systemBarsPadding()
-            .pointerInput(Unit) {
-                closeAboutBottomSheetOnOutsideTouch(bottomSheetState, scope)
-            },
-        sheetPeekHeight = 0.dp,
-        scaffoldState = scaffoldState,
-        backgroundColor = Color.Transparent,
+            .systemBarsPadding(),
+        sheetState = modalBottomSheetState,
+        scrimColor = Color.Transparent,
         sheetContent = {
             AboutBottomSheet()
-        }) {
-        HomeScreenContent(
-            navigator,
-            scaffoldState,
-            bottomSheetState
-        )
+        }
+    ) {
+        Scaffold(
+            modifier = Modifier
+                .systemBarsPadding(),
+            scaffoldState = scaffoldState,
+            backgroundColor = Color.Transparent
+        ) {
+            HomeScreenContent(
+                navigator,
+                scaffoldState,
+                modalBottomSheetState
+            )
+        }
     }
 
-}
-
-private suspend fun PointerInputScope.closeAboutBottomSheetOnOutsideTouch(
-    bottomSheetState: BottomSheetState,
-    scope: CoroutineScope
-) {
-    detectTapGestures(onTap = {
-        scope.launch {
-            if (bottomSheetState.isCollapsed) {
-                bottomSheetState.expand()
-            } else {
-                bottomSheetState.collapse()
-            }
-        }
-    })
 }
 
 @Composable
 fun HomeScreenContent(
     navigator: DestinationsNavigator?,
-    scaffoldState: BottomSheetScaffoldState,
-    bottomSheetState: BottomSheetState,
+    scaffoldState: ScaffoldState,
+    modalBottomSheetState: ModalBottomSheetState,
 ) {
     val viewModel: HomeScreenViewModel = hiltViewModel()
 
@@ -124,7 +114,7 @@ fun HomeScreenContent(
                     item,
                     navigator,
                     scaffoldState,
-                    bottomSheetState
+                    modalBottomSheetState
                 )
             }
         }
@@ -148,8 +138,8 @@ fun HomeScreenContent(
 fun CardButton(
     destinationInfo: HomeDestinations,
     navigator: DestinationsNavigator? = null,
-    scaffoldState: BottomSheetScaffoldState,
-    bottomSheetState: BottomSheetState,
+    scaffoldState: ScaffoldState,
+    modalBottomSheetState: ModalBottomSheetState,
 ) {
     val scope = rememberCoroutineScope()
     val comingSoonStr = stringResource(id = R.string.coming_soon)
@@ -164,8 +154,8 @@ fun CardButton(
             }
             ABOUT_ROUT -> {
                 scope.launch {
-                    if (bottomSheetState.isCollapsed) bottomSheetState.expand()
-                    else bottomSheetState.collapse()
+                    if (modalBottomSheetState.isVisible) modalBottomSheetState.hide()
+                    else modalBottomSheetState.show()
                 }
             }
             else -> navigator?.navigate(destinationInfo.destination)
