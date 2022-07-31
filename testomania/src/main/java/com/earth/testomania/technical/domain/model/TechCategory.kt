@@ -8,7 +8,7 @@ enum class TechCategory(val category: String, val illustration: Int) {
     PHP("PHP", R.drawable.il_html),
     Networking("Networking", R.drawable.il_networking),
     Cloud("Cloud", R.drawable.il_cloud),
-    Docker("Docker", R.drawable.il_docker),
+    Docker("Docker", R.drawable.il_kubernetes),
     Kubernetes("Kubernetes", R.drawable.il_kubernetes),
     HTML("HTML", R.drawable.il_html),
     SQL("SQL", R.drawable.il_sql),

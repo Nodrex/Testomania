@@ -1,12 +1,18 @@
+@file:OptIn(ExperimentalMaterialApi::class)
+
 package com.earth.testomania.presentation
 
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.ModalBottomSheetState
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -21,12 +27,17 @@ import com.earth.testomania.core.developers
 import com.ramcosta.composedestinations.annotation.Destination
 import kiwi.orbit.compose.ui.controls.ChoiceTile
 import kiwi.orbit.compose.ui.controls.Icon
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 const val ABOUT_ROUT = "home/about"
 
 @Destination(route = ABOUT_ROUT)
 @Composable
-fun AboutBottomSheet() {
+fun AboutBottomSheet(
+    modalBottomSheetState: ModalBottomSheetState,
+    scope: CoroutineScope
+) {
 
     val context = LocalContext.current
     val appGithubUrl = stringResource(id = R.string.app_github_url)
@@ -72,6 +83,25 @@ fun AboutBottomSheet() {
     developers.forEach {
         AboutDeveloper(it)
     }
+
+    Icon(
+        modifier = Modifier
+            .height(40.dp)
+            .padding(bottom = 10.dp, start = 100.dp, end = 100.dp)
+            .fillMaxWidth()
+            .clickable(
+                indication = null,
+                interactionSource = remember { MutableInteractionSource() }
+            )
+            {
+                scope.launch {
+                    modalBottomSheetState.hide()
+                }
+            },
+        painter = painterResource(id = R.drawable.ic_orbit_chevron_down),
+        contentDescription = "",
+    )
+
 }
 
 @Composable
