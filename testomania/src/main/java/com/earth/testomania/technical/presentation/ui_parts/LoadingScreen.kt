@@ -33,7 +33,7 @@ fun LoadingScreen() {
             }
             .padding(top = 50.dp),
             circleSize = 18.dp,
-            distanceBetweenCircles = 10.dp
+            circleDistance = 10.dp
         )
 
         var techCategory by remember {

@@ -96,6 +96,18 @@ fun HomeScreenContent(
     ) {
         val (grid, illustration) = createRefs()
 
+        Image(
+            modifier = Modifier
+                .constrainAs(illustration) {
+                    top.linkTo(parent.top)
+                    bottom.linkTo(grid.top)
+                }
+                .fillMaxWidth(),
+            contentScale = ContentScale.Crop,
+            painter = painterResource(id = R.drawable.il_testomania),
+            contentDescription = null
+        )
+
         val contentPadding = 20.dp
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
@@ -118,19 +130,6 @@ fun HomeScreenContent(
                 )
             }
         }
-
-        Image(
-            modifier = Modifier
-                .constrainAs(illustration) {
-                    bottom.linkTo(grid.top)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
-                }
-                .fillMaxWidth(),
-            contentScale = ContentScale.Crop,
-            painter = painterResource(id = R.drawable.il_testomania),
-            contentDescription = null
-        )
     }
 }
 
