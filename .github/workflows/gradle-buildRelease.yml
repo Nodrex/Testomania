@@ -19,7 +19,10 @@ jobs:
           java-version: 11
           distribution: temurin
           cache: 'gradle'
-      - name:
+      - name: 'update google services json'
+        run: echo $SERVICE_JSON > testomania/google-services.json
+        with:
+          service_json: ${{ secrets.SuperSecret }}
       - name: 'Build native executables'
         uses: gradle/gradle-build-action@v2
         with:
