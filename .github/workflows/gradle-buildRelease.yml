@@ -23,6 +23,9 @@ jobs:
         #        with:
         #          service_json: ${{ secrets.GOOGLE_CRASHLITYCS }}
         shell: bash
+
+
+
         run: echo $SERVICE_JSON > testomania/google-services.json
       - name: 'Create keystore file'
         with:
