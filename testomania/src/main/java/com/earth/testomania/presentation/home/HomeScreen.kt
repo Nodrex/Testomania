@@ -63,7 +63,7 @@ fun HomeScreen(
         sheetState = modalBottomSheetState,
         scrimColor = Color.Transparent,
         sheetContent = {
-            AboutBottomSheet()
+            AboutBottomSheet(modalBottomSheetState, scope)
         }
     ) {
         Scaffold(
