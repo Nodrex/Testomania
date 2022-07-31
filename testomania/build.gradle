@@ -5,6 +5,8 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
     id 'com.google.devtools.ksp' version '1.7.0-1.0.6'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
 }
 
 android {
@@ -23,17 +25,29 @@ android {
         }
     }
 
-    buildTypes {
+    signingConfigs {
         release {
-            minifyEnabled true
-            shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            keyAlias System.getenv("KEYSTORE_ALIAS")
+            keyPassword System.getenv("KEYSTORE_PRIVATE_KEY")
+            storeFile file(System.getProperty("user.home") + "/keystore.jks")
+            storePassword System.getenv("KEYSTORE_PASSWORD")
         }
+    }
+
+    buildTypes {
         debug {
+            ext.enableCrashlytics = false
             ext.alwaysUpdateBuildId = false //for build optimization
             ext.enableCrashlytics = false //for build optimization
         }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
@@ -135,4 +149,14 @@ dependencies {
 
     implementation "io.coil-kt:coil-compose:2.1.0"
 
+    implementation platform('com.google.firebase:firebase-bom:30.3.0')
+    implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-analytics'
+
+}
+
+task("version") {
+    doLast {
+        println "versionName: " + android.defaultConfig.versionName
+    }
 }

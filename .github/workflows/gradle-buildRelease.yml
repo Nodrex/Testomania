@@ -1,0 +1,48 @@
+name: 'Build and release'
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    name: 'Build the project'
+    runs-on: ubuntu-latest
+    outputs:
+      tag-name: ${{ steps.tag.outputs.tag }}
+    steps:
+      - name: 'Checkout Code'
+        uses: actions/checkout@v3
+        with:
+          ref: master
+      - name: 'Set up Java'
+        uses: actions/setup-java@v2
+        with:
+          java-version: 11
+          distribution: temurin
+          cache: 'gradle'
+      - name: 'update google services json'
+        run: echo $SERVICE_JSON > testomania/google-services.json
+        with:
+          service_json: ${{ secrets.GOOGLE_CRASHLITYCS }}
+      - name: 'Create keystore file'
+        with:
+          file: ${{ secrets.KEYSTORE_FILE }}
+        run: |
+          echo $FILE | base64 --decode > private_key.jks
+      - name: 'Build native executables'
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: buildRelease
+          KEYSTORE_ALIAS: ${{ secrets.KEYSTORE_ALIAS }}
+          KEYSTORE_PRIVATE_KEY: ${{ secrets.KEYSTORE_PRIVATE_KEY }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+      - name: 'export version number'
+        id: tag
+        run: ./gradlew version | grep "versionName:" | awk '{ print "::set-output name=tag::"$2 }'
+#      - name: 'Create GitHub Release'
+#        uses: softprops/action-gh-release@v1
+#        with:
+#          files: |
+#            ./build/bin/*/releaseExecutable/google-auth-decode-*exe
+#            ./build/libs/*-all.jar
+#          tag_name: ${{steps.tag.outputs.tag}}
+#          name: version v${{steps.tag.outputs.tag}}
