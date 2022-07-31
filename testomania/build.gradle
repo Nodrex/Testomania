@@ -31,7 +31,12 @@ android {
         }
         release {
             minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            ext.alwaysUpdateBuildId = false //for build optimization
+            ext.enableCrashlytics = false //for build optimization
         }
     }
     compileOptions {

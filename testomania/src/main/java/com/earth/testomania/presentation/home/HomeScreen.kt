@@ -2,6 +2,7 @@
 
 package com.earth.testomania.presentation.home
 
+import android.annotation.SuppressLint
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -33,6 +34,7 @@ import kiwi.orbit.compose.ui.controls.Card
 import kiwi.orbit.compose.ui.controls.Icon
 import kotlinx.coroutines.launch
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Preview(showSystemUi = true)
 @Destination(
     route = "home",
@@ -42,29 +44,40 @@ import kotlinx.coroutines.launch
 fun HomeScreen(
     navigator: DestinationsNavigator? = null,
 ) {
-    val bottomSheetState = rememberBottomSheetState(initialValue = BottomSheetValue.Collapsed)
-    val scaffoldState = rememberBottomSheetScaffoldState(bottomSheetState = bottomSheetState)
+    val modalBottomSheetState = rememberModalBottomSheetState(
+        initialValue = ModalBottomSheetValue.Hidden,
+        skipHalfExpanded = true
+    )
+    val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
 
-    BackHandler(enabled = bottomSheetState.isCollapsed.not()) {
+    BackHandler(enabled = modalBottomSheetState.isVisible) {
         scope.launch {
-            bottomSheetState.collapse()
+            modalBottomSheetState.hide()
         }
     }
 
-    BottomSheetScaffold(
-        modifier = Modifier.systemBarsPadding(),
-        sheetPeekHeight = 0.dp,
-        scaffoldState = scaffoldState,
-        backgroundColor = Color.Transparent,
+    ModalBottomSheetLayout(
+        modifier = Modifier
+            .systemBarsPadding(),
+        sheetState = modalBottomSheetState,
+        scrimColor = Color.Transparent,
         sheetContent = {
             AboutBottomSheet()
-        }) {
-        HomeScreenContent(
-            navigator,
-            scaffoldState,
-            bottomSheetState
-        )
+        }
+    ) {
+        Scaffold(
+            modifier = Modifier
+                .systemBarsPadding(),
+            scaffoldState = scaffoldState,
+            backgroundColor = Color.Transparent
+        ) {
+            HomeScreenContent(
+                navigator,
+                scaffoldState,
+                modalBottomSheetState
+            )
+        }
     }
 
 }
@@ -72,8 +85,8 @@ fun HomeScreen(
 @Composable
 fun HomeScreenContent(
     navigator: DestinationsNavigator?,
-    scaffoldState: BottomSheetScaffoldState,
-    bottomSheetState: BottomSheetState,
+    scaffoldState: ScaffoldState,
+    modalBottomSheetState: ModalBottomSheetState,
 ) {
     val viewModel: HomeScreenViewModel = hiltViewModel()
 
@@ -101,7 +114,7 @@ fun HomeScreenContent(
                     item,
                     navigator,
                     scaffoldState,
-                    bottomSheetState
+                    modalBottomSheetState
                 )
             }
         }
@@ -125,8 +138,8 @@ fun HomeScreenContent(
 fun CardButton(
     destinationInfo: HomeDestinations,
     navigator: DestinationsNavigator? = null,
-    scaffoldState: BottomSheetScaffoldState,
-    bottomSheetState: BottomSheetState,
+    scaffoldState: ScaffoldState,
+    modalBottomSheetState: ModalBottomSheetState,
 ) {
     val scope = rememberCoroutineScope()
     val comingSoonStr = stringResource(id = R.string.coming_soon)
@@ -141,17 +154,19 @@ fun CardButton(
             }
             ABOUT_ROUT -> {
                 scope.launch {
-                    if (bottomSheetState.isCollapsed) bottomSheetState.expand()
-                    else bottomSheetState.collapse()
+                    if (modalBottomSheetState.isVisible) modalBottomSheetState.hide()
+                    else modalBottomSheetState.show()
                 }
             }
             else -> navigator?.navigate(destinationInfo.destination)
         }
     }) {
-        Column(Modifier
-            .padding(10.dp)
-            .padding(top = 10.dp),
-            horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(
+            Modifier
+                .padding(10.dp)
+                .padding(top = 10.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             val name = stringResource(id = destinationInfo.name)
             Icon(
                 painter = painterResource(id = destinationInfo.icon),
