@@ -18,4 +18,5 @@
     <string name="navigation_finish">Finish</string>
     <string name="navigation_next">Next/Skip</string>
     <string name="coming_soon">Coming soon...</string>
+    <string name="dismiss">Dismiss</string>
 </resources>

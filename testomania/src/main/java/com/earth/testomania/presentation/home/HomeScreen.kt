@@ -143,12 +143,19 @@ fun CardButton(
 ) {
     val scope = rememberCoroutineScope()
     val comingSoonStr = stringResource(id = R.string.coming_soon)
+    val dismissStr = stringResource(id = R.string.dismiss)
 
     Card(modifier = Modifier.size(125.dp), shape = RoundedCornerShape(10.dp), onClick = {
+
+        dismissCurrentSnackbar(scaffoldState)
+
         when (destinationInfo.destination.route) {
             SKILLZ_ROUTE, DUMMY_ROUTE -> {
                 scope.launch {
-                    scaffoldState.snackbarHostState.showSnackbar(comingSoonStr)
+                    scaffoldState.snackbarHostState.showSnackbar(
+                        message = comingSoonStr,
+                        actionLabel = dismissStr,
+                    )
                 }
                 return@Card
             }
@@ -178,4 +185,8 @@ fun CardButton(
             }
         }
     }
+}
+
+private fun dismissCurrentSnackbar(scaffoldState: ScaffoldState) {
+    scaffoldState.snackbarHostState.currentSnackbarData?.dismiss()
 }
