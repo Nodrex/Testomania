@@ -1,4 +1,4 @@
-name: 'Build and release'
+name: 'Build artifacts'
 
 on: workflow_dispatch
 
@@ -20,9 +20,9 @@ jobs:
           distribution: temurin
           cache: 'gradle'
       - name: 'update google services json'
-        run: echo $SERVICE_JSON > testomania/google-services.json
         with:
           service_json: ${{ secrets.GOOGLE_CRASHLITYCS }}
+        run: echo $SERVICE_JSON > testomania/google-services.json
       - name: 'Create keystore file'
         with:
           file: ${{ secrets.KEYSTORE_FILE }}
