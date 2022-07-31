@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalPagerApi::class)
+
 package com.earth.testomania.technical.presentation
 
 import androidx.compose.foundation.layout.*
@@ -48,7 +50,6 @@ fun TechnicalTestsScreen(
     else CreateQuizScreen(data, navigator)
 }
 
-@OptIn(ExperimentalPagerApi::class)
 @Composable
 private fun CreateQuizScreen(
     techQuizList: List<TechQuizItemWrapper>,
@@ -134,7 +135,6 @@ private fun CreateQuizScreen(
     }
 }
 
-@OptIn(ExperimentalPagerApi::class)
 @Composable
 private fun QuestionAndAnswers(
     modifier: Modifier,
@@ -157,11 +157,15 @@ private fun QuestionAndAnswers(
                 }
                 .fillMaxWidth(), techQuizList[page])
 
-            BoxWithConstraints(modifier = Modifier.constrainAs(illustration) {
-                top.linkTo(question.bottom)
-                bottom.linkTo(answers.top)
-                height = Dimension.fillToConstraints
-            }) {
+            BoxWithConstraints(
+                modifier = Modifier
+                    .constrainAs(illustration) {
+                        top.linkTo(question.bottom)
+                        bottom.linkTo(answers.top)
+                        height = Dimension.fillToConstraints
+                    },
+                contentAlignment = Alignment.Center
+            ) {
                 if (maxHeight > 100.dp) {
                     CategoryIllustration(category = techQuizList[page].quiz.category)
                 }
@@ -194,7 +198,6 @@ private fun QuestionAndAnswers(
     }
 }
 
-@OptIn(ExperimentalPagerApi::class)
 private fun findFirstIndexOfUnansweredQuestion(
     techQuizList: List<TechQuizItemWrapper>,
     pagerState: PagerState,
@@ -207,5 +210,5 @@ private fun findFirstIndexOfUnansweredQuestion(
 @Preview
 @Composable
 private fun PreviewComposeUI() {
-//    CreateQuizScreen(listOf(defaultTechQuizWrapper()))
+    //CreateQuizScreen(listOf(defaultTechQuizWrapper()))
 }
