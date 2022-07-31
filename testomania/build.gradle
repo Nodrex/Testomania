@@ -25,20 +25,29 @@ android {
         }
     }
 
+    signingConfigs {
+        release {
+            keyAlias System.getenv("KEYSTORE_ALIAS")
+            keyPassword System.getenv("KEYSTORE_PRIVATE_KEY")
+            storeFile file(System.getProperty("user.home") + "/keystore.jks")
+            storePassword System.getenv("KEYSTORE_PASSWORD")
+        }
+    }
+
     buildTypes {
         debug {
-            ext.enableCrashlytics=false
+            ext.enableCrashlytics = false
+            ext.alwaysUpdateBuildId = false //for build optimization
+            ext.enableCrashlytics = false //for build optimization
         }
         release {
             minifyEnabled true
             shrinkResources true
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-        debug {
-            ext.alwaysUpdateBuildId = false //for build optimization
-            ext.enableCrashlytics = false //for build optimization
-        }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
@@ -144,4 +153,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-crashlytics'
     implementation 'com.google.firebase:firebase-analytics'
 
+}
+
+task("version") {
+    doLast {
+        println "versionName: " + android.defaultConfig.versionName
+    }
 }
