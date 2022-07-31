@@ -6,12 +6,13 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ModalBottomSheetState
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -83,24 +84,24 @@ fun AboutBottomSheet(
         AboutDeveloper(it)
     }
 
-    Box(
+    Icon(
         modifier = Modifier
+            .height(40.dp)
+            .padding(bottom = 10.dp, start = 100.dp, end = 100.dp)
             .fillMaxWidth()
-            .padding(bottom = 10.dp),
-        contentAlignment = Alignment.Center
-    ) {
-        Icon(
-            modifier = Modifier
-                .size(30.dp)
-                .clickable {
-                    scope.launch {
-                        modalBottomSheetState.hide()
-                    }
-                },
-            painter = painterResource(id = R.drawable.ic_orbit_chevron_down),
-            contentDescription = "",
-        )
-    }
+            .clickable(
+                indication = null,
+                interactionSource = remember { MutableInteractionSource() }
+            )
+            {
+                scope.launch {
+                    modalBottomSheetState.hide()
+                }
+            },
+        painter = painterResource(id = R.drawable.ic_orbit_chevron_down),
+        contentDescription = "",
+    )
+
 }
 
 @Composable
