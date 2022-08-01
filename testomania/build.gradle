@@ -114,7 +114,7 @@ dependencies {
     implementation "com.google.accompanist:accompanist-systemuicontroller:0.24.8-beta"
 
     // Kiwi Design System
-    def kiwi = "0.16.0"
+    def kiwi = "0.17.0"
     implementation "kiwi.orbit.compose:ui:$kiwi"
     implementation "kiwi.orbit.compose:illustrations:$kiwi"
     implementation "kiwi.orbit.compose:icons:$kiwi"

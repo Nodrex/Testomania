@@ -1,18 +1,15 @@
 package com.earth.testomania.technical.presentation.ui_parts
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
-import com.earth.testomania.core.presentation.custom.TestomaniaInlineLoading
 import com.earth.testomania.technical.domain.model.TechCategory
+import kiwi.orbit.compose.ui.controls.LinearIndeterminateProgressIndicator
 import kotlinx.coroutines.delay
 import kotlin.time.Duration.Companion.seconds
 
@@ -25,16 +22,16 @@ fun LoadingScreen() {
     ) {
         val (progressBar, illustration) = createRefs()
 
-        TestomaniaInlineLoading(modifier = Modifier
+        LinearIndeterminateProgressIndicator(modifier =
+        Modifier
+            .fillMaxWidth()
+            .padding(top = 3.dp, start = 10.dp, end = 10.dp)
+            .height(15.dp)
             .constrainAs(progressBar) {
                 top.linkTo(parent.top)
                 start.linkTo(parent.start)
                 end.linkTo(parent.end)
-            }
-            .padding(top = 50.dp),
-            circleSize = 18.dp,
-            circleDistance = 10.dp
-        )
+            })
 
         var techCategory by remember {
             mutableStateOf(TechCategory.UNKNOWN)
