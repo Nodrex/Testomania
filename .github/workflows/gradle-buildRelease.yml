@@ -30,6 +30,7 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
           arguments: buildRelease
+        env:
           KEYSTORE_ALIAS: ${{ secrets.KEYSTORE_ALIAS }}
           KEYSTORE_PRIVATE_KEY: ${{ secrets.KEYSTORE_PRIVATE_KEY }}
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
