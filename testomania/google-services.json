@@ -1,48 +1,36 @@
 {
   "project_info": {
-    "project_number": "",
-    "project_id": ""
+    "project_number": "479704806674",
+    "project_id": "testomania-github",
+    "storage_bucket": "testomania-github.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:123456789012:android:1234567890123456",
+        "mobilesdk_app_id": "1:479704806674:android:19750bda475161f51c6fcb",
         "android_client_info": {
           "package_name": "com.earth.testomania"
         }
       },
       "oauth_client": [
         {
-          "client_id": "",
+          "client_id": "479704806674-i1em8rovjgj7krdo0tcqaaoc6n3cuhdj.apps.googleusercontent.com",
           "client_type": 3
-        },
-        {
-          "client_id": "",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.earth.testomania",
-            "certificate_hash": ""
-          }
         }
       ],
       "api_key": [
         {
-          "current_key": ""
+          "current_key": "AIzaSyC-iYuZ26F87NQH7lkIkhZqh_sXs2aIV0w"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 2,
-          "analytics_property": {
-            "tracking_id": ""
-          }
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 1
+          "other_platform_oauth_client": [
+            {
+              "client_id": "479704806674-i1em8rovjgj7krdo0tcqaaoc6n3cuhdj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
