@@ -20,11 +20,11 @@ jobs:
           distribution: temurin
           cache: 'gradle'
       - name: 'update google services json'
-        with:
+        env:
           service_json: ${{ secrets.GOOGLE_CRASHLITYCS }}
         run: 'echo $SERVICE_JSON > testomania/google-services.json'
       - name: 'Create keystore file'
-        with:
+        env:
           file: ${{ secrets.KEYSTORE_FILE }}
         run: |
           echo $FILE | base64 --decode > private_key.jks
