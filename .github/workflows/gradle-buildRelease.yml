@@ -23,6 +23,8 @@ jobs:
         run: |
           echo $SERVICE_JSON > testomania/google-services.json
           cat testomania/google-services.json
+          pwd
+          ls
       - name: 'Create keystore file'
         env:
           file: ${{ secrets.KEYSTORE_FILE }}
