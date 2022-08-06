@@ -21,8 +21,8 @@ jobs:
         env:
           service_json: ${{ secrets.GOOGLE_CRASHLITYCS }}
         run: |
-          'echo $SERVICE_JSON > testomania/google-services.json'
-          'cat testomania/google-services.json'
+          echo $SERVICE_JSON > testomania/google-services.json
+          cat testomania/google-services.json
       - name: 'Create keystore file'
         env:
           file: ${{ secrets.KEYSTORE_FILE }}
