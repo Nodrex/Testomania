@@ -11,8 +11,6 @@ jobs:
     steps:
       - name: 'Checkout Code'
         uses: actions/checkout@v3
-        with:
-          ref: master
       - name: 'Set up Java'
         uses: actions/setup-java@v2
         with:
