@@ -118,12 +118,26 @@ class GetQuizListUseCase @Inject constructor(
         DataState.Success(
             SuccessMetaData(),
             list?.filter {
-                it.multiple_correct_answers == FALSE_STR
+                it.multiple_correct_answers == FALSE_STR && hasCorrectAnswer(it)
                 //TODO this filter is temporarily to disable multi answer quiz,
                 // but we wel remove this constraint for future on next releases of App
             }?.mapNotNull { techQuiz ->
                 convertTechQuizDTOtoDataObject(techQuiz)
             })
+
+    private fun hasCorrectAnswer(techQuizDTO: TechQuizDTO): Boolean {
+        techQuizDTO.correct_answers?.let {
+            return (
+                it.answer_a_correct.toBoolean() ||
+                it.answer_b_correct.toBoolean() ||
+                it.answer_c_correct.toBoolean() ||
+                it.answer_d_correct.toBoolean() ||
+                it.answer_e_correct.toBoolean() ||
+                it.answer_f_correct.toBoolean()
+            )
+        }
+        return false
+    }
 
     //TODO maybe for later i will move this to extension
     private fun error(dataState: DataState<List<TechQuizDTO>>) = DataState.Error(
