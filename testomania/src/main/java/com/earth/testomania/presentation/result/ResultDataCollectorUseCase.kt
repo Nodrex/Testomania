@@ -1,6 +1,7 @@
 package com.earth.testomania.presentation.result
 
 import com.earth.testomania.R
+import com.earth.testomania.core.log
 import com.earth.testomania.technical.domain.model.TechQuizItemWrapper
 
 class ResultDataCollectorUseCase {
@@ -20,24 +21,36 @@ class ResultDataCollectorUseCase {
                 .filter {
                     it.selectedAnswers.isNotEmpty() && it.point == 0
                 }
-                .map { qItem ->
-                    val incIndex = qItem.selectedAnswers.find {
-                        it.userSelected
-                    }?.selectedKey ?: ""
-                    val correctIndex = qItem.quiz.correctAnswers.filter {
-                        it.value
-                    }.keys.first()
+                .map { wrappedQuizItem ->
+                    val incorrectIndex = getIncorrectIndex(wrappedQuizItem)
+                    val correctIndex = getCorrectIndex(wrappedQuizItem)
 
                     IncorrectAnsweredQuestionModel(
-                        qItem.quiz.id.toString(),
-                        qItem.quiz.question,
+                        wrappedQuizItem.quiz.id.toString(),
+                        wrappedQuizItem.quiz.question,
                         correctIndex,
-                        qItem.quiz.possibleAnswers[correctIndex] ?: "",
-                        incIndex,
-                        qItem.quiz.possibleAnswers[incIndex] ?: ""
+                        wrappedQuizItem.quiz.possibleAnswers[correctIndex] ?: "",
+                        incorrectIndex,
+                        wrappedQuizItem.quiz.possibleAnswers[incorrectIndex] ?: ""
                     )
                 }
         )
         return resultData
     }
+
+    private fun getIncorrectIndex(wrappedQuizItem: TechQuizItemWrapper): String =
+        wrappedQuizItem.selectedAnswers.find {
+            it.userSelected
+        }?.selectedKey ?: ""
+
+    private fun getCorrectIndex(wrappedQuizItem: TechQuizItemWrapper): String =
+        try {
+            wrappedQuizItem.quiz.correctAnswers.filter {
+                it.value
+            }.keys.first()
+        } catch (e: NoSuchElementException) {
+            log(e.stackTraceToString())
+            ""
+        }
+
 }
