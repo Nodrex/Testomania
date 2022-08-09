@@ -26,7 +26,7 @@ jobs:
         env:
           file: ${{ secrets.KEYSTORE_FILE }}
         run: |
-          echo $FILE | base64 --decode > private_key.jks
+          echo $FILE | base64 --decode > keystore.jks
           pwd
           ls
       - name: 'Build native executables'
