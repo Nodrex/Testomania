@@ -19,7 +19,7 @@ jobs:
           cache: 'gradle'
       - name: 'update google services json'
         env:
-          service_json: ${{ secrets.GOOGLE_CRASHLITYCS }}
+          SERVICE_JSON: ${{ secrets.GOOGLE_CRASHLITYCS }}
         run: |
           echo $SERVICE_JSON > testomania/google-services.json
           cat testomania/google-services.json
