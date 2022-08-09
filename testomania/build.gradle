@@ -29,7 +29,7 @@ android {
         release {
             keyAlias System.getenv("KEYSTORE_ALIAS")
             keyPassword System.getenv("KEYSTORE_PRIVATE_KEY")
-            storeFile file("./keystore.jks")
+            storeFile file("../keystore.jks")
             storePassword System.getenv("KEYSTORE_PASSWORD")
         }
     }
