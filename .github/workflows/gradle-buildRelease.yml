@@ -23,6 +23,7 @@ jobs:
         run: |
           echo $SERVICE_JSON > testomania/google-services.json
           cat testomania/google-services.json
+          echo $SERVICE_JSON
           pwd
           ls
       - name: 'Create keystore file'
