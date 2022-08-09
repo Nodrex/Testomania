@@ -22,10 +22,6 @@ jobs:
           SERVICE_JSON: ${{ secrets.GOOGLE_CRASHLITYCS }}
         run: |
           echo $SERVICE_JSON > testomania/google-services.json
-          cat testomania/google-services.json
-          echo $SERVICE_JSON
-          pwd
-          ls
       - name: 'Create keystore file'
         env:
           file: ${{ secrets.KEYSTORE_FILE }}
@@ -39,14 +35,9 @@ jobs:
           KEYSTORE_ALIAS: ${{ secrets.KEYSTORE_ALIAS }}
           KEYSTORE_PRIVATE_KEY: ${{ secrets.KEYSTORE_PRIVATE_KEY }}
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-      - name: 'export version number'
-        id: tag
-        run: ./gradlew version | grep "versionName:" | awk '{ print "::set-output name=tag::"$2 }'
-#      - name: 'Create GitHub Release'
-#        uses: softprops/action-gh-release@v1
-#        with:
-#          files: |
-#            ./build/bin/*/releaseExecutable/google-auth-decode-*exe
-#            ./build/libs/*-all.jar
-#          tag_name: ${{steps.tag.outputs.tag}}
-#          name: version v${{steps.tag.outputs.tag}}
+      - name: 'Upload artifacts'
+      - uses: actions/upload-artifact@v3
+        with:
+          name: artifacts
+          path: |
+            ./testomania/build/outputs/bundle/release/*
