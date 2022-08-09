@@ -30,7 +30,7 @@ jobs:
       - name: 'Build native executables'
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: buildRelease
+          arguments: bundleRelease
         env:
           KEYSTORE_ALIAS: ${{ secrets.KEYSTORE_ALIAS }}
           KEYSTORE_PRIVATE_KEY: ${{ secrets.KEYSTORE_PRIVATE_KEY }}
