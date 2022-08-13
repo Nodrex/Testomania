@@ -24,14 +24,9 @@ jobs:
           echo $SERVICE_JSON > testomania/google-services.json
       - name: 'Create keystore file'
         env:
-          file: ${{ secrets.KEYSTORE_FILE }}
+          FILE: ${{ secrets.KEYSTORE_FILE }}
         run: |
-          echo $FILE | base64 --decode > kee1
-      - name: 'Upload artifacts'
-        uses: actions/upload-artifact@v3
-        with:
-          name: artifacts
-          path: kee1
+          echo $FILE | base64 --decode > keystore.jks
       - name: 'Build native executables'
         uses: gradle/gradle-build-action@v2
         with:
