@@ -40,4 +40,4 @@ jobs:
         with:
           name: artifacts
           path: |
-            testomania/google-services.json
+            ./testomania/build/outputs/bundle/release/*
