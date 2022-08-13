@@ -1,10 +1,10 @@
-name: 'Build artifacts'
+name: 'Build App Bundle'
 
 on: workflow_dispatch
 
 jobs:
   build:
-    name: 'Build the project'
+    name: 'Build the project and create .aab file for Play Store'
     runs-on: ubuntu-latest
     outputs:
       tag-name: ${{ steps.tag.outputs.tag }}
