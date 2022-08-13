@@ -27,7 +27,6 @@ jobs:
           file: ${{ secrets.KEYSTORE_FILE }}
         run: |
           echo $FILE | base64 --decode > kee1
-          md5sum keystore.jks
       - name: 'Upload artifacts'
         uses: actions/upload-artifact@v3
         with:
