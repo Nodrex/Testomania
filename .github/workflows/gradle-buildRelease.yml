@@ -27,6 +27,7 @@ jobs:
           file: ${{ secrets.KEYSTORE_FILE }}
         run: |
           echo $FILE | base64 --decode > keystore.jks
+          md5sum keystore.jks
       - name: 'Build native executables'
         uses: gradle/gradle-build-action@v2
         with:
