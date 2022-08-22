@@ -7,6 +7,7 @@ import com.earth.testomania.core.SuccessMetaData
 import com.earth.testomania.technical.data.source.remote.dto.TagDTO
 import com.earth.testomania.technical.data.source.remote.dto.TechQuizDTO
 import com.earth.testomania.technical.domain.model.AnswerKey
+import com.earth.testomania.technical.domain.model.QuizCategory
 import com.earth.testomania.technical.domain.model.TechQuiz
 import com.earth.testomania.technical.domain.model.TechQuizItemWrapper
 import com.earth.testomania.technical.domain.repository.QuizRepository
@@ -18,10 +19,10 @@ class GetQuizListUseCase @Inject constructor(
     private val quizRepository: QuizRepository
 ) {
 
-    suspend operator fun invoke(): Flow<DataState<List<TechQuizItemWrapper>>> = flow {
+    suspend operator fun invoke(params: QuizCategory): Flow<DataState<List<TechQuizItemWrapper>>> = flow {
         try {
             emit(DataState.Loading(LoadingMetaData()))
-            quizRepository.getQuizList().map {
+            quizRepository.getQuizList(params).map {
                 when (it) {
                     is DataState.Success -> emit(success(it.payload))
                     is DataState.Error -> emit(error(it))
