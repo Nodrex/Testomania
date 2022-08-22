@@ -2,23 +2,26 @@ package com.earth.testomania.technical.presentation
 
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.earth.testomania.R
 import com.earth.testomania.core.DataState
 import com.earth.testomania.core.coroutines.defaultCoroutineExceptionHandler
+import com.earth.testomania.technical.domain.model.QuizCategory
 import com.earth.testomania.technical.domain.model.SelectedAnswer
 import com.earth.testomania.technical.domain.model.TechQuizItemWrapper
 import com.earth.testomania.technical.domain.use_case.GetQuizListUseCase
-import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class QuizViewModel @Inject constructor(
+class QuizViewModel @AssistedInject constructor(
+    @Assisted var category: QuizCategory,
     private val getQuizListUseCase: GetQuizListUseCase,
     private val dispatcher: CoroutineDispatcher
 ) : ViewModel() {
@@ -41,7 +44,7 @@ class QuizViewModel @Inject constructor(
     private fun getQuizList() {
         getQuizListJob?.cancel()
         getQuizListJob = viewModelScope.launch(dispatcher + defaultCoroutineExceptionHandler) {
-            getQuizListUseCase().catch {
+            getQuizListUseCase(category).catch {
                 ensureActive()
                 _error.emit(R.string.error_generic)
             }.collectLatest {
@@ -115,4 +118,18 @@ class QuizViewModel @Inject constructor(
         it.point
     }
 
+    @AssistedFactory
+    interface Factory {
+        fun create(cat: QuizCategory): QuizViewModel
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    class Provider(
+        private val assistedFactory: Factory,
+        private var category: QuizCategory
+    ) : ViewModelProvider.NewInstanceFactory() {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            return assistedFactory.create(category) as T
+        }
+    }
 }

@@ -6,6 +6,7 @@ import com.earth.testomania.destinations.AboutBottomSheetDestination
 import com.earth.testomania.destinations.DummyScreenDestination
 import com.earth.testomania.destinations.SkillzTestScreenDestination
 import com.earth.testomania.destinations.TechnicalTestsScreenDestination
+import com.earth.testomania.technical.domain.model.QuizCategory
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -22,7 +23,7 @@ class HomeScreenViewModel @Inject constructor(
         HomeDestinations(
             name = R.string.technical_tests,
             icon = R.drawable.ic_orbit_dashboard,
-            destination = TechnicalTestsScreenDestination
+            destination2 = TechnicalTestsScreenDestination(QuizCategory.ALL)
         ),
         HomeDestinations(
             name = R.string.general_skills_tests,

@@ -2,47 +2,54 @@
 
 package com.earth.testomania.technical.presentation
 
+import android.app.Activity
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.earth.testomania.MainActivity
 import com.earth.testomania.R
 import com.earth.testomania.destinations.ResultScreenDestination
 import com.earth.testomania.presentation.result.ResultDataCollectorUseCase
+import com.earth.testomania.technical.domain.model.QuizCategory
 import com.earth.testomania.technical.domain.model.TechQuizItemWrapper
 import com.earth.testomania.technical.presentation.ui_parts.*
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
-import com.ramcosta.composedestinations.annotation.DeepLink
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import dagger.hilt.android.EntryPointAccessors
 import kiwi.orbit.compose.ui.controls.ButtonPrimary
 import kiwi.orbit.compose.ui.controls.ButtonSecondary
 import kiwi.orbit.compose.ui.controls.Icon
 import kiwi.orbit.compose.ui.controls.Text
 import kotlinx.coroutines.launch
 
+const val TECHNICAL_ROUTE = "home/technical_tests"
+
 @Destination(
-    route = "home/technical_tests",
-    deepLinks = [
-        DeepLink(uriPattern = "testomania://home/technical_tests")
-    ]
+    route = TECHNICAL_ROUTE,
+//    deepLinks = [
+//        DeepLink(uriPattern = "testomania://home/technical_tests")
+//    ]
 )
 @Composable
 fun TechnicalTestsScreen(
-    navigator: DestinationsNavigator
+    navigator: DestinationsNavigator,
+    category: QuizCategory
 ) {
-    val viewModel: QuizViewModel = hiltViewModel()
+    val viewModel: QuizViewModel = quizViewModel(category)
 
     val data = viewModel.data
 
@@ -80,11 +87,15 @@ private fun CreateQuizScreen(
             }
             .padding(start = 10.dp, end = 10.dp), currentProgress, techQuizList.size)
 
-        QuestionAndAnswers(modifier = Modifier.constrainAs(pager) {
-            top.linkTo(progressBar.bottom, margin = 10.dp)
-            bottom.linkTo(navigation.top)
-            height = Dimension.fillToConstraints
-        }, techQuizList, pagerState)
+        QuestionAndAnswers(
+            modifier = Modifier.constrainAs(pager) {
+                top.linkTo(progressBar.bottom, margin = 10.dp)
+                bottom.linkTo(navigation.top)
+                height = Dimension.fillToConstraints
+            },
+            techQuizList,
+            pagerState
+        )
 
         Row(
             modifier = Modifier
@@ -147,7 +158,7 @@ private fun QuestionAndAnswers(
         modifier = modifier.fillMaxSize(),
         count = techQuizList.size,
         state = pagerState,
-    ) { page ->
+    ) { pageIndex ->
         ConstraintLayout(modifier = Modifier.fillMaxSize()) {
             val (question, answers, illustration) = createRefs()
 
@@ -155,7 +166,7 @@ private fun QuestionAndAnswers(
                 .constrainAs(question) {
                     top.linkTo(parent.top)
                 }
-                .fillMaxWidth(), techQuizList[page])
+                .fillMaxWidth(), techQuizList[pageIndex])
 
             BoxWithConstraints(
                 modifier = Modifier
@@ -167,7 +178,7 @@ private fun QuestionAndAnswers(
                 contentAlignment = Alignment.Center
             ) {
                 if (maxHeight > 100.dp) {
-                    CategoryIllustration(category = techQuizList[page].quiz.category)
+                    CategoryIllustration(category = techQuizList[pageIndex].quiz.category)
                 }
             }
 
@@ -183,11 +194,11 @@ private fun QuestionAndAnswers(
                 verticalArrangement = Arrangement.spacedBy(8.dp),
                 contentPadding = PaddingValues(all = answerPadding),
             ) {
-                techQuizList[page].quiz.apply {
+                techQuizList[pageIndex].quiz.apply {
                     possibleAnswers.forEach { possibleAnswer ->
                         item(key = possibleAnswer.key) {
                             CreateQuizAnswerUI(
-                                techQuizList[page],
+                                techQuizList[pageIndex],
                                 possibleAnswer,
                             )
                         }
@@ -211,4 +222,15 @@ private fun findFirstIndexOfUnansweredQuestion(
 @Composable
 private fun PreviewComposeUI() {
     //CreateQuizScreen(listOf(defaultTechQuizWrapper()))
+}
+
+
+@Composable
+fun quizViewModel(category: QuizCategory = QuizCategory.ALL): QuizViewModel {
+    val factory = EntryPointAccessors.fromActivity(
+        LocalContext.current as Activity,
+        MainActivity.ViewModelFactoryProvider::class.java
+    ).quizViewModelFactory()
+
+    return viewModel(factory = QuizViewModel.Provider(factory, category))
 }

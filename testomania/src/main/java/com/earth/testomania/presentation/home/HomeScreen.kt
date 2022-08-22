@@ -28,6 +28,7 @@ import com.earth.testomania.presentation.ABOUT_ROUT
 import com.earth.testomania.presentation.AboutBottomSheet
 import com.earth.testomania.presentation.dummy.DUMMY_ROUTE
 import com.earth.testomania.skills.presentation.skillz.SKILLZ_ROUTE
+import com.earth.testomania.technical.presentation.TECHNICAL_ROUTE
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kiwi.orbit.compose.ui.controls.Card
@@ -66,6 +67,9 @@ fun HomeScreen(
         scrimColor = Color.Transparent,
         sheetContent = {
             AboutBottomSheet(modalBottomSheetState, scope)
+//            CategorySelectorBottomSheet(modalBottomSheetState, scope) {
+//                navigator?.navigate(TechnicalTestsScreenDestination(it))
+//            }
         }
     ) {
         Scaffold(
@@ -150,7 +154,7 @@ fun CardButton(
 
         dismissCurrentSnackbar(scaffoldState)
 
-        when (destinationInfo.destination.route) {
+        when (destinationInfo.destination?.route ?: destinationInfo.destination2?.route) {
             SKILLZ_ROUTE, DUMMY_ROUTE -> {
                 scope.launch {
                     scaffoldState.snackbarHostState.showSnackbar(
@@ -166,7 +170,8 @@ fun CardButton(
                     else modalBottomSheetState.show()
                 }
             }
-            else -> navigator?.navigate(destinationInfo.destination)
+            TECHNICAL_ROUTE -> {}
+//            else -> navigator?.navigate(destinationInfo.destination)
         }
     }) {
         Column(
