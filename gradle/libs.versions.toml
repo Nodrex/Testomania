@@ -47,8 +47,3 @@ firebase = ["firebase-crashlytics", "firebase-analytics"]
 androidx-androidTests = ["androidx-test-coreKtx", "androidx-test-runner", "androidx-test-rules", "androidx-test-core-junitKtx"]
 androidx-compose = ["androidx-compose-foundation", "accompanist", "androidx-compose-tooling-preview", "androidx-compose-ui", "androidx-compose-material", "androidx-compose-activity", ]
 androidx-compose-tooling = ["androidx-compose-tooling-poolingcontainer", "androidx-compose-tooling"]
-
-
-#     implementation "androidx.room:room-runtime:2.4.2"
-#    implementation "androidx.room:room-ktx:2.4.2"
-#    kapt "androidx.room:room-compiler:2.4.2"
