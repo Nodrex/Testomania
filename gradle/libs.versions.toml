@@ -35,11 +35,15 @@ mockk = "io.mockk:mockk:1.12.5"
 mockk-android = "io.mockk:mockk-android:1.12.5"
 junit = "junit:junit:4.13.2"
 robolectric = "org.robolectric:robolectric:4.8.2"
+coil = "io.coil-kt:coil-compose:2.1.0"
+firebase-crashlytics = "com.google.firebase:firebase-crashlytics:18.2.9"
+firebase-analytics = "com.google.firebase:firebase-crashlytics:18.2.9"
 
 
 [bundles]
 kiwi = ["kiwi-icons", "kiwi-ui", "kiwi-illustrations"]
 androidx-room = ["androidx-room-runtime", "androidx-room-ktx"]
+firebase = ["firebase-crashlytics", "firebase-analytics"]
 androidx-androidTests = ["androidx-test-coreKtx", "androidx-test-runner", "androidx-test-rules", "androidx-test-core-junitKtx"]
 androidx-compose = ["androidx-compose-foundation", "accompanist", "androidx-compose-tooling-preview", "androidx-compose-ui", "androidx-compose-material", "androidx-compose-activity", ]
 androidx-compose-tooling = ["androidx-compose-tooling-poolingcontainer", "androidx-compose-tooling"]
