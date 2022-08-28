@@ -9,5 +9,5 @@ data class HomeDestinations(
     @StringRes val name: Int,
     @DrawableRes val icon: Int,
     val destination: DirectionDestination? = null,
-    val destination2: Direction? = null,
+    val destinationWithParam: Direction? = null,
 )

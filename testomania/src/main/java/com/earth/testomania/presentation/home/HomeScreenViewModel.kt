@@ -1,6 +1,7 @@
 package com.earth.testomania.presentation.home
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.earth.testomania.R
 import com.earth.testomania.destinations.AboutBottomSheetDestination
 import com.earth.testomania.destinations.DummyScreenDestination
@@ -8,12 +9,16 @@ import com.earth.testomania.destinations.SkillzTestScreenDestination
 import com.earth.testomania.destinations.TechnicalTestsScreenDestination
 import com.earth.testomania.technical.domain.model.QuizCategory
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeScreenViewModel @Inject constructor(
+class HomeScreenViewModel @Inject constructor() : ViewModel() {
 
-) : ViewModel() {
+    val bottomSheetPageState: MutableStateFlow<BottomSheetScreen> =
+        MutableStateFlow(BottomSheetScreen.Technical)
+
     val destinations = listOf(
         HomeDestinations(
             name = R.string.about,
@@ -23,7 +28,7 @@ class HomeScreenViewModel @Inject constructor(
         HomeDestinations(
             name = R.string.technical_tests,
             icon = R.drawable.ic_orbit_dashboard,
-            destination2 = TechnicalTestsScreenDestination(QuizCategory.ALL)
+            destinationWithParam = TechnicalTestsScreenDestination(QuizCategory.ALL)
         ),
         HomeDestinations(
             name = R.string.general_skills_tests,
@@ -36,4 +41,15 @@ class HomeScreenViewModel @Inject constructor(
             destination = DummyScreenDestination
         )
     )
+
+    fun onBottomSheetPageChange(newPage: BottomSheetScreen) {
+        viewModelScope.launch {
+            bottomSheetPageState.emit(newPage)
+        }
+    }
+}
+
+sealed class BottomSheetScreen {
+    object Technical : BottomSheetScreen()
+    object About : BottomSheetScreen()
 }

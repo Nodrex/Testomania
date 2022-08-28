@@ -10,8 +10,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -24,16 +23,19 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.R
+import com.earth.testomania.destinations.TechnicalTestsScreenDestination
 import com.earth.testomania.presentation.ABOUT_ROUT
 import com.earth.testomania.presentation.AboutBottomSheet
 import com.earth.testomania.presentation.dummy.DUMMY_ROUTE
 import com.earth.testomania.skills.presentation.skillz.SKILLZ_ROUTE
+import com.earth.testomania.technical.presentation.CategorySelectorBottomSheet
 import com.earth.testomania.technical.presentation.TECHNICAL_ROUTE
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kiwi.orbit.compose.ui.controls.Card
 import kiwi.orbit.compose.ui.controls.Icon
 import kiwi.orbit.compose.ui.controls.Text
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter", "MaterialDesignInsteadOrbitDesign")
@@ -66,10 +68,7 @@ fun HomeScreen(
         sheetState = modalBottomSheetState,
         scrimColor = Color.Transparent,
         sheetContent = {
-            AboutBottomSheet(modalBottomSheetState, scope)
-//            CategorySelectorBottomSheet(modalBottomSheetState, scope) {
-//                navigator?.navigate(TechnicalTestsScreenDestination(it))
-//            }
+            SheetLayout(modalBottomSheetState, scope, navigator)
         }
     ) {
         Scaffold(
@@ -85,7 +84,37 @@ fun HomeScreen(
             )
         }
     }
+}
 
+@Composable
+fun SheetLayout(
+    modalBottomSheetState: ModalBottomSheetState,
+    scope: CoroutineScope,
+    navigator: DestinationsNavigator?
+) {
+    val viewModel: HomeScreenViewModel = hiltViewModel()
+    val pageType by viewModel.bottomSheetPageState.collectAsState()
+    BottomContent(pageType, modalBottomSheetState, scope, navigator)
+
+}
+
+@Composable
+fun BottomContent(
+    pageType: BottomSheetScreen,
+    modalBottomSheetState: ModalBottomSheetState,
+    scope: CoroutineScope,
+    navigator: DestinationsNavigator?
+) {
+
+    when (pageType) {
+        is BottomSheetScreen.Technical -> CategorySelectorBottomSheet {
+            navigator?.navigate(TechnicalTestsScreenDestination(it))
+            scope.launch {
+                modalBottomSheetState.hide()
+            }
+        }
+        else -> AboutBottomSheet(modalBottomSheetState, scope)
+    }
 }
 
 @Composable
@@ -149,12 +178,13 @@ fun CardButton(
     val scope = rememberCoroutineScope()
     val comingSoonStr = stringResource(id = R.string.coming_soon)
     val dismissStr = stringResource(id = R.string.dismiss)
+    val viewModel: HomeScreenViewModel = hiltViewModel()
 
     Card(modifier = Modifier.size(125.dp), shape = RoundedCornerShape(10.dp), onClick = {
 
         dismissCurrentSnackbar(scaffoldState)
 
-        when (destinationInfo.destination?.route ?: destinationInfo.destination2?.route) {
+        when (destinationInfo.destination?.route ?: destinationInfo.destinationWithParam?.route) {
             SKILLZ_ROUTE, DUMMY_ROUTE -> {
                 scope.launch {
                     scaffoldState.snackbarHostState.showSnackbar(
@@ -165,12 +195,17 @@ fun CardButton(
                 return@Card
             }
             ABOUT_ROUT -> {
+                viewModel.onBottomSheetPageChange(BottomSheetScreen.About)
                 scope.launch {
-                    if (modalBottomSheetState.isVisible) modalBottomSheetState.hide()
-                    else modalBottomSheetState.show()
+                    modalBottomSheetState.show()
                 }
             }
-            TECHNICAL_ROUTE -> {}
+            "$TECHNICAL_ROUTE/ALL" -> {
+                viewModel.onBottomSheetPageChange(BottomSheetScreen.Technical)
+                scope.launch {
+                    modalBottomSheetState.show()
+                }
+            }
 //            else -> navigator?.navigate(destinationInfo.destination)
         }
     }) {
