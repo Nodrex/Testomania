@@ -1,6 +1,4 @@
-package com.earth.testomania.core
-
-import java.lang.Exception
+package com.earth.testomania.common
 
 sealed class DataState<T>(val metaData: MetaData? = null, val payload: T? = null) {
     class Loading<T>(metaData: LoadingMetaData? = null, payload: T? = null) :

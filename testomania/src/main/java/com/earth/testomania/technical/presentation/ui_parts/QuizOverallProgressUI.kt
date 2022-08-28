@@ -22,11 +22,14 @@ fun OverallProgress(modifier: Modifier = Modifier, currentProgress: Int = 2, max
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 3.dp)
-                .height(15.dp))
+                .height(15.dp)
+        )
 
         if (maxProgress != 0) {
-            Text(text = "$currentProgress/$maxProgress",
-                modifier = Modifier.align(Alignment.Center), fontWeight = FontWeight.Bold)
+            Text(
+                text = "$currentProgress/$maxProgress",
+                modifier = Modifier.align(Alignment.Center), fontWeight = FontWeight.Bold
+            )
         }
     }
 }
