@@ -1,4 +1,4 @@
-package com.earth.testomania.presentation.dummy
+package com.earth.testomania.home_screen.presentation
 
 import androidx.compose.runtime.Composable
 import com.ramcosta.composedestinations.annotation.Destination

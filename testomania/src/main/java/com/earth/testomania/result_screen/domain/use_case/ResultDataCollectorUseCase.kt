@@ -1,7 +1,9 @@
-package com.earth.testomania.presentation.result
+package com.earth.testomania.result_screen.domain.use_case
 
 import com.earth.testomania.R
-import com.earth.testomania.core.log
+import com.earth.testomania.common.log
+import com.earth.testomania.result_screen.domain.model.IncorrectAnsweredQuestionModel
+import com.earth.testomania.result_screen.domain.model.ResultData
 import com.earth.testomania.technical.domain.model.TechQuizItemWrapper
 
 class ResultDataCollectorUseCase {

@@ -1,4 +1,4 @@
-package com.earth.testomania.presentation.result
+package com.earth.testomania.result_screen.presentation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -21,8 +21,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.R
-import com.earth.testomania.core.presentation.custom.AnswerTileState
-import com.earth.testomania.core.presentation.custom.TestomaniaChoiceTile
+import com.earth.testomania.common.custom_ui_components.AnswerTileState
+import com.earth.testomania.common.custom_ui_components.TestomaniaChoiceTile
+import com.earth.testomania.result_screen.domain.model.IncorrectAnsweredQuestionModel
+import com.earth.testomania.result_screen.domain.model.ResultData
 import com.ramcosta.composedestinations.annotation.Destination
 import kiwi.orbit.compose.ui.OrbitTheme
 import kiwi.orbit.compose.ui.controls.Card

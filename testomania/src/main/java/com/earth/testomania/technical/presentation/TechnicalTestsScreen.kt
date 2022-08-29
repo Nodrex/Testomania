@@ -16,7 +16,7 @@ import androidx.constraintlayout.compose.Dimension
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.R
 import com.earth.testomania.destinations.ResultScreenDestination
-import com.earth.testomania.presentation.result.ResultDataCollectorUseCase
+import com.earth.testomania.result_screen.domain.use_case.ResultDataCollectorUseCase
 import com.earth.testomania.technical.domain.model.TechQuizItemWrapper
 import com.earth.testomania.technical.presentation.ui_parts.*
 import com.google.accompanist.pager.ExperimentalPagerApi

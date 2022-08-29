@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterialApi::class)
 
-package com.earth.testomania.presentation
+package com.earth.testomania.home_screen.presentation
 
 import android.content.Context
 import android.content.Intent
@@ -21,8 +21,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat.startActivity
 import com.earth.testomania.R
-import com.earth.testomania.core.Developer
-import com.earth.testomania.core.developers
+import com.earth.testomania.common.Developer
+import com.earth.testomania.common.developers
 import com.ramcosta.composedestinations.annotation.Destination
 import kiwi.orbit.compose.ui.controls.ChoiceTile
 import kiwi.orbit.compose.ui.controls.Icon

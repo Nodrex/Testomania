@@ -1,4 +1,4 @@
-package com.earth.testomania.core.helper
+package com.earth.testomania.common.helper
 
 import com.earth.testomania.technical.domain.model.TechQuiz
 import com.earth.testomania.technical.domain.model.TechQuizItemWrapper
