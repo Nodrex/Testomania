@@ -10,15 +10,15 @@ plugins {
 }
 
 android {
-    compileSdk 33
+    compileSdk = libs.versions.compileSdk.get() as Integer
     namespace 'com.earth.testomania'
 
     defaultConfig {
         applicationId "com.earth.testomania"
-        minSdk 23
-        targetSdk 33
-        versionCode 4
-        versionName "1.2"
+        minSdk libs.versions.minSdk.get() as Integer
+        targetSdk libs.versions.targetSdk.get() as Integer
+        versionCode libs.versions.versionCode.get() as Integer
+        versionName libs.versions.versionName.get()
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -100,12 +100,10 @@ dependencies {
     debugImplementation(libs.bundles.debug.tools)
 
     kapt(libs.androidx.room.compiler)
-    kapt "com.squareup.moshi:moshi-kotlin-codegen:1.13.0"
-    kapt "com.google.dagger:hilt-android-compiler:2.42"
-    kapt "androidx.hilt:hilt-compiler:1.0.0"
-    ksp 'io.github.raamcosta.compose-destinations:ksp:1.4.4-beta'
-    kaptTest 'com.google.dagger:hilt-android-compiler:2.42'
-
+    kapt(libs.moshi.codegen)
+    kapt(libs.google.hilt.androidCompiler)
+    kapt(libs.google.hilt.compiler)
+    ksp(libs.raamcosta.destinations.ksp)
 }
 
 task("version") {
