@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.R
+import com.earth.testomania.common.log
 import com.earth.testomania.destinations.TechnicalTestsScreenDestination
 import com.earth.testomania.home_screen.domain.model.HomeDestinations
 import com.earth.testomania.presentation.home.BottomSheetScreen
@@ -96,9 +97,8 @@ fun SheetLayout(
     navigator: DestinationsNavigator?
 ) {
     val viewModel: HomeScreenViewModel = hiltViewModel()
-    val pageType by viewModel.bottomSheetPageState.collectAsState()
+    val pageType by viewModel.bottomSheetPageState.collectAsState(initial = BottomSheetScreen.Technical)
     BottomContent(pageType, modalBottomSheetState, scope, navigator)
-
 }
 
 @Composable
@@ -108,12 +108,15 @@ fun BottomContent(
     scope: CoroutineScope,
     navigator: DestinationsNavigator?
 ) {
-
     when (pageType) {
-        is BottomSheetScreen.Technical -> CategorySelectorBottomSheet {
-            navigator?.navigate(TechnicalTestsScreenDestination(it))
+        is BottomSheetScreen.Technical -> CategorySelectorBottomSheet { quizCategory ->
             scope.launch {
-                modalBottomSheetState.hide()
+                modalBottomSheetState.snapTo(ModalBottomSheetValue.Hidden)
+                //snapTo is quicker then hide
+            }.invokeOnCompletion {
+                navigator?.navigate(TechnicalTestsScreenDestination(quizCategory))
+                //we need to navigate to other screen after bottom-sheet is close,
+                // otherwise bottom-sheet remains open when returning to home screen
             }
         }
         else -> AboutBottomSheet(modalBottomSheetState, scope)
