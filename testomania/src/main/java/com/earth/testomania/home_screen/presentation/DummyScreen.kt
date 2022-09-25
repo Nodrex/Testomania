@@ -1,8 +1,8 @@
-package com.earth.testomania.presentation.dummy
+package com.earth.testomania.home_screen.presentation
 
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import com.ramcosta.composedestinations.annotation.Destination
+import kiwi.orbit.compose.ui.controls.Text
 
 const val DUMMY_ROUTE = "home/dummy"
 

@@ -1,0 +1,43 @@
+name: 'Build App Bundle'
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    name: 'Build the project and create .aab file for Play Store'
+    runs-on: ubuntu-latest
+    outputs:
+      tag-name: ${{ steps.tag.outputs.tag }}
+    steps:
+      - name: 'Checkout Code'
+        uses: actions/checkout@v3
+      - name: 'Set up Java'
+        uses: actions/setup-java@v2
+        with:
+          java-version: 11
+          distribution: temurin
+          cache: 'gradle'
+      - name: 'update google services json'
+        env:
+          SERVICE_JSON: ${{ secrets.GOOGLE_CRASHLITYCS }}
+        run: |
+          echo $SERVICE_JSON > testomania/google-services.json
+      - name: 'Create keystore file'
+        env:
+          FILE: ${{ secrets.KEYSTORE_FILE }}
+        run: |
+          echo $FILE | base64 --decode > keystore.jks
+      - name: 'Build native executables'
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: bundleRelease
+        env:
+          KEYSTORE_ALIAS: ${{ secrets.KEYSTORE_ALIAS }}
+          KEYSTORE_PRIVATE_KEY: ${{ secrets.KEYSTORE_PRIVATE_KEY }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+      - name: 'Upload artifacts'
+        uses: actions/upload-artifact@v3
+        with:
+          name: artifacts
+          path: |
+            ./testomania/build/outputs/bundle/release/*

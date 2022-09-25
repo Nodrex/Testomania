@@ -16,8 +16,8 @@ android {
         applicationId "com.earth.testomania"
         minSdk 23
         targetSdk 33
-        versionCode 3
-        versionName "1.1"
+        versionCode 4
+        versionName "1.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -29,7 +29,7 @@ android {
         release {
             keyAlias System.getenv("KEYSTORE_ALIAS")
             keyPassword System.getenv("KEYSTORE_PRIVATE_KEY")
-            storeFile file(System.getProperty("user.home") + "/keystore.jks")
+            storeFile file("../keystore.jks")
             storePassword System.getenv("KEYSTORE_PASSWORD")
         }
     }
@@ -103,7 +103,6 @@ dependencies {
     // Compose dependencies
     ksp 'io.github.raamcosta.compose-destinations:ksp:1.4.4-beta'
     debugImplementation "androidx.compose.ui:ui-tooling:1.1.1"
-    
     implementation(libs.bundles.kiwi)
 
     // Coroutines

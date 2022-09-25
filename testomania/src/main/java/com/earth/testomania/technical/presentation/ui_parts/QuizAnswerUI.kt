@@ -6,10 +6,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.earth.testomania.core.helper.defaultTechQuizWrapper
-import com.earth.testomania.core.presentation.custom.AnswerTileState
-import com.earth.testomania.core.presentation.custom.TestomaniaChoiceTile
-import com.earth.testomania.core.presentation.custom.getAnswerTileState
+import com.earth.testomania.common.custom_ui_components.AnswerTileState
+import com.earth.testomania.common.custom_ui_components.TestomaniaChoiceTile
+import com.earth.testomania.common.custom_ui_components.getAnswerTileState
+import com.earth.testomania.common.helper.defaultTechQuizWrapper
 import com.earth.testomania.technical.domain.model.TechQuizItemWrapper
 import com.earth.testomania.technical.presentation.QuizViewModel
 import kiwi.orbit.compose.ui.controls.Text

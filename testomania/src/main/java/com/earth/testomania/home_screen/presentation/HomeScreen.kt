@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterialApi::class)
 
-package com.earth.testomania.presentation.home
+package com.earth.testomania.home_screen.presentation
 
 import android.annotation.SuppressLint
 import androidx.activity.compose.BackHandler
@@ -24,17 +24,16 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.R
-import com.earth.testomania.presentation.ABOUT_ROUT
-import com.earth.testomania.presentation.AboutBottomSheet
-import com.earth.testomania.presentation.dummy.DUMMY_ROUTE
+import com.earth.testomania.home_screen.domain.model.HomeDestinations
 import com.earth.testomania.skills.presentation.skillz.SKILLZ_ROUTE
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kiwi.orbit.compose.ui.controls.Card
 import kiwi.orbit.compose.ui.controls.Icon
+import kiwi.orbit.compose.ui.controls.Text
 import kotlinx.coroutines.launch
 
-@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter", "MaterialDesignInsteadOrbitDesign")
 @Preview(showSystemUi = true)
 @Destination(
     route = "home",
@@ -44,6 +43,7 @@ import kotlinx.coroutines.launch
 fun HomeScreen(
     navigator: DestinationsNavigator? = null,
 ) {
+
     val modalBottomSheetState = rememberModalBottomSheetState(
         initialValue = ModalBottomSheetValue.Hidden,
         skipHalfExpanded = true
