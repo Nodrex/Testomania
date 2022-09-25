@@ -9,13 +9,23 @@ versionName = "1.0"
 kiwi-icons = "kiwi.orbit.compose:icons:0.18.0"
 kiwi-ui = "kiwi.orbit.compose:ui:0.18.0"
 kiwi-illustrations = "kiwi.orbit.compose:illustrations:0.18.0"
+
 androidx-compose-navigation = "androidx.navigation:navigation-compose:2.5.1"
+androidx-compose-navigation-hilt = "androidx.hilt:hilt-navigation-compose:1.0.0"
 androidx-compose-foundation = "androidx.compose.foundation:foundation:1.3.0-beta01"
+androidx-compose-viewmodel-lifecycle = "androidx.lifecycle:lifecycle-viewmodel-compose:2.5.0"
 androidx-compose-ui = "androidx.compose.ui:ui:1.3.0-alpha01"
 androidx-compose-material = "androidx.compose.material:material:1.3.0-beta01"
+androidx-compose-material-icons-extended = "androidx.compose.material:material-icons-extended:1.3.0-alpha01"
+androidx-compose-constraintlayout = "androidx.constraintlayout:constraintlayout-compose:1.0.1"
+androidx-compose-raamcosta-destinations = 'io.github.raamcosta.compose-destinations:core:1.4.4-beta'
+androidx-compose-raamcosta-destinations-animations = 'io.github.raamcosta.compose-destinations:animations-core:1.4.4-beta'
+
 androidx-compose-tooling-preview = "androidx.compose.ui:ui-tooling-preview:1.3.0-alpha01"
 androidx-compose-tooling-poolingcontainer = "androidx.customview:customview-poolingcontainer:1.0.0"
 androidx-compose-tooling = "androidx.compose.ui:ui-tooling:1.1.1"
+androidx-compose-tooling-preview = "androidx.compose.ui:ui-tooling-preview:1.1.1"
+
 androidx-lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
 androidx-compose-activity = "androidx.activity:activity-compose:1.5.1"
 androidx-datastore-preferences = "androidx.datastore:datastore-preferences:1.0.0"
@@ -30,20 +40,52 @@ androidx-core = "androidx.core:core-ktx:1.8.0"
 androidx-room-runtime = "androidx.room:room-runtime:2.4.2"
 androidx-room-ktx = "androidx.room:room-runtime:2.4.2"
 androidx-room-compiler = "androidx.room:room-runtime:2.4.2"
-accompanist = "com.google.accompanist:accompanist-systemuicontroller:0.24.8-beta"
+
+accompanist-systemuicontroller = "com.google.accompanist:accompanist-systemuicontroller:0.24.8-beta"
+accompanist-pager = "com.google.accompanist:accompanist-pager:0.24.8-beta"
+
 mockk = "io.mockk:mockk:1.12.5"
 mockk-android = "io.mockk:mockk-android:1.12.5"
+
 junit = "junit:junit:4.13.2"
+
 robolectric = "org.robolectric:robolectric:4.8.2"
+
 coil = "io.coil-kt:coil-compose:2.1.0"
+
 firebase-crashlytics = "com.google.firebase:firebase-crashlytics:18.2.9"
 firebase-analytics = "com.google.firebase:firebase-crashlytics:18.2.9"
 
 
 [bundles]
-kiwi = ["kiwi-icons", "kiwi-ui", "kiwi-illustrations"]
-androidx-room = ["androidx-room-runtime", "androidx-room-ktx"]
-firebase = ["firebase-crashlytics", "firebase-analytics"]
-androidx-androidTests = ["androidx-test-coreKtx", "androidx-test-runner", "androidx-test-rules", "androidx-test-core-junitKtx"]
-androidx-compose = ["androidx-compose-foundation", "accompanist", "androidx-compose-tooling-preview", "androidx-compose-ui", "androidx-compose-material", "androidx-compose-activity", ]
-androidx-compose-tooling = ["androidx-compose-tooling-poolingcontainer", "androidx-compose-tooling"]
+kiwi = ["kiwi-icons",
+    "kiwi-ui",
+    "kiwi-illustrations"]
+
+androidx-room = ["androidx-room-runtime",
+    "androidx-room-ktx"]
+
+firebase = ["firebase-crashlytics",
+    "firebase-analytics"]
+
+androidx-androidTests = ["androidx-test-coreKtx",
+    "androidx-test-runner", "androidx-test-rules",
+    "androidx-test-core-junitKtx"]
+
+androidx-compose = ["androidx-compose-foundation",
+    "accompanist-systemuicontroller",
+    "accompanist-pager",
+    "androidx-compose-tooling-preview",
+    "androidx-compose-ui",
+    "androidx-compose-material",
+    "androidx-compose-activity",
+    "androidx-compose-material-icons-extended",
+    "androidx-compose-viewmodel-lifecycle",
+    "androidx-compose-navigation-hilt",
+    "androidx-compose-constraintlayout",
+    "androidx-compose-raamcosta-destinations",
+    "androidx-compose-raamcosta-destinations-animations"]
+
+androidx-compose-tooling = ["androidx-compose-tooling-poolingcontainer",
+    "androidx-compose-tooling",
+    "androidx-compose-tooling-preview"]
