@@ -1,9 +1,9 @@
 package com.earth.testomania.technical.domain.use_case
 
-import com.earth.testomania.core.DataState
-import com.earth.testomania.core.ErrorMetaData
-import com.earth.testomania.core.LoadingMetaData
-import com.earth.testomania.core.SuccessMetaData
+import com.earth.testomania.common.DataState
+import com.earth.testomania.common.ErrorMetaData
+import com.earth.testomania.common.LoadingMetaData
+import com.earth.testomania.common.SuccessMetaData
 import com.earth.testomania.technical.data.source.remote.dto.TagDTO
 import com.earth.testomania.technical.data.source.remote.dto.TechQuizDTO
 import com.earth.testomania.technical.domain.model.AnswerKey
@@ -129,13 +129,13 @@ class GetQuizListUseCase @Inject constructor(
     private fun hasCorrectAnswer(techQuizDTO: TechQuizDTO): Boolean {
         techQuizDTO.correct_answers?.let {
             return (
-                it.answer_a_correct.toBoolean() ||
-                it.answer_b_correct.toBoolean() ||
-                it.answer_c_correct.toBoolean() ||
-                it.answer_d_correct.toBoolean() ||
-                it.answer_e_correct.toBoolean() ||
-                it.answer_f_correct.toBoolean()
-            )
+                    it.answer_a_correct.toBoolean() ||
+                            it.answer_b_correct.toBoolean() ||
+                            it.answer_c_correct.toBoolean() ||
+                            it.answer_d_correct.toBoolean() ||
+                            it.answer_e_correct.toBoolean() ||
+                            it.answer_f_correct.toBoolean()
+                    )
         }
         return false
     }

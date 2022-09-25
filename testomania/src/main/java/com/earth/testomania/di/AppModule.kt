@@ -25,7 +25,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun jsonSerializer(): Moshi {
+    fun provideJsonSerializer(): Moshi {
         return Moshi.Builder()
             .addLast(KotlinJsonAdapterFactory())
             .build()

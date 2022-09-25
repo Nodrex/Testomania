@@ -1,4 +1,4 @@
-package com.earth.testomania.presentation.home
+package com.earth.testomania.home_screen.domain.model
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes

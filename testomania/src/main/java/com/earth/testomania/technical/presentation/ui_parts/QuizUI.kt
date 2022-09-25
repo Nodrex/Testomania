@@ -12,7 +12,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.earth.testomania.core.helper.defaultTechQuizWrapper
+import com.earth.testomania.common.helper.defaultTechQuizWrapper
 import com.earth.testomania.technical.domain.model.TechQuizItemWrapper
 import kiwi.orbit.compose.ui.controls.Text
 
@@ -25,12 +25,16 @@ fun CreateQuizUI(modifier: Modifier = Modifier, techQuiz: TechQuizItemWrapper) {
             .padding(all = 10.dp)
             .padding(top = 10.dp)
     ) {
-        val style = AnnotatedString.Range(SpanStyle(fontWeight = FontWeight.Bold),
+        val style = AnnotatedString.Range(
+            SpanStyle(fontWeight = FontWeight.Bold),
             0,
-            techQuiz.quiz.category.length)
+            techQuiz.quiz.category.length
+        )
 
-        val text = AnnotatedString(techQuiz.quiz.category + "\n" + techQuiz.quiz.question,
-            spanStyles = listOf(style))
+        val text = AnnotatedString(
+            techQuiz.quiz.category + "\n" + techQuiz.quiz.question,
+            spanStyles = listOf(style)
+        )
 
         Text(
             text = text,

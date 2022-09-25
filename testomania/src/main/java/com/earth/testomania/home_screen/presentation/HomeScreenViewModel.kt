@@ -7,6 +7,7 @@ import com.earth.testomania.destinations.AboutBottomSheetDestination
 import com.earth.testomania.destinations.DummyScreenDestination
 import com.earth.testomania.destinations.SkillzTestScreenDestination
 import com.earth.testomania.destinations.TechnicalTestsScreenDestination
+import com.earth.testomania.home_screen.domain.model.HomeDestinations
 import com.earth.testomania.technical.domain.model.QuizCategory
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -19,7 +19,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.earth.testomania.MainActivity
 import com.earth.testomania.R
 import com.earth.testomania.destinations.ResultScreenDestination
-import com.earth.testomania.presentation.result.ResultDataCollectorUseCase
+import com.earth.testomania.result_screen.domain.use_case.ResultDataCollectorUseCase
 import com.earth.testomania.technical.domain.model.QuizCategory
 import com.earth.testomania.technical.domain.model.TechQuizItemWrapper
 import com.earth.testomania.technical.presentation.ui_parts.*
@@ -35,6 +35,7 @@ import kiwi.orbit.compose.ui.controls.ButtonSecondary
 import kiwi.orbit.compose.ui.controls.Icon
 import kiwi.orbit.compose.ui.controls.Text
 import kotlinx.coroutines.launch
+
 
 const val TECHNICAL_ROUTE = "home/technical_tests"
 

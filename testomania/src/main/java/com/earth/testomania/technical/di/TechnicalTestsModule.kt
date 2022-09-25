@@ -36,6 +36,7 @@ class TechnicalTestsModule {
 
     @Provides
     @Singleton
-    fun provideGetQuizListUseCase(quizRepository: QuizRepository) = GetQuizListUseCase(quizRepository)
+    fun provideGetQuizListUseCase(quizRepository: QuizRepository) =
+        GetQuizListUseCase(quizRepository)
 
 }

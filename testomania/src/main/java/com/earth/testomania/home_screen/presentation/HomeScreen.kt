@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterialApi::class)
 
-package com.earth.testomania.presentation.home
+package com.earth.testomania.home_screen.presentation
 
 import android.annotation.SuppressLint
 import androidx.activity.compose.BackHandler
@@ -10,7 +10,10 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -24,9 +27,9 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.R
 import com.earth.testomania.destinations.TechnicalTestsScreenDestination
-import com.earth.testomania.presentation.ABOUT_ROUT
-import com.earth.testomania.presentation.AboutBottomSheet
-import com.earth.testomania.presentation.dummy.DUMMY_ROUTE
+import com.earth.testomania.home_screen.domain.model.HomeDestinations
+import com.earth.testomania.presentation.home.BottomSheetScreen
+import com.earth.testomania.presentation.home.HomeScreenViewModel
 import com.earth.testomania.skills.presentation.skillz.SKILLZ_ROUTE
 import com.earth.testomania.technical.presentation.CategorySelectorBottomSheet
 import com.earth.testomania.technical.presentation.TECHNICAL_ROUTE

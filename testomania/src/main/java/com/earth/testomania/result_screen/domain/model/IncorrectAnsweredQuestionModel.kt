@@ -1,4 +1,4 @@
-package com.earth.testomania.presentation.result
+package com.earth.testomania.result_screen.domain.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
@@ -12,4 +12,4 @@ data class IncorrectAnsweredQuestionModel(
     val choiceIndex: String = "",
     val choiceText: String,
     val description: String? = null
-): Parcelable
+) : Parcelable

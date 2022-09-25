@@ -1,4 +1,4 @@
-package com.earth.testomania.core
+package com.earth.testomania.common
 
 data class Developer(
     val fullName: String,
