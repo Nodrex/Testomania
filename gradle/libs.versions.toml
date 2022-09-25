@@ -24,7 +24,6 @@ androidx-compose-raamcosta-destinations-animations = 'io.github.raamcosta.compos
 androidx-compose-tooling-preview = "androidx.compose.ui:ui-tooling-preview:1.3.0-alpha01"
 androidx-compose-tooling-poolingcontainer = "androidx.customview:customview-poolingcontainer:1.0.0"
 androidx-compose-tooling = "androidx.compose.ui:ui-tooling:1.1.1"
-androidx-compose-tooling-preview = "androidx.compose.ui:ui-tooling-preview:1.1.1"
 
 androidx-lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
 androidx-compose-activity = "androidx.activity:activity-compose:1.5.1"
@@ -75,7 +74,6 @@ androidx-androidTests = ["androidx-test-coreKtx",
 androidx-compose = ["androidx-compose-foundation",
     "accompanist-systemuicontroller",
     "accompanist-pager",
-    "androidx-compose-tooling-preview",
     "androidx-compose-ui",
     "androidx-compose-material",
     "androidx-compose-activity",
