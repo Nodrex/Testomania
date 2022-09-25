@@ -4,6 +4,7 @@ targetSdk = "33"
 compileSdk = "33"
 versionCode = "5"
 versionName = "1.2.1"
+composeCompiler = "1.2.0"
 
 [libraries]
 kiwi-icons = "kiwi.orbit.compose:icons:0.18.0"
