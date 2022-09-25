@@ -5,6 +5,7 @@ package com.earth.testomania.home_screen.presentation
 import android.annotation.SuppressLint
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -34,6 +35,8 @@ import com.earth.testomania.presentation.home.HomeScreenViewModel
 import com.earth.testomania.skills.presentation.skillz.SKILLZ_ROUTE
 import com.earth.testomania.technical.presentation.CategorySelectorBottomSheet
 import com.earth.testomania.technical.presentation.TECHNICAL_ROUTE
+import com.earth.testomania.ui.theme.LightDark
+import com.earth.testomania.ui.theme.LightGray
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kiwi.orbit.compose.ui.controls.Card
@@ -66,10 +69,15 @@ fun HomeScreen(
         }
     }
 
+
+    //if (isSystemInDarkTheme()) Color(kiwi.orbit.compose.ui.foundation.darkColors().surface.subtle.value) else LightGray,
+
+
     ModalBottomSheetLayout(
         modifier = Modifier
             .systemBarsPadding(),
         sheetState = modalBottomSheetState,
+        //sheetBackgroundColor =
         scrimColor = Color.Transparent,
         sheetContent = {
             SheetLayout(modalBottomSheetState, scope, navigator)
