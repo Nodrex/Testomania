@@ -21,24 +21,25 @@ androidx-compose-constraintlayout = "androidx.constraintlayout:constraintlayout-
 androidx-compose-raamcosta-destinations = 'io.github.raamcosta.compose-destinations:core:1.4.4-beta'
 androidx-compose-raamcosta-destinations-animations = 'io.github.raamcosta.compose-destinations:animations-core:1.4.4-beta'
 
-androidx-compose-tooling-preview = "androidx.compose.ui:ui-tooling-preview:1.3.0-alpha01"
-androidx-compose-tooling-poolingcontainer = "androidx.customview:customview-poolingcontainer:1.0.0"
-androidx-compose-tooling = "androidx.compose.ui:ui-tooling:1.1.1"
-
 androidx-lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
 androidx-compose-activity = "androidx.activity:activity-compose:1.5.1"
 androidx-datastore-preferences = "androidx.datastore:datastore-preferences:1.0.0"
 androidx-datastore-core = "androidx.datastore:datastore-core:1.0.0"
 androidx-datastore = "androidx.datastore:datastore:1.0.0"
+androidx-core = "androidx.core:core-ktx:1.8.0"
+androidx-appcompat = "androidx.appcompat:appcompat:1.4.2"
+androidx-room-runtime = "androidx.room:room-runtime:2.4.2"
+androidx-room-ktx = "androidx.room:room-runtime:2.4.2"
+androidx-room-compiler = "androidx.room:room-runtime:2.4.2"
+
 androidx-test-coreKtx = "androidx.test:core-ktx:1.4.0"
 androidx-test-core = "androidx.test:core:1.4.0"
 androidx-test-core-junitKtx = "androidx.test.ext:junit-ktx:1.1.3"
 androidx-test-runner = "androidx.test:runner:1.4.0"
 androidx-test-rules = "androidx.test:rules:1.4.0"
-androidx-core = "androidx.core:core-ktx:1.8.0"
-androidx-room-runtime = "androidx.room:room-runtime:2.4.2"
-androidx-room-ktx = "androidx.room:room-runtime:2.4.2"
-androidx-room-compiler = "androidx.room:room-runtime:2.4.2"
+
+google-material = "com.google.android.material:material:1.6.1"
+google-hilt = "com.google.dagger:hilt-android:2.42"
 
 accompanist-systemuicontroller = "com.google.accompanist:accompanist-systemuicontroller:0.24.8-beta"
 accompanist-pager = "com.google.accompanist:accompanist-pager:0.24.8-beta"
@@ -57,21 +58,42 @@ firebase-analytics = "com.google.firebase:firebase-crashlytics:18.2.9"
 
 
 [bundles]
-kiwi = ["kiwi-icons",
+kiwi = [
+    "kiwi-icons",
     "kiwi-ui",
-    "kiwi-illustrations"]
+    "kiwi-illustrations"
+]
 
-androidx-room = ["androidx-room-runtime",
-    "androidx-room-ktx"]
+androidx = [
+    "androidx-lifecycle",
+    "androidx-compose-activity",
+    "androidx-datastore-preferences",
+    "androidx-datastore-core",
+    "androidx-datastore",
+    "androidx-core",
+    "androidx-appcompat",
+    "androidx-room-runtime",
+    "androidx-room-ktx",
+]
 
-firebase = ["firebase-crashlytics",
-    "firebase-analytics"]
+google = [
+    "google-material",
+    "google-hilt"
+]
 
-androidx-androidTests = ["androidx-test-coreKtx",
+firebase = [
+    "firebase-crashlytics",
+    "firebase-analytics"
+]
+
+androidx-androidTests = [
+    "androidx-test-coreKtx",
     "androidx-test-runner", "androidx-test-rules",
-    "androidx-test-core-junitKtx"]
+    "androidx-test-core-junitKtx"
+]
 
-androidx-compose = ["androidx-compose-foundation",
+androidx-compose = [
+    "androidx-compose-foundation",
     "accompanist-systemuicontroller",
     "accompanist-pager",
     "androidx-compose-ui",
@@ -82,8 +104,5 @@ androidx-compose = ["androidx-compose-foundation",
     "androidx-compose-navigation-hilt",
     "androidx-compose-constraintlayout",
     "androidx-compose-raamcosta-destinations",
-    "androidx-compose-raamcosta-destinations-animations"]
-
-androidx-compose-tooling = ["androidx-compose-tooling-poolingcontainer",
-    "androidx-compose-tooling",
-    "androidx-compose-tooling-preview"]
+    "androidx-compose-raamcosta-destinations-animations"
+]

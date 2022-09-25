@@ -11,6 +11,7 @@ plugins {
 
 android {
     compileSdk 33
+    namespace 'com.earth.testomania'
 
     defaultConfig {
         applicationId "com.earth.testomania"
@@ -72,6 +73,7 @@ android {
             includeAndroidResources = true
         }
     }
+
     applicationVariants.all { variant ->
         kotlin.sourceSets {
             getByName(variant.name) {
@@ -82,15 +84,6 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.8.0'
-    implementation 'androidx.appcompat:appcompat:1.4.2'
-    implementation 'com.google.android.material:material:1.6.1'
-    implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.compose.material:material:$compose_version"
-    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.0'
-    implementation 'androidx.activity:activity-compose:1.5.0'
-
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
@@ -100,9 +93,7 @@ dependencies {
     kapt("com.squareup.moshi:moshi-kotlin-codegen:1.13.0")
     implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
 
-    // Compose dependencies
     ksp 'io.github.raamcosta.compose-destinations:ksp:1.4.4-beta'
-    debugImplementation "androidx.compose.ui:ui-tooling:1.1.1"
     implementation(libs.bundles.kiwi)
 
     // Coroutines
@@ -110,11 +101,10 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
 
     //Dagger - Hilt
-    implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
     kapt "androidx.hilt:hilt-compiler:1.0.0"
 
-    implementation(libs.bundles.androidx.room)
+    implementation(libs.bundles.androidx)
     kapt(libs.androidx.room.compiler)
 
     // Testing
@@ -129,8 +119,7 @@ dependencies {
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.9.1'
 
-    implementation "androidx.navigation:navigation-compose:2.5.0"
-
+    implementation(libs.bundles.google)
     implementation(libs.coil)
     implementation(libs.bundles.firebase)
     implementation(libs.bundles.androidx.compose)
