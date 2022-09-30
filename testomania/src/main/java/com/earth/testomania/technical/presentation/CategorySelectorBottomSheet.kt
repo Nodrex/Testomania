@@ -15,7 +15,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.earth.testomania.R
-import com.earth.testomania.common.custom_ui_components.DialogCloseArrow
+import com.earth.testomania.common.custom_ui_components.DialogCloseAngle
+import com.earth.testomania.common.custom_ui_components.RightPointingAngle
 import com.earth.testomania.technical.domain.model.QuizCategory
 import kiwi.orbit.compose.ui.controls.ChoiceTile
 import kiwi.orbit.compose.ui.controls.Radio
@@ -66,14 +67,15 @@ fun CategorySelectorBottomSheet(
                         fontSize = 16.sp
                     )
 
-                    Radio(
+                    RightPointingAngle()
+                    /*Radio(
                         selected = false,
                         onClick = { }
-                    )
+                    )*/
                 }
             }
         }
     }
 
-    DialogCloseArrow(scope, modalBottomSheetState)
+    DialogCloseAngle(scope, modalBottomSheetState)
 }

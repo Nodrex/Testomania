@@ -5,6 +5,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ModalBottomSheetState
 import androidx.compose.runtime.Composable
@@ -19,7 +20,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun DialogCloseArrow(scope: CoroutineScope, modalBottomSheetState: ModalBottomSheetState) {
+fun DialogCloseAngle(scope: CoroutineScope, modalBottomSheetState: ModalBottomSheetState) {
     Icon(
         modifier = Modifier
             .height(40.dp)
@@ -35,6 +36,16 @@ fun DialogCloseArrow(scope: CoroutineScope, modalBottomSheetState: ModalBottomSh
                 }
             },
         painter = painterResource(id = R.drawable.ic_orbit_chevron_down),
+        contentDescription = "",
+    )
+}
+
+@Composable
+fun RightPointingAngle() {
+    Icon(
+        modifier = Modifier
+            .size(20.dp),
+        painter = painterResource(id = R.drawable.ic_orbit_chevron_right),
         contentDescription = "",
     )
 }
