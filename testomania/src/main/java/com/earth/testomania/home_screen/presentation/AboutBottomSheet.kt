@@ -6,12 +6,10 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ModalBottomSheetState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -22,13 +20,13 @@ import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat.startActivity
 import com.earth.testomania.R
 import com.earth.testomania.common.Developer
+import com.earth.testomania.common.custom_ui_components.DialogCloseArrow
 import com.earth.testomania.common.developers
 import com.ramcosta.composedestinations.annotation.Destination
 import kiwi.orbit.compose.ui.controls.ChoiceTile
 import kiwi.orbit.compose.ui.controls.Icon
 import kiwi.orbit.compose.ui.controls.Text
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 
 const val ABOUT_ROUT = "home/about"
 
@@ -84,23 +82,7 @@ fun AboutBottomSheet(
         AboutDeveloper(it)
     }
 
-    Icon(
-        modifier = Modifier
-            .height(40.dp)
-            .padding(bottom = 10.dp, start = 100.dp, end = 100.dp)
-            .fillMaxWidth()
-            .clickable(
-                indication = null,
-                interactionSource = remember { MutableInteractionSource() }
-            )
-            {
-                scope.launch {
-                    modalBottomSheetState.hide()
-                }
-            },
-        painter = painterResource(id = R.drawable.ic_orbit_chevron_down),
-        contentDescription = "",
-    )
+    DialogCloseArrow(scope, modalBottomSheetState)
 
 }
 

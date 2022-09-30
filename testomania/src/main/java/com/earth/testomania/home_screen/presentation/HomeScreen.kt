@@ -117,7 +117,7 @@ fun BottomContent(
     navigator: DestinationsNavigator?
 ) {
     when (pageType) {
-        is BottomSheetScreen.Technical -> CategorySelectorBottomSheet { quizCategory ->
+        is BottomSheetScreen.Technical -> CategorySelectorBottomSheet(modalBottomSheetState, scope) { quizCategory ->
             scope.launch {
                 modalBottomSheetState.snapTo(ModalBottomSheetValue.Hidden)
                 //snapTo is quicker then hide
