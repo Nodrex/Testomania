@@ -22,6 +22,7 @@ import kiwi.orbit.compose.ui.controls.ChoiceTile
 import kiwi.orbit.compose.ui.controls.Text
 import kotlinx.coroutines.CoroutineScope
 
+//TODO this dialog should be Generic and moved to home_screen package
 @Composable
 fun CategorySelectorBottomSheet(
     modalBottomSheetState: ModalBottomSheetState,
@@ -32,9 +33,10 @@ fun CategorySelectorBottomSheet(
     Text(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(4.dp),
+            .padding(top = 10.dp, bottom = 16.dp),
         textAlign = TextAlign.Center,
         fontSize = 22.sp,
+        fontWeight = FontWeight.Bold,
         text = stringResource(id = R.string.select_category_title)
     )
 
@@ -43,7 +45,9 @@ fun CategorySelectorBottomSheet(
 
             ChoiceTile(
                 modifier = Modifier
-                    .fillMaxSize()
+                    .fillMaxWidth()
+                    //do not like to hardcode height, but no choice because of Kiwi's ChoiceTile
+                    .height(58.dp) //TODO  needs to be checked in case fo different font sizes
                     .padding(
                         start = 10.dp,
                         end = 10.dp,
@@ -51,6 +55,7 @@ fun CategorySelectorBottomSheet(
                     ),
                 showRadio = false,
                 selected = false,
+                largeHeading = false,
                 onSelect = {
                     callBack(it)
                 }) {

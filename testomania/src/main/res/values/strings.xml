@@ -19,5 +19,5 @@
     <string name="navigation_next">Next/Skip</string>
     <string name="coming_soon">Coming soon...</string>
     <string name="dismiss">Dismiss</string>
-    <string name="select_category_title">Select category for quiz</string>
+    <string name="select_category_title">Select category</string>
 </resources>

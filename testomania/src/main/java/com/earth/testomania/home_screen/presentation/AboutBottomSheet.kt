@@ -92,11 +92,14 @@ fun AboutDeveloper(developer: Developer) {
     val context = LocalContext.current
 
     ChoiceTile(
-        modifier = Modifier.padding(
-            start = 10.dp,
-            end = 10.dp,
-            bottom = 10.dp
-        ),
+        modifier = Modifier
+            .padding(
+                start = 10.dp,
+                end = 10.dp,
+                bottom = 10.dp
+            )
+            //do not like to hardcode height, but no choice because of Kiwi's ChoiceTile
+            .height(50.dp), //TODO  needs to be checked in case fo different font sizes
         selected = false,
         showRadio = false,
         title = {
