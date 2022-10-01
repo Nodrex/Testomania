@@ -27,7 +27,6 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.R
-import com.earth.testomania.common.log
 import com.earth.testomania.destinations.TechnicalTestsScreenDestination
 import com.earth.testomania.home_screen.domain.model.HomeDestinations
 import com.earth.testomania.presentation.home.BottomSheetScreen
@@ -35,8 +34,8 @@ import com.earth.testomania.presentation.home.HomeScreenViewModel
 import com.earth.testomania.skills.presentation.skillz.SKILLZ_ROUTE
 import com.earth.testomania.technical.presentation.CategorySelectorBottomSheet
 import com.earth.testomania.technical.presentation.TECHNICAL_ROUTE
-import com.earth.testomania.ui.theme.LightDark
-import com.earth.testomania.ui.theme.LightGray
+import com.earth.testomania.ui.theme.DialogBkgDark
+import com.earth.testomania.ui.theme.DialogBkgLight
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kiwi.orbit.compose.ui.controls.Card
@@ -69,15 +68,11 @@ fun HomeScreen(
         }
     }
 
-
-    //if (isSystemInDarkTheme()) Color(kiwi.orbit.compose.ui.foundation.darkColors().surface.subtle.value) else LightGray,
-
-
     ModalBottomSheetLayout(
         modifier = Modifier
             .systemBarsPadding(),
         sheetState = modalBottomSheetState,
-        //sheetBackgroundColor =
+        sheetBackgroundColor = if (isSystemInDarkTheme()) DialogBkgDark else DialogBkgLight,
         scrimColor = Color.Transparent,
         sheetContent = {
             SheetLayout(modalBottomSheetState, scope, navigator)
@@ -117,7 +112,10 @@ fun BottomContent(
     navigator: DestinationsNavigator?
 ) {
     when (pageType) {
-        is BottomSheetScreen.Technical -> CategorySelectorBottomSheet(modalBottomSheetState, scope) { quizCategory ->
+        is BottomSheetScreen.Technical -> CategorySelectorBottomSheet(
+            modalBottomSheetState,
+            scope
+        ) { quizCategory ->
             scope.launch {
                 modalBottomSheetState.snapTo(ModalBottomSheetValue.Hidden)
                 //snapTo is quicker then hide
@@ -220,7 +218,6 @@ fun CardButton(
                     modalBottomSheetState.show()
                 }
             }
-//            else -> navigator?.navigate(destinationInfo.destination)
         }
     }) {
         Column(

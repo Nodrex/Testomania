@@ -19,7 +19,6 @@ import com.earth.testomania.common.custom_ui_components.DialogCloseAngle
 import com.earth.testomania.common.custom_ui_components.RightPointingAngle
 import com.earth.testomania.technical.domain.model.QuizCategory
 import kiwi.orbit.compose.ui.controls.ChoiceTile
-import kiwi.orbit.compose.ui.controls.Radio
 import kiwi.orbit.compose.ui.controls.Text
 import kotlinx.coroutines.CoroutineScope
 
@@ -68,10 +67,6 @@ fun CategorySelectorBottomSheet(
                     )
 
                     RightPointingAngle()
-                    /*Radio(
-                        selected = false,
-                        onClick = { }
-                    )*/
                 }
             }
         }
