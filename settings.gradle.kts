@@ -6,4 +6,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Testomania"
-include ':testomania'
+include(":testomania")
