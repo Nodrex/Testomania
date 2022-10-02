@@ -105,6 +105,7 @@ dependencies {
     kapt(libs.androidx.room.compiler)
     kapt(libs.moshi.codegen)
     kapt(libs.google.hilt.androidCompiler)
+    kaptTest(libs.google.hilt.androidCompiler)
     kapt(libs.google.hilt.compiler)
     ksp(libs.raamcosta.destinations.ksp)
 }
