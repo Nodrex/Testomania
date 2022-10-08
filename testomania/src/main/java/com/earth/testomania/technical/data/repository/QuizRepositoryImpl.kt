@@ -25,5 +25,4 @@ class QuizRepositoryImpl @Inject constructor(
                 else emit(DataState.Error(ErrorMetaData(null)))
             }
         }
-
 }

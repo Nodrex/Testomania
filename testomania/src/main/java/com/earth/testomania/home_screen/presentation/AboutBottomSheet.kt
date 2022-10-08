@@ -36,7 +36,6 @@ fun AboutBottomSheet(
     modalBottomSheetState: ModalBottomSheetState,
     scope: CoroutineScope
 ) {
-
     val context = LocalContext.current
     val appGithubUrl = stringResource(id = R.string.app_github_url)
 
@@ -83,7 +82,6 @@ fun AboutBottomSheet(
     }
 
     DialogCloseAngle(scope, modalBottomSheetState)
-
 }
 
 @Composable

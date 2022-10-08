@@ -16,5 +16,4 @@ interface QuizApi {
         @Query("category") category: String? = null,
         @Query("tags") tags: String? = null
     ): Response<List<TechQuizDTO>>
-
 }
