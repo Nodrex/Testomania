@@ -38,12 +38,11 @@ fun AboutBottomSheet(
     modalBottomSheetState: ModalBottomSheetState,
     scope: CoroutineScope
 ) {
-
     val context = LocalContext.current
     val appGithubUrl = stringResource(id = R.string.app_github_url)
 
     Text(
-        modifier = Modifier.padding(all = 20.dp),
+        modifier = Modifier.padding(all = 20.dp).padding(top = 20.dp),
         fontSize = 16.sp,
         text = stringResource(id = R.string.about_app)
     )
