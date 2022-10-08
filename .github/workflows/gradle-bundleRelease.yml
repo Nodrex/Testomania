@@ -1,4 +1,4 @@
-name: 'Build App Bundle'
+name: 'Build Release Artifacts'
 
 on: workflow_dispatch
 
