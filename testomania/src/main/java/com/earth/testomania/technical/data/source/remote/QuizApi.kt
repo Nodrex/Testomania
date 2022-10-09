@@ -5,13 +5,14 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-const val API_KEY = "rQY0VtcCgMPYMPxEL9f8bxZdmM2gfogf6QhkuKZa"
+const val QUIZ_API_API_KEY = "rQY0VtcCgMPYMPxEL9f8bxZdmM2gfogf6QhkuKZa"
+const val QUIZ_API_PATH = "api/v1/questions"
 
 interface QuizApi {
 
-    @GET("api/v1/questions")
+    @GET(QUIZ_API_PATH)
     suspend fun getQuizList(
-        @Query("apiKey") apiKey: String = API_KEY,
+        @Query("apiKey") apiKey: String = QUIZ_API_API_KEY,
         @Query("limit") questionCount: Int = 20
     ): Response<List<TechQuizDTO>>
 

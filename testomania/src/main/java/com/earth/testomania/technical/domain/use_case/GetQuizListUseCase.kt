@@ -1,11 +1,10 @@
 package com.earth.testomania.technical.domain.use_case
 
-import com.earth.testomania.common.DataState
-import com.earth.testomania.common.ErrorMetaData
-import com.earth.testomania.common.LoadingMetaData
-import com.earth.testomania.common.SuccessMetaData
+import com.earth.testomania.common.*
+import com.earth.testomania.technical.data.source.remote.QUIZ_API_PATH
 import com.earth.testomania.technical.data.source.remote.dto.TagDTO
 import com.earth.testomania.technical.data.source.remote.dto.TechQuizDTO
+import com.earth.testomania.technical.di.QUIZ_API_BASE_URL
 import com.earth.testomania.technical.domain.model.AnswerKey
 import com.earth.testomania.technical.domain.model.TechQuiz
 import com.earth.testomania.technical.domain.model.TechQuizItemWrapper
@@ -127,14 +126,20 @@ class GetQuizListUseCase @Inject constructor(
 
     private fun hasCorrectAnswer(techQuizDTO: TechQuizDTO): Boolean {
         techQuizDTO.correct_answers?.let {
-            return (
-                    it.answer_a_correct.toBoolean() ||
-                            it.answer_b_correct.toBoolean() ||
-                            it.answer_c_correct.toBoolean() ||
-                            it.answer_d_correct.toBoolean() ||
-                            it.answer_e_correct.toBoolean() ||
-                            it.answer_f_correct.toBoolean()
-                    )
+            val hasCorrectAnswer = it.answer_a_correct.toBoolean() ||
+                    it.answer_b_correct.toBoolean() ||
+                    it.answer_c_correct.toBoolean() ||
+                    it.answer_d_correct.toBoolean() ||
+                    it.answer_e_correct.toBoolean() ||
+                    it.answer_f_correct.toBoolean()
+            if (!hasCorrectAnswer) {
+                Crashlytics.log(
+                    "Problematic Quiz (Without correct answer) from: $QUIZ_API_BASE_URL$QUIZ_API_PATH" +
+                            "\n\t$techQuizDTO" +
+                            "\n[Please report to API creators]"
+                )
+            }
+            return hasCorrectAnswer
         }
         return false
     }

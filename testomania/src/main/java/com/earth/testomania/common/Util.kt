@@ -17,4 +17,8 @@ object Crashlytics {
         getInstance().recordException(throwable)
     }
 
+    fun log(text: String) {
+        getInstance().log(text)
+    }
+
 }
