@@ -5,12 +5,15 @@ package com.earth.testomania.home_screen.presentation
 import android.annotation.SuppressLint
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,13 +27,21 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.R
+import com.earth.testomania.destinations.TechnicalTestsScreenDestination
 import com.earth.testomania.home_screen.domain.model.HomeDestinations
+import com.earth.testomania.presentation.home.BottomSheetScreen
+import com.earth.testomania.presentation.home.HomeScreenViewModel
 import com.earth.testomania.skills.presentation.skillz.SKILLZ_ROUTE
+import com.earth.testomania.technical.presentation.CategorySelectorBottomSheet
+import com.earth.testomania.technical.presentation.TECHNICAL_ROUTE
+import com.earth.testomania.ui.theme.DialogBkgDark
+import com.earth.testomania.ui.theme.DialogBkgLight
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kiwi.orbit.compose.ui.controls.Card
 import kiwi.orbit.compose.ui.controls.Icon
 import kiwi.orbit.compose.ui.controls.Text
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter", "MaterialDesignInsteadOrbitDesign")
@@ -61,9 +72,10 @@ fun HomeScreen(
         modifier = Modifier
             .systemBarsPadding(),
         sheetState = modalBottomSheetState,
+        sheetBackgroundColor = if (isSystemInDarkTheme()) DialogBkgDark else DialogBkgLight,
         scrimColor = Color.Transparent,
         sheetContent = {
-            AboutBottomSheet(modalBottomSheetState, scope)
+            SheetLayout(modalBottomSheetState, scope, navigator)
         }
     ) {
         Scaffold(
@@ -79,7 +91,42 @@ fun HomeScreen(
             )
         }
     }
+}
 
+@Composable
+fun SheetLayout(
+    modalBottomSheetState: ModalBottomSheetState,
+    scope: CoroutineScope,
+    navigator: DestinationsNavigator?
+) {
+    val viewModel: HomeScreenViewModel = hiltViewModel()
+    val pageType by viewModel.bottomSheetPageState.collectAsState(initial = BottomSheetScreen.Technical)
+    BottomContent(pageType, modalBottomSheetState, scope, navigator)
+}
+
+@Composable
+fun BottomContent(
+    pageType: BottomSheetScreen,
+    modalBottomSheetState: ModalBottomSheetState,
+    scope: CoroutineScope,
+    navigator: DestinationsNavigator?
+) {
+    when (pageType) {
+        is BottomSheetScreen.Technical -> CategorySelectorBottomSheet(
+            modalBottomSheetState,
+            scope
+        ) { quizCategory ->
+            scope.launch {
+                modalBottomSheetState.snapTo(ModalBottomSheetValue.Hidden)
+                //snapTo is quicker then hide
+            }.invokeOnCompletion {
+                navigator?.navigate(TechnicalTestsScreenDestination(quizCategory))
+                //we need to navigate to other screen after bottom-sheet is close,
+                // otherwise bottom-sheet remains open when returning to home screen
+            }
+        }
+        else -> AboutBottomSheet(modalBottomSheetState, scope)
+    }
 }
 
 @Composable
@@ -143,12 +190,13 @@ fun CardButton(
     val scope = rememberCoroutineScope()
     val comingSoonStr = stringResource(id = R.string.coming_soon)
     val dismissStr = stringResource(id = R.string.dismiss)
+    val viewModel: HomeScreenViewModel = hiltViewModel()
 
     Card(modifier = Modifier.size(125.dp), shape = RoundedCornerShape(10.dp), onClick = {
 
         dismissCurrentSnackbar(scaffoldState)
 
-        when (destinationInfo.destination.route) {
+        when (destinationInfo.destination?.route ?: destinationInfo.destinationWithParam?.route) {
             SKILLZ_ROUTE, DUMMY_ROUTE -> {
                 scope.launch {
                     scaffoldState.snackbarHostState.showSnackbar(
@@ -159,12 +207,17 @@ fun CardButton(
                 return@Card
             }
             ABOUT_ROUT -> {
+                viewModel.onBottomSheetPageChange(BottomSheetScreen.About)
                 scope.launch {
-                    if (modalBottomSheetState.isVisible) modalBottomSheetState.hide()
-                    else modalBottomSheetState.show()
+                    modalBottomSheetState.show()
                 }
             }
-            else -> navigator?.navigate(destinationInfo.destination)
+            "$TECHNICAL_ROUTE/ALL" -> {
+                viewModel.onBottomSheetPageChange(BottomSheetScreen.Technical)
+                scope.launch {
+                    modalBottomSheetState.show()
+                }
+            }
         }
     }) {
         Column(
