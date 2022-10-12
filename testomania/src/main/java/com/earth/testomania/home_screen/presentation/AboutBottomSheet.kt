@@ -7,12 +7,10 @@ import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ModalBottomSheetState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -24,13 +22,13 @@ import androidx.core.content.ContextCompat.startActivity
 import com.earth.testomania.R
 import com.earth.testomania.common.Crashlytics
 import com.earth.testomania.common.Developer
+import com.earth.testomania.common.custom_ui_components.DialogCloseAngle
 import com.earth.testomania.common.developers
 import com.ramcosta.composedestinations.annotation.Destination
 import kiwi.orbit.compose.ui.controls.ChoiceTile
 import kiwi.orbit.compose.ui.controls.Icon
 import kiwi.orbit.compose.ui.controls.Text
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 
 const val ABOUT_ROUT = "home/about"
 
@@ -89,24 +87,7 @@ fun AboutBottomSheet(
         AboutDeveloper(it, githubProblemText, linkedInProblemText)
     }
 
-    Icon(
-        modifier = Modifier
-            .height(40.dp)
-            .padding(bottom = 10.dp, start = 100.dp, end = 100.dp)
-            .fillMaxWidth()
-            .clickable(
-                indication = null,
-                interactionSource = remember { MutableInteractionSource() }
-            )
-            {
-                scope.launch {
-                    modalBottomSheetState.hide()
-                }
-            },
-        painter = painterResource(id = R.drawable.ic_orbit_chevron_down),
-        contentDescription = "",
-    )
-
+    DialogCloseAngle(scope, modalBottomSheetState)
 }
 
 @Composable
@@ -115,11 +96,14 @@ fun AboutDeveloper(developer: Developer, githubProblemText: String, linkedInProb
     val context = LocalContext.current
 
     ChoiceTile(
-        modifier = Modifier.padding(
-            start = 10.dp,
-            end = 10.dp,
-            bottom = 10.dp
-        ),
+        modifier = Modifier
+            .padding(
+                start = 10.dp,
+                end = 10.dp,
+                bottom = 10.dp
+            )
+            //do not like to hardcode height, but no choice because of Kiwi's ChoiceTile
+            .height(50.dp), //TODO  needs to be checked in case fo different font sizes
         selected = false,
         showRadio = false,
         title = {
