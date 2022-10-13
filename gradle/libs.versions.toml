@@ -50,8 +50,8 @@ mockk-android = "io.mockk:mockk-android:1.13.2"
 
 coil = "io.coil-kt:coil-compose:2.2.2"
 
-firebase-crashlytics = "com.google.firebase:firebase-crashlytics:18.2.13"
-firebase-analytics = "com.google.firebase:firebase-crashlytics:18.2.13"
+firebase-crashlytics = "com.google.firebase:firebase-crashlytics:18.3.0"
+firebase-analytics = "com.google.firebase:firebase-crashlytics:18.3.0"
 
 retrofit-core = "com.squareup.retrofit2:retrofit:2.9.0"
 retrofit-logging-interceptor = "com.squareup.okhttp3:logging-interceptor:4.10.0"
