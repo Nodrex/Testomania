@@ -1,11 +1,10 @@
 package com.earth.testomania.technical.domain.use_case
 
-import com.earth.testomania.common.DataState
-import com.earth.testomania.common.ErrorMetaData
-import com.earth.testomania.common.LoadingMetaData
-import com.earth.testomania.common.SuccessMetaData
+import com.earth.testomania.common.*
+import com.earth.testomania.technical.data.source.remote.QUIZ_API_PATH
 import com.earth.testomania.technical.data.source.remote.dto.TagDTO
 import com.earth.testomania.technical.data.source.remote.dto.TechQuizDTO
+import com.earth.testomania.technical.di.QUIZ_API_BASE_URL
 import com.earth.testomania.technical.domain.model.AnswerKey
 import com.earth.testomania.technical.domain.model.QuizCategory
 import com.earth.testomania.technical.domain.model.TechQuiz
@@ -19,23 +18,24 @@ class GetQuizListUseCase @Inject constructor(
     private val quizRepository: QuizRepository
 ) {
 
-    suspend operator fun invoke(params: QuizCategory): Flow<DataState<List<TechQuizItemWrapper>>> = flow {
-        try {
-            emit(DataState.Loading(LoadingMetaData()))
-            quizRepository.getQuizList(params).map {
-                when (it) {
-                    is DataState.Success -> emit(success(it.payload))
-                    is DataState.Error -> emit(error(it))
-                    is DataState.Loading -> emit(loading(it))
-                }
-            }.catch {
-                emit(DataState.Error(ErrorMetaData(it.cause as Exception?)))
-            }.collect()
-        } catch (e: Exception) {
-            if (e is CancellationException) throw e
-            emit(DataState.Error(ErrorMetaData(e)))
+    suspend operator fun invoke(params: QuizCategory): Flow<DataState<List<TechQuizItemWrapper>>> =
+        flow {
+            try {
+                emit(DataState.Loading(LoadingMetaData()))
+                quizRepository.getQuizList(params).map {
+                    when (it) {
+                        is DataState.Success -> emit(success(it.payload))
+                        is DataState.Error -> emit(error(it))
+                        is DataState.Loading -> emit(loading(it))
+                    }
+                }.catch {
+                    emit(DataState.Error(ErrorMetaData(it.cause as Exception?)))
+                }.collect()
+            } catch (e: Exception) {
+                if (e is CancellationException) throw e
+                emit(DataState.Error(ErrorMetaData(e)))
+            }
         }
-    }
 
     private fun convertTechQuizDTOtoDataObject(techQuizDTO: TechQuizDTO) = with(techQuizDTO) {
         val possibleAnswersList = generatePossibleAnswersList(techQuizDTO) ?: return@with null
@@ -128,14 +128,20 @@ class GetQuizListUseCase @Inject constructor(
 
     private fun hasCorrectAnswer(techQuizDTO: TechQuizDTO): Boolean {
         techQuizDTO.correct_answers?.let {
-            return (
-                    it.answer_a_correct.toBoolean() ||
-                            it.answer_b_correct.toBoolean() ||
-                            it.answer_c_correct.toBoolean() ||
-                            it.answer_d_correct.toBoolean() ||
-                            it.answer_e_correct.toBoolean() ||
-                            it.answer_f_correct.toBoolean()
-                    )
+            val hasCorrectAnswer = it.answer_a_correct.toBoolean() ||
+                    it.answer_b_correct.toBoolean() ||
+                    it.answer_c_correct.toBoolean() ||
+                    it.answer_d_correct.toBoolean() ||
+                    it.answer_e_correct.toBoolean() ||
+                    it.answer_f_correct.toBoolean()
+            if (!hasCorrectAnswer) {
+                log(
+                    "Problematic Quiz (Without correct answer) from: $QUIZ_API_BASE_URL$QUIZ_API_PATH" +
+                            "\n\t$techQuizDTO" +
+                            "\n[Please report to API creators]"
+                )
+            }
+            return hasCorrectAnswer
         }
         return false
     }
