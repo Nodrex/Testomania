@@ -1,12 +1,17 @@
 package com.earth.testomania.common
 
 import android.util.Log
+import com.earth.testomania.BuildConfig
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 
 const val GENERIC_TAG = "TESTOMANIA_TAG"
 
 fun log(text: String) {
-    Log.d(GENERIC_TAG, text)
+    if (BuildConfig.DEBUG) {
+        Log.d(GENERIC_TAG, text)
+    } else {
+        Crashlytics.log(text)
+    }
 }
 
 object Crashlytics {
