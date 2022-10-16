@@ -14,6 +14,14 @@ fun log(text: String) {
     }
 }
 
+fun log(exception: Exception) {
+    if (BuildConfig.DEBUG) {
+        exception.printStackTrace()
+    } else {
+        Crashlytics.recordException(exception)
+    }
+}
+
 object Crashlytics {
 
     private fun getInstance() = FirebaseCrashlytics.getInstance()
