@@ -18,23 +18,24 @@ class GetQuizListUseCase @Inject constructor(
     private val quizRepository: QuizRepository
 ) {
 
-    suspend operator fun invoke(params: QuizCategory): Flow<DataState<List<TechQuizItemWrapper>>> = flow {
-        try {
-            emit(DataState.Loading(LoadingMetaData()))
-            quizRepository.getQuizList(params).map {
-                when (it) {
-                    is DataState.Success -> emit(success(it.payload))
-                    is DataState.Error -> emit(error(it))
-                    is DataState.Loading -> emit(loading(it))
-                }
-            }.catch {
-                emit(DataState.Error(ErrorMetaData(it.cause as Exception?)))
-            }.collect()
-        } catch (e: Exception) {
-            if (e is CancellationException) throw e
-            emit(DataState.Error(ErrorMetaData(e)))
+    suspend operator fun invoke(params: QuizCategory): Flow<DataState<List<TechQuizItemWrapper>>> =
+        flow {
+            try {
+                emit(DataState.Loading(LoadingMetaData()))
+                quizRepository.getQuizList(params).map {
+                    when (it) {
+                        is DataState.Success -> emit(success(it.payload))
+                        is DataState.Error -> emit(error(it))
+                        is DataState.Loading -> emit(loading(it))
+                    }
+                }.catch {
+                    emit(DataState.Error(ErrorMetaData(it.cause as Exception?)))
+                }.collect()
+            } catch (e: Exception) {
+                if (e is CancellationException) throw e
+                emit(DataState.Error(ErrorMetaData(e)))
+            }
         }
-    }
 
     private fun convertTechQuizDTOtoDataObject(techQuizDTO: TechQuizDTO) = with(techQuizDTO) {
         val possibleAnswersList = generatePossibleAnswersList(techQuizDTO) ?: return@with null
@@ -134,7 +135,7 @@ class GetQuizListUseCase @Inject constructor(
                     it.answer_e_correct.toBoolean() ||
                     it.answer_f_correct.toBoolean()
             if (!hasCorrectAnswer) {
-                Crashlytics.log(
+                log(
                     "Problematic Quiz (Without correct answer) from: $QUIZ_API_BASE_URL$QUIZ_API_PATH" +
                             "\n\t$techQuizDTO" +
                             "\n[Please report to API creators]"
