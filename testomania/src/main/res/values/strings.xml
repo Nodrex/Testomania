@@ -19,7 +19,8 @@
     <string name="navigation_next">Next/Skip</string>
     <string name="coming_soon">Coming soon...</string>
     <string name="dismiss">Dismiss</string>
-    <string name="github_activity_problem">Pleas install at least browser to open Github</string>
-    <string name="linkedin_activity_problem">Pleas install at least browser to open LinkedIn</string>
     <string name="select_category_title">Select category</string>
+    <string name="install_browser">Pleas install at least browser to open %1$s</string>
+    <string name="linkedin">LinkedIn</string>
+    <string name="github">Github</string>
 </resources>

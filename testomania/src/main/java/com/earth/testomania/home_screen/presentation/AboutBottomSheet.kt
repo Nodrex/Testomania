@@ -24,6 +24,7 @@ import com.earth.testomania.common.Crashlytics
 import com.earth.testomania.common.Developer
 import com.earth.testomania.common.custom_ui_components.DialogCloseAngle
 import com.earth.testomania.common.developers
+import com.earth.testomania.common.log
 import com.ramcosta.composedestinations.annotation.Destination
 import kiwi.orbit.compose.ui.controls.ChoiceTile
 import kiwi.orbit.compose.ui.controls.Icon
@@ -40,8 +41,6 @@ fun AboutBottomSheet(
 ) {
     val context = LocalContext.current
     val appGithubUrl = stringResource(id = R.string.app_github_url)
-    val githubProblemText = stringResource(id = R.string.github_activity_problem)
-    val linkedInProblemText = stringResource(id = R.string.linkedin_activity_problem)
 
     Text(
         modifier = Modifier
@@ -84,15 +83,14 @@ fun AboutBottomSheet(
     )
 
     developers.forEach {
-        AboutDeveloper(it, githubProblemText, linkedInProblemText)
+        AboutDeveloper(it)
     }
 
     DialogCloseAngle(scope, modalBottomSheetState)
 }
 
 @Composable
-fun AboutDeveloper(developer: Developer, githubProblemText: String, linkedInProblemText: String) {
-
+fun AboutDeveloper(developer: Developer) {
     val context = LocalContext.current
 
     ChoiceTile(
@@ -114,20 +112,31 @@ fun AboutDeveloper(developer: Developer, githubProblemText: String, linkedInProb
                 Text(text = developer.fullName)
 
                 Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-
+                    val githubTitle = stringResource(id = R.string.github)
+                    val installBrowserForGithub =
+                        stringResource(id = R.string.install_browser, githubTitle)
                     Icon(
                         modifier = Modifier.clickable {
-
-                            openBrowser(context, developer.githubProfileLink, githubProblemText)
+                            openBrowser(
+                                context,
+                                developer.githubProfileLink,
+                                installBrowserForGithub
+                            )
                         },
                         painter = painterResource(id = R.drawable.ic_orbit_github),
                         contentDescription = "",
                     )
 
-
+                    val linkedInTitle = stringResource(id = R.string.linkedin)
+                    val installBrowserForLinkedIn =
+                        stringResource(id = R.string.install_browser, linkedInTitle)
                     Icon(
                         modifier = Modifier.clickable {
-                            openBrowser(context, developer.linkedinProfileLink, linkedInProblemText)
+                            openBrowser(
+                                context,
+                                developer.linkedinProfileLink,
+                                installBrowserForLinkedIn
+                            )
                         },
                         painter = painterResource(id = R.drawable.ic_orbit_linkedin),
                         contentDescription = "",
@@ -147,7 +156,7 @@ private fun openBrowser(context: Context, url: String, toastText: String) {
             null
         )
     } catch (e: Exception) {
-        Crashlytics.recordException(e)
+        log(e)
         Toast.makeText(context, toastText, Toast.LENGTH_LONG).show()
     }
 }
