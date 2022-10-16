@@ -1,13 +1,16 @@
 package com.earth.testomania.common.model
 
+/**
+ * @param image for now it is URL
+ * @param category can be both category/tag
+ */
 data class Quiz(
     val id: Int = 0,
     val question: String = "",
-    val category: String = "", //should be both category/tag
-    val image: ImageQuiz = ImageQuiz.None,
+    val image: String = "",
+    val category: String = "",
     val explanation: String = "",
-    val answers: List<Answer> = emptyList()
+    val answers: List<Answer> = emptyList(),
 ) {
     val hasMultiAnswer: Boolean = answers.count { it.isCorrect } > 1
 }
-

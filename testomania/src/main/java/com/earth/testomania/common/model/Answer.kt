@@ -1,8 +1,11 @@
 package com.earth.testomania.common.model
 
+/**
+ * @param tag can be A, B, C .. or 1, 2, 3
+ */
 data class Answer(
-    val tag: Char, //can be A, B, C .. or 1, 2, 3
-    val value: String,
-    val imageQuiz: ImageQuiz,
-    val isCorrect: Boolean
+    val tag: Char,
+    val text: String,
+    val image: String,
+    val isCorrect: Boolean,
 )
