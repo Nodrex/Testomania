@@ -51,7 +51,10 @@ class QuizViewModel @Inject constructor(
                     is DataState.Success -> it.payload?.apply {
                         _data.addAll(this)
                     }
-                    is DataState.Error -> _error.emit(R.string.error_load)
+                    is DataState.Error -> {
+                        _error.emit(R.string.error_load)
+                        _loading.value = false
+                    }
                 }
             }
         }

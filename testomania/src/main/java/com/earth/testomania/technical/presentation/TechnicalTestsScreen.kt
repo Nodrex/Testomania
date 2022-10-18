@@ -45,8 +45,10 @@ fun TechnicalTestsScreen(
     val viewModel: QuizViewModel = hiltViewModel()
 
     val data = viewModel.data
+    val errorState = viewModel.error.collectAsState()
 
     if (data.isEmpty()) LoadingScreen()
+    else if (!errorState.value) ErrorScreen()
     else CreateQuizScreen(data, navigator)
 }
 
