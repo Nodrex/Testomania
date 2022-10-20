@@ -22,8 +22,7 @@ fun ErrorScreen() {
 
     Column(
         modifier = Modifier
-            .fillMaxHeight()
-            .fillMaxWidth(),
+            .fillMaxSize(),
         verticalArrangement = Arrangement.Center,
     ) {
         Image(
