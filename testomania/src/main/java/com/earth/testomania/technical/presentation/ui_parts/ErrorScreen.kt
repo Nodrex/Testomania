@@ -39,8 +39,7 @@ fun ErrorScreen() {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(12.dp),
-            fontSize = 14.sp,
-            color = Color.Gray,
+            fontSize = 16.sp,
             textAlign = TextAlign.Center
         )
     }
