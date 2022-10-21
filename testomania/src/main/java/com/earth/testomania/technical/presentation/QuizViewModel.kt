@@ -35,7 +35,7 @@ class QuizViewModel @AssistedInject constructor(
     val loading = _loading.asStateFlow()
 
     private val _error = MutableSharedFlow<Int>()
-    val error = _loading.asStateFlow()
+    val error = _error
 
     init {
         getQuizList()
@@ -54,10 +54,7 @@ class QuizViewModel @AssistedInject constructor(
                     is DataState.Success -> it.payload?.apply {
                         _data.addAll(this)
                     }
-                    is DataState.Error -> {
-                        _error.emit(R.string.error_load)
-                        _loading.value = false
-                    }
+                    is DataState.Error -> _error.emit(R.string.error_load)
                 }
             }
         }

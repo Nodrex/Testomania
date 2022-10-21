@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import androidx.core.content.res.ResourcesCompat.ID_NULL
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.earth.testomania.MainActivity
 import com.earth.testomania.R
@@ -53,10 +54,10 @@ fun TechnicalTestsScreen(
     val viewModel: QuizViewModel = quizViewModel(category)
 
     val data = viewModel.data
-    val errorState = viewModel.error.collectAsState()
+    val errorState by viewModel.error.collectAsState(initial = ID_NULL)
 
-    if (data.isEmpty()) LoadingScreen()
-    else if (!errorState.value) ErrorScreen()
+    if (errorState != ID_NULL) ErrorScreen(errorMessage = errorState)
+    else if (data.isEmpty()) LoadingScreen()
     else CreateQuizScreen(data, navigator)
 }
 
