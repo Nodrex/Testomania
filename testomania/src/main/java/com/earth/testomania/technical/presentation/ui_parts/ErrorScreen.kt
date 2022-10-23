@@ -18,18 +18,17 @@ import kiwi.orbit.compose.ui.controls.Text
 fun ErrorScreen(
     errorMessage: Int
 ) {
-
     Column(
-        modifier = Modifier
-            .fillMaxSize(),
+        modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
             modifier = Modifier
-                .fillMaxWidth(),
+                .wrapContentSize(),
             alignment = Alignment.Center,
             contentScale = ContentScale.Crop,
-            painter = painterResource(id = R.drawable.il_connection_error),
+            painter = painterResource(id = R.drawable.il_error),
             contentDescription = ""
         )
 
@@ -37,8 +36,8 @@ fun ErrorScreen(
             text = stringResource(id = errorMessage),
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(12.dp),
-            fontSize = 16.sp,
+                .padding(20.dp),
+            fontSize = 18.sp,
             textAlign = TextAlign.Center
         )
     }
