@@ -69,13 +69,13 @@ fun HomeScreen(
     }
 
     ModalBottomSheetLayout(
-        modifier = Modifier
-            .systemBarsPadding(),
         sheetState = modalBottomSheetState,
         sheetBackgroundColor = if (isSystemInDarkTheme()) DialogBkgDark else DialogBkgLight,
         scrimColor = Color.Transparent,
         sheetContent = {
-            SheetLayout(modalBottomSheetState, scope, navigator)
+            Column(Modifier.systemBarsPadding()) {
+                SheetLayout(modalBottomSheetState, scope, navigator)
+            }
         }
     ) {
         Scaffold(
@@ -161,8 +161,7 @@ fun HomeScreenContent(
             modifier = Modifier
                 .constrainAs(grid) {
                     bottom.linkTo(parent.bottom)
-                }
-                .systemBarsPadding(),
+                },
             contentPadding = PaddingValues(contentPadding),
             horizontalArrangement = Arrangement.spacedBy(contentPadding),
             verticalArrangement = Arrangement.spacedBy(contentPadding)
