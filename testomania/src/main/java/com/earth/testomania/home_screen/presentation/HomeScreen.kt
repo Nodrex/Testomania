@@ -73,7 +73,7 @@ fun HomeScreen(
         sheetBackgroundColor = if (isSystemInDarkTheme()) DialogBkgDark else DialogBkgLight,
         scrimColor = Color.Transparent,
         sheetContent = {
-            Column(Modifier.systemBarsPadding()) {
+            Column(Modifier.navigationBarsPadding()) {
                 SheetLayout(modalBottomSheetState, scope, navigator)
             }
         }
