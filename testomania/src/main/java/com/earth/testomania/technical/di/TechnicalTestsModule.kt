@@ -15,7 +15,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
 
-private const val QUIZ_API_BASE_URL = "https://quizapi.io/"
+const val QUIZ_API_BASE_URL = "https://quizapi.io/"
 
 @Module
 @InstallIn(SingletonComponent::class)
