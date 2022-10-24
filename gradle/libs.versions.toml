@@ -27,7 +27,7 @@ raamcosta-destinations-animations = 'io.github.raamcosta.compose-destinations:an
 raamcosta-destinations-ksp = 'io.github.raamcosta.compose-destinations:ksp:1.4.4-beta'
 
 androidx-lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
-androidx-compose-activity = "androidx.activity:activity-compose:1.6.0"
+androidx-compose-activity = "androidx.activity:activity-compose:1.6.1"
 androidx-datastore-preferences = "androidx.datastore:datastore-preferences:1.0.0"
 androidx-datastore-core = "androidx.datastore:datastore-core:1.0.0"
 androidx-datastore = "androidx.datastore:datastore:1.0.0"
