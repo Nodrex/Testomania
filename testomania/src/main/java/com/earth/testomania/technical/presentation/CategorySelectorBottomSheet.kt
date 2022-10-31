@@ -46,8 +46,7 @@ fun CategorySelectorBottomSheet(
             ChoiceTile(
                 modifier = Modifier
                     .fillMaxWidth()
-                    //do not like to hardcode height, but no choice because of Kiwi's ChoiceTile
-                    .height(58.dp) //TODO  needs to be checked in case fo different font sizes
+                    .wrapContentHeight()
                     .padding(
                         start = 10.dp,
                         end = 10.dp,
@@ -58,22 +57,23 @@ fun CategorySelectorBottomSheet(
                 largeHeading = false,
                 onSelect = {
                     callBack(it)
-                }) {
+                },
+                content = {
+                    Row(
+                        modifier = Modifier.fillMaxSize(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                    ) {
 
-                Row(
-                    modifier = Modifier.fillMaxSize(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                ) {
+                        Text(
+                            textAlign = TextAlign.Center,
+                            text = it.name,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 16.sp
+                        )
 
-                    Text(
-                        text = it.name,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 16.sp
-                    )
-
-                    RightPointingAngle()
-                }
-            }
+                        RightPointingAngle()
+                    }
+                })
         }
     }
 

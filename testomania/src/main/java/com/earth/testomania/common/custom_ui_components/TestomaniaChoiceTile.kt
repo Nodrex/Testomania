@@ -24,7 +24,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import kiwi.orbit.compose.ui.OrbitTheme
-import kiwi.orbit.compose.ui.controls.Card
+import kiwi.orbit.compose.ui.controls.SurfaceCard
 import kiwi.orbit.compose.ui.controls.Text
 import kiwi.orbit.compose.ui.foundation.ProvideMergedTextStyle
 
@@ -45,7 +45,7 @@ fun TestomaniaChoiceTile(
             false -> Color.Transparent
         }
     )
-    Card(
+    SurfaceCard (
         enabled = enabled,
         onClick = onSelect,
         border = BorderStroke(2.dp, color),
