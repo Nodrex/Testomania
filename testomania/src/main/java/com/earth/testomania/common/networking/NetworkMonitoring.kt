@@ -1,14 +1,22 @@
 package com.earth.testomania.common.networking
 
 import android.content.Context
-import android.net.*
+import android.net.ConnectivityManager
+import android.net.Network
+import android.net.NetworkCapabilities
+import android.net.NetworkRequest
 import android.util.Log.d
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * Created by Vazhapp on 23.10.2022
  */
-class NetworkMonitoring(
-    context: Context
+@Singleton
+class NetworkMonitoring @Inject constructor(
+    @ApplicationContext context: Context,
+    private val networkStateManager: NetworkStateManager
 ) : ConnectivityManager.NetworkCallback() {
 
     private var mNetworkRequest: NetworkRequest = NetworkRequest.Builder()
@@ -16,19 +24,19 @@ class NetworkMonitoring(
         .addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR)
         .build()
 
-    private var mConnectivityManager: ConnectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    private var mConnectivityManager: ConnectivityManager =
+        context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
 
     override fun onAvailable(network: Network) {
         super.onAvailable(network)
-
+        networkStateManager.setNetworkConnectivityStatus(true)
         d("VazhappNetworkManager", "Network Available")
-
     }
 
-    override fun onUnavailable() {
-        super.onUnavailable()
-
+    override fun onLost(network: Network) {
+        super.onLost(network)
+        networkStateManager.setNetworkConnectivityStatus(false)
         d("VazhappNetworkManager", "Network Unavailable")
     }
 
