@@ -19,12 +19,12 @@ class NetworkMonitoring @Inject constructor(
     private val networkStateManager: NetworkStateManager
 ) : ConnectivityManager.NetworkCallback() {
 
-    private var mNetworkRequest: NetworkRequest = NetworkRequest.Builder()
+    private var networkRequest: NetworkRequest = NetworkRequest.Builder()
         .addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
         .addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR)
         .build()
 
-    private var mConnectivityManager: ConnectivityManager =
+    private var connectivityManager: ConnectivityManager =
         context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
 
@@ -44,6 +44,6 @@ class NetworkMonitoring @Inject constructor(
      * We must register it only once
      */
     fun registerNetworkCallbacks() {
-        mConnectivityManager.registerNetworkCallback(mNetworkRequest, this)
+        connectivityManager.registerNetworkCallback(networkRequest, this)
     }
 }
