@@ -1,6 +1,7 @@
 package com.earth.testomania.technical.domain.use_case
 
 import com.earth.testomania.common.*
+import com.earth.testomania.common.model.QuizUIState
 import com.earth.testomania.technical.data.source.remote.QUIZ_API_PATH
 import com.earth.testomania.technical.data.source.remote.dto.TagDTO
 import com.earth.testomania.technical.data.source.remote.dto.TechQuizDTO
@@ -8,7 +9,6 @@ import com.earth.testomania.technical.di.QUIZ_API_BASE_URL
 import com.earth.testomania.technical.domain.model.AnswerKey
 import com.earth.testomania.technical.domain.model.QuizCategory
 import com.earth.testomania.technical.domain.model.TechQuiz
-import com.earth.testomania.technical.domain.model.TechQuizItemWrapper
 import com.earth.testomania.technical.domain.repository.QuizRepository
 import kotlinx.coroutines.flow.*
 import java.util.concurrent.CancellationException
@@ -18,7 +18,7 @@ class GetQuizListUseCase @Inject constructor(
     private val quizRepository: QuizRepository
 ) {
 
-    suspend operator fun invoke(params: QuizCategory): Flow<DataState<List<TechQuizItemWrapper>>> =
+    suspend operator fun invoke(params: QuizCategory): Flow<DataState<List<QuizUIState>>> =
         flow {
             try {
                 emit(DataState.Loading(LoadingMetaData()))

@@ -22,7 +22,7 @@ import com.earth.testomania.R
 import com.earth.testomania.destinations.ResultScreenDestination
 import com.earth.testomania.result_screen.domain.use_case.ResultDataCollectorUseCase
 import com.earth.testomania.technical.domain.model.QuizCategory
-import com.earth.testomania.technical.domain.model.TechQuizItemWrapper
+import com.earth.testomania.common.model.QuizUIState
 import com.earth.testomania.technical.presentation.ui_parts.*
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
@@ -63,7 +63,7 @@ fun TechnicalTestsScreen(
 
 @Composable
 private fun CreateQuizScreen(
-    techQuizList: List<TechQuizItemWrapper>,
+    techQuizList: List<QuizUIState>,
     navigator: DestinationsNavigator
 ) {
     val pagerState = rememberPagerState()
@@ -153,7 +153,7 @@ private fun CreateQuizScreen(
 @Composable
 private fun QuestionAndAnswers(
     modifier: Modifier,
-    techQuizList: List<TechQuizItemWrapper>,
+    techQuizList: List<QuizUIState>,
     pagerState: PagerState,
 ) {
     val answerPadding = 10.dp
@@ -214,7 +214,7 @@ private fun QuestionAndAnswers(
 }
 
 private fun findFirstIndexOfUnansweredQuestion(
-    techQuizList: List<TechQuizItemWrapper>,
+    techQuizList: List<QuizUIState>,
     pagerState: PagerState,
 ): Int {
     return techQuizList.indexOfFirst {

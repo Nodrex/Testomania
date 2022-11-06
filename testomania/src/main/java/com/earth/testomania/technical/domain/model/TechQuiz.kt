@@ -1,5 +1,6 @@
 package com.earth.testomania.technical.domain.model
 
+//TODO this should be removed !!!!!!
 data class TechQuiz(
     val id: Int = 0,
     val question: String = "",
