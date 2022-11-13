@@ -57,8 +57,8 @@ class QuizViewModel @AssistedInject constructor(
         }
     }
 
-    fun saveAnswer(quizUIState: QuizUIState, selectedAnswerKey: String) {
-        saveQuizPoint(quizUIState, selectedAnswerKey)
+    fun saveAnswer(quizUIState: QuizUIState, answerTag: Char) {
+        saveQuizPoint(quizUIState, answerTag)
         val index = _data.indexOf(quizUIState)
         val newItem = _data.removeAt(index).let {
             it.copy(
@@ -66,7 +66,7 @@ class QuizViewModel @AssistedInject constructor(
                 selectedAnswers = it.selectedAnswers.apply {
                     add(
                         SelectedAnswer(
-                            selectedAnswerKey,
+                            answerTag,
                             true
                         )
                     )
@@ -76,26 +76,26 @@ class QuizViewModel @AssistedInject constructor(
         _data.add(index, newItem)
     }
 
-    private fun saveQuizPoint(quizUIState: QuizUIState, selectedAnswerKey: String) {
+    private fun saveQuizPoint(quizUIState: QuizUIState, answerTag: Char) {
         if (quizUIState.quiz.hasMultiAnswer) return
-        if (isCorrectAnswer(quizUIState, selectedAnswerKey)) quizUIState.overallScore += 1
+        if (isCorrectAnswer(quizUIState, answerTag)) quizUIState.overallScore += 1
     }
 
     fun isCorrectAnswer(
         quizUIState: QuizUIState,
-        possibleAnswerKey: String
+        answerTag: Char,
     ) = quizUIState.quiz.answers.firstOrNull {
-        it.tag == possibleAnswerKey.first()
+        it.tag == answerTag
     }?.isCorrect ?: false
 
 
-    fun wasAlreadyAnswered(quizUIState: QuizUIState, possibleAnswerKey: String) =
-        quizUIState.selectedAnswers.find { it.selectedKey == possibleAnswerKey } != null ||
+    fun wasAlreadyAnswered(quizUIState: QuizUIState, answerTag: Char) =
+        quizUIState.selectedAnswers.find { it.selectedTag == answerTag } != null ||
                 (quizUIState.selectedAnswers.isNotEmpty() &&
                         !quizUIState.quiz.hasMultiAnswer &&
                         isCorrectAnswer(
                             quizUIState,
-                            possibleAnswerKey
+                            answerTag
                         ))
 
     fun enableAnswerSelection(quizUIState: QuizUIState) =

@@ -58,22 +58,23 @@ fun CategorySelectorBottomSheet(
                 largeHeading = false,
                 onSelect = {
                     callBack(it)
-                }) {
+                },
+                content = {
 
-                Row(
-                    modifier = Modifier.fillMaxSize(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                ) {
+                    Row(
+                        modifier = Modifier.fillMaxSize(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                    ) {
 
-                    Text(
-                        text = it.name,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 16.sp
-                    )
+                        Text(
+                            text = it.name,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 16.sp
+                        )
 
-                    RightPointingAngle()
-                }
-            }
+                        RightPointingAngle()
+                    }
+                })
         }
     }
 

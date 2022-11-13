@@ -1,3 +1,4 @@
+/*
 package com.earth.testomania.technical.presentation.ui_parts
 
 import androidx.compose.foundation.layout.Arrangement
@@ -10,7 +11,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.earth.testomania.common.helper.defaultTechQuizWrapper
-import com.earth.testomania.technical.domain.model.TechQuizItemWrapper
 import com.earth.testomania.technical.presentation.QuizViewModel
 import com.earth.testomania.technical.presentation.quizViewModel
 import kiwi.orbit.compose.ui.controls.Text
@@ -41,4 +41,4 @@ fun CreateMultiAnswerQuizFinishButton(
 @Composable
 private fun Preview() {
     CreateMultiAnswerQuizFinishButton(Modifier, defaultTechQuizWrapper())
-}
+}*/

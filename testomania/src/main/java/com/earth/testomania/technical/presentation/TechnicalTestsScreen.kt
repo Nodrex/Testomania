@@ -61,6 +61,7 @@ fun TechnicalTestsScreen(
     else CreateQuizScreen(data, navigator)
 }
 
+@OptIn(ExperimentalPagerApi::class)
 @Composable
 private fun CreateQuizScreen(
     techQuizList: List<QuizUIState>,
@@ -198,9 +199,9 @@ private fun QuestionAndAnswers(
                 verticalArrangement = Arrangement.spacedBy(8.dp),
                 contentPadding = PaddingValues(all = answerPadding),
             ) {
-                techQuizList[pageIndex].quiz.apply {
-                    possibleAnswers.forEach { possibleAnswer ->
-                        item(key = possibleAnswer.key) {
+                techQuizList[pageIndex].apply {
+                    quiz.answers.forEach { possibleAnswer ->
+                        item(key = possibleAnswer.tag) {
                             CreateQuizAnswerUI(
                                 techQuizList[pageIndex],
                                 possibleAnswer,

@@ -27,12 +27,11 @@ import com.earth.testomania.result_screen.domain.model.IncorrectAnsweredQuestion
 import com.earth.testomania.result_screen.domain.model.ResultData
 import com.ramcosta.composedestinations.annotation.Destination
 import kiwi.orbit.compose.ui.OrbitTheme
-import kiwi.orbit.compose.ui.controls.Card
 import kiwi.orbit.compose.ui.controls.LinearProgressIndicator
+import kiwi.orbit.compose.ui.controls.SurfaceCard
 import kiwi.orbit.compose.ui.controls.Text
 import kotlin.math.roundToInt
 
-@Preview(showSystemUi = true)
 @Destination(
     route = "home/result"
 )
@@ -92,7 +91,7 @@ fun PrevIncorrect() {
 
 @Composable
 fun IncorrectAnsweredQuestion(item: IncorrectAnsweredQuestionModel) {
-    Card(
+    SurfaceCard(
         modifier = Modifier
             .padding(0.dp, 6.dp)
             .fillMaxWidth(),
@@ -143,7 +142,6 @@ fun IncorrectAnsweredQuestion(item: IncorrectAnsweredQuestionModel) {
     }
 }
 
-@Preview
 @Composable
 fun MainResultItem(
     testIconRes: Int,
