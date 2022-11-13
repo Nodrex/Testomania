@@ -7,9 +7,9 @@ import androidx.lifecycle.viewModelScope
 import com.earth.testomania.R
 import com.earth.testomania.common.DataState
 import com.earth.testomania.common.coroutines.defaultCoroutineExceptionHandler
-import com.earth.testomania.technical.domain.model.QuizCategory
 import com.earth.testomania.common.model.QuizUIState
 import com.earth.testomania.common.model.SelectedAnswer
+import com.earth.testomania.technical.domain.model.QuizCategory
 import com.earth.testomania.technical.domain.use_case.GetQuizListUseCase
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
@@ -78,13 +78,16 @@ class QuizViewModel @AssistedInject constructor(
 
     private fun saveQuizPoint(quizUIState: QuizUIState, selectedAnswerKey: String) {
         if (quizUIState.quiz.hasMultiAnswer) return
-        if (isCorrectAnswer(quizUIState, selectedAnswerKey)) quizUIState.point = 1
+        if (isCorrectAnswer(quizUIState, selectedAnswerKey)) quizUIState.overallScore += 1
     }
 
     fun isCorrectAnswer(
         quizUIState: QuizUIState,
         possibleAnswerKey: String
-    ) = quizUIState.quiz.correctAnswers[possibleAnswerKey] ?: false
+    ) = quizUIState.quiz.answers.firstOrNull {
+        it.tag == possibleAnswerKey.first()
+    }?.isCorrect ?: false
+
 
     fun wasAlreadyAnswered(quizUIState: QuizUIState, possibleAnswerKey: String) =
         quizUIState.selectedAnswers.find { it.selectedKey == possibleAnswerKey } != null ||
@@ -96,20 +99,21 @@ class QuizViewModel @AssistedInject constructor(
                         ))
 
     fun enableAnswerSelection(quizUIState: QuizUIState) =
-        if (quizUIState.quiz.hasMultiAnswer) !quizUIState.multiSelectionWasDone.value else quizUIState.selectedAnswers.isEmpty()
+        /*if (quizUIState.quiz.hasMultiAnswer) !quizUIState.multiSelectionWasDone.value else*/
+        quizUIState.selectedAnswers.isEmpty()
 
 /*    fun multiSelectionWasDone(quizUIState: QuizUIState) {
         saveMultiSelectQuizPoint(quizUIState)
         quizUIState.multiSelectionWasDone.value = true
     }*/
 
-    private fun saveMultiSelectQuizPoint(quizUIState: QuizUIState) {
+/*    private fun saveMultiSelectQuizPoint(quizUIState: QuizUIState) {
         if (!quizUIState.quiz.hasMultiAnswer) return
         quizUIState.selectedAnswers.forEach {
             if (!isCorrectAnswer(quizUIState, it.selectedKey)) return
         }
         quizUIState.point = 1
-    }
+    }*/
 
 /*    fun getQuizResult() = data.sumOf {
         it.point

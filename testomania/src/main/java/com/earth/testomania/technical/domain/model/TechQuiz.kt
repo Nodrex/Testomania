@@ -1,6 +1,7 @@
 package com.earth.testomania.technical.domain.model
 
 //TODO this should be removed !!!!!!
+/*
 data class TechQuiz(
     val id: Int = 0,
     val question: String = "",
@@ -9,4 +10,4 @@ data class TechQuiz(
     val hasMultiAnswer: Boolean = false,
     val possibleAnswers: Map<String, String> = emptyMap(),
     val correctAnswers: Map<String, Boolean> = emptyMap(),
-)
+)*/
