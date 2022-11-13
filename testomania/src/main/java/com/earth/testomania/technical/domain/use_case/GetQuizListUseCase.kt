@@ -1,15 +1,11 @@
 package com.earth.testomania.technical.domain.use_case
 
 import com.earth.testomania.common.*
+import com.earth.testomania.common.model.Quiz
 import com.earth.testomania.common.model.QuizUIState
-import com.earth.testomania.technical.data.repository.FALSE_STR
 import com.earth.testomania.technical.data.source.remote.QUIZ_API_PATH
-import com.earth.testomania.technical.data.source.remote.dto.TagDTO
-import com.earth.testomania.technical.data.source.remote.dto.TechQuizDTO
 import com.earth.testomania.technical.di.QUIZ_API_BASE_URL
-import com.earth.testomania.technical.domain.model.AnswerKey
 import com.earth.testomania.technical.domain.model.QuizCategory
-import com.earth.testomania.technical.domain.model.TechQuiz
 import com.earth.testomania.technical.domain.repository.QuizRepository
 import kotlinx.coroutines.flow.*
 import java.util.concurrent.CancellationException
@@ -38,28 +34,35 @@ class GetQuizListUseCase @Inject constructor(
             }
         }
 
-    private fun success(list: List<TechQuizDTO>?) =
-        DataState.Success(
+    private fun success(list: List<Quiz>?): DataState.Success<List<QuizUIState>> {
+        val quizUIStateList = mutableListOf<QuizUIState>()
+        list?.forEach {
+            if (it.correctAnswerCount == 0) logProblematicQuiz(it)
+            else if (!it.hasMultiAnswer) quizUIStateList += QuizUIState(quiz = it)
+            //TODO hasMultiAnswer filter is temporarily to disable multi answer quiz,
+            // but we wel remove this constraint for future on next releases of App
+        }
+        return DataState.Success(
             SuccessMetaData(),
-            list?.filter {
-                it.multiple_correct_answers == FALSE_STR && hasCorrectAnswer(it)
-                //TODO this filter is temporarily to disable multi answer quiz,
-                // but we wel remove this constraint for future on next releases of App
-            }?.mapNotNull { techQuiz ->
-                convertTechQuizDTOtoDataObject(techQuiz)
-            })
+            quizUIStateList
+        )
+    }
 
-    //TODO maybe for later i will move this to extension
-    private fun error(dataState: DataState<List<TechQuizDTO>>) = DataState.Error(
+
+    private fun error(dataState: DataState<List<Quiz>>) = DataState.Error(
         dataState.metaData as ErrorMetaData,
         emptyList<QuizUIState>()
     )
 
-    //TODO maybe for later i will move this to extension
-    private fun loading(dataState: DataState<List<TechQuizDTO>>) = DataState.Loading(
+    private fun loading(dataState: DataState<List<Quiz>>) = DataState.Loading(
         dataState.metaData as LoadingMetaData,
         emptyList<QuizUIState>()
     )
 
+    private fun logProblematicQuiz(quiz: Quiz) = log(
+        "Problematic Quiz (Without correct answer) from: $QUIZ_API_BASE_URL$QUIZ_API_PATH" +
+                "\n\t$quiz" +
+                "\n[Please report to API creators]"
+    )
 
 }

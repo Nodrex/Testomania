@@ -3,15 +3,11 @@ package com.earth.testomania.technical.data.repository
 import com.earth.testomania.common.DataState
 import com.earth.testomania.common.ErrorMetaData
 import com.earth.testomania.common.SuccessMetaData
-import com.earth.testomania.common.log
 import com.earth.testomania.common.model.Answer
 import com.earth.testomania.common.model.Quiz
-import com.earth.testomania.common.model.QuizUIState
-import com.earth.testomania.technical.data.source.remote.QUIZ_API_PATH
 import com.earth.testomania.technical.data.source.remote.QuizApi
 import com.earth.testomania.technical.data.source.remote.dto.TagDTO
 import com.earth.testomania.technical.data.source.remote.dto.TechQuizDTO
-import com.earth.testomania.technical.di.QUIZ_API_BASE_URL
 import com.earth.testomania.technical.domain.model.AnswerKey
 import com.earth.testomania.technical.domain.model.QuizCategory
 import com.earth.testomania.technical.domain.repository.QuizRepository
@@ -23,7 +19,7 @@ class QuizRepositoryImpl @Inject constructor(
     private val quizApi: QuizApi
 ) : QuizRepository {
 
-    override suspend fun getQuizList(params: QuizCategory): Flow<DataState<List<QuizUIState>>> =
+    override suspend fun getQuizList(params: QuizCategory): Flow<DataState<List<Quiz>>> =
         flow {
             quizApi.getQuizList(
                 category = params.category,
@@ -31,7 +27,7 @@ class QuizRepositoryImpl @Inject constructor(
             ).apply {
                 if (isSuccessful) {
                     try {
-                        val quizList = mutableListOf<QuizUIState?>()
+                        val quizList = mutableListOf<Quiz?>()
                         body()?.forEach {
                             quizList += convertTechQuizDTOtoDataObject(it)
                         }
@@ -69,15 +65,13 @@ class QuizRepositoryImpl @Inject constructor(
                 )
         }
 
-        return@with QuizUIState(
-            Quiz(
-                id = id,
-                point = 1.0,
-                question = question ?: "",
-                category = addTagsToCategory(category, tags),
-                explanation = explanation ?: "",
-                answers = answers
-            )
+        return@with Quiz(
+            id = id,
+            point = 1.0,
+            question = question ?: "",
+            category = addTagsToCategory(category, tags),
+            explanation = explanation ?: "",
+            answers = answers
         )
     }
 
@@ -138,27 +132,6 @@ class QuizRepositoryImpl @Inject constructor(
             map[AnswerKey.list[index]] = answer
         }
         return map
-    }
-
-
-    private fun hasCorrectAnswer(techQuizDTO: TechQuizDTO): Boolean {
-        techQuizDTO.correct_answers?.let {
-            val hasCorrectAnswer = it.answer_a_correct.toBoolean() ||
-                    it.answer_b_correct.toBoolean() ||
-                    it.answer_c_correct.toBoolean() ||
-                    it.answer_d_correct.toBoolean() ||
-                    it.answer_e_correct.toBoolean() ||
-                    it.answer_f_correct.toBoolean()
-            if (!hasCorrectAnswer) {
-                log(
-                    "Problematic Quiz (Without correct answer) from: $QUIZ_API_BASE_URL$QUIZ_API_PATH" +
-                            "\n\t$techQuizDTO" +
-                            "\n[Please report to API creators]"
-                )
-            }
-            return hasCorrectAnswer
-        }
-        return false
     }
 
 }
