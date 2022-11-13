@@ -1,4 +1,4 @@
-package com.earth.testomania.presentation.home
+package com.earth.testomania.home_screen.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -16,7 +16,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeScreenViewModel @Inject constructor() : ViewModel() {
+class HomeScreenViewModel @Inject constructor(
+//    private val
+) : ViewModel() {
 
     private val _bottomSheetPageState = MutableSharedFlow<BottomSheetScreen>()
     val bottomSheetPageState = _bottomSheetPageState.asSharedFlow()

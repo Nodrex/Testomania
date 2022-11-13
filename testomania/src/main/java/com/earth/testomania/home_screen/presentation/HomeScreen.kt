@@ -29,8 +29,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.R
 import com.earth.testomania.destinations.TechnicalTestsScreenDestination
 import com.earth.testomania.home_screen.domain.model.HomeDestinations
-import com.earth.testomania.presentation.home.BottomSheetScreen
-import com.earth.testomania.presentation.home.HomeScreenViewModel
 import com.earth.testomania.skills.presentation.skillz.SKILLZ_ROUTE
 import com.earth.testomania.technical.presentation.CategorySelectorBottomSheet
 import com.earth.testomania.technical.presentation.TECHNICAL_ROUTE
