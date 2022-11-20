@@ -81,7 +81,7 @@ fun ResultScreen(
 
 
 @Composable
-fun IncorrectAnsweredQuestion(item: IncorrectAnsweredQuestionModel) {
+fun IncorrectAnsweredQuestion(item: IncorrectlyAnsweredQuizModel) {
     SurfaceCard (
         modifier = Modifier
             .padding(0.dp, 6.dp)
