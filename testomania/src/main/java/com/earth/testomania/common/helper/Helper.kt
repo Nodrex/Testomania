@@ -11,3 +11,5 @@ fun defaultTechQuizWrapper() = QuizUIState(
             it even surpass windows, which is 29.56% depend on https://gs.statcounter.com/os-market-share""".trimIndent(),
     )
 )
+
+fun EmptyChar() = ' '

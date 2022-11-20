@@ -1,17 +1,16 @@
 package com.earth.testomania.result_screen.domain.use_case
 
 import com.earth.testomania.R
-import com.earth.testomania.common.log
-import com.earth.testomania.result_screen.domain.model.IncorrectAnsweredQuestionModel
+import com.earth.testomania.common.model.QuizUIState
+import com.earth.testomania.result_screen.domain.model.IncorrectlyAnsweredQuizModel
 import com.earth.testomania.result_screen.domain.model.ResultData
-import com.earth.testomania.technical.domain.model.TechQuizItemWrapper
 
 class ResultDataCollectorUseCase {
 
-    fun getTechnicalTestResult(techQuizList: List<TechQuizItemWrapper>): ResultData {
+    fun getTechnicalTestResult(techQuizList: List<QuizUIState>): ResultData {
 
         val correctProgress = techQuizList.count {
-            it.point > 0
+            it.overallScore > 0
         } / techQuizList.size.toFloat()
 
         val resultData = ResultData(
@@ -21,38 +20,22 @@ class ResultDataCollectorUseCase {
             correctProgress > 0.5,
             techQuizList
                 .filter {
-                    it.selectedAnswers.isNotEmpty() && it.point == 0
+                    it.selectedAnswers.isNotEmpty() && it.overallScore == 0.0
                 }
                 .map { wrappedQuizItem ->
-                    val incorrectIndex = getIncorrectIndex(wrappedQuizItem)
-                    val correctIndex = getCorrectIndex(wrappedQuizItem)
+                    val incorrectAnswerTag = wrappedQuizItem.selectedAnswers.firstOrNull()
+                    val incorrectAnswer = wrappedQuizItem.quiz.answers.firstOrNull {
+                        it.tag == incorrectAnswerTag?.selectedTag
+                    }
 
-                    IncorrectAnsweredQuestionModel(
-                        wrappedQuizItem.quiz.id.toString(),
-                        wrappedQuizItem.quiz.question,
-                        correctIndex,
-                        wrappedQuizItem.quiz.possibleAnswers[correctIndex] ?: "",
-                        incorrectIndex,
-                        wrappedQuizItem.quiz.possibleAnswers[incorrectIndex] ?: ""
+                    IncorrectlyAnsweredQuizModel(
+                        wrappedQuizItem.quiz,
+                        wrappedQuizItem.quiz.answers.firstOrNull { it.isCorrect }?.let { listOf(it) } ?: listOf(),
+                        incorrectAnswer?.let { listOf(it) } ?: listOf()
                     )
                 }
         )
         return resultData
     }
-
-    private fun getIncorrectIndex(wrappedQuizItem: TechQuizItemWrapper): String =
-        wrappedQuizItem.selectedAnswers.find {
-            it.userSelected
-        }?.selectedKey ?: ""
-
-    private fun getCorrectIndex(wrappedQuizItem: TechQuizItemWrapper): String =
-        try {
-            wrappedQuizItem.quiz.correctAnswers.filter {
-                it.value
-            }.keys.first()
-        } catch (e: NoSuchElementException) {
-            log(e.stackTraceToString())
-            ""
-        }
 
 }

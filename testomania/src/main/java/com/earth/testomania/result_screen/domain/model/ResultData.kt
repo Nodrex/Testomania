@@ -9,5 +9,5 @@ data class ResultData(
     val testNameRes: Int,
     val overallProgress: Float = 0.0f,
     val isTestDone: Boolean = false,
-    val incorrectQuestions: List<IncorrectAnsweredQuestionModel> = listOf()
+    val incorrectQuestions: List<IncorrectlyAnsweredQuizModel> = listOf()
 ) : Parcelable
