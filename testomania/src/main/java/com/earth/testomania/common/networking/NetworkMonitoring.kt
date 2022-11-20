@@ -1,10 +1,7 @@
 package com.earth.testomania.common.networking
 
 import android.content.Context
-import android.net.ConnectivityManager
-import android.net.Network
-import android.net.NetworkCapabilities
-import android.net.NetworkRequest
+import android.net.*
 import android.util.Log.d
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
@@ -39,6 +36,9 @@ class NetworkMonitoring @Inject constructor(
         networkStateManager.setNetworkConnectivityStatus(false)
         d("VazhappNetworkManager", "Network Unavailable")
     }
+
+    // If active network is null device isn't connected to the internet
+    fun checkCurrentNetworkState() = connectivityManager.activeNetwork != null
 
     /**
      * We must register it only once
