@@ -26,7 +26,7 @@ import com.earth.testomania.result_screen.domain.model.IncorrectlyAnsweredQuizMo
 import com.earth.testomania.result_screen.domain.model.ResultData
 import com.ramcosta.composedestinations.annotation.Destination
 import kiwi.orbit.compose.ui.OrbitTheme
-import kiwi.orbit.compose.ui.controls.Card
+import kiwi.orbit.compose.ui.controls.SurfaceCard
 import kiwi.orbit.compose.ui.controls.LinearProgressIndicator
 import kiwi.orbit.compose.ui.controls.Text
 import kotlin.math.roundToInt
@@ -81,8 +81,8 @@ fun ResultScreen(
 
 
 @Composable
-fun IncorrectAnsweredQuestion(item: IncorrectlyAnsweredQuizModel) {
-    Card(
+fun IncorrectAnsweredQuestion(item: IncorrectAnsweredQuestionModel) {
+    SurfaceCard (
         modifier = Modifier
             .padding(0.dp, 6.dp)
             .fillMaxWidth(),

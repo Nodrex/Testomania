@@ -38,7 +38,7 @@ import com.earth.testomania.ui.theme.DialogBkgDark
 import com.earth.testomania.ui.theme.DialogBkgLight
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
-import kiwi.orbit.compose.ui.controls.Card
+import kiwi.orbit.compose.ui.controls.SurfaceCard
 import kiwi.orbit.compose.ui.controls.Icon
 import kiwi.orbit.compose.ui.controls.Text
 import kotlinx.coroutines.CoroutineScope
@@ -69,13 +69,13 @@ fun HomeScreen(
     }
 
     ModalBottomSheetLayout(
-        modifier = Modifier
-            .systemBarsPadding(),
         sheetState = modalBottomSheetState,
         sheetBackgroundColor = if (isSystemInDarkTheme()) DialogBkgDark else DialogBkgLight,
         scrimColor = Color.Transparent,
         sheetContent = {
-            SheetLayout(modalBottomSheetState, scope, navigator)
+            Column(Modifier.navigationBarsPadding()) {
+                SheetLayout(modalBottomSheetState, scope, navigator)
+            }
         }
     ) {
         Scaffold(
@@ -161,8 +161,7 @@ fun HomeScreenContent(
             modifier = Modifier
                 .constrainAs(grid) {
                     bottom.linkTo(parent.bottom)
-                }
-                .systemBarsPadding(),
+                },
             contentPadding = PaddingValues(contentPadding),
             horizontalArrangement = Arrangement.spacedBy(contentPadding),
             verticalArrangement = Arrangement.spacedBy(contentPadding)
@@ -192,7 +191,7 @@ fun CardButton(
     val dismissStr = stringResource(id = R.string.dismiss)
     val viewModel: HomeScreenViewModel = hiltViewModel()
 
-    Card(modifier = Modifier.size(125.dp), shape = RoundedCornerShape(10.dp), onClick = {
+    SurfaceCard (modifier = Modifier.size(125.dp), shape = RoundedCornerShape(10.dp), onClick = {
 
         dismissCurrentSnackbar(scaffoldState)
 
@@ -204,7 +203,7 @@ fun CardButton(
                         actionLabel = dismissStr,
                     )
                 }
-                return@Card
+                return@SurfaceCard
             }
             ABOUT_ROUT -> {
                 viewModel.onBottomSheetPageChange(BottomSheetScreen.About)
