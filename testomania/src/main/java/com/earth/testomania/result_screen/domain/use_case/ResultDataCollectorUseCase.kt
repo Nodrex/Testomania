@@ -7,7 +7,10 @@ import com.earth.testomania.result_screen.domain.model.ResultData
 
 class ResultDataCollectorUseCase {
 
-    fun getTechnicalTestResult(techQuizList: List<QuizUIState>): ResultData {
+    fun getTechnicalTestResult(
+        techQuizList: List<QuizUIState>,
+        quizCategoryName: String
+    ): ResultData {
 
         val correctProgress = techQuizList.count {
             it.overallScore > 0
@@ -15,7 +18,7 @@ class ResultDataCollectorUseCase {
 
         val resultData = ResultData(
             R.drawable.ic_orbit_dashboard,
-            R.string.technical_tests,
+            quizCategoryName,
             correctProgress,
             correctProgress > 0.5,
             techQuizList
@@ -30,7 +33,8 @@ class ResultDataCollectorUseCase {
 
                     IncorrectlyAnsweredQuizModel(
                         wrappedQuizItem.quiz,
-                        wrappedQuizItem.quiz.answers.firstOrNull { it.isCorrect }?.let { listOf(it) } ?: listOf(),
+                        wrappedQuizItem.quiz.answers.firstOrNull { it.isCorrect }
+                            ?.let { listOf(it) } ?: listOf(),
                         incorrectAnswer?.let { listOf(it) } ?: listOf()
                     )
                 }

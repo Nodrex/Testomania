@@ -21,7 +21,7 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 class QuizViewModel @AssistedInject constructor(
-    @Assisted var category: QuizCategory,
+    @Assisted val category: QuizCategory,
     private val getQuizListUseCase: GetQuizListUseCase,
     private val dispatcher: CoroutineDispatcher
 ) : ViewModel() {
@@ -97,6 +97,12 @@ class QuizViewModel @AssistedInject constructor(
                             quizUIState,
                             answerTag
                         ))
+
+    fun getCategoryName() = category.tag.ifEmpty {
+        if (category.category == QuizCategory.Programing.category) {
+            "Programing"
+        } else category.category
+    }
 
     fun enableAnswerSelection(quizUIState: QuizUIState) =
         /*if (quizUIState.quiz.hasMultiAnswer) !quizUIState.multiSelectionWasDone.value else*/
