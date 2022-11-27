@@ -87,7 +87,7 @@ android {
 }
 
 dependencies {
-
+    implementation("androidx.fragment:fragment-ktx:1.5.1")
     implementation(libs.bundles.androidx)
     implementation(libs.bundles.kiwi)
     implementation(libs.bundles.google)
