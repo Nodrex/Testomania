@@ -88,7 +88,7 @@ android {
 
 dependencies {
 
-implementation(libs.bundles.androidx)
+    implementation(libs.bundles.androidx)
     implementation(libs.bundles.kiwi)
     implementation(libs.bundles.google)
     implementation(libs.coil)
