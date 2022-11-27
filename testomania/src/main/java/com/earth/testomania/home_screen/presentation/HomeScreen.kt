@@ -97,7 +97,7 @@ fun SheetLayout(
     scope: CoroutineScope,
     navigator: DestinationsNavigator?
 ) {
-    val viewModel: HomeScreenViewModel = HomeScreenViewModel()
+    val viewModel: HomeScreenViewModel = hiltViewModel()
     val pageType by viewModel.bottomSheetPageState.collectAsState(initial = BottomSheetScreen.Technical)
     BottomContent(pageType, modalBottomSheetState, scope, navigator)
 }
@@ -133,7 +133,7 @@ fun HomeScreenContent(
     scaffoldState: ScaffoldState,
     modalBottomSheetState: ModalBottomSheetState,
 ) {
-    val viewModel: HomeScreenViewModel = HomeScreenViewModel()
+    val viewModel: HomeScreenViewModel = hiltViewModel()
 
     ConstraintLayout(
         modifier = Modifier
