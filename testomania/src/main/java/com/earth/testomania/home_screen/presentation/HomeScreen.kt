@@ -3,8 +3,10 @@
 package com.earth.testomania.home_screen.presentation
 
 import android.annotation.SuppressLint
+import android.util.Log.d
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -17,6 +19,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -24,9 +27,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.R
+import com.earth.testomania.common.networking.ConnectivityObserver
+import com.earth.testomania.common.networking.NetworkConnectivityObserver
 import com.earth.testomania.destinations.TechnicalTestsScreenDestination
 import com.earth.testomania.home_screen.domain.model.HomeDestinations
 import com.earth.testomania.presentation.home.BottomSheetScreen
@@ -54,6 +60,13 @@ import kotlinx.coroutines.launch
 fun HomeScreen(
     navigator: DestinationsNavigator? = null,
 ) {
+    val viewModel: HomeScreenViewModel = hiltViewModel()
+
+    NetworkStateManager(
+        color = Color.Red,
+        networkConnectivityObserver = viewModel.networkObserver,
+        initialNetworkState = false
+    )
 
     val modalBottomSheetState = rememberModalBottomSheetState(
         initialValue = ModalBottomSheetValue.Hidden,
@@ -237,6 +250,32 @@ fun CardButton(
             }
         }
     }
+}
+
+@Composable
+fun NetworkStateManager(
+    color: Color,
+    networkConnectivityObserver: NetworkConnectivityObserver,
+    initialNetworkState: Boolean
+) {
+    val status by networkConnectivityObserver.observe()
+        .collectAsState(initial = initialNetworkState)
+
+        if (status == ConnectivityObserver.ConnectionState.Unavailable) {
+            Column(
+                Modifier.fillMaxSize().padding(top = 60.dp)
+            ) {
+                Box(
+                    Modifier
+                        .fillMaxWidth()
+                        .height(80.dp)
+                        .background(color)
+                ) {
+                    // just for test
+                    Text(text = "You are offline", color = Color.Black, fontSize = 21.sp)
+                }
+            }
+        }
 }
 
 private fun dismissCurrentSnackbar(scaffoldState: ScaffoldState) {
