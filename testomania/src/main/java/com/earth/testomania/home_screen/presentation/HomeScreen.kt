@@ -277,20 +277,23 @@ fun NetworkStateManager(
                 Box(
                     Modifier
                         .fillMaxWidth()
-                        .height(40.dp)
+                        .height(44.dp)
                         .background(
                             color = color,
                             shape = RoundedCornerShape(8.dp)
-                        ),
-                    contentAlignment = Alignment.Center
+                        )
+                        .padding(4.dp)
                 ) {
-                    // just for test
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_no_connection),
+                        contentDescription = ""
+                    )
                     Text(
                         modifier = Modifier
                             .fillMaxSize()
                             .padding(top = 6.dp),
                         textAlign = TextAlign.End,
-                        text = "You are offline check your connection",
+                        text = "You're offline check your connection",
                         color = Color.Black,
                         fontSize = 18.sp,
                     )
