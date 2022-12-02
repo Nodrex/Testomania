@@ -11,6 +11,7 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -42,6 +43,7 @@ import com.earth.testomania.technical.presentation.CategorySelectorBottomSheet
 import com.earth.testomania.technical.presentation.TECHNICAL_ROUTE
 import com.earth.testomania.ui.theme.DialogBkgDark
 import com.earth.testomania.ui.theme.DialogBkgLight
+import com.earth.testomania.ui.theme.LightRed
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kiwi.orbit.compose.ui.controls.Card
@@ -63,7 +65,7 @@ fun HomeScreen(
     val viewModel: HomeScreenViewModel = hiltViewModel()
 
     NetworkStateManager(
-        color = Color.Red,
+        color = LightRed,
         networkConnectivityObserver = viewModel.networkObserver,
         initialNetworkState = false
     )
@@ -263,16 +265,35 @@ fun NetworkStateManager(
 
         if (status == ConnectivityObserver.ConnectionState.Unavailable) {
             Column(
-                Modifier.fillMaxSize().padding(top = 60.dp)
+                Modifier
+                    .fillMaxSize()
+                    .padding(
+                        start = 26.dp,
+                        top = 80.dp,
+                        end = 26.dp,
+                        bottom = 0.dp
+                    )
             ) {
                 Box(
                     Modifier
                         .fillMaxWidth()
-                        .height(80.dp)
-                        .background(color)
+                        .height(40.dp)
+                        .background(
+                            color = color,
+                            shape = RoundedCornerShape(8.dp)
+                        ),
+                    contentAlignment = Alignment.Center
                 ) {
                     // just for test
-                    Text(text = "You are offline", color = Color.Black, fontSize = 21.sp)
+                    Text(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(top = 6.dp),
+                        textAlign = TextAlign.End,
+                        text = "You are offline check your connection",
+                        color = Color.Black,
+                        fontSize = 18.sp,
+                    )
                 }
             }
         }
