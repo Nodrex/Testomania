@@ -3,15 +3,14 @@
 package com.earth.testomania.home_screen.presentation
 
 import android.annotation.SuppressLint
-import android.util.Log.d
 import androidx.activity.compose.BackHandler
+import androidx.compose.animation.core.*
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -20,7 +19,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -263,7 +262,8 @@ fun NetworkStateManager(
     val status by networkConnectivityObserver.observe()
         .collectAsState(initial = initialNetworkState)
 
-        if (status == ConnectivityObserver.ConnectionState.Unavailable) {
+    if (status == ConnectivityObserver.ConnectionState.Unavailable) {
+        Pulsating {
             Column(
                 Modifier
                     .fillMaxSize()
@@ -300,6 +300,28 @@ fun NetworkStateManager(
                 }
             }
         }
+    }
+}
+
+@Composable
+fun Pulsating(pulseFraction: Float = 0.98f, content: @Composable () -> Unit) {
+    val infiniteTransition = rememberInfiniteTransition()
+
+    val scale by infiniteTransition.animateFloat(
+        initialValue = 1f,
+        targetValue = pulseFraction,
+        animationSpec = infiniteRepeatable(
+            animation = tween(1000),
+            repeatMode = RepeatMode.Reverse
+        )
+    )
+
+    Box(
+        modifier = Modifier
+            .scale(scale)
+    ) {
+        content()
+    }
 }
 
 private fun dismissCurrentSnackbar(scaffoldState: ScaffoldState) {
