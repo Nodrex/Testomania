@@ -7,6 +7,7 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -187,7 +188,8 @@ fun HomeScreenContent(
                     item,
                     navigator,
                     scaffoldState,
-                    modalBottomSheetState
+                    modalBottomSheetState,
+                    viewModel.networkObserver
                 )
             }
         }
@@ -200,13 +202,16 @@ fun CardButton(
     navigator: DestinationsNavigator? = null,
     scaffoldState: ScaffoldState,
     modalBottomSheetState: ModalBottomSheetState,
-) {
+    networkConnectivityObserver: NetworkConnectivityObserver,
+    ) {
     val scope = rememberCoroutineScope()
     val comingSoonStr = stringResource(id = R.string.coming_soon)
     val dismissStr = stringResource(id = R.string.dismiss)
     val viewModel: HomeScreenViewModel = hiltViewModel()
+    val status by networkConnectivityObserver.observe()
+        .collectAsState(initial = false)
 
-    Card(modifier = Modifier.size(125.dp), shape = RoundedCornerShape(10.dp), onClick = {
+    Card(modifier = Modifier.size(125.dp), shape = RoundedCornerShape(10.dp), enabled = status == ConnectivityObserver.ConnectionState.Available, onClick = {
 
         dismissCurrentSnackbar(scaffoldState)
 
