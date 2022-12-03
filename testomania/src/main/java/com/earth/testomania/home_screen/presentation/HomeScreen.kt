@@ -36,8 +36,6 @@ import com.earth.testomania.common.networking.ConnectivityObserver
 import com.earth.testomania.common.networking.NetworkConnectivityObserver
 import com.earth.testomania.destinations.TechnicalTestsScreenDestination
 import com.earth.testomania.home_screen.domain.model.HomeDestinations
-import com.earth.testomania.presentation.home.BottomSheetScreen
-import com.earth.testomania.presentation.home.HomeScreenViewModel
 import com.earth.testomania.skills.presentation.skillz.SKILLZ_ROUTE
 import com.earth.testomania.technical.presentation.CategorySelectorBottomSheet
 import com.earth.testomania.technical.presentation.TECHNICAL_ROUTE
@@ -46,8 +44,8 @@ import com.earth.testomania.ui.theme.DialogBkgLight
 import com.earth.testomania.ui.theme.LightRed
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
-import kiwi.orbit.compose.ui.controls.Card
 import kiwi.orbit.compose.ui.controls.Icon
+import kiwi.orbit.compose.ui.controls.SurfaceCard
 import kiwi.orbit.compose.ui.controls.Text
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -84,13 +82,13 @@ fun HomeScreen(
     }
 
     ModalBottomSheetLayout(
-        modifier = Modifier
-            .systemBarsPadding(),
         sheetState = modalBottomSheetState,
         sheetBackgroundColor = if (isSystemInDarkTheme()) DialogBkgDark else DialogBkgLight,
         scrimColor = Color.Transparent,
         sheetContent = {
-            SheetLayout(modalBottomSheetState, scope, navigator)
+            Column(Modifier.navigationBarsPadding()) {
+                SheetLayout(modalBottomSheetState, scope, navigator)
+            }
         }
     ) {
         Scaffold(
@@ -176,8 +174,7 @@ fun HomeScreenContent(
             modifier = Modifier
                 .constrainAs(grid) {
                     bottom.linkTo(parent.bottom)
-                }
-                .systemBarsPadding(),
+                },
             contentPadding = PaddingValues(contentPadding),
             horizontalArrangement = Arrangement.spacedBy(contentPadding),
             verticalArrangement = Arrangement.spacedBy(contentPadding)
@@ -223,7 +220,7 @@ fun CardButton(
                         actionLabel = dismissStr,
                     )
                 }
-                return@Card
+                return@SurfaceCard
             }
             ABOUT_ROUT -> {
                 viewModel.onBottomSheetPageChange(BottomSheetScreen.About)

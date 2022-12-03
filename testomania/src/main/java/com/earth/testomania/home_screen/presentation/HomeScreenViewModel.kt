@@ -1,4 +1,4 @@
-package com.earth.testomania.presentation.home
+package com.earth.testomania.home_screen.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
