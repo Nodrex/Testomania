@@ -298,7 +298,7 @@ fun NetworkStateManager(
                             .fillMaxSize()
                             .padding(top = 6.dp),
                         textAlign = TextAlign.End,
-                        text = "You're offline check your connection",
+                        text = stringResource(R.string.check_your_connection),
                         color = Color.Black,
                         fontSize = 18.sp,
                     )
