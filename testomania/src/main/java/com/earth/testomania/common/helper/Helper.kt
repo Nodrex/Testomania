@@ -13,3 +13,7 @@ fun defaultTechQuizWrapper() = QuizUIState(
 )
 
 fun EmptyChar() = ' '
+
+fun Any?.println() {
+    println(this)
+}
