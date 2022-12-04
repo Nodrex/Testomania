@@ -1,6 +1,6 @@
 package com.earth.testomania.opentdb.models
 
-data class OpenTdbQuizDto(
+data class OpenTdbQuizDTO(
     val response_code: Int,
     val results: List<ResultDto>
 )

@@ -40,7 +40,3 @@ class GeneralSkillsMathematicalRepoTest {
     }
 
 }
-
-fun Any?.println() {
-    kotlin.io.println(this)
-}

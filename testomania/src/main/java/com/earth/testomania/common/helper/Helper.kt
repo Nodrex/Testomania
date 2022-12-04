@@ -23,3 +23,7 @@ fun defaultTechQuizWrapper() = TechQuizItemWrapper(
         )
     )
 )
+
+fun Any?.println() {
+    println(this)
+}
