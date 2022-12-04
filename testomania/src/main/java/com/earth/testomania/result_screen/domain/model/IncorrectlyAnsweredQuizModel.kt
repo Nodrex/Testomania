@@ -7,7 +7,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class IncorrectlyAnsweredQuizModel(
-    val quiz: Quiz? = null,
+    val quiz: Quiz,
     val correctAnswersList: List<Answer> = listOf(),
     val incorrectAnswersList: List<Answer> = listOf(),
 ) : Parcelable

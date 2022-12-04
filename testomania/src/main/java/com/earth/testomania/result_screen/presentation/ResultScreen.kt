@@ -69,7 +69,7 @@ fun ResultScreen(
             modifier = Modifier,
         ) {
             viewModel.resultData.incorrectQuestions.forEach { item ->
-                item(key = item.quiz?.id) {
+                item(key = item.quiz.id) {
                     IncorrectAnsweredQuestion(item = item)
                 }
             }
@@ -94,7 +94,7 @@ fun IncorrectAnsweredQuestion(item: IncorrectlyAnsweredQuizModel) {
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             Text(
-                text = item.quiz?.question ?: "",
+                text = item.quiz.question,
                 fontSize = 20.sp,
                 color = MaterialTheme.colors.onBackground
             )
