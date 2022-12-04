@@ -8,6 +8,8 @@ import android.net.Uri
 import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ModalBottomSheetState
 import androidx.compose.runtime.Composable
@@ -20,7 +22,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat.startActivity
 import com.earth.testomania.R
-import com.earth.testomania.common.Crashlytics
 import com.earth.testomania.common.Developer
 import com.earth.testomania.common.custom_ui_components.DialogCloseAngle
 import com.earth.testomania.common.developers
@@ -42,51 +43,55 @@ fun AboutBottomSheet(
     val context = LocalContext.current
     val appGithubUrl = stringResource(id = R.string.app_github_url)
 
-    Text(
-        modifier = Modifier
-            .padding(all = 20.dp)
-            .padding(top = 20.dp),
-        fontSize = 16.sp,
-        text = stringResource(id = R.string.about_app)
-    )
+    Column(
+        Modifier.verticalScroll(rememberScrollState())
+    ) {
+        Text(
+            modifier = Modifier
+                .padding(all = 20.dp)
+                .padding(top = 20.dp),
+            fontSize = 16.sp,
+            text = stringResource(id = R.string.about_app)
+        )
 
-    Row(modifier = Modifier
-        .wrapContentSize()
-        .padding(start = 20.dp, end = 20.dp, bottom = 20.dp)
-        .clickable {
-            startActivity(
-                context,
-                Intent(Intent.ACTION_VIEW, Uri.parse(appGithubUrl)),
-                null
+        Row(modifier = Modifier
+            .wrapContentSize()
+            .padding(start = 20.dp, end = 20.dp, bottom = 20.dp)
+            .clickable {
+                startActivity(
+                    context,
+                    Intent(Intent.ACTION_VIEW, Uri.parse(appGithubUrl)),
+                    null
+                )
+            }
+        ) {
+            Icon(
+                painter = painterResource(id = R.drawable.ic_orbit_github),
+                contentDescription = "",
+            )
+            Text(
+                modifier = Modifier.padding(start = 10.dp),
+                fontSize = 16.sp,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                text = appGithubUrl
             )
         }
-    ) {
-        Icon(
-            painter = painterResource(id = R.drawable.ic_orbit_github),
-            contentDescription = "",
-        )
+
         Text(
-            modifier = Modifier.padding(start = 10.dp),
-            fontSize = 16.sp,
+            modifier = Modifier.padding(start = 12.dp, bottom = 8.dp, end = 10.dp),
+            fontSize = 14.sp,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
-            text = appGithubUrl
+            text = stringResource(id = R.string.creator_developers)
         )
+
+        developers.forEach {
+            AboutDeveloper(it)
+        }
+
+        DialogCloseAngle(scope, modalBottomSheetState)
     }
-
-    Text(
-        modifier = Modifier.padding(start = 12.dp, bottom = 8.dp, end = 10.dp),
-        fontSize = 14.sp,
-        maxLines = 1,
-        overflow = TextOverflow.Ellipsis,
-        text = stringResource(id = R.string.creator_developers)
-    )
-
-    developers.forEach {
-        AboutDeveloper(it)
-    }
-
-    DialogCloseAngle(scope, modalBottomSheetState)
 }
 
 @Composable
