@@ -9,15 +9,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.earth.testomania.common.helper.defaultTechQuizWrapper
-import com.earth.testomania.technical.domain.model.TechQuizItemWrapper
+import com.earth.testomania.common.model.QuizUIState
 import kiwi.orbit.compose.ui.controls.Text
 
 @Composable
-fun CreateQuizUI(modifier: Modifier = Modifier, techQuiz: TechQuizItemWrapper) {
+fun CreateQuizUI(modifier: Modifier = Modifier, quizUIState: QuizUIState) {
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -28,11 +26,11 @@ fun CreateQuizUI(modifier: Modifier = Modifier, techQuiz: TechQuizItemWrapper) {
         val style = AnnotatedString.Range(
             SpanStyle(fontWeight = FontWeight.Bold),
             0,
-            techQuiz.quiz.category.length
+            quizUIState.quiz.category.length
         )
 
         val text = AnnotatedString(
-            techQuiz.quiz.category + "\n" + techQuiz.quiz.question,
+            quizUIState.quiz.category + "\n" + quizUIState.quiz.question,
             spanStyles = listOf(style)
         )
 
@@ -44,11 +42,3 @@ fun CreateQuizUI(modifier: Modifier = Modifier, techQuiz: TechQuizItemWrapper) {
     }
 }
 
-
-@Preview
-@Composable
-private fun Preview() {
-    CreateQuizUI(
-        techQuiz = defaultTechQuizWrapper()
-    )
-}

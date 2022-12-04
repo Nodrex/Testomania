@@ -19,10 +19,10 @@ import androidx.core.content.res.ResourcesCompat.ID_NULL
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.earth.testomania.MainActivity
 import com.earth.testomania.R
+import com.earth.testomania.common.model.QuizUIState
 import com.earth.testomania.destinations.ResultScreenDestination
 import com.earth.testomania.result_screen.domain.use_case.ResultDataCollectorUseCase
 import com.earth.testomania.technical.domain.model.QuizCategory
-import com.earth.testomania.technical.domain.model.TechQuizItemWrapper
 import com.earth.testomania.technical.presentation.ui_parts.*
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
@@ -58,13 +58,15 @@ fun TechnicalTestsScreen(
 
     if (errorState != ID_NULL) ErrorScreen(errorMessage = errorState)
     else if (data.isEmpty()) LoadingScreen()
-    else CreateQuizScreen(data, navigator)
+    else CreateQuizScreen(data, navigator, viewModel)
 }
 
+@OptIn(ExperimentalPagerApi::class)
 @Composable
 private fun CreateQuizScreen(
-    techQuizList: List<TechQuizItemWrapper>,
-    navigator: DestinationsNavigator
+    techQuizList: List<QuizUIState>,
+    navigator: DestinationsNavigator,
+    viewModel: QuizViewModel
 ) {
     val pagerState = rememberPagerState()
 
@@ -110,13 +112,20 @@ private fun CreateQuizScreen(
                     bottom.linkTo(parent.bottom)
                 }, horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.End)
         ) {
+            val categoryName = if (viewModel.category == QuizCategory.ALL) {
+                stringResource(id = R.string.technical_tests)
+            } else viewModel.getCategoryName()
 
             ButtonSecondary(
                 onClick = {
                     navigator.navigateUp()
                     navigator.navigate(
                         ResultScreenDestination(
-                            ResultDataCollectorUseCase().getTechnicalTestResult(techQuizList)
+                            ResultDataCollectorUseCase().getTechnicalTestResult(
+                                techQuizList,
+                                viewModel.overallScore,
+                                categoryName
+                            )
                         )
                     )
                 },
@@ -153,7 +162,7 @@ private fun CreateQuizScreen(
 @Composable
 private fun QuestionAndAnswers(
     modifier: Modifier,
-    techQuizList: List<TechQuizItemWrapper>,
+    techQuizList: List<QuizUIState>,
     pagerState: PagerState,
 ) {
     val answerPadding = 10.dp
@@ -198,9 +207,9 @@ private fun QuestionAndAnswers(
                 verticalArrangement = Arrangement.spacedBy(8.dp),
                 contentPadding = PaddingValues(all = answerPadding),
             ) {
-                techQuizList[pageIndex].quiz.apply {
-                    possibleAnswers.forEach { possibleAnswer ->
-                        item(key = possibleAnswer.key) {
+                techQuizList[pageIndex].apply {
+                    quiz.answers.forEach { possibleAnswer ->
+                        item(key = possibleAnswer.tag) {
                             CreateQuizAnswerUI(
                                 techQuizList[pageIndex],
                                 possibleAnswer,
@@ -214,7 +223,7 @@ private fun QuestionAndAnswers(
 }
 
 private fun findFirstIndexOfUnansweredQuestion(
-    techQuizList: List<TechQuizItemWrapper>,
+    techQuizList: List<QuizUIState>,
     pagerState: PagerState,
 ): Int {
     return techQuizList.indexOfFirst {

@@ -7,9 +7,9 @@ import androidx.lifecycle.viewModelScope
 import com.earth.testomania.R
 import com.earth.testomania.common.DataState
 import com.earth.testomania.common.coroutines.defaultCoroutineExceptionHandler
+import com.earth.testomania.common.model.QuizUIState
+import com.earth.testomania.common.model.SelectedAnswer
 import com.earth.testomania.technical.domain.model.QuizCategory
-import com.earth.testomania.technical.domain.model.SelectedAnswer
-import com.earth.testomania.technical.domain.model.TechQuizItemWrapper
 import com.earth.testomania.technical.domain.use_case.GetQuizListUseCase
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
@@ -21,21 +21,21 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 class QuizViewModel @AssistedInject constructor(
-    @Assisted var category: QuizCategory,
+    @Assisted val category: QuizCategory,
     private val getQuizListUseCase: GetQuizListUseCase,
     private val dispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
     private var getQuizListJob: Job? = null
 
-    private val _data = mutableStateListOf<TechQuizItemWrapper>()
-    val data: List<TechQuizItemWrapper> = _data
-
-    private val _loading = MutableStateFlow(false)
-    val loading = _loading.asStateFlow()
+    private val _data = mutableStateListOf<QuizUIState>()
+    val data: List<QuizUIState> = _data
 
     private val _error = MutableSharedFlow<Int>()
     val error = _error.asSharedFlow()
+
+    var overallScore: Double = 0.0
+        private set
 
     init {
         getQuizList()
@@ -50,26 +50,26 @@ class QuizViewModel @AssistedInject constructor(
             }.collectLatest {
                 ensureActive()
                 when (it) {
-                    is DataState.Loading -> _loading.value = true
                     is DataState.Success -> it.payload?.apply {
                         _data.addAll(this)
                     }
                     is DataState.Error -> _error.emit(R.string.error_load)
+                    else -> {}
                 }
             }
         }
     }
 
-    fun saveAnswer(techQuizItemWrapper: TechQuizItemWrapper, selectedAnswerKey: String) {
-        saveQuizPoint(techQuizItemWrapper, selectedAnswerKey)
-        val index = _data.indexOf(techQuizItemWrapper)
+    fun saveAnswer(quizUIState: QuizUIState, answerTag: Char) {
+        saveQuizPoint(quizUIState, answerTag)
+        val index = _data.indexOf(quizUIState)
         val newItem = _data.removeAt(index).let {
             it.copy(
                 quiz = it.quiz,
                 selectedAnswers = it.selectedAnswers.apply {
                     add(
                         SelectedAnswer(
-                            selectedAnswerKey,
+                            answerTag,
                             true
                         )
                     )
@@ -79,44 +79,57 @@ class QuizViewModel @AssistedInject constructor(
         _data.add(index, newItem)
     }
 
-    private fun saveQuizPoint(techQuizItemWrapper: TechQuizItemWrapper, selectedAnswerKey: String) {
-        if (techQuizItemWrapper.quiz.hasMultiAnswer) return
-        if (isCorrectAnswer(techQuizItemWrapper, selectedAnswerKey)) techQuizItemWrapper.point = 1
+    private fun saveQuizPoint(quizUIState: QuizUIState, answerTag: Char) {
+        if (quizUIState.quiz.hasMultiAnswer) return
+        if (isCorrectAnswer(quizUIState, answerTag)) {
+            quizUIState.receivedScore = quizUIState.quiz.point
+            overallScore += quizUIState.receivedScore
+        }
     }
 
     fun isCorrectAnswer(
-        techQuizItemWrapper: TechQuizItemWrapper,
-        possibleAnswerKey: String
-    ) = techQuizItemWrapper.quiz.correctAnswers[possibleAnswerKey] ?: false
+        quizUIState: QuizUIState,
+        answerTag: Char,
+    ) = quizUIState.quiz.answers.firstOrNull {
+        it.tag == answerTag
+    }?.isCorrect ?: false
 
-    fun wasAlreadyAnswered(techQuizItemWrapper: TechQuizItemWrapper, possibleAnswerKey: String) =
-        techQuizItemWrapper.selectedAnswers.find { it.selectedKey == possibleAnswerKey } != null ||
-                (techQuizItemWrapper.selectedAnswers.isNotEmpty() &&
-                        !techQuizItemWrapper.quiz.hasMultiAnswer &&
+
+    fun wasAlreadyAnswered(quizUIState: QuizUIState, answerTag: Char) =
+        quizUIState.selectedAnswers.find { it.selectedTag == answerTag } != null ||
+                (quizUIState.selectedAnswers.isNotEmpty() &&
+                        !quizUIState.quiz.hasMultiAnswer &&
                         isCorrectAnswer(
-                            techQuizItemWrapper,
-                            possibleAnswerKey
+                            quizUIState,
+                            answerTag
                         ))
 
-    fun enableAnswerSelection(techQuizItemWrapper: TechQuizItemWrapper) =
-        if (techQuizItemWrapper.quiz.hasMultiAnswer) !techQuizItemWrapper.multiSelectionWasDone.value else techQuizItemWrapper.selectedAnswers.isEmpty()
-
-    fun multiSelectionWasDone(techQuizItemWrapper: TechQuizItemWrapper) {
-        saveMultiSelectQuizPoint(techQuizItemWrapper)
-        techQuizItemWrapper.multiSelectionWasDone.value = true
+    fun getCategoryName() = category.tag.ifEmpty {
+        if (category.category == QuizCategory.Programing.category) {
+            "Programing"
+        } else category.category
     }
 
-    private fun saveMultiSelectQuizPoint(techQuizItemWrapper: TechQuizItemWrapper) {
-        if (!techQuizItemWrapper.quiz.hasMultiAnswer) return
-        techQuizItemWrapper.selectedAnswers.forEach {
-            if (!isCorrectAnswer(techQuizItemWrapper, it.selectedKey)) return
+    fun enableAnswerSelection(quizUIState: QuizUIState) =
+        /*if (quizUIState.quiz.hasMultiAnswer) !quizUIState.multiSelectionWasDone.value else*/
+        quizUIState.selectedAnswers.isEmpty()
+
+/*    fun multiSelectionWasDone(quizUIState: QuizUIState) {
+        saveMultiSelectQuizPoint(quizUIState)
+        quizUIState.multiSelectionWasDone.value = true
+    }*/
+
+/*    private fun saveMultiSelectQuizPoint(quizUIState: QuizUIState) {
+        if (!quizUIState.quiz.hasMultiAnswer) return
+        quizUIState.selectedAnswers.forEach {
+            if (!isCorrectAnswer(quizUIState, it.selectedKey)) return
         }
-        techQuizItemWrapper.point = 1
-    }
+        quizUIState.point = 1
+    }*/
 
-    fun getQuizResult() = data.sumOf {
+/*    fun getQuizResult() = data.sumOf {
         it.point
-    }
+    }*/
 
     @AssistedFactory
     interface Factory {
