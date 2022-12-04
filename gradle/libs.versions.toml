@@ -41,8 +41,8 @@ google-hilt = "com.google.dagger:hilt-android:2.42"
 google-hilt-androidCompiler = "com.google.dagger:hilt-android-compiler:2.42"
 google-hilt-compiler = "androidx.hilt:hilt-compiler:1.0.0"
 
-accompanist-systemuicontroller = "com.google.accompanist:accompanist-systemuicontroller:0.27.1"
-accompanist-pager = "com.google.accompanist:accompanist-pager:0.27.1"
+accompanist-systemuicontroller = "com.google.accompanist:accompanist-systemuicontroller:0.28.0"
+accompanist-pager = "com.google.accompanist:accompanist-pager:0.28.0"
 
 mockk = "io.mockk:mockk:1.13.3"
 mockk-android = "io.mockk:mockk-android:1.13.3"
