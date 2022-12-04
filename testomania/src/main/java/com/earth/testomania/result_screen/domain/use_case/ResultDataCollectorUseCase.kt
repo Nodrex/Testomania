@@ -9,12 +9,11 @@ class ResultDataCollectorUseCase {
 
     fun getTechnicalTestResult(
         techQuizList: List<QuizUIState>,
+        overallScore: Double,
         quizCategoryName: String
     ): ResultData {
 
-        val correctProgress = techQuizList.count {
-            it.overallScore > 0
-        } / techQuizList.size.toFloat()
+        val correctProgress = overallScore / techQuizList.size.toFloat()
 
         val resultData = ResultData(
             R.drawable.ic_orbit_dashboard,
@@ -23,7 +22,7 @@ class ResultDataCollectorUseCase {
             correctProgress > 0.5,
             techQuizList
                 .filter {
-                    it.selectedAnswers.isNotEmpty() && it.overallScore == 0.0
+                    it.selectedAnswers.isNotEmpty() && it.receivedScore == 0.0
                 }
                 .map { wrappedQuizItem ->
                     val incorrectAnswerTag = wrappedQuizItem.selectedAnswers.firstOrNull()

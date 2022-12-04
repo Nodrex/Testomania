@@ -123,6 +123,7 @@ private fun CreateQuizScreen(
                         ResultScreenDestination(
                             ResultDataCollectorUseCase().getTechnicalTestResult(
                                 techQuizList,
+                                viewModel.overallScore,
                                 categoryName
                             )
                         )

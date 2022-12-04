@@ -34,6 +34,9 @@ class QuizViewModel @AssistedInject constructor(
     private val _error = MutableSharedFlow<Int>()
     val error = _error.asSharedFlow()
 
+    var overallScore: Double = 0.0
+        private set
+
     init {
         getQuizList()
     }
@@ -78,7 +81,10 @@ class QuizViewModel @AssistedInject constructor(
 
     private fun saveQuizPoint(quizUIState: QuizUIState, answerTag: Char) {
         if (quizUIState.quiz.hasMultiAnswer) return
-        if (isCorrectAnswer(quizUIState, answerTag)) quizUIState.overallScore += 1
+        if (isCorrectAnswer(quizUIState, answerTag)) {
+            quizUIState.receivedScore = quizUIState.quiz.point
+            overallScore += quizUIState.receivedScore
+        }
     }
 
     fun isCorrectAnswer(

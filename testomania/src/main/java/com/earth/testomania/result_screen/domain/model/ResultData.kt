@@ -7,7 +7,7 @@ import kotlinx.parcelize.Parcelize
 data class ResultData(
     val testIconRes: Int,
     val quizCategoryName: String,
-    val overallProgress: Float = 0.0f,
+    val overallProgress: Double = 0.0,
     val isTestDone: Boolean = false,
     val incorrectQuestions: List<IncorrectlyAnsweredQuizModel> = listOf()
 ) : Parcelable

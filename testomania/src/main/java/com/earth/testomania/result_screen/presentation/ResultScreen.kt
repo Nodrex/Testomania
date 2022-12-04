@@ -141,7 +141,7 @@ fun MainResultItem(
     testIconRes: Int,
     testName: String = "",
     mainColor: Color = OrbitTheme.colors.info.normal,
-    progress: Float = 0.0f
+    progress: Double = 0.0
 ) {
 
     val lighterColor = mainColor.copy(alpha = 0.1f)
@@ -181,7 +181,7 @@ fun MainResultItem(
                 text = "${(progress * 10000).roundToInt() / 100}% correct"
             )
             LinearProgressIndicator(
-                progress = progress,
+                progress = progress.toFloat(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 3.dp)
