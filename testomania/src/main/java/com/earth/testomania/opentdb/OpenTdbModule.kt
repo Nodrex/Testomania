@@ -21,5 +21,4 @@ class OpenTdbModule {
             .create(OpenTdbQuizApi::class.java)
 }
 
-private const val API = "https://opentdb.com/api.php" // ?amount=10&category=11"
-
+private const val API = "https://opentdb.com/api.php"
