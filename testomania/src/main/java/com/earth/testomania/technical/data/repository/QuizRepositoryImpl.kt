@@ -45,13 +45,13 @@ class QuizRepositoryImpl @Inject constructor(
         }
 
 
-    private fun convertTechQuizDTOtoDataObject(techQuizDTO: TechQuizDTO) = with(techQuizDTO) {
-        val possibleAnswersList = generatePossibleAnswersList(techQuizDTO) ?: return@with null
+    private fun convertTechQuizDTOtoDataObject(techQuizDTO: TechQuizDTO): Quiz? {
+        val possibleAnswersList = generatePossibleAnswersList(techQuizDTO)
 
         val correctAnswersList =
-            generateCorrectAnswersList(techQuizDTO, possibleAnswersList.size) ?: return@with null
+            generateCorrectAnswersList(techQuizDTO, possibleAnswersList?.size ?: 0) ?: return null
 
-        val possibleAnswers = createPossibleAnswerMap(possibleAnswersList)
+        val possibleAnswers = createPossibleAnswerMap(possibleAnswersList ?: emptyList())
         val correctAnswers = createCorrectAnswerMap(correctAnswersList)
 
         val answers = mutableListOf<Answer>()
@@ -65,14 +65,16 @@ class QuizRepositoryImpl @Inject constructor(
                 )
         }
 
-        return@with Quiz(
-            id = id,
-            point = 1.0,
-            question = question ?: "",
-            category = addTagsToCategory(category, tags),
-            explanation = explanation ?: "",
-            answers = answers
-        )
+        return with(techQuizDTO) {
+            Quiz(
+                id = id,
+                point = 1.0,
+                question = question ?: "",
+                category = addTagsToCategory(category, tags),
+                explanation = explanation ?: "",
+                answers = answers
+            )
+        }
     }
 
     private fun addTagsToCategory(category: String?, tags: List<TagDTO>?): String {
@@ -91,31 +93,27 @@ class QuizRepositoryImpl @Inject constructor(
         }
     }
 
-    private fun generatePossibleAnswersList(techQuizDTO: TechQuizDTO) = with(techQuizDTO) {
-        return@with techQuizDTO.answers?.let {
-            return@let listOfNotNull(
-                it.answer_a,
-                it.answer_b,
-                it.answer_c,
-                it.answer_d,
-                it.answer_e,
-                it.answer_f,
-            )
-        }
+    private fun generatePossibleAnswersList(techQuizDTO: TechQuizDTO) = techQuizDTO.answers?.let {
+        listOfNotNull(
+            it.answer_a,
+            it.answer_b,
+            it.answer_c,
+            it.answer_d,
+            it.answer_e,
+            it.answer_f,
+        )
     }
 
     private fun generateCorrectAnswersList(techQuizDTO: TechQuizDTO, trimSize: Int) =
-        with(techQuizDTO) {
-            return@with techQuizDTO.correct_answers?.let {
-                return@let listOfNotNull(
-                    it.answer_a_correct?.toBoolean(),
-                    it.answer_b_correct?.toBoolean(),
-                    it.answer_c_correct?.toBoolean(),
-                    it.answer_d_correct?.toBoolean(),
-                    it.answer_e_correct?.toBoolean(),
-                    it.answer_f_correct?.toBoolean(),
-                ).subList(0, trimSize)
-            }
+        techQuizDTO.correct_answers?.let {
+            listOfNotNull(
+                it.answer_a_correct?.toBoolean(),
+                it.answer_b_correct?.toBoolean(),
+                it.answer_c_correct?.toBoolean(),
+                it.answer_d_correct?.toBoolean(),
+                it.answer_e_correct?.toBoolean(),
+                it.answer_f_correct?.toBoolean(),
+            ).subList(0, trimSize)
         }
 
     private fun createPossibleAnswerMap(possibleAnswerList: List<String>): Map<String, String> {
