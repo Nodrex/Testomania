@@ -1,7 +1,10 @@
 package com.earth.testomania.technical.domain.model
 
+/**
+ * This is use by API to request specific category
+ */
 enum class QuizCategory(val category: String = "", val tag: String = "") {
-    ALL(),
+    ALL,
     Linux("Linux"),
     DevOps("DevOps"),
     Docker("Docker"),

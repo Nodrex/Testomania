@@ -2,6 +2,9 @@ package com.earth.testomania.technical.domain.model
 
 import com.earth.testomania.R
 
+/**
+ * This is used to choose illustration for specific tech type
+ */
 enum class TechCategory(val category: String, val illustration: Int) {
     Linux("Linux", R.drawable.il_os),
     JavaScript("javascript", R.drawable.il_js),

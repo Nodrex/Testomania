@@ -4,12 +4,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import com.earth.testomania.common.custom_ui_components.AnswerTileState
 import com.earth.testomania.common.custom_ui_components.TestomaniaChoiceTile
 import com.earth.testomania.common.custom_ui_components.getAnswerTileState
-import com.earth.testomania.common.helper.defaultTechQuizWrapper
-import com.earth.testomania.technical.domain.model.TechQuizItemWrapper
+import com.earth.testomania.common.model.Answer
+import com.earth.testomania.common.model.QuizUIState
 import com.earth.testomania.technical.presentation.QuizViewModel
 import com.earth.testomania.technical.presentation.quizViewModel
 import kiwi.orbit.compose.ui.controls.Text
@@ -17,18 +16,18 @@ import kiwi.orbit.compose.ui.controls.Text
 
 @Composable
 fun CreateQuizAnswerUI(
-    techQuizItemWrapper: TechQuizItemWrapper,
-    possibleAnswer: Map.Entry<String, String>,
+    quizUIState: QuizUIState,
+    answer: Answer,
 ) {
     val viewModel: QuizViewModel = quizViewModel()
-    val isSelected = viewModel.wasAlreadyAnswered(techQuizItemWrapper, possibleAnswer.key)
-    val enabled = viewModel.enableAnswerSelection(techQuizItemWrapper)
+    val isSelected = viewModel.wasAlreadyAnswered(quizUIState, answer.tag)
+    val enabled = viewModel.enableAnswerSelection(quizUIState)
 
     val answerState = if (isSelected) {
         getAnswerTileState(
             viewModel.isCorrectAnswer(
-                techQuizItemWrapper,
-                possibleAnswer.key
+                quizUIState,
+                answer.tag
             )
         )
     } else AnswerTileState.NEUTRAL
@@ -41,27 +40,16 @@ fun CreateQuizAnswerUI(
         selected = isSelected,
         enabled = enabled,
         onSelect = {
-            viewModel.saveAnswer(techQuizItemWrapper, possibleAnswer.key)
+            viewModel.saveAnswer(quizUIState, answer.tag)
         },
-        title = possibleAnswer.key,
+        title = answer.tag.toString(),
         toggleColorType = answerState,
         content = {
             Text(
                 modifier = Modifier.fillMaxWidth(),
-                text = possibleAnswer.value,
+                text = answer.text,
                 fontWeight = FontWeight(499),
             )
         },
-    )
-}
-
-@Preview
-@Composable
-private fun Preview() {
-    CreateQuizAnswerUI(
-        defaultTechQuizWrapper(),
-        defaultTechQuizWrapper().quiz.possibleAnswers.firstNotNullOf {
-            it
-        }
     )
 }
