@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import com.earth.testomania.R
 import com.earth.testomania.destinations.*
 import com.earth.testomania.home_screen.domain.model.HomeDestinations
-import com.earth.testomania.technical.domain.model.QuizCategory
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -27,7 +26,7 @@ class HomeScreenViewModel @Inject constructor() : ViewModel() {
         HomeDestinations(
             name = R.string.technical_tests,
             icon = R.drawable.ic_orbit_dashboard,
-            destinationWithParam = TechnicalTestsScreenDestination(QuizCategory.ALL)
+            destinationWithParam = TechnicalTestsScreenDestination()
         ),
         HomeDestinations(
             name = R.string.general_skills_tests,

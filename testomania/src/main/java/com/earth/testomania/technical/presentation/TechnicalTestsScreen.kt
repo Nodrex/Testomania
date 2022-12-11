@@ -21,6 +21,7 @@ import com.earth.testomania.MainActivity
 import com.earth.testomania.R
 import com.earth.testomania.common.model.QuizUIState
 import com.earth.testomania.destinations.ResultScreenDestination
+import com.earth.testomania.home_screen.presentation.destinations.DestinationViewModel
 import com.earth.testomania.result_screen.domain.use_case.ResultDataCollectorUseCase
 import com.earth.testomania.technical.domain.model.QuizCategory
 import com.earth.testomania.technical.presentation.ui_parts.*
@@ -49,9 +50,8 @@ const val TECHNICAL_ROUTE = "home/technical_tests"
 @Composable
 fun TechnicalTestsScreen(
     navigator: DestinationsNavigator,
-    category: QuizCategory
+    viewModel: DestinationViewModel
 ) {
-    val viewModel: QuizViewModel = quizViewModel(category)
 
     val data = viewModel.data
     val errorState by viewModel.error.collectAsState(initial = ID_NULL)
@@ -66,7 +66,7 @@ fun TechnicalTestsScreen(
 private fun CreateQuizScreen(
     techQuizList: List<QuizUIState>,
     navigator: DestinationsNavigator,
-    viewModel: QuizViewModel
+    viewModel: DestinationViewModel
 ) {
     val pagerState = rememberPagerState()
 
@@ -112,9 +112,10 @@ private fun CreateQuizScreen(
                     bottom.linkTo(parent.bottom)
                 }, horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.End)
         ) {
-            val categoryName = if (viewModel.category == QuizCategory.ALL) {
-                stringResource(id = R.string.technical_tests)
-            } else viewModel.getCategoryName()
+            // TODO
+//            val categoryName = if (viewModel.category == QuizCategory.ALL) {
+//                stringResource(id = R.string.technical_tests)
+//            } else viewModel.getCategoryName()
 
             ButtonSecondary(
                 onClick = {
@@ -124,7 +125,7 @@ private fun CreateQuizScreen(
                             ResultDataCollectorUseCase().getTechnicalTestResult(
                                 techQuizList,
                                 viewModel.overallScore,
-                                categoryName
+                                "Quiz" // TODO
                             )
                         )
                     )

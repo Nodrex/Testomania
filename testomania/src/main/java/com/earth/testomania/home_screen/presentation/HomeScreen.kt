@@ -116,7 +116,7 @@ fun BottomContent(
                 modalBottomSheetState.snapTo(ModalBottomSheetValue.Hidden)
                 //snapTo is quicker then hide
             }.invokeOnCompletion {
-                navigator?.navigate(TechnicalTestsScreenDestination(quizCategory))
+                navigator?.navigate(TechnicalTestsScreenDestination())
                 //we need to navigate to other screen after bottom-sheet is close,
                 // otherwise bottom-sheet remains open when returning to home screen
             }
