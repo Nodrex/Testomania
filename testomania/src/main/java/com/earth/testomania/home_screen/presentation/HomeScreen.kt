@@ -278,24 +278,25 @@ fun NetworkStateManager(
                 Box(
                     Modifier
                         .fillMaxWidth()
-                        .height(44.dp)
+                        .wrapContentHeight()
                         .background(
                             color = color,
-                            shape = RoundedCornerShape(8.dp)
+                            shape = RoundedCornerShape(6.dp)
                         )
                         .padding(4.dp)
                 ) {
                     Image(
+                        modifier = Modifier
+                            .padding(start = 10.dp),
                         painter = painterResource(id = R.drawable.ic_no_connection),
                         contentDescription = ""
                     )
                     Text(
                         modifier = Modifier
-                            .fillMaxSize()
-                            .padding(top = 6.dp),
+                            .fillMaxWidth()
+                            .wrapContentHeight(),
                         textAlign = TextAlign.End,
                         text = stringResource(R.string.check_your_connection),
-                        color = Color.Black,
                         fontSize = 18.sp,
                     )
                 }
