@@ -19,7 +19,7 @@ class NetworkConnectivityObserver @Inject constructor(
     @ApplicationContext context: Context,
 ) : ConnectivityObserver {
 
-    private var connectivityManager: ConnectivityManager =
+    private var connectivityManager =
         context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
     override fun observe(): Flow<ConnectivityObserver.ConnectionState> {
