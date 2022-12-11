@@ -12,49 +12,26 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 
-const val ROUTE_BOOK = "home/book"
+const val ROUTE_MUSIC = "home/music"
 
-@Destination(route = ROUTE_BOOK)
+@Destination(route = ROUTE_MUSIC)
 @Composable
-fun BookQuiz(navigator: DestinationsNavigator) {
-    val viewModel: BookViewModel = hiltViewModel()
+fun MusicQuiz(navigator: DestinationsNavigator) {
+    val viewModel: MusicViewModel = hiltViewModel()
     TechnicalTestsScreen(navigator, viewModel)
 }
 
-class GetBooksUseCse @Inject constructor(private val repository: OpenTdbRepo) : GetQuizUseCase() {
+class GetMusicsUseCse @Inject constructor(private val repository: OpenTdbRepo) : GetQuizUseCase() {
 
-    override suspend fun getRepResult() = repository.getQuiz(OpenTdbCategory.BOOKS, 20)
+    override suspend fun getRepResult() = repository.getQuiz(OpenTdbCategory.MUSIC, 20)
 
 }
 
 @HiltViewModel
-class BookViewModel @Inject constructor(
-    useCase: GetBooksUseCse,
+class MusicViewModel @Inject constructor(
+    useCase: GetMusicsUseCse,
     dispatcher: CoroutineDispatcher
 ) : DestinationViewModel(
     useCase,
     dispatcher
 )
-
-
-//FILM
-//MUSICALS_AND_THEATRES
-//TELEVISION
-//VIDEO_GAMES
-//BOARD_GAMES
-//NATURE
-//COMPUTERS
-//MATHEMATICS
-//MYTHOLOGY
-//SPORTS
-//GEOGRAPHY
-//HISTORY
-//POLITICS
-//ART
-//CELEBRITIES
-//ANIMALS
-//VEHICLES
-//COMICS
-//GADGETS
-//ANIME_MANGA
-

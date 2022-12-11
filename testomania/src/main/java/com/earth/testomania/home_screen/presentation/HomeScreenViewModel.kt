@@ -42,6 +42,11 @@ class HomeScreenViewModel @Inject constructor() : ViewModel() {
             R.string.book,
             icon = R.drawable.ic_math,
             destination = BookQuizDestination
+        ),
+        HomeDestinationItem(
+            R.string.book,
+            icon = R.drawable.ic_outline_info,
+            destination = MusicQuizDestination
         )
     )
 
