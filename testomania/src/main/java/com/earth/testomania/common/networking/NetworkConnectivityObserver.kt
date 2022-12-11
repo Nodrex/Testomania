@@ -42,7 +42,7 @@ class NetworkConnectivityObserver @Inject constructor(
             awaitClose {
                 connectivityManager.unregisterNetworkCallback(callBack)
             }
-        }.distinctUntilChanged()
+        }
     }
 
     // If active network is null device isn't connected to the internet
