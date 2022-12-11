@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
  */
 @Parcelize
 data class Answer(
-    val tag: Char,
+    val tag: String,
     val text: String,
     val image: String?,
     val isCorrect: Boolean,

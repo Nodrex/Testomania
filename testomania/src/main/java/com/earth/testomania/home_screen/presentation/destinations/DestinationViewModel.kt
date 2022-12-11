@@ -58,7 +58,7 @@ abstract class DestinationViewModel(
         }
     }
 
-    fun saveAnswer(quizUIState: QuizUIState, answerTag: Char) {
+    fun saveAnswer(quizUIState: QuizUIState, answerTag: String) {
         saveQuizPoint(quizUIState, answerTag)
         val index = _data.indexOf(quizUIState)
         val newItem = _data.removeAt(index).let {
@@ -77,7 +77,7 @@ abstract class DestinationViewModel(
         _data.add(index, newItem)
     }
 
-    private fun saveQuizPoint(quizUIState: QuizUIState, answerTag: Char) {
+    private fun saveQuizPoint(quizUIState: QuizUIState, answerTag: String) {
         if (quizUIState.quiz.hasMultiAnswer) return
         if (isCorrectAnswer(quizUIState, answerTag)) {
             quizUIState.receivedScore = quizUIState.quiz.point
@@ -87,13 +87,13 @@ abstract class DestinationViewModel(
 
     fun isCorrectAnswer(
         quizUIState: QuizUIState,
-        answerTag: Char,
+        answerTag: String,
     ) = quizUIState.quiz.answers.firstOrNull {
         it.tag == answerTag
     }?.isCorrect ?: false
 
 
-    fun wasAlreadyAnswered(quizUIState: QuizUIState, answerTag: Char) =
+    fun wasAlreadyAnswered(quizUIState: QuizUIState, answerTag: String) =
         quizUIState.selectedAnswers.find { it.selectedTag == answerTag } != null ||
                 (quizUIState.selectedAnswers.isNotEmpty() &&
                         !quizUIState.quiz.hasMultiAnswer &&

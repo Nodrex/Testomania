@@ -1,8 +1,8 @@
 package com.earth.testomania.apis.opentdb.data.repository
 
 import com.earth.testomania.apis.opentdb.data.source.OpenTdbQuizApi
-import com.earth.testomania.apis.opentdb.domain.models.OpenTdbCategory
 import com.earth.testomania.apis.opentdb.data.source.remote.dto.ResultDto
+import com.earth.testomania.apis.opentdb.domain.models.OpenTdbCategory
 import com.earth.testomania.apis.opentdb.domain.repository.OpenTdbRepo
 import com.earth.testomania.common.DataState
 import com.earth.testomania.common.model.Answer
@@ -16,7 +16,6 @@ class OpenTdbRepoImpl @Inject constructor(private val api: OpenTdbQuizApi) : Ope
     override suspend fun getQuiz(
         category: OpenTdbCategory, questionCount: Int
     ): Flow<DataState<List<Quiz>>> {
-        //TODO emit a result
         return flow {
             val result = api.getQuizList(
                 category = category.id, questionCount = questionCount
@@ -29,18 +28,19 @@ class OpenTdbRepoImpl @Inject constructor(private val api: OpenTdbQuizApi) : Ope
                     category = resultDto.category,
                     answers = buildList {
                         resultDto.incorrect_answers.forEachIndexed { index, answer ->
-                            add(Answer(index.toChar(), answer, null, false))
+                            add(Answer(index.toString(), answer, null, false))
                         }
                         add(
                             Answer(
-                                tag = count().plus(1).toChar(),
+                                tag = count().plus(1).toString(),
                                 text = resultDto.correct_answer,
                                 image = null,
                                 isCorrect = true
                             )
                         )
+                    }.shuffled().mapIndexed { index, answer ->
+                        answer.copy(tag = (index + 1).toString())
                     })
-
             }
 
             emit(DataState.Success(payload = quizList))

@@ -58,7 +58,7 @@ class QuizRepositoryImpl @Inject constructor(
         possibleAnswers.forEach {
             answers +=
                 Answer(
-                    tag = it.key.first(),
+                    tag = it.key,
                     text = it.value,
                     image = "",
                     isCorrect = correctAnswers[it.key] ?: false
