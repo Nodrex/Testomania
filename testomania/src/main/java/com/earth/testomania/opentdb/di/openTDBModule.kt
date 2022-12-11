@@ -1,5 +1,8 @@
-package com.earth.testomania.opentdb
+package com.earth.testomania.opentdb.di
 
+import com.earth.testomania.opentdb.OpenTdbQuizApi
+import com.earth.testomania.opentdb.OpenTdbRepo
+import com.earth.testomania.opentdb.OpenTdbRepoImpl
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -19,6 +22,10 @@ class OpenTdbModule {
         Retrofit.Builder().baseUrl(API).client(okHttpClient)
             .addConverterFactory(MoshiConverterFactory.create(moshi)).build()
             .create(OpenTdbQuizApi::class.java)
+
+    @Provides
+    @Singleton
+    fun bindOpenTDB(repo: OpenTdbRepoImpl): OpenTdbRepo = repo
 }
 
-private const val API = "https://opentdb.com/api.php"
+private const val API = "https://opentdb.com/api.php/"

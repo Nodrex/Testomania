@@ -3,10 +3,7 @@ package com.earth.testomania.home_screen.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.earth.testomania.R
-import com.earth.testomania.destinations.AboutBottomSheetDestination
-import com.earth.testomania.destinations.DummyScreenDestination
-import com.earth.testomania.destinations.SkillzTestScreenDestination
-import com.earth.testomania.destinations.TechnicalTestsScreenDestination
+import com.earth.testomania.destinations.*
 import com.earth.testomania.home_screen.domain.model.HomeDestinations
 import com.earth.testomania.technical.domain.model.QuizCategory
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -41,6 +38,11 @@ class HomeScreenViewModel @Inject constructor() : ViewModel() {
             name = R.string.driving_license_tests,
             icon = R.drawable.ic_driver_license,
             destination = DummyScreenDestination
+        ),
+        HomeDestinations(
+            R.string.book,
+            icon = R.drawable.ic_math,
+            destination = BookQuizDestination
         )
     )
 

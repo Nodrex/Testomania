@@ -29,9 +29,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.R
 import com.earth.testomania.destinations.TechnicalTestsScreenDestination
 import com.earth.testomania.home_screen.domain.model.HomeDestinations
-import com.earth.testomania.skills.presentation.skillz.SKILLZ_ROUTE
 import com.earth.testomania.technical.presentation.CategorySelectorBottomSheet
-import com.earth.testomania.technical.presentation.TECHNICAL_ROUTE
 import com.earth.testomania.ui.theme.DialogBkgDark
 import com.earth.testomania.ui.theme.DialogBkgLight
 import com.ramcosta.composedestinations.annotation.Destination
@@ -189,33 +187,37 @@ fun CardButton(
     val dismissStr = stringResource(id = R.string.dismiss)
     val viewModel: HomeScreenViewModel = hiltViewModel()
 
+
+
     SurfaceCard (modifier = Modifier.size(125.dp), shape = RoundedCornerShape(10.dp), onClick = {
 
         dismissCurrentSnackbar(scaffoldState)
 
-        when (destinationInfo.destination?.route ?: destinationInfo.destinationWithParam?.route) {
-            SKILLZ_ROUTE, DUMMY_ROUTE -> {
-                scope.launch {
-                    scaffoldState.snackbarHostState.showSnackbar(
-                        message = comingSoonStr,
-                        actionLabel = dismissStr,
-                    )
-                }
-                return@SurfaceCard
-            }
-            ABOUT_ROUT -> {
-                viewModel.onBottomSheetPageChange(BottomSheetScreen.About)
-                scope.launch {
-                    modalBottomSheetState.show()
-                }
-            }
-            "$TECHNICAL_ROUTE/ALL" -> {
-                viewModel.onBottomSheetPageChange(BottomSheetScreen.Technical)
-                scope.launch {
-                    modalBottomSheetState.show()
-                }
-            }
-        }
+        navigator?.navigate(destinationInfo.destination ?: return@SurfaceCard)
+
+//        when (destinationInfo.destination?.route ?: destinationInfo.destinationWithParam?.route) {
+//            SKILLZ_ROUTE, DUMMY_ROUTE -> {
+//                scope.launch {
+//                    scaffoldState.snackbarHostState.showSnackbar(
+//                        message = comingSoonStr,
+//                        actionLabel = dismissStr,
+//                    )
+//                }
+//                return@SurfaceCard
+//            }
+//            ABOUT_ROUT -> {
+//                viewModel.onBottomSheetPageChange(BottomSheetScreen.About)
+//                scope.launch {
+//                    modalBottomSheetState.show()
+//                }
+//            }
+//            "$TECHNICAL_ROUTE/ALL" -> {
+//                viewModel.onBottomSheetPageChange(BottomSheetScreen.Technical)
+//                scope.launch {
+//                    modalBottomSheetState.show()
+//                }
+//            }
+//        }
     }) {
         Column(
             Modifier

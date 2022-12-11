@@ -23,4 +23,5 @@
     <string name="install_browser">Pleas install at least browser to open %1$s</string>
     <string name="linkedin">LinkedIn</string>
     <string name="github">Github</string>
+    <string name="book">Books</string>
 </resources>
