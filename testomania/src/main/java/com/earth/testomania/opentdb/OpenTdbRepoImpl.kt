@@ -1,7 +1,9 @@
 package com.earth.testomania.opentdb
 
 import com.earth.testomania.common.DataState
+import com.earth.testomania.common.model.Answer
 import com.earth.testomania.common.model.Quiz
+import com.earth.testomania.opentdb.models.ResultDto
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
@@ -19,12 +21,25 @@ class OpenTdbRepoImpl @Inject constructor(private val api: OpenTdbQuizApi) : Ope
         category: OpenTdbCategory,
         questionCount: Int
     ): Flow<DataState<List<Quiz>>> {
-        //TODO
+        //TODO emit a result
         return flow {
             val result = api.getQuizList(
                 category = category.id, questionCount = questionCount
             )
-            result.body()
+
+            val quizList = result.body()?.results?.mapIndexed { i: Int, resultDto: ResultDto ->
+                Quiz(
+                    id = i,
+                    point = 1.0,
+                    question = resultDto.question,
+                    category = resultDto.category,
+                    answers = resultDto.incorrect_answers.mapIndexed() { index: Int, answer: String ->
+                        Answer(index.toChar(), answer, null, answer == resultDto.correct_answer)
+                    }
+                )
+            }
+
+            emit(DataState.Success(payload = quizList))
         }
     }
 }

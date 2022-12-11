@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 abstract class DestinationViewModel(
-    private val getQuizListUseCase: GetQuizUseCase,
+    open val getQuizListUseCase: GetQuizUseCase,
     private val dispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
@@ -45,6 +45,7 @@ abstract class DestinationViewModel(
                 _error.emit(R.string.error_generic)
             }.collectLatest {
                 ensureActive()
+                println("asdf - $it")
                 when (it) {
                     is DataState.Success -> it.payload?.apply {
                         _data.addAll(this)

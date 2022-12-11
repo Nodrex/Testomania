@@ -23,6 +23,7 @@ abstract class GetQuizUseCase {
                         is DataState.Loading -> emit(loading(it))
                     }
                 }.catch {
+                    123
                     emit(DataState.Error(ErrorMetaData(it.cause as Exception?)))
                 }.collect()
             } catch (e: Exception) {

@@ -20,7 +20,7 @@ class OpenTdbModule {
     @Singleton
     fun provideQuizApi(okHttpClient: OkHttpClient, moshi: Moshi): OpenTdbQuizApi =
         Retrofit.Builder().baseUrl(API).client(okHttpClient)
-            .addConverterFactory(MoshiConverterFactory.create(moshi)).build()
+            .addConverterFactory(MoshiConverterFactory.create(moshi).asLenient()).build()
             .create(OpenTdbQuizApi::class.java)
 
     @Provides
@@ -29,4 +29,4 @@ class OpenTdbModule {
 
 }
 
-private const val API = "https://opentdb.com/api.php/"
+private const val API = "https://opentdb.com/"

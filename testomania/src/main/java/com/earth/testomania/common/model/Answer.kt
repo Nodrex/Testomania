@@ -10,6 +10,6 @@ import kotlinx.parcelize.Parcelize
 data class Answer(
     val tag: Char,
     val text: String,
-    val image: String,
+    val image: String?,
     val isCorrect: Boolean,
 ) : Parcelable

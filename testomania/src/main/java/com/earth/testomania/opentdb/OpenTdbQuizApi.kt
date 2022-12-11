@@ -6,7 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface OpenTdbQuizApi {
-    @GET
+    @GET("api.php")
     suspend fun getQuizList(
         @Query("amount") questionCount: Int = 20,
         @Query("category") category: Int = 0,
