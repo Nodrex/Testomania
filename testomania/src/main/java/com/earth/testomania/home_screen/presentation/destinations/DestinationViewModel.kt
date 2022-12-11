@@ -34,10 +34,10 @@ abstract class DestinationViewModel(
         private set
 
     init {
-        getQuizList()
+        initialize()
     }
 
-    private fun getQuizList() {
+    private fun initialize() {
         getQuizListJob?.cancel()
         getQuizListJob = viewModelScope.launch(dispatcher + defaultCoroutineExceptionHandler) {
             getQuizListUseCase().catch {
@@ -45,7 +45,6 @@ abstract class DestinationViewModel(
                 _error.emit(R.string.error_generic)
             }.collectLatest {
                 ensureActive()
-                println("asdf - $it")
                 when (it) {
                     is DataState.Success -> it.payload?.apply {
                         _data.addAll(this)
