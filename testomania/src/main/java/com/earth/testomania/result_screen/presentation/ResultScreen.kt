@@ -14,25 +14,22 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.R
 import com.earth.testomania.common.custom_ui_components.AnswerTileState
 import com.earth.testomania.common.custom_ui_components.TestomaniaChoiceTile
-import com.earth.testomania.result_screen.domain.model.IncorrectAnsweredQuestionModel
+import com.earth.testomania.result_screen.domain.model.IncorrectlyAnsweredQuizModel
 import com.earth.testomania.result_screen.domain.model.ResultData
 import com.ramcosta.composedestinations.annotation.Destination
 import kiwi.orbit.compose.ui.OrbitTheme
-import kiwi.orbit.compose.ui.controls.Card
 import kiwi.orbit.compose.ui.controls.LinearProgressIndicator
+import kiwi.orbit.compose.ui.controls.SurfaceCard
 import kiwi.orbit.compose.ui.controls.Text
 import kotlin.math.roundToInt
 
-@Preview(showSystemUi = true)
 @Destination(
     route = "home/result"
 )
@@ -57,7 +54,7 @@ fun ResultScreen(
         Spacer(modifier = Modifier.size(30.dp))
         MainResultItem(
             viewModel.resultData.testIconRes,
-            stringResource(id = viewModel.resultData.testNameRes),
+            viewModel.resultData.quizCategoryName,
             mainColor = OrbitTheme.colors.info.normal,
             progress = viewModel.resultData.overallProgress
         )
@@ -72,7 +69,7 @@ fun ResultScreen(
             modifier = Modifier,
         ) {
             viewModel.resultData.incorrectQuestions.forEach { item ->
-                item(key = item.id) {
+                item(key = item.quiz.id) {
                     IncorrectAnsweredQuestion(item = item)
                 }
             }
@@ -81,18 +78,10 @@ fun ResultScreen(
 
 }
 
-@Preview
-@Composable
-fun PrevIncorrect() {
-    val viewModel: ResultScreenViewModel = hiltViewModel()
-    viewModel.incorrectQuestions.firstOrNull()?.let {
-        IncorrectAnsweredQuestion(it)
-    }
-}
 
 @Composable
-fun IncorrectAnsweredQuestion(item: IncorrectAnsweredQuestionModel) {
-    Card(
+fun IncorrectAnsweredQuestion(item: IncorrectlyAnsweredQuizModel) {
+    SurfaceCard(
         modifier = Modifier
             .padding(0.dp, 6.dp)
             .fillMaxWidth(),
@@ -105,35 +94,39 @@ fun IncorrectAnsweredQuestion(item: IncorrectAnsweredQuestionModel) {
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             Text(
-                text = "Question: ${item.questionText}",
+                text = item.quiz.question,
                 fontSize = 20.sp,
                 color = MaterialTheme.colors.onBackground
             )
+
+            val incorrectAnswer = item.incorrectAnswersList.firstOrNull()
             TestomaniaChoiceTile(
                 selected = false,
                 enabled = false,
                 onSelect = {},
-                title = item.choiceIndex,
+                title = incorrectAnswer?.tag.toString(),
                 toggleColorType = AnswerTileState.INCORRECT,
                 content = {
                     Text(
                         modifier = Modifier.fillMaxWidth(),
-                        text = item.choiceText,
+                        text = incorrectAnswer?.text ?: "",
                         fontWeight = FontWeight(499),
                     )
                 },
                 indicateWithoutSelection = true
             )
+
+            val correctAnswer = item.correctAnswersList.firstOrNull()
             TestomaniaChoiceTile(
                 selected = false,
                 enabled = false,
                 onSelect = {},
-                title = item.correctAnswerIndex,
+                title = correctAnswer?.tag.toString(),
                 toggleColorType = AnswerTileState.CORRECT,
                 content = {
                     Text(
                         modifier = Modifier.fillMaxWidth(),
-                        text = item.correctAnswerText,
+                        text = correctAnswer?.text ?: "",
                         fontWeight = FontWeight(499),
                     )
                 },
@@ -143,13 +136,12 @@ fun IncorrectAnsweredQuestion(item: IncorrectAnsweredQuestionModel) {
     }
 }
 
-@Preview
 @Composable
 fun MainResultItem(
     testIconRes: Int,
     testName: String = "",
     mainColor: Color = OrbitTheme.colors.info.normal,
-    progress: Float = 0.0f
+    progress: Double = 0.0
 ) {
 
     val lighterColor = mainColor.copy(alpha = 0.1f)
@@ -189,7 +181,7 @@ fun MainResultItem(
                 text = "${(progress * 10000).roundToInt() / 100}% correct"
             )
             LinearProgressIndicator(
-                progress = progress,
+                progress = progress.toFloat(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 3.dp)
