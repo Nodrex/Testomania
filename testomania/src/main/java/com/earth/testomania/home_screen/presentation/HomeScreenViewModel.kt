@@ -18,10 +18,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeScreenViewModel @Inject constructor(
-     networkConnectivityObserver: NetworkConnectivityObserver,
+    val networkObserver: NetworkConnectivityObserver,
 ) : ViewModel() {
-
-    val networkObserver = networkConnectivityObserver
 
     private val _bottomSheetPageState = MutableSharedFlow<BottomSheetScreen>()
     val bottomSheetPageState = _bottomSheetPageState.asSharedFlow()
