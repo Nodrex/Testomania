@@ -26,6 +26,7 @@ class OpenTdbModule {
     @Provides
     @Singleton
     fun bindOpenTDB(repo: OpenTdbRepoImpl): OpenTdbRepo = repo
+
 }
 
 private const val API = "https://opentdb.com/api.php/"

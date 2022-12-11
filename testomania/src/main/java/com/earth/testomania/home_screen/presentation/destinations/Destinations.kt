@@ -4,33 +4,38 @@ import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.opentdb.OpenTdbCategory
 import com.earth.testomania.opentdb.OpenTdbRepo
+import com.earth.testomania.technical.presentation.TechnicalTestsScreen
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kiwi.orbit.compose.ui.controls.Text
+import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 
-//BOOKS
 const val ROUTE = "home/book"
 
 @Destination(route = ROUTE)
 @Composable
 fun BookQuiz(navigator: DestinationsNavigator) {
     val viewModel: BookViewModel = hiltViewModel()
+    TechnicalTestsScreen(navigator, viewModel)
+}
 
-    Text("Book Quiz here")
+class GetBooksUseCse @Inject constructor(val repository: OpenTdbRepo) : GetQuizUseCase() {
 
-//    TechnicalTestsScreen(navigator, )
+    override suspend fun getRepResult() = repository.getQuiz(OpenTdbCategory.BOOKS, 20)
+
 }
 
 @HiltViewModel
 class BookViewModel @Inject constructor(
-    private val openTdbCategory: OpenTdbRepo
-) : DestinationViewModel() {
-    val category = OpenTdbCategory.BOOKS
+    private val useCase: GetBooksUseCse,
+    private val dispatcher: CoroutineDispatcher
+) : DestinationViewModel(
+    useCase,
+    dispatcher
+)
 
 
-}
 //FILM
 //MUSIC
 //MUSICALS_AND_THEATRES

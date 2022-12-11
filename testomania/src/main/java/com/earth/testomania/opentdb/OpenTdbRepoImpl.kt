@@ -1,16 +1,16 @@
 package com.earth.testomania.opentdb
 
-import com.earth.testomania.opentdb.models.OpenTdbQuizDTO
+import com.earth.testomania.common.DataState
+import com.earth.testomania.common.model.Quiz
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import retrofit2.Response
 import javax.inject.Inject
 
 interface OpenTdbRepo {
     suspend fun getQuiz(
         category: OpenTdbCategory,
         questionCount: Int
-    ): Flow<Response<OpenTdbQuizDTO>>
+    ): Flow<DataState<List<Quiz>>>
 }
 
 class OpenTdbRepoImpl @Inject constructor(private val api: OpenTdbQuizApi) : OpenTdbRepo {
@@ -18,7 +18,8 @@ class OpenTdbRepoImpl @Inject constructor(private val api: OpenTdbQuizApi) : Ope
     override suspend fun getQuiz(
         category: OpenTdbCategory,
         questionCount: Int
-    ): Flow<Response<OpenTdbQuizDTO>> {
+    ): Flow<DataState<List<Quiz>>> {
+        //TODO
         return flow {
             val result = api.getQuizList(
                 category = category.id, questionCount = questionCount
