@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import com.earth.testomania.technical.domain.model.TechCategory
+import com.earth.testomania.apis.quizapi.domain.model.TechCategory
 
 @Composable
 fun CategoryIllustration(modifier: Modifier = Modifier, category: String) {

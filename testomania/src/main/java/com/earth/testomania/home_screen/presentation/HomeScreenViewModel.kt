@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.earth.testomania.R
 import com.earth.testomania.destinations.*
-import com.earth.testomania.home_screen.domain.model.HomeDestinations
+import com.earth.testomania.home_screen.domain.model.HomeDestinationItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -18,27 +18,27 @@ class HomeScreenViewModel @Inject constructor() : ViewModel() {
     val bottomSheetPageState = _bottomSheetPageState.asSharedFlow()
 
     val destinations = listOf(
-        HomeDestinations(
+        HomeDestinationItem(
             name = R.string.about,
             icon = R.drawable.ic_outline_info,
             destination = AboutBottomSheetDestination
         ),
-        HomeDestinations(
+        HomeDestinationItem(
             name = R.string.technical_tests,
             icon = R.drawable.ic_orbit_dashboard,
             destinationWithParam = TechnicalTestsScreenDestination()
         ),
-        HomeDestinations(
+        HomeDestinationItem(
             name = R.string.general_skills_tests,
             icon = R.drawable.ic_math,
             destination = SkillzTestScreenDestination
         ),
-        HomeDestinations(
+        HomeDestinationItem(
             name = R.string.driving_license_tests,
             icon = R.drawable.ic_driver_license,
             destination = DummyScreenDestination
         ),
-        HomeDestinations(
+        HomeDestinationItem(
             R.string.book,
             icon = R.drawable.ic_math,
             destination = BookQuizDestination

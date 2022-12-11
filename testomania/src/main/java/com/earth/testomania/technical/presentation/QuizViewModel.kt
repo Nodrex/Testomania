@@ -1,3 +1,4 @@
+/*
 package com.earth.testomania.technical.presentation
 
 import androidx.compose.runtime.mutableStateListOf
@@ -9,7 +10,7 @@ import com.earth.testomania.common.DataState
 import com.earth.testomania.common.coroutines.defaultCoroutineExceptionHandler
 import com.earth.testomania.common.model.QuizUIState
 import com.earth.testomania.common.model.SelectedAnswer
-import com.earth.testomania.technical.domain.model.QuizCategory
+import com.earth.testomania.apis.quizapi.domain.model.QuizCategory
 import com.earth.testomania.technical.domain.use_case.GetQuizListUseCase
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
@@ -111,25 +112,33 @@ class QuizViewModel @AssistedInject constructor(
     }
 
     fun enableAnswerSelection(quizUIState: QuizUIState) =
-        /*if (quizUIState.quiz.hasMultiAnswer) !quizUIState.multiSelectionWasDone.value else*/
+        */
+/*if (quizUIState.quiz.hasMultiAnswer) !quizUIState.multiSelectionWasDone.value else*//*
+
         quizUIState.selectedAnswers.isEmpty()
 
+*/
 /*    fun multiSelectionWasDone(quizUIState: QuizUIState) {
         saveMultiSelectQuizPoint(quizUIState)
         quizUIState.multiSelectionWasDone.value = true
-    }*/
+    }*//*
 
+
+*/
 /*    private fun saveMultiSelectQuizPoint(quizUIState: QuizUIState) {
         if (!quizUIState.quiz.hasMultiAnswer) return
         quizUIState.selectedAnswers.forEach {
             if (!isCorrectAnswer(quizUIState, it.selectedKey)) return
         }
         quizUIState.point = 1
-    }*/
+    }*//*
 
+
+*/
 /*    fun getQuizResult() = data.sumOf {
         it.point
-    }*/
+    }*//*
+
 
     @AssistedFactory
     interface Factory {
@@ -145,4 +154,4 @@ class QuizViewModel @AssistedInject constructor(
             return assistedFactory.create(category) as T
         }
     }
-}
+}*/

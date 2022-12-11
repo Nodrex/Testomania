@@ -28,7 +28,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.R
 import com.earth.testomania.destinations.TechnicalTestsScreenDestination
-import com.earth.testomania.home_screen.domain.model.HomeDestinations
+import com.earth.testomania.home_screen.domain.model.HomeDestinationItem
 import com.earth.testomania.technical.presentation.CategorySelectorBottomSheet
 import com.earth.testomania.ui.theme.DialogBkgDark
 import com.earth.testomania.ui.theme.DialogBkgLight
@@ -177,7 +177,7 @@ fun HomeScreenContent(
 
 @Composable
 fun CardButton(
-    destinationInfo: HomeDestinations,
+    destinationInfo: HomeDestinationItem,
     navigator: DestinationsNavigator? = null,
     scaffoldState: ScaffoldState,
     modalBottomSheetState: ModalBottomSheetState,

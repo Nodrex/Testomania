@@ -9,8 +9,7 @@ import com.earth.testomania.common.custom_ui_components.TestomaniaChoiceTile
 import com.earth.testomania.common.custom_ui_components.getAnswerTileState
 import com.earth.testomania.common.model.Answer
 import com.earth.testomania.common.model.QuizUIState
-import com.earth.testomania.technical.presentation.QuizViewModel
-import com.earth.testomania.technical.presentation.quizViewModel
+import com.earth.testomania.home_screen.presentation.destinations.DestinationViewModel
 import kiwi.orbit.compose.ui.controls.Text
 
 
@@ -18,8 +17,8 @@ import kiwi.orbit.compose.ui.controls.Text
 fun CreateQuizAnswerUI(
     quizUIState: QuizUIState,
     answer: Answer,
+    viewModel: DestinationViewModel,
 ) {
-    val viewModel: QuizViewModel = quizViewModel()
     val isSelected = viewModel.wasAlreadyAnswered(quizUIState, answer.tag)
     val enabled = viewModel.enableAnswerSelection(quizUIState)
 

@@ -17,11 +17,12 @@ import androidx.compose.ui.unit.sp
 import com.earth.testomania.R
 import com.earth.testomania.common.custom_ui_components.DialogCloseAngle
 import com.earth.testomania.common.custom_ui_components.RightPointingAngle
-import com.earth.testomania.technical.domain.model.QuizCategory
+import com.earth.testomania.apis.quizapi.domain.model.QuizCategory
 import kiwi.orbit.compose.ui.controls.ChoiceTile
 import kiwi.orbit.compose.ui.controls.Text
 import kotlinx.coroutines.CoroutineScope
 
+//TODO this dialog should be removed
 //TODO this dialog should be Generic and moved to home_screen package
 @Composable
 fun CategorySelectorBottomSheet(
