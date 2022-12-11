@@ -4,7 +4,10 @@ package com.earth.testomania.home_screen.presentation
 
 import android.annotation.SuppressLint
 import androidx.activity.compose.BackHandler
+import androidx.compose.animation.core.*
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -17,6 +20,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -24,9 +28,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.R
+import com.earth.testomania.common.networking.ConnectivityObserver
+import com.earth.testomania.common.networking.NetworkConnectivityObserver
 import com.earth.testomania.destinations.TechnicalTestsScreenDestination
 import com.earth.testomania.home_screen.domain.model.HomeDestinations
 import com.earth.testomania.skills.presentation.skillz.SKILLZ_ROUTE
@@ -34,6 +41,7 @@ import com.earth.testomania.technical.presentation.CategorySelectorBottomSheet
 import com.earth.testomania.technical.presentation.TECHNICAL_ROUTE
 import com.earth.testomania.ui.theme.DialogBkgDark
 import com.earth.testomania.ui.theme.DialogBkgLight
+import com.earth.testomania.ui.theme.LightRed
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kiwi.orbit.compose.ui.controls.Icon
@@ -52,6 +60,13 @@ import kotlinx.coroutines.launch
 fun HomeScreen(
     navigator: DestinationsNavigator? = null,
 ) {
+    val viewModel: HomeScreenViewModel = hiltViewModel()
+
+    NetworkStateManager(
+        color = LightRed,
+        networkConnectivityObserver = viewModel.networkObserver,
+        initialNetworkState = false
+    )
 
     val modalBottomSheetState = rememberModalBottomSheetState(
         initialValue = ModalBottomSheetValue.Hidden,
@@ -170,7 +185,8 @@ fun HomeScreenContent(
                     item,
                     navigator,
                     scaffoldState,
-                    modalBottomSheetState
+                    modalBottomSheetState,
+                    viewModel.networkObserver
                 )
             }
         }
@@ -183,14 +199,16 @@ fun CardButton(
     navigator: DestinationsNavigator? = null,
     scaffoldState: ScaffoldState,
     modalBottomSheetState: ModalBottomSheetState,
-) {
+    networkConnectivityObserver: NetworkConnectivityObserver,
+    ) {
     val scope = rememberCoroutineScope()
     val comingSoonStr = stringResource(id = R.string.coming_soon)
     val dismissStr = stringResource(id = R.string.dismiss)
     val viewModel: HomeScreenViewModel = hiltViewModel()
+    val status by networkConnectivityObserver.observe()
+        .collectAsState(initial = false)
 
-    SurfaceCard (modifier = Modifier.size(125.dp), shape = RoundedCornerShape(10.dp), onClick = {
-
+    SurfaceCard(modifier = Modifier.size(125.dp), shape = RoundedCornerShape(10.dp), enabled = status == ConnectivityObserver.ConnectionState.Available, onClick = {
         dismissCurrentSnackbar(scaffoldState)
 
         when (destinationInfo.destination?.route ?: destinationInfo.destinationWithParam?.route) {
@@ -233,6 +251,78 @@ fun CardButton(
                 Text(text = name, textAlign = TextAlign.Center)
             }
         }
+    }
+}
+
+@Composable
+fun NetworkStateManager(
+    color: Color,
+    networkConnectivityObserver: NetworkConnectivityObserver,
+    initialNetworkState: Boolean
+) {
+    val status by networkConnectivityObserver.observe()
+        .collectAsState(initial = initialNetworkState)
+
+    if (status == ConnectivityObserver.ConnectionState.Unavailable) {
+        Pulsating {
+            Column(
+                Modifier
+                    .fillMaxSize()
+                    .padding(
+                        start = 26.dp,
+                        top = 80.dp,
+                        end = 26.dp,
+                        bottom = 0.dp
+                    )
+            ) {
+                Box(
+                    Modifier
+                        .fillMaxWidth()
+                        .wrapContentHeight()
+                        .background(
+                            color = color,
+                            shape = RoundedCornerShape(6.dp)
+                        )
+                        .padding(4.dp)
+                ) {
+                    Image(
+                        modifier = Modifier
+                            .padding(start = 10.dp),
+                        painter = painterResource(id = R.drawable.ic_no_connection),
+                        contentDescription = ""
+                    )
+                    Text(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .wrapContentHeight(),
+                        textAlign = TextAlign.End,
+                        text = stringResource(R.string.check_your_connection),
+                        fontSize = 18.sp,
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun Pulsating(pulseFraction: Float = 0.98f, content: @Composable () -> Unit) {
+    val infiniteTransition = rememberInfiniteTransition()
+
+    val scale by infiniteTransition.animateFloat(
+        initialValue = 1f,
+        targetValue = pulseFraction,
+        animationSpec = infiniteRepeatable(
+            animation = tween(1000),
+            repeatMode = RepeatMode.Reverse
+        )
+    )
+
+    Box(
+        modifier = Modifier
+            .scale(scale)
+    ) {
+        content()
     }
 }
 

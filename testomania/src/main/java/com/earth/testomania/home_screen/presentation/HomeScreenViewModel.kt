@@ -3,6 +3,7 @@ package com.earth.testomania.home_screen.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.earth.testomania.R
+import com.earth.testomania.common.networking.NetworkConnectivityObserver
 import com.earth.testomania.destinations.AboutBottomSheetDestination
 import com.earth.testomania.destinations.DummyScreenDestination
 import com.earth.testomania.destinations.SkillzTestScreenDestination
@@ -16,7 +17,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeScreenViewModel @Inject constructor() : ViewModel() {
+class HomeScreenViewModel @Inject constructor(
+    val networkObserver: NetworkConnectivityObserver,
+) : ViewModel() {
 
     private val _bottomSheetPageState = MutableSharedFlow<BottomSheetScreen>()
     val bottomSheetPageState = _bottomSheetPageState.asSharedFlow()
