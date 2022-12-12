@@ -4,8 +4,8 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.earth.testomania.R
-import com.earth.testomania.common.data.DataState
 import com.earth.testomania.common.coroutines.defaultCoroutineExceptionHandler
+import com.earth.testomania.common.data.DataState
 import com.earth.testomania.common.model.QuizUIState
 import com.earth.testomania.common.model.SelectedAnswer
 import com.earth.testomania.quiz_categories.usecase.GetQuizUseCase

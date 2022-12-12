@@ -18,8 +18,8 @@ import com.earth.testomania.R
 import com.earth.testomania.common.model.QuizUIState
 import com.earth.testomania.destinations.ResultScreenDestination
 import com.earth.testomania.quiz_categories.DestinationViewModel
-import com.earth.testomania.result_screen.domain.use_case.ResultDataCollectorUseCase
 import com.earth.testomania.quiz_screen.*
+import com.earth.testomania.result_screen.domain.use_case.ResultDataCollectorUseCase
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
