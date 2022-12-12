@@ -26,7 +26,7 @@ class HomeScreenViewModel @Inject constructor() : ViewModel() {
         HomeDestinationItem(
             name = R.string.technical_tests,
             icon = R.drawable.ic_orbit_dashboard,
-            destinationWithParam = TechnicalTestsScreenDestination()
+            destinationWithParam = MainQuizScreenDestination
         ),
         HomeDestinationItem(
             name = R.string.general_skills_tests,
@@ -39,15 +39,20 @@ class HomeScreenViewModel @Inject constructor() : ViewModel() {
             destination = DummyScreenDestination
         ),
         HomeDestinationItem(
-            R.string.book,
-            icon = R.drawable.ic_math,
+            R.string.books,
+            icon = R.drawable.ic_orbit_bookmark,
             destination = BookQuizDestination
         ),
         HomeDestinationItem(
-            R.string.book,
-            icon = R.drawable.ic_outline_info,
+            R.string.music,
+            icon = R.drawable.ic_orbit_musical_instruments,
             destination = MusicQuizDestination
-        )
+        ),
+        HomeDestinationItem(
+            R.string.tv,
+            icon = R.drawable.ic_orbit_ticket,
+            destination = TVQuizDestination
+        ),
     )
 
     fun onBottomSheetPageChange(newPage: BottomSheetScreen) {

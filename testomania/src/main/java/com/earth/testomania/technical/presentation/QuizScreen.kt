@@ -42,7 +42,7 @@ const val TECHNICAL_ROUTE = "home/technical_tests"
 //    ]
 )
 @Composable
-fun TechnicalTestsScreen(
+fun MainQuizScreen(
     navigator: DestinationsNavigator,
     viewModel: DestinationViewModel,
 ) {

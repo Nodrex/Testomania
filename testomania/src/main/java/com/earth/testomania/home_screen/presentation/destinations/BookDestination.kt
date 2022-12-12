@@ -5,7 +5,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.apis.opentdb.domain.models.OpenTdbCategory
 import com.earth.testomania.apis.opentdb.domain.repository.OpenTdbRepo
 import com.earth.testomania.home_screen.domain.usecase.GetQuizUseCase
-import com.earth.testomania.technical.presentation.TechnicalTestsScreen
+import com.earth.testomania.technical.presentation.MainQuizScreen
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,7 +18,7 @@ const val ROUTE_BOOK = "home/book"
 @Composable
 fun BookQuiz(navigator: DestinationsNavigator) {
     val viewModel: BookViewModel = hiltViewModel()
-    TechnicalTestsScreen(navigator, viewModel)
+    MainQuizScreen(navigator, viewModel)
 }
 
 class GetBooksUseCse @Inject constructor(private val repository: OpenTdbRepo) : GetQuizUseCase() {
@@ -39,7 +39,6 @@ class BookViewModel @Inject constructor(
 
 //FILM
 //MUSICALS_AND_THEATRES
-//TELEVISION
 //VIDEO_GAMES
 //BOARD_GAMES
 //NATURE

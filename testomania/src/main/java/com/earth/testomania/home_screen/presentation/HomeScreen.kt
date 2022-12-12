@@ -27,7 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.R
-import com.earth.testomania.destinations.TechnicalTestsScreenDestination
+import com.earth.testomania.destinations.MainQuizScreenDestination
 import com.earth.testomania.home_screen.domain.model.HomeDestinationItem
 import com.earth.testomania.technical.presentation.CategorySelectorBottomSheet
 import com.earth.testomania.ui.theme.DialogBkgDark
@@ -116,7 +116,7 @@ fun BottomContent(
                 modalBottomSheetState.snapTo(ModalBottomSheetValue.Hidden)
                 //snapTo is quicker then hide
             }.invokeOnCompletion {
-                navigator?.navigate(TechnicalTestsScreenDestination())
+                navigator?.navigate(MainQuizScreenDestination())
                 //we need to navigate to other screen after bottom-sheet is close,
                 // otherwise bottom-sheet remains open when returning to home screen
             }
