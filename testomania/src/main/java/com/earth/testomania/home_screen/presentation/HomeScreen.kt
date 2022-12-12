@@ -7,7 +7,6 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -32,13 +31,10 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.R
-import com.earth.testomania.destinations.MainQuizScreenDestination
-import com.earth.testomania.home_screen.domain.model.HomeDestinationItem
 import com.earth.testomania.common.networking.ConnectivityObserver
 import com.earth.testomania.common.networking.NetworkConnectivityObserver
-import com.earth.testomania.destinations.TechnicalTestsScreenDestination
-import com.earth.testomania.home_screen.domain.model.HomeDestinations
-import com.earth.testomania.skills.presentation.skillz.SKILLZ_ROUTE
+import com.earth.testomania.destinations.MainQuizScreenDestination
+import com.earth.testomania.home_screen.domain.model.HomeDestinationItem
 import com.earth.testomania.technical.presentation.CategorySelectorBottomSheet
 import com.earth.testomania.ui.theme.DialogBkgDark
 import com.earth.testomania.ui.theme.DialogBkgLight
@@ -201,7 +197,7 @@ fun CardButton(
     scaffoldState: ScaffoldState,
     modalBottomSheetState: ModalBottomSheetState,
     networkConnectivityObserver: NetworkConnectivityObserver,
-    ) {
+) {
     val scope = rememberCoroutineScope()
     val comingSoonStr = stringResource(id = R.string.coming_soon)
     val dismissStr = stringResource(id = R.string.dismiss)
@@ -209,10 +205,14 @@ fun CardButton(
     val status by networkConnectivityObserver.observe()
         .collectAsState(initial = false)
 
-    SurfaceCard(modifier = Modifier.size(125.dp), shape = RoundedCornerShape(10.dp), enabled = status == ConnectivityObserver.ConnectionState.Available, onClick = {
-        dismissCurrentSnackbar(scaffoldState)
+    SurfaceCard(
+        modifier = Modifier.size(125.dp),
+        shape = RoundedCornerShape(10.dp),
+        enabled = status == ConnectivityObserver.ConnectionState.Available,
+        onClick = {
+            dismissCurrentSnackbar(scaffoldState)
 
-        navigator?.navigate(destinationInfo.destination ?: return@SurfaceCard)
+            navigator?.navigate(destinationInfo.destination ?: return@SurfaceCard)
 
 //        when (destinationInfo.destination?.route ?: destinationInfo.destinationWithParam?.route) {
 //            SKILLZ_ROUTE, DUMMY_ROUTE -> {
@@ -237,7 +237,7 @@ fun CardButton(
 //                }
 //            }
 //        }
-    }) {
+        }) {
         Column(
             Modifier
                 .padding(10.dp)
