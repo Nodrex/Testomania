@@ -6,9 +6,9 @@ import com.earth.testomania.apis.quizapi.data.source.remote.dto.TechQuizDTO
 import com.earth.testomania.apis.quizapi.domain.model.AnswerKey
 import com.earth.testomania.apis.quizapi.domain.model.QuizCategory
 import com.earth.testomania.apis.quizapi.domain.repository.QuizRepository
-import com.earth.testomania.common.DataState
-import com.earth.testomania.common.ErrorMetaData
-import com.earth.testomania.common.SuccessMetaData
+import com.earth.testomania.common.data.DataState
+import com.earth.testomania.common.data.ErrorMetaData
+import com.earth.testomania.common.data.SuccessMetaData
 import com.earth.testomania.common.model.Answer
 import com.earth.testomania.common.model.Quiz
 import kotlinx.coroutines.flow.Flow

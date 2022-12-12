@@ -33,9 +33,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.R
 import com.earth.testomania.common.networking.ConnectivityObserver
 import com.earth.testomania.common.networking.NetworkConnectivityObserver
-import com.earth.testomania.destinations.MainQuizScreenDestination
 import com.earth.testomania.home_screen.domain.model.HomeDestinationItem
-import com.earth.testomania.technical.presentation.CategorySelectorBottomSheet
 import com.earth.testomania.ui.theme.DialogBkgDark
 import com.earth.testomania.ui.theme.DialogBkgLight
 import com.earth.testomania.ui.theme.LightRed
@@ -121,7 +119,7 @@ fun BottomContent(
     scope: CoroutineScope,
     navigator: DestinationsNavigator?
 ) {
-    when (pageType) {
+    /*when (pageType) {
         is BottomSheetScreen.Technical -> CategorySelectorBottomSheet(
             modalBottomSheetState,
             scope
@@ -136,7 +134,8 @@ fun BottomContent(
             }
         }
         else -> AboutBottomSheet(modalBottomSheetState, scope)
-    }
+    }*/
+    AboutBottomSheet(modalBottomSheetState, scope)
 }
 
 @Composable

@@ -4,7 +4,7 @@ import com.earth.testomania.apis.opentdb.data.source.OpenTdbQuizApi
 import com.earth.testomania.apis.opentdb.data.source.remote.dto.ResultDto
 import com.earth.testomania.apis.opentdb.domain.models.OpenTdbCategory
 import com.earth.testomania.apis.opentdb.domain.repository.OpenTdbRepo
-import com.earth.testomania.common.DataState
+import com.earth.testomania.common.data.DataState
 import com.earth.testomania.common.model.Answer
 import com.earth.testomania.common.model.Quiz
 import kotlinx.coroutines.flow.Flow
