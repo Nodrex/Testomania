@@ -16,7 +16,7 @@ data class Quiz(
     val category: String = "",
     val explanation: String = "",
     val answers: List<Answer> = emptyList(),
-)   : Parcelable {
+) : Parcelable {
     val correctAnswerCount = answers.count { it.isCorrect }
     val hasMultiAnswer = correctAnswerCount > 1
 }

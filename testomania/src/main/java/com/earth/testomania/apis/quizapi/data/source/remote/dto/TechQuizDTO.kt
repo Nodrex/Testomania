@@ -1,8 +1,5 @@
 package com.earth.testomania.apis.quizapi.data.source.remote.dto
 
-import com.earth.testomania.apis.quizapi.data.source.remote.dto.AnswersDTO
-import com.earth.testomania.apis.quizapi.data.source.remote.dto.CorrectAnswersDTO
-import com.earth.testomania.apis.quizapi.data.source.remote.dto.TagDTO
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)

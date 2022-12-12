@@ -21,7 +21,8 @@ fun BoardGamesQuiz(navigator: DestinationsNavigator) {
     MainQuizScreen(navigator, viewModel)
 }
 
-class GetBoardGamesUseCse @Inject constructor(private val repository: OpenTdbRepo) : GetQuizUseCase() {
+class GetBoardGamesUseCse @Inject constructor(private val repository: OpenTdbRepo) :
+    GetQuizUseCase() {
 
     override suspend fun getRepResult() = repository.getQuiz(OpenTdbCategory.BOARD_GAMES, 20)
 

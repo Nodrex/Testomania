@@ -33,9 +33,9 @@ class TechnicalTestsModule {
     @Singleton
     fun provideQuizRepo(quizApi: QuizApi): QuizRepository = QuizRepositoryImpl(quizApi)
 
-  /*  @Provides
-    @Singleton
-    fun provideGetQuizListUseCase(quizRepository: QuizRepository) =
-        GetQuizListUseCase(quizRepository)*/
+    /*  @Provides
+      @Singleton
+      fun provideGetQuizListUseCase(quizRepository: QuizRepository) =
+          GetQuizListUseCase(quizRepository)*/
 
 }

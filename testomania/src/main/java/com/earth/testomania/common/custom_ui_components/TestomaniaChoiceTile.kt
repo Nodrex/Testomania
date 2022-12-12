@@ -45,7 +45,7 @@ fun TestomaniaChoiceTile(
             false -> Color.Transparent
         }
     )
-    SurfaceCard (
+    SurfaceCard(
         enabled = enabled,
         onClick = onSelect,
         border = BorderStroke(2.dp, color),

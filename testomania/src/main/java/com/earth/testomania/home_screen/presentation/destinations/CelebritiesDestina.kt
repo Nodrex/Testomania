@@ -21,7 +21,8 @@ fun CelebritiesQuiz(navigator: DestinationsNavigator) {
     MainQuizScreen(navigator, viewModel)
 }
 
-class GetCelebritiesUseCse @Inject constructor(private val repository: OpenTdbRepo) : GetQuizUseCase() {
+class GetCelebritiesUseCse @Inject constructor(private val repository: OpenTdbRepo) :
+    GetQuizUseCase() {
 
     override suspend fun getRepResult() = repository.getQuiz(OpenTdbCategory.CELEBRITIES, 20)
 

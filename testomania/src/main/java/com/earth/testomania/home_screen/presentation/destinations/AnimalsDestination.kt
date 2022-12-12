@@ -21,7 +21,8 @@ fun AnimalsQuiz(navigator: DestinationsNavigator) {
     MainQuizScreen(navigator, viewModel)
 }
 
-class GetAnimalsQuizUseCse @Inject constructor(private val repository: OpenTdbRepo) : GetQuizUseCase() {
+class GetAnimalsQuizUseCse @Inject constructor(private val repository: OpenTdbRepo) :
+    GetQuizUseCase() {
 
     override suspend fun getRepResult() = repository.getQuiz(OpenTdbCategory.ANIMALS, 20)
 

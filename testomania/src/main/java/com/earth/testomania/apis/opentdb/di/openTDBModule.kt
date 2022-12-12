@@ -1,7 +1,7 @@
 package com.earth.testomania.apis.opentdb.di
 
-import com.earth.testomania.apis.opentdb.data.source.OpenTdbQuizApi
 import com.earth.testomania.apis.opentdb.data.repository.OpenTdbRepoImpl
+import com.earth.testomania.apis.opentdb.data.source.OpenTdbQuizApi
 import com.earth.testomania.apis.opentdb.domain.repository.OpenTdbRepo
 import com.squareup.moshi.Moshi
 import dagger.Module

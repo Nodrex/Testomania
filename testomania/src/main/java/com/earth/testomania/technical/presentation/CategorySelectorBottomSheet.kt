@@ -15,9 +15,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.earth.testomania.R
+import com.earth.testomania.apis.quizapi.domain.model.QuizCategory
 import com.earth.testomania.common.custom_ui_components.DialogCloseAngle
 import com.earth.testomania.common.custom_ui_components.RightPointingAngle
-import com.earth.testomania.apis.quizapi.domain.model.QuizCategory
 import kiwi.orbit.compose.ui.controls.ChoiceTile
 import kiwi.orbit.compose.ui.controls.Text
 import kotlinx.coroutines.CoroutineScope
