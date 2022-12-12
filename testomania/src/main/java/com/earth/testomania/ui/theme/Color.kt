@@ -16,3 +16,5 @@ val IncorrectBkg = Color(0xfff6f7f9)
 val IncorrectBkgDark = Color(0xff363739)
 val DialogBkgDark = Color(0xFF222222)
 val DialogBkgLight = Color(0xFFEEEEEE)
+
+val LightRed = Color(0xFFFFDEDE)

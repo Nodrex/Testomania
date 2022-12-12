@@ -5,6 +5,13 @@ import androidx.lifecycle.viewModelScope
 import com.earth.testomania.R
 import com.earth.testomania.destinations.*
 import com.earth.testomania.home_screen.domain.model.HomeDestinationItem
+import com.earth.testomania.common.networking.NetworkConnectivityObserver
+import com.earth.testomania.destinations.AboutBottomSheetDestination
+import com.earth.testomania.destinations.DummyScreenDestination
+import com.earth.testomania.destinations.SkillzTestScreenDestination
+import com.earth.testomania.destinations.TechnicalTestsScreenDestination
+import com.earth.testomania.home_screen.domain.model.HomeDestinations
+import com.earth.testomania.technical.domain.model.QuizCategory
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -12,7 +19,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeScreenViewModel @Inject constructor() : ViewModel() {
+class HomeScreenViewModel @Inject constructor(
+    val networkObserver: NetworkConnectivityObserver,
+) : ViewModel() {
 
     private val _bottomSheetPageState = MutableSharedFlow<BottomSheetScreen>()
     val bottomSheetPageState = _bottomSheetPageState.asSharedFlow()
