@@ -53,6 +53,86 @@ class HomeScreenViewModel @Inject constructor() : ViewModel() {
             icon = R.drawable.ic_orbit_ticket,
             destination = TVQuizDestination
         ),
+        HomeDestinationItem(
+            R.string.animals,
+            icon = R.drawable.ic_orbit_alert,
+            destination = AnimalsQuizDestination
+        ),
+        HomeDestinationItem(
+            R.string.art,
+            icon = R.drawable.ic_orbit_user_group,
+            destination = ArtQuizDestination
+        ),
+        HomeDestinationItem(
+            R.string.board_games,
+            icon = R.drawable.ic_orbit_boarding_gate,
+            destination = BoardGamesQuizDestination
+        ),
+        HomeDestinationItem(
+            R.string.celebrities,
+            icon = R.drawable.ic_orbit_cocktail,
+            destination = CelebritiesQuizDestination
+        ),
+        HomeDestinationItem(
+            R.string.comics,
+            icon = R.drawable.ic_orbit_compass,
+            destination = ComicsQuizDestination
+        ),
+        HomeDestinationItem(
+            R.string.gadgets,
+            icon = R.drawable.ic_orbit_ai,
+            destination = GadgetsQuizDestination
+        ),
+        HomeDestinationItem(
+            R.string.geography,
+            icon = R.drawable.ic_orbit_playground,
+            destination = GeographyQuizDestination
+        ),
+        HomeDestinationItem(
+            R.string.history,
+            icon = R.drawable.ic_orbit_history,
+            destination = HistoryQuizDestination
+        ),
+        HomeDestinationItem(
+            R.string.math,
+            icon = R.drawable.ic_math,
+            destination = MathQuizDestination
+        ),
+        HomeDestinationItem(
+            R.string.movies,
+            icon = R.drawable.ic_orbit_ticket,
+            destination = MoviesQuizDestination
+        ),
+        HomeDestinationItem(
+            R.string.mythology,
+            icon = R.drawable.ic_orbit_color_picker,
+            destination = MythQuizDestination
+        ),
+        HomeDestinationItem(
+            R.string.nature,
+            icon = R.drawable.ic_outline_info,
+            destination = NatureQuizDestination
+        ),
+        HomeDestinationItem(
+            R.string.politics,
+            icon = R.drawable.ic_orbit_admin,
+            destination = PoliticsQuizDestination
+        ),
+        HomeDestinationItem(
+            R.string.sports,
+            icon = R.drawable.ic_orbit_sports,
+            destination = SportsQuizDestination
+        ),
+        HomeDestinationItem(
+            R.string.vehicles,
+            icon = R.drawable.ic_orbit_car,
+            destination = VehiclesQuizDestination
+        ),
+        HomeDestinationItem(
+            R.string.video_games,
+            icon = R.drawable.ic_orbit_gallery,
+            destination = VideoGamesQuizDestination
+        ),
     )
 
     fun onBottomSheetPageChange(newPage: BottomSheetScreen) {

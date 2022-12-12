@@ -12,24 +12,24 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 
-const val ROUTE_BOOK = "home/book"
+const val ROUTE_ANIMALS = "home/animals"
 
-@Destination(route = ROUTE_BOOK)
+@Destination(route = ROUTE_ANIMALS)
 @Composable
-fun BookQuiz(navigator: DestinationsNavigator) {
-    val viewModel: BookViewModel = hiltViewModel()
+fun AnimalsQuiz(navigator: DestinationsNavigator) {
+    val viewModel: AnimalsQuizViewModel = hiltViewModel()
     MainQuizScreen(navigator, viewModel)
 }
 
-class GetBooksUseCse @Inject constructor(private val repository: OpenTdbRepo) : GetQuizUseCase() {
+class GetAnimalsQuizUseCse @Inject constructor(private val repository: OpenTdbRepo) : GetQuizUseCase() {
 
-    override suspend fun getRepResult() = repository.getQuiz(OpenTdbCategory.BOOKS, 20)
+    override suspend fun getRepResult() = repository.getQuiz(OpenTdbCategory.ANIMALS, 20)
 
 }
 
 @HiltViewModel
-class BookViewModel @Inject constructor(
-    useCase: GetBooksUseCse,
+class AnimalsQuizViewModel @Inject constructor(
+    useCase: GetAnimalsQuizUseCse,
     dispatcher: CoroutineDispatcher
 ) : DestinationViewModel(
     useCase,

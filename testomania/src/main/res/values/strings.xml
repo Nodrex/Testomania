@@ -26,4 +26,20 @@
     <string name="books">Books</string>
     <string name="music">Music</string>
     <string name="tv">TV</string>
+    <string name="animals">Animals</string>
+    <string name="art">Art</string>
+    <string name="board_games">Board Games</string>
+    <string name="celebrities">Celebrities</string>
+    <string name="comics">Comics</string>
+    <string name="gadgets">Gadgets</string>
+    <string name="geography">Geography</string>
+    <string name="history">History</string>
+    <string name="math">Math</string>
+    <string name="movies">Movies</string>
+    <string name="mythology">Mythology</string>
+    <string name="nature">Nature</string>
+    <string name="politics">Politics</string>
+    <string name="sports">Sports</string>
+    <string name="vehicles">Vehicles</string>
+    <string name="video_games">Video Games</string>
 </resources>

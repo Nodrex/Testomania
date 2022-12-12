@@ -17,11 +17,11 @@ const val ROUTE_TV = "home/tv"
 @Destination(route = ROUTE_TV)
 @Composable
 fun TVQuiz(navigator: DestinationsNavigator) {
-    val viewModel: MusicViewModel = hiltViewModel()
+    val viewModel: TVViewModel = hiltViewModel()
     MainQuizScreen(navigator, viewModel)
 }
 
-class GeTVUseCse @Inject constructor(private val repository: OpenTdbRepo) : GetQuizUseCase() {
+class GetTVUseCse @Inject constructor(private val repository: OpenTdbRepo) : GetQuizUseCase() {
 
     override suspend fun getRepResult() = repository.getQuiz(OpenTdbCategory.TELEVISION, 20)
 
@@ -29,7 +29,7 @@ class GeTVUseCse @Inject constructor(private val repository: OpenTdbRepo) : GetQ
 
 @HiltViewModel
 class TVViewModel @Inject constructor(
-    useCase: GetMusicsUseCse,
+    useCase: GetTVUseCse,
     dispatcher: CoroutineDispatcher
 ) : DestinationViewModel(
     useCase,
