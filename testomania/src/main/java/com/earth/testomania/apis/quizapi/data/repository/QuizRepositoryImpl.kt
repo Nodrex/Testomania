@@ -18,7 +18,7 @@ import javax.inject.Inject
 class QuizRepositoryImpl @Inject constructor(
     private val quizApi: QuizApi
 ) : QuizRepository {
-    //TODO quizRepository.getQuizList(params)
+
     override suspend fun getQuizList(params: QuizApiCategory): Flow<DataState<List<Quiz>>> =
         flow {
             quizApi.getQuizList(

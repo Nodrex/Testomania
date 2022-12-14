@@ -178,11 +178,6 @@ class HomeScreenViewModel @Inject constructor(
         ),
     )
 
-    fun onBottomSheetPageChange(newPage: BottomSheetScreen) {
-        viewModelScope.launch {
-            _bottomSheetPageState.emit(newPage)
-        }
-    }
 }
 
 sealed class BottomSheetScreen {

@@ -3,7 +3,6 @@ package com.earth.testomania.home_screen.domain.model
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import com.earth.testomania.destinations.DirectionDestination
-import com.ramcosta.composedestinations.spec.Direction
 
 data class HomeDestinationItem(
     @StringRes val name: Int,
