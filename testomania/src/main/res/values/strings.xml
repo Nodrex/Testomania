@@ -44,4 +44,11 @@
     <string name="vehicles">Vehicles</string>
     <string name="video_games">Video Games</string>
     <string name="linux">Linux</string>
+    <string name="devops">Devops</string>
+    <string name="docker">Docker</string>
+    <string name="html">HTML</string>
+    <string name="my_sql">MySQL</string>
+    <string name="php">PHP</string>
+    <string name="programing">Programing</string>
+    <string name="sql">SQL</string>
 </resources>

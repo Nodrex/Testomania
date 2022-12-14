@@ -37,6 +37,41 @@ class HomeScreenViewModel @Inject constructor(
             destination = LinuxQuizDestination
         ),
         HomeDestinationItem(
+            name = R.string.devops,
+            icon = R.drawable.ic_orbit_location_e,
+            destination = DevOpsQuizDestination
+        ),
+        HomeDestinationItem(
+            name = R.string.docker,
+            icon = R.drawable.ic_orbit_location_e,
+            destination = DockerQuizDestination
+        ),
+        HomeDestinationItem(
+            name = R.string.html,
+            icon = R.drawable.ic_orbit_location_e,
+            destination = HTMLQuizDestination
+        ),
+        HomeDestinationItem(
+            name = R.string.my_sql,
+            icon = R.drawable.ic_orbit_location_e,
+            destination = MySqlQuizDestination
+        ),
+        HomeDestinationItem(
+            name = R.string.php,
+            icon = R.drawable.ic_orbit_location_e,
+            destination = PHPQuizDestination
+        ),
+        HomeDestinationItem(
+            name = R.string.programing,
+            icon = R.drawable.ic_orbit_location_e,
+            destination = ProgramingQuizDestination
+        ),
+        HomeDestinationItem(
+            name = R.string.sql,
+            icon = R.drawable.ic_orbit_location_e,
+            destination = SQLQuizDestination
+        ),
+        HomeDestinationItem(
             name = R.string.general_skills_tests,
             icon = R.drawable.ic_math,
             destination = SkillzTestScreenDestination
