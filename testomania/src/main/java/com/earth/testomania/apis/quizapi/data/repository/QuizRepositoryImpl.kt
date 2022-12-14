@@ -4,7 +4,7 @@ import com.earth.testomania.apis.quizapi.data.source.QuizApi
 import com.earth.testomania.apis.quizapi.data.source.remote.dto.TagDTO
 import com.earth.testomania.apis.quizapi.data.source.remote.dto.TechQuizDTO
 import com.earth.testomania.apis.quizapi.domain.model.AnswerKey
-import com.earth.testomania.apis.quizapi.domain.model.QuizCategory
+import com.earth.testomania.apis.quizapi.domain.model.QuizApiCategory
 import com.earth.testomania.apis.quizapi.domain.repository.QuizRepository
 import com.earth.testomania.common.data.DataState
 import com.earth.testomania.common.data.ErrorMetaData
@@ -19,7 +19,7 @@ class QuizRepositoryImpl @Inject constructor(
     private val quizApi: QuizApi
 ) : QuizRepository {
     //TODO quizRepository.getQuizList(params)
-    override suspend fun getQuizList(params: QuizCategory): Flow<DataState<List<Quiz>>> =
+    override suspend fun getQuizList(params: QuizApiCategory): Flow<DataState<List<Quiz>>> =
         flow {
             quizApi.getQuizList(
                 category = params.category,

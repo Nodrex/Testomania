@@ -18,7 +18,7 @@ import javax.inject.Singleton
 class OpenTdbModule {
     @Provides
     @Singleton
-    fun provideQuizApi(okHttpClient: OkHttpClient, moshi: Moshi): OpenTdbQuizApi =
+    fun provideOpenTDBApi(okHttpClient: OkHttpClient, moshi: Moshi): OpenTdbQuizApi =
         Retrofit.Builder().baseUrl(API).client(okHttpClient)
             .addConverterFactory(MoshiConverterFactory.create(moshi).asLenient()).build()
             .create(OpenTdbQuizApi::class.java)

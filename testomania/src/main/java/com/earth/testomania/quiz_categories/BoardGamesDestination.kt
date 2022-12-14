@@ -2,7 +2,7 @@ package com.earth.testomania.quiz_categories
 
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.earth.testomania.apis.opentdb.domain.models.OpenTdbCategory
+import com.earth.testomania.apis.opentdb.domain.models.OpenTDBApiCategory
 import com.earth.testomania.apis.opentdb.domain.repository.OpenTdbRepo
 import com.earth.testomania.quiz_categories.usecase.GetQuizUseCase
 import com.earth.testomania.quiz_screen.MainQuizScreen
@@ -24,7 +24,7 @@ fun BoardGamesQuiz(navigator: DestinationsNavigator) {
 class GetBoardGamesUseCse @Inject constructor(private val repository: OpenTdbRepo) :
     GetQuizUseCase() {
 
-    override suspend fun getRepResult() = repository.getQuiz(OpenTdbCategory.BOARD_GAMES, 20)
+    override suspend fun getRepResult() = repository.getQuiz(OpenTDBApiCategory.BOARD_GAMES, 20)
 
 }
 

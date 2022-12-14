@@ -2,7 +2,7 @@ package com.earth.testomania.apis.opentdb.data.repository
 
 import com.earth.testomania.apis.opentdb.data.source.OpenTdbQuizApi
 import com.earth.testomania.apis.opentdb.data.source.remote.dto.ResultDto
-import com.earth.testomania.apis.opentdb.domain.models.OpenTdbCategory
+import com.earth.testomania.apis.opentdb.domain.models.OpenTDBApiCategory
 import com.earth.testomania.apis.opentdb.domain.repository.OpenTdbRepo
 import com.earth.testomania.common.data.DataState
 import com.earth.testomania.common.model.Answer
@@ -14,7 +14,7 @@ import javax.inject.Inject
 class OpenTdbRepoImpl @Inject constructor(private val api: OpenTdbQuizApi) : OpenTdbRepo {
 
     override suspend fun getQuiz(
-        category: OpenTdbCategory, questionCount: Int
+        category: OpenTDBApiCategory, questionCount: Int
     ): Flow<DataState<List<Quiz>>> {
         return flow {
             val result = api.getQuizList(

@@ -1,6 +1,6 @@
 package com.earth.testomania.apis.opentdb.domain.models
 
-enum class OpenTdbCategory(val id: Int) {
+enum class OpenTDBApiCategory(val id: Int) {
     GENERAL(9), //TODO Not sure that we need this
     BOOKS(10),
     FILM(11),

@@ -2,8 +2,8 @@ package com.earth.testomania.quiz_categories
 
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.earth.testomania.apis.opentdb.domain.models.OpenTDBApiCategory
-import com.earth.testomania.apis.opentdb.domain.repository.OpenTdbRepo
+import com.earth.testomania.apis.quizapi.domain.model.QuizApiCategory
+import com.earth.testomania.apis.quizapi.domain.repository.QuizRepository
 import com.earth.testomania.quiz_categories.usecase.GetQuizUseCase
 import com.earth.testomania.quiz_screen.MainQuizScreen
 import com.ramcosta.composedestinations.annotation.Destination
@@ -12,24 +12,25 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 
-const val ROUTE_ART = "home/art"
+const val ROUTE_LINUX = "home/linux"
 
-@Destination(route = ROUTE_ART)
+@Destination(route = ROUTE_LINUX)
 @Composable
-fun ArtQuiz(navigator: DestinationsNavigator) {
-    val viewModel: ArtViewModel = hiltViewModel()
+fun LinuxQuiz(navigator: DestinationsNavigator) {
+    val viewModel: LinuxViewModel = hiltViewModel()
     MainQuizScreen(navigator, viewModel)
 }
 
-class GetArtUseCse @Inject constructor(private val repository: OpenTdbRepo) : GetQuizUseCase() {
+class GetLinuxUseCse @Inject constructor(private val repository: QuizRepository) :
+    GetQuizUseCase() {
 
-    override suspend fun getRepResult() = repository.getQuiz(OpenTDBApiCategory.ART, 20)
+    override suspend fun getRepResult() = repository.getQuizList(QuizApiCategory.Linux)
 
 }
 
 @HiltViewModel
-class ArtViewModel @Inject constructor(
-    useCase: GetArtUseCse,
+class LinuxViewModel @Inject constructor(
+    useCase: GetLinuxUseCse,
     dispatcher: CoroutineDispatcher
 ) : DestinationViewModel(
     useCase,

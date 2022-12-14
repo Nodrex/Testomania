@@ -29,7 +29,12 @@ class HomeScreenViewModel @Inject constructor(
         HomeDestinationItem(
             name = R.string.technical_tests,
             icon = R.drawable.ic_orbit_dashboard,
-            destinationWithParam = MainQuizScreenDestination
+            destination = InformationalTechnologiesQuizDestination
+        ),
+        HomeDestinationItem(
+            name = R.string.linux,
+            icon = R.drawable.ic_orbit_location_e,
+            destination = LinuxQuizDestination
         ),
         HomeDestinationItem(
             name = R.string.general_skills_tests,
