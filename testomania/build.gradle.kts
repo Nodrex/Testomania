@@ -23,6 +23,7 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+        buildConfigField("String", "UNSPLASH_ACCESS_KEY", "\"G81G0y0nGVostWCSStr1yTiB6tWUsIWi-ZQYja9td5I\"")
     }
 
     signingConfigs {
