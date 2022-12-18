@@ -1,8 +1,8 @@
 package com.earth.testomania.common.unsplash
 
-import com.earth.testomania.common.DataState
-import com.earth.testomania.common.ErrorMetaData
-import com.earth.testomania.common.SuccessMetaData
+import com.earth.testomania.common.data.DataState
+import com.earth.testomania.common.data.ErrorMetaData
+import com.earth.testomania.common.data.SuccessMetaData
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

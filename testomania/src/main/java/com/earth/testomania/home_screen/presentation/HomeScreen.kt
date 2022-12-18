@@ -7,7 +7,6 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -34,11 +33,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.R
 import com.earth.testomania.common.networking.ConnectivityObserver
 import com.earth.testomania.common.networking.NetworkConnectivityObserver
-import com.earth.testomania.destinations.TechnicalTestsScreenDestination
-import com.earth.testomania.home_screen.domain.model.HomeDestinations
-import com.earth.testomania.skills.presentation.skillz.SKILLZ_ROUTE
-import com.earth.testomania.technical.presentation.CategorySelectorBottomSheet
-import com.earth.testomania.technical.presentation.TECHNICAL_ROUTE
+import com.earth.testomania.home_screen.domain.model.HomeDestinationItem
 import com.earth.testomania.ui.theme.DialogBkgDark
 import com.earth.testomania.ui.theme.DialogBkgLight
 import com.earth.testomania.ui.theme.LightRed
@@ -124,7 +119,7 @@ fun BottomContent(
     scope: CoroutineScope,
     navigator: DestinationsNavigator?
 ) {
-    when (pageType) {
+    /*when (pageType) {
         is BottomSheetScreen.Technical -> CategorySelectorBottomSheet(
             modalBottomSheetState,
             scope
@@ -133,13 +128,14 @@ fun BottomContent(
                 modalBottomSheetState.snapTo(ModalBottomSheetValue.Hidden)
                 //snapTo is quicker then hide
             }.invokeOnCompletion {
-                navigator?.navigate(TechnicalTestsScreenDestination(quizCategory))
+                navigator?.navigate(MainQuizScreenDestination())
                 //we need to navigate to other screen after bottom-sheet is close,
                 // otherwise bottom-sheet remains open when returning to home screen
             }
         }
         else -> AboutBottomSheet(modalBottomSheetState, scope)
-    }
+    }*/
+    AboutBottomSheet(modalBottomSheetState, scope)
 }
 
 @Composable
@@ -195,12 +191,12 @@ fun HomeScreenContent(
 
 @Composable
 fun CardButton(
-    destinationInfo: HomeDestinations,
+    destinationInfo: HomeDestinationItem,
     navigator: DestinationsNavigator? = null,
     scaffoldState: ScaffoldState,
     modalBottomSheetState: ModalBottomSheetState,
     networkConnectivityObserver: NetworkConnectivityObserver,
-    ) {
+) {
     val scope = rememberCoroutineScope()
     val comingSoonStr = stringResource(id = R.string.coming_soon)
     val dismissStr = stringResource(id = R.string.dismiss)
@@ -208,33 +204,39 @@ fun CardButton(
     val status by networkConnectivityObserver.observe()
         .collectAsState(initial = false)
 
-    SurfaceCard(modifier = Modifier.size(125.dp), shape = RoundedCornerShape(10.dp), enabled = status == ConnectivityObserver.ConnectionState.Available, onClick = {
-        dismissCurrentSnackbar(scaffoldState)
+    SurfaceCard(
+        modifier = Modifier.size(125.dp),
+        shape = RoundedCornerShape(10.dp),
+        enabled = status == ConnectivityObserver.ConnectionState.Available,
+        onClick = {
+            dismissCurrentSnackbar(scaffoldState)
 
-        when (destinationInfo.destination?.route ?: destinationInfo.destinationWithParam?.route) {
-            SKILLZ_ROUTE, DUMMY_ROUTE -> {
-                scope.launch {
-                    scaffoldState.snackbarHostState.showSnackbar(
-                        message = comingSoonStr,
-                        actionLabel = dismissStr,
-                    )
-                }
-                return@SurfaceCard
-            }
-            ABOUT_ROUT -> {
-                viewModel.onBottomSheetPageChange(BottomSheetScreen.About)
-                scope.launch {
-                    modalBottomSheetState.show()
-                }
-            }
-            "$TECHNICAL_ROUTE/ALL" -> {
-                viewModel.onBottomSheetPageChange(BottomSheetScreen.Technical)
-                scope.launch {
-                    modalBottomSheetState.show()
-                }
-            }
-        }
-    }) {
+            navigator?.navigate(destinationInfo.destination ?: return@SurfaceCard)
+
+//        when (destinationInfo.destination?.route ?: destinationInfo.destinationWithParam?.route) {
+//            SKILLZ_ROUTE, DUMMY_ROUTE -> {
+//                scope.launch {
+//                    scaffoldState.snackbarHostState.showSnackbar(
+//                        message = comingSoonStr,
+//                        actionLabel = dismissStr,
+//                    )
+//                }
+//                return@SurfaceCard
+//            }
+//            ABOUT_ROUT -> {
+//                viewModel.onBottomSheetPageChange(BottomSheetScreen.About)
+//                scope.launch {
+//                    modalBottomSheetState.show()
+//                }
+//            }
+//            "$TECHNICAL_ROUTE/ALL" -> {
+//                viewModel.onBottomSheetPageChange(BottomSheetScreen.Technical)
+//                scope.launch {
+//                    modalBottomSheetState.show()
+//                }
+//            }
+//        }
+        }) {
         Column(
             Modifier
                 .padding(10.dp)

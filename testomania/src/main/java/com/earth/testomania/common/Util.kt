@@ -35,3 +35,7 @@ object Crashlytics {
     }
 
 }
+
+fun Any?.println() {
+    println(this)
+}

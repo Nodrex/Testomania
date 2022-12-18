@@ -1,12 +1,12 @@
 package com.earth.testomania.common.networking
 
 import android.content.Context
-import android.net.*
+import android.net.ConnectivityManager
+import android.net.Network
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Singleton

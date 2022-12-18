@@ -39,13 +39,3 @@ fun DialogCloseAngle(scope: CoroutineScope, modalBottomSheetState: ModalBottomSh
         contentDescription = "",
     )
 }
-
-@Composable
-fun RightPointingAngle() {
-    Icon(
-        modifier = Modifier
-            .size(20.dp),
-        painter = painterResource(id = R.drawable.ic_orbit_chevron_right),
-        contentDescription = "",
-    )
-}
