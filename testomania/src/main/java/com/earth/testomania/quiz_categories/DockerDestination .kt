@@ -1,5 +1,5 @@
 package com.earth.testomania.quiz_categories
-
+import com.earth.testomania.common.unsplash.UnsplashRepo
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.apis.quizapi.domain.model.QuizApiCategory
@@ -31,8 +31,9 @@ class GetDockerUseCse @Inject constructor(private val repository: QuizRepository
 @HiltViewModel
 class DockerViewModel @Inject constructor(
     useCase: GetDockerUseCse,
-    dispatcher: CoroutineDispatcher
+    dispatcher: CoroutineDispatcher, unsplashRepo: UnsplashRepo,
 ) : DestinationViewModel(
     useCase,
-    dispatcher
+    dispatcher,
+    unsplashRepo
 )

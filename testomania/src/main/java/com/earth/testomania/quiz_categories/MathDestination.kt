@@ -1,4 +1,5 @@
 package com.earth.testomania.quiz_categories
+import com.earth.testomania.common.unsplash.UnsplashRepo
 
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -30,8 +31,8 @@ class GetMathUseCse @Inject constructor(private val repository: OpenTdbRepo) : G
 @HiltViewModel
 class MathViewModel @Inject constructor(
     useCase: GetMathUseCse,
-    dispatcher: CoroutineDispatcher
+    dispatcher: CoroutineDispatcher, unsplashRepo: UnsplashRepo,
 ) : DestinationViewModel(
     useCase,
-    dispatcher
+    dispatcher, unsplashRepo,
 )

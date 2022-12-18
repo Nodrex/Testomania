@@ -11,6 +11,7 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
+import com.earth.testomania.common.unsplash.UnsplashRepo
 
 const val ROUTE_MYSQL = "home/mySql"
 
@@ -31,8 +32,8 @@ class GetMySqlUseCse @Inject constructor(private val repository: QuizRepository)
 @HiltViewModel
 class MySqlViewModel @Inject constructor(
     useCase: GetMySqlUseCse,
-    dispatcher: CoroutineDispatcher
+    dispatcher: CoroutineDispatcher, unsplashRepo: UnsplashRepo,
 ) : DestinationViewModel(
     useCase,
-    dispatcher
+    dispatcher, unsplashRepo,
 )

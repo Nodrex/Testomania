@@ -8,19 +8,18 @@ import com.earth.testomania.common.coroutines.defaultCoroutineExceptionHandler
 import com.earth.testomania.common.data.DataState
 import com.earth.testomania.common.model.QuizUIState
 import com.earth.testomania.common.model.SelectedAnswer
+import com.earth.testomania.common.unsplash.UnsplashRepo
 import com.earth.testomania.quiz_categories.usecase.GetQuizUseCase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.ensureActive
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 abstract class DestinationViewModel(
     open val getQuizListUseCase: GetQuizUseCase,
-    private val dispatcher: CoroutineDispatcher
+    private val dispatcher: CoroutineDispatcher,
+    private val unsplashRepo: UnsplashRepo,
 ) : ViewModel() {
 
     private var getQuizListJob: Job? = null
@@ -31,11 +30,27 @@ abstract class DestinationViewModel(
     private val _error = MutableSharedFlow<Int>()
     val error = _error.asSharedFlow()
 
+    private val _categoryImageUrl = MutableStateFlow("")
+    val categoryImageUrl: StateFlow<String> = _categoryImageUrl.asStateFlow()
+
     var overallScore: Double = 0.0
         private set
 
     init {
         initialize()
+
+    }
+
+    private fun getIllustration(categoryName: String) = viewModelScope.launch {
+        val catPrefix = "Entertainment: "
+        var cat = categoryName
+        if (categoryName.contains(catPrefix))
+            cat = cat.substring(catPrefix.length)
+        unsplashRepo.getPhoto(cat).collectLatest {
+            if (it is DataState.Success && it.payload != null) {
+                _categoryImageUrl.emit(it.payload)
+            }
+        }
     }
 
     private fun initialize() {
@@ -49,6 +64,7 @@ abstract class DestinationViewModel(
                 when (it) {
                     is DataState.Success -> it.payload?.apply {
                         _data.addAll(this)
+                        getIllustration(this.first().quiz.category)
                     }
 
                     is DataState.Error -> _error.emit(R.string.error_load)

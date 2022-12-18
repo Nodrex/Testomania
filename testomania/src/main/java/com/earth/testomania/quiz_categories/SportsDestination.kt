@@ -11,6 +11,7 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
+import com.earth.testomania.common.unsplash.UnsplashRepo
 
 const val ROUTE_SPORTS = "home/sports"
 
@@ -30,8 +31,9 @@ class GetSportsUseCse @Inject constructor(private val repository: OpenTdbRepo) :
 @HiltViewModel
 class SportsViewModel @Inject constructor(
     useCase: GetSportsUseCse,
-    dispatcher: CoroutineDispatcher
+    dispatcher: CoroutineDispatcher, unsplashRepo: UnsplashRepo,
 ) : DestinationViewModel(
     useCase,
-    dispatcher
+    dispatcher,
+    unsplashRepo
 )

@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.apis.opentdb.domain.models.OpenTDBApiCategory
 import com.earth.testomania.apis.opentdb.domain.repository.OpenTdbRepo
+import com.earth.testomania.common.unsplash.UnsplashRepo
 import com.earth.testomania.quiz_categories.usecase.GetQuizUseCase
 import com.earth.testomania.quiz_screen.MainQuizScreen
 import com.ramcosta.composedestinations.annotation.Destination
@@ -31,8 +32,8 @@ class GetCelebritiesUseCse @Inject constructor(private val repository: OpenTdbRe
 @HiltViewModel
 class CelebritiesViewModel @Inject constructor(
     useCase: GetCelebritiesUseCse,
-    dispatcher: CoroutineDispatcher
+    dispatcher: CoroutineDispatcher, unsplashRepo: UnsplashRepo,
 ) : DestinationViewModel(
     useCase,
-    dispatcher
+    dispatcher, unsplashRepo,
 )
