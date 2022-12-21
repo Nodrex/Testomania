@@ -27,7 +27,8 @@ class OpenTdbRepoImpl @Inject constructor(private val api: OpenTdbQuizApi) : Ope
                     point = 1.0,
                     question = Html.fromHtml(resultDto.question, Html.FROM_HTML_MODE_LEGACY)
                         .toString(),
-                    category = resultDto.category.replace("Entertainment:", "").trim(),
+                    category = resultDto.category.replace("Entertainment:", "")
+                        .replace("Science:", "").trim(),
                     answers = buildList {
                         resultDto.incorrect_answers.forEachIndexed { index, answer ->
                             add(Answer(index.toString(), answer, null, false))

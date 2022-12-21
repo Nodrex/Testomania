@@ -6,17 +6,12 @@ import com.earth.testomania.common.networking.NetworkConnectivityObserver
 import com.earth.testomania.destinations.*
 import com.earth.testomania.home_screen.domain.model.HomeDestinationItem
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.asSharedFlow
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeScreenViewModel @Inject constructor(
     val networkObserver: NetworkConnectivityObserver,
 ) : ViewModel() {
-
-    private val _bottomSheetPageState = MutableSharedFlow<BottomSheetScreen>()
-    val bottomSheetPageState = _bottomSheetPageState.asSharedFlow()
 
     val destinations = listOf(
         HomeDestinationItem(
@@ -73,6 +68,16 @@ class HomeScreenViewModel @Inject constructor(
             name = R.string.anime_manga,
             icon = R.drawable.ic_math,
             destination = AnimeMangaQuizDestination
+        ),
+        HomeDestinationItem(
+            name = R.string.computers,
+            icon = R.drawable.ic_math,
+            destination = ComputersQuizDestination
+        ),
+        HomeDestinationItem(
+            name = R.string.general_knowledge,
+            icon = R.drawable.ic_math,
+            destination = GeneralKnowledgeQuizDestination
         ),
         HomeDestinationItem(
             R.string.books,
@@ -171,9 +176,4 @@ class HomeScreenViewModel @Inject constructor(
         ),
     )
 
-}
-
-sealed class BottomSheetScreen {
-    object Technical : BottomSheetScreen()
-    object About : BottomSheetScreen()
 }

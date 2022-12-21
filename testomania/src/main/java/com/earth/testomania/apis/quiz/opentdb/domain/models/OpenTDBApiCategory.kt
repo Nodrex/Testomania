@@ -1,7 +1,7 @@
 package com.earth.testomania.apis.quiz.opentdb.domain.models
 
 enum class OpenTDBApiCategory(val id: Int) {
-    GENERAL(9), //TODO Not sure that we need this
+    GENERAL_KNOWLEDGE(9),
     BOOKS(10),
     FILM(11),
     MUSIC(12),
@@ -10,7 +10,7 @@ enum class OpenTDBApiCategory(val id: Int) {
     VIDEO_GAMES(15),
     BOARD_GAMES(16),
     NATURE(17),
-    COMPUTERS(18), //TODO Not sure that we need this
+    COMPUTERS(18),
     MATHEMATICS(19),
     MYTHOLOGY(20),
     SPORTS(21),
