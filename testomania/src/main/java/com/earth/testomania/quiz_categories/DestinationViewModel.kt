@@ -102,13 +102,7 @@ abstract class DestinationViewModel(
                             answerTag
                         ))
 
-//    fun getCategoryName() = category.tag.ifEmpty {
-//        if (category.category == QuizCategory.Programing.category) {
-//            "Programing"
-//        } else category.category
-//    }
-
     fun enableAnswerSelection(quizUIState: QuizUIState) =
-        /*if (quizUIState.quiz.hasMultiAnswer) !quizUIState.multiSelectionWasDone.value else*/
         quizUIState.selectedAnswers.isEmpty()
+
 }
