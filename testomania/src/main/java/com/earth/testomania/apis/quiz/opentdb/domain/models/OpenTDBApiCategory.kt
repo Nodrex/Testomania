@@ -5,7 +5,7 @@ enum class OpenTDBApiCategory(val id: Int) {
     BOOKS(10),
     FILM(11),
     MUSIC(12),
-    MUSICALS_AND_THEATRES(13), //TODO Not sure that we need this
+    MUSICALS_AND_THEATRES(13),
     TELEVISION(14),
     VIDEO_GAMES(15),
     BOARD_GAMES(16),

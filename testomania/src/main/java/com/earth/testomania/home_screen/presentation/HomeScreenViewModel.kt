@@ -80,6 +80,11 @@ class HomeScreenViewModel @Inject constructor(
             destination = GeneralKnowledgeQuizDestination
         ),
         HomeDestinationItem(
+            name = R.string.music_and_theater,
+            icon = R.drawable.ic_math,
+            destination = MusicalsAndTheatersQuizDestination
+        ),
+        HomeDestinationItem(
             R.string.books,
             icon = R.drawable.ic_orbit_bookmark,
             destination = BookQuizDestination
