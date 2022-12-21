@@ -42,7 +42,6 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kiwi.orbit.compose.ui.controls.Icon
 import kiwi.orbit.compose.ui.controls.SurfaceCard
 import kiwi.orbit.compose.ui.controls.Text
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter", "MaterialDesignInsteadOrbitDesign")
@@ -82,7 +81,7 @@ fun HomeScreen(
         scrimColor = Color.Transparent,
         sheetContent = {
             Column(Modifier.navigationBarsPadding()) {
-                SheetLayout(modalBottomSheetState, scope, navigator)
+                AboutBottomSheet(modalBottomSheetState, scope)
             }
         }
     ) {
@@ -99,43 +98,6 @@ fun HomeScreen(
             )
         }
     }
-}
-
-@Composable
-fun SheetLayout(
-    modalBottomSheetState: ModalBottomSheetState,
-    scope: CoroutineScope,
-    navigator: DestinationsNavigator?
-) {
-    val viewModel: HomeScreenViewModel = hiltViewModel()
-    val pageType by viewModel.bottomSheetPageState.collectAsState(initial = BottomSheetScreen.Technical)
-    BottomContent(pageType, modalBottomSheetState, scope, navigator)
-}
-
-@Composable
-fun BottomContent(
-    pageType: BottomSheetScreen,
-    modalBottomSheetState: ModalBottomSheetState,
-    scope: CoroutineScope,
-    navigator: DestinationsNavigator?
-) {
-    /*when (pageType) {
-        is BottomSheetScreen.Technical -> CategorySelectorBottomSheet(
-            modalBottomSheetState,
-            scope
-        ) { quizCategory ->
-            scope.launch {
-                modalBottomSheetState.snapTo(ModalBottomSheetValue.Hidden)
-                //snapTo is quicker then hide
-            }.invokeOnCompletion {
-                navigator?.navigate(MainQuizScreenDestination())
-                //we need to navigate to other screen after bottom-sheet is close,
-                // otherwise bottom-sheet remains open when returning to home screen
-            }
-        }
-        else -> AboutBottomSheet(modalBottomSheetState, scope)
-    }*/
-    AboutBottomSheet(modalBottomSheetState, scope)
 }
 
 @Composable
@@ -198,9 +160,6 @@ fun CardButton(
     networkConnectivityObserver: NetworkConnectivityObserver,
 ) {
     val scope = rememberCoroutineScope()
-    val comingSoonStr = stringResource(id = R.string.coming_soon)
-    val dismissStr = stringResource(id = R.string.dismiss)
-    val viewModel: HomeScreenViewModel = hiltViewModel()
     val status by networkConnectivityObserver.observe()
         .collectAsState(initial = false)
 
@@ -210,32 +169,14 @@ fun CardButton(
         enabled = status == ConnectivityObserver.ConnectionState.Available,
         onClick = {
             dismissCurrentSnackbar(scaffoldState)
-
-            navigator?.navigate(destinationInfo.destination ?: return@SurfaceCard)
-
-//        when (destinationInfo.destination?.route ?: destinationInfo.destinationWithParam?.route) {
-//            SKILLZ_ROUTE, DUMMY_ROUTE -> {
-//                scope.launch {
-//                    scaffoldState.snackbarHostState.showSnackbar(
-//                        message = comingSoonStr,
-//                        actionLabel = dismissStr,
-//                    )
-//                }
-//                return@SurfaceCard
-//            }
-//            ABOUT_ROUT -> {
-//                viewModel.onBottomSheetPageChange(BottomSheetScreen.About)
-//                scope.launch {
-//                    modalBottomSheetState.show()
-//                }
-//            }
-//            "$TECHNICAL_ROUTE/ALL" -> {
-//                viewModel.onBottomSheetPageChange(BottomSheetScreen.Technical)
-//                scope.launch {
-//                    modalBottomSheetState.show()
-//                }
-//            }
-//        }
+            when (destinationInfo.destination?.route) {
+                ABOUT_ROUT -> {
+                    scope.launch {
+                        modalBottomSheetState.show()
+                    }
+                }
+                else -> navigator?.navigate(destinationInfo.destination ?: return@SurfaceCard)
+            }
         }) {
         Column(
             Modifier

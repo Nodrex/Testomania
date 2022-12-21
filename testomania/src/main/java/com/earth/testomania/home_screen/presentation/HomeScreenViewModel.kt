@@ -72,19 +72,9 @@ class HomeScreenViewModel @Inject constructor(
             destination = SQLQuizDestination
         ),
         HomeDestinationItem(
-            name = R.string.general_skills_tests,
+            name = R.string.anime_manga,
             icon = R.drawable.ic_math,
             destination = AnimeMangaQuizDestination
-        ),
-        HomeDestinationItem(
-            name = R.string.general_skills_tests,
-            icon = R.drawable.ic_math,
-            destination = SkillzTestScreenDestination
-        ),
-        HomeDestinationItem(
-            name = R.string.driving_license_tests,
-            icon = R.drawable.ic_driver_license,
-            destination = DummyScreenDestination
         ),
         HomeDestinationItem(
             R.string.books,
