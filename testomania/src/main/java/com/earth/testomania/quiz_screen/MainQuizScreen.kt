@@ -35,6 +35,7 @@ import kotlinx.coroutines.launch
 
 const val TECHNICAL_ROUTE = "home/technical_tests"
 
+//TODO we need to fix it
 @Destination(
     route = TECHNICAL_ROUTE,
 //    deepLinks = [
@@ -58,7 +59,7 @@ fun MainQuizScreen(
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 private fun CreateQuizScreen(
-    techQuizList: List<QuizUIState>,
+    quizList: List<QuizUIState>,
     navigator: DestinationsNavigator,
     viewModel: DestinationViewModel,
 ) {
@@ -85,7 +86,7 @@ private fun CreateQuizScreen(
             .constrainAs(progressBar) {
                 top.linkTo(parent.top)
             }
-            .padding(start = 10.dp, end = 10.dp), currentProgress, techQuizList.size)
+            .padding(start = 10.dp, end = 10.dp), currentProgress, quizList.size)
 
         QuestionAndAnswers(
             modifier = Modifier.constrainAs(pager) {
@@ -93,7 +94,7 @@ private fun CreateQuizScreen(
                 bottom.linkTo(navigation.top)
                 height = Dimension.fillToConstraints
             },
-            techQuizList,
+            quizList,
             pagerState,
             viewModel
         )
@@ -107,20 +108,19 @@ private fun CreateQuizScreen(
                     bottom.linkTo(parent.bottom)
                 }, horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.End)
         ) {
-            //TODO We need to fix it
-            /*val categoryName = if (viewModel.category == QuizCategory.ALL) {
-                stringResource(id = R.string.technical_tests)
-            } else viewModel.getCategoryName()*/
-
             ButtonSecondary(
                 onClick = {
                     navigator.navigateUp()
                     navigator.navigate(
                         ResultScreenDestination(
-                            ResultDataCollectorUseCase().getTechnicalTestResult(
-                                techQuizList,
+                            ResultDataCollectorUseCase().getQuizResult(
+                                quizList,
                                 viewModel.overallScore,
-                                "Quiz" //TODO Here should be actual category
+                                //TODO not good we need to get actually from ViewModel as a category
+                                // and not from quiz himself (occurs bug in case of Information
+                                // technologies when multiple categories are together),
+                                // but for now let's leave
+                                quizList.firstOrNull()?.quiz?.category ?: "Quiz"
                             )
                         )
                     )
@@ -136,7 +136,7 @@ private fun CreateQuizScreen(
                 scope.launch {
                     if (pagerState.pageCount == pagerState.currentPage + 1) {
                         val unansweredQuestion =
-                            findFirstIndexOfUnansweredQuestion(techQuizList, pagerState)
+                            findFirstIndexOfUnansweredQuestion(quizList, pagerState)
 
                         pagerState.animateScrollToPage(unansweredQuestion)
 
@@ -158,7 +158,7 @@ private fun CreateQuizScreen(
 @Composable
 private fun QuestionAndAnswers(
     modifier: Modifier,
-    techQuizList: List<QuizUIState>,
+    quizList: List<QuizUIState>,
     pagerState: PagerState,
     viewModel: DestinationViewModel,
 ) {
@@ -166,7 +166,7 @@ private fun QuestionAndAnswers(
 
     HorizontalPager(
         modifier = modifier.fillMaxSize(),
-        count = techQuizList.size,
+        count = quizList.size,
         state = pagerState,
     ) { pageIndex ->
         ConstraintLayout(modifier = Modifier.fillMaxSize()) {
@@ -176,7 +176,7 @@ private fun QuestionAndAnswers(
                 .constrainAs(question) {
                     top.linkTo(parent.top)
                 }
-                .fillMaxWidth(), techQuizList[pageIndex])
+                .fillMaxWidth(), quizList[pageIndex])
 
             BoxWithConstraints(
                 modifier = Modifier
@@ -188,7 +188,7 @@ private fun QuestionAndAnswers(
                 contentAlignment = Alignment.Center
             ) {
                 if (maxHeight > 100.dp) {
-                    CategoryIllustration(category = techQuizList[pageIndex].quiz.category)
+                    CategoryIllustration(category = quizList[pageIndex].quiz.category)
                 }
             }
 
@@ -204,11 +204,11 @@ private fun QuestionAndAnswers(
                 verticalArrangement = Arrangement.spacedBy(8.dp),
                 contentPadding = PaddingValues(all = answerPadding),
             ) {
-                techQuizList[pageIndex].apply {
+                quizList[pageIndex].apply {
                     quiz.answers.forEach { possibleAnswer ->
                         item(key = possibleAnswer.tag) {
                             CreateQuizAnswerUI(
-                                techQuizList[pageIndex],
+                                quizList[pageIndex],
                                 possibleAnswer,
                                 viewModel,
                             )
@@ -221,10 +221,10 @@ private fun QuestionAndAnswers(
 }
 
 private fun findFirstIndexOfUnansweredQuestion(
-    techQuizList: List<QuizUIState>,
+    quizList: List<QuizUIState>,
     pagerState: PagerState,
 ): Int {
-    return techQuizList.indexOfFirst {
+    return quizList.indexOfFirst {
         it.selectedAnswers.isEmpty()
     }.takeIf { it >= 0 } ?: pagerState.currentPage
 }

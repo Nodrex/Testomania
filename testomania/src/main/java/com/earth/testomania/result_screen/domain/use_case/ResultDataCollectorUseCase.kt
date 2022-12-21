@@ -7,20 +7,20 @@ import com.earth.testomania.result_screen.domain.model.ResultData
 
 class ResultDataCollectorUseCase {
 
-    fun getTechnicalTestResult(
-        techQuizList: List<QuizUIState>,
+    fun getQuizResult(
+        quizList: List<QuizUIState>,
         overallScore: Double,
         quizCategoryName: String
     ): ResultData {
 
-        val correctProgress = overallScore / techQuizList.size.toFloat()
+        val correctProgress = overallScore / quizList.size.toFloat()
 
         val resultData = ResultData(
             R.drawable.ic_orbit_dashboard,
             quizCategoryName,
             correctProgress,
             correctProgress > 0.5,
-            techQuizList
+            quizList
                 .filter {
                     it.selectedAnswers.isNotEmpty() && it.receivedScore == 0.0
                 }
