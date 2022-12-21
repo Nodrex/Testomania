@@ -74,6 +74,11 @@ class HomeScreenViewModel @Inject constructor(
         HomeDestinationItem(
             name = R.string.general_skills_tests,
             icon = R.drawable.ic_math,
+            destination = AnimeMangaQuizDestination
+        ),
+        HomeDestinationItem(
+            name = R.string.general_skills_tests,
+            icon = R.drawable.ic_math,
             destination = SkillzTestScreenDestination
         ),
         HomeDestinationItem(

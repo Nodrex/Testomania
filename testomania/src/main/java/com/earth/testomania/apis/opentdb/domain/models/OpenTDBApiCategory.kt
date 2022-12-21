@@ -23,5 +23,5 @@ enum class OpenTDBApiCategory(val id: Int) {
     VEHICLES(28),
     COMICS(29),
     GADGETS(30),
-    ANIME_MANGA(31), //TODO Not sure that we need this
+    ANIME_MANGA(31),
 }
