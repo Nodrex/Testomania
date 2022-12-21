@@ -14,6 +14,8 @@ abstract class GetQuizUseCase {
 
     abstract suspend fun getRepResult(): Flow<DataState<List<Quiz>>>
 
+    abstract fun getAPIUrl(): String
+
     suspend operator fun invoke(): Flow<DataState<List<QuizUIState>>> =
         flow {
             try {
@@ -59,8 +61,11 @@ abstract class GetQuizUseCase {
     )
 
     private fun logProblematicQuiz(quiz: Quiz) = log(
-        "Problematic Quiz (Without correct answer) from:" + //TODO //$QUIZ_API_BASE_URL$QUIZ_API_PATH" +
-                "\n\t$quiz" +
-                "\n[Please report to API creators]"
+        """!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        |Problematic Quiz (Without correct answer) from: ${getAPIUrl()}
+        |           $quiz
+        |"[Please report to API creators]
+        ------------------------------------------------"""
     )
+
 }

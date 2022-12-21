@@ -1,7 +1,6 @@
 package com.earth.testomania.home_screen.presentation
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.earth.testomania.R
 import com.earth.testomania.common.networking.NetworkConnectivityObserver
 import com.earth.testomania.destinations.*
@@ -9,7 +8,6 @@ import com.earth.testomania.home_screen.domain.model.HomeDestinationItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
