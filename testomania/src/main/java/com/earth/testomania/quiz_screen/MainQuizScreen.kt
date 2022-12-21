@@ -107,10 +107,10 @@ private fun CreateQuizScreen(
                     bottom.linkTo(parent.bottom)
                 }, horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.End)
         ) {
-            // TODO
-//            val categoryName = if (viewModel.category == QuizCategory.ALL) {
-//                stringResource(id = R.string.technical_tests)
-//            } else viewModel.getCategoryName()
+            //TODO We need to fix it
+            /*val categoryName = if (viewModel.category == QuizCategory.ALL) {
+                stringResource(id = R.string.technical_tests)
+            } else viewModel.getCategoryName()*/
 
             ButtonSecondary(
                 onClick = {
@@ -120,7 +120,7 @@ private fun CreateQuizScreen(
                             ResultDataCollectorUseCase().getTechnicalTestResult(
                                 techQuizList,
                                 viewModel.overallScore,
-                                "Quiz" // TODO
+                                "Quiz" //TODO Here should be actual category
                             )
                         )
                     )
