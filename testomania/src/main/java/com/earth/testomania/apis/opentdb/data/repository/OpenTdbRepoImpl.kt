@@ -1,5 +1,6 @@
 package com.earth.testomania.apis.opentdb.data.repository
 
+import android.text.Html
 import com.earth.testomania.apis.opentdb.data.source.OpenTdbQuizApi
 import com.earth.testomania.apis.opentdb.data.source.remote.dto.ResultDto
 import com.earth.testomania.apis.opentdb.domain.models.OpenTDBApiCategory
@@ -24,7 +25,8 @@ class OpenTdbRepoImpl @Inject constructor(private val api: OpenTdbQuizApi) : Ope
             val quizList = result.body()?.results?.mapIndexed { i: Int, resultDto: ResultDto ->
                 Quiz(id = i,
                     point = 1.0,
-                    question = resultDto.question,
+                    question = Html.fromHtml(resultDto.question, Html.FROM_HTML_MODE_LEGACY)
+                        .toString(),
                     category = resultDto.category,
                     answers = buildList {
                         resultDto.incorrect_answers.forEachIndexed { index, answer ->
