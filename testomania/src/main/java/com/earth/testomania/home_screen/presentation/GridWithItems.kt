@@ -1,8 +1,7 @@
 package com.earth.testomania.home_screen.presentation
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ModalBottomSheetState
@@ -16,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.earth.testomania.common.custom_ui_components.dismissSnackbar
 import com.earth.testomania.common.networking.ConnectivityObserver
@@ -30,18 +30,25 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun GridWithItems(
+    modifier: Modifier,
     viewModel: HomeScreenViewModel, navigator: DestinationsNavigator?,
-    scaffoldState: ScaffoldState?,
+    scaffoldState: ScaffoldState,
     modalBottomSheetState: ModalBottomSheetState,
+    halfScreenHeight: Dp,
 ) {
-   val contentPadding = 20.dp
+    val contentPadding = 20.dp
 
     LazyVerticalGrid(
+        modifier = modifier,
         columns = GridCells.Fixed(2),
         contentPadding = PaddingValues(contentPadding),
         horizontalArrangement = Arrangement.spacedBy(contentPadding),
         verticalArrangement = Arrangement.spacedBy(contentPadding)
     ) {
+        header {
+            GridHeader(halfScreenHeight)
+        }
+
         items(viewModel.destinations.size) { index ->
             val item = viewModel.destinations[index]
             CardButton(
@@ -60,7 +67,7 @@ fun GridWithItems(
 fun CardButton(
     destinationInfo: HomeDestinationItem,
     navigator: DestinationsNavigator? = null,
-    scaffoldState: ScaffoldState?,
+    scaffoldState: ScaffoldState,
     modalBottomSheetState: ModalBottomSheetState,
     networkConnectivityObserver: NetworkConnectivityObserver,
 ) {
@@ -100,4 +107,10 @@ fun CardButton(
             }
         }
     }
+}
+
+fun LazyGridScope.header(
+    content: @Composable LazyGridItemScope.() -> Unit
+) {
+    item(span = { GridItemSpan(this.maxLineSpan) }, content = content)
 }

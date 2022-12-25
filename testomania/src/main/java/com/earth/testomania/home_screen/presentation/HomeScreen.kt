@@ -7,7 +7,6 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -16,15 +15,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.ui.theme.DialogBkgDark
 import com.earth.testomania.ui.theme.DialogBkgLight
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.launch
-import me.onebone.toolbar.CollapsingToolbarScaffold
-import me.onebone.toolbar.ScrollStrategy
-import me.onebone.toolbar.rememberCollapsingToolbarScaffoldState
 
 @OptIn(ExperimentalMaterialApi::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter", "MaterialDesignInsteadOrbitDesign")
@@ -39,8 +36,6 @@ fun HomeScreen(
 ) {
     val viewModel: HomeScreenViewModel = hiltViewModel()
 
-    val lazyGridState = rememberLazyGridState()
-
     NetworkStateManager(viewModel.networkObserver)
 
     val modalBottomSheetState = rememberModalBottomSheetState(
@@ -48,7 +43,7 @@ fun HomeScreen(
         skipHalfExpanded = true
     )
 
-    val scaffoldState = rememberCollapsingToolbarScaffoldState()
+    val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
 
     BackHandler(enabled = modalBottomSheetState.isVisible) {
@@ -71,22 +66,38 @@ fun HomeScreen(
             }
         }
     ) {
-        CollapsingToolbarScaffold(
+        Scaffold(
             modifier = Modifier
                 .systemBarsPadding(),
-            state = scaffoldState,
-            scrollStrategy = ScrollStrategy.EnterAlwaysCollapsed,
-            toolbar = {
-                Toolbar(halfScreenHeight)
-            },
-            body = {
+            scaffoldState = scaffoldState,
+            backgroundColor = Color.Transparent
+        ) {
+            ConstraintLayout(
+                modifier = Modifier
+                    .fillMaxSize()
+            ) {
+                val (grid, searchBar) = createRefs()
+
+                SearchBar(
+                    Modifier
+                        .fillMaxWidth()
+                        .constrainAs(searchBar) {
+                            bottom.linkTo(parent.bottom)
+                        })
+
                 GridWithItems(
+                    Modifier
+                        .constrainAs(grid) {
+                            top.linkTo(parent.top)
+                            bottom.linkTo(searchBar.top)
+                        },
                     viewModel,
                     navigator,
-                    null, //scaffoldState,
+                    scaffoldState,
                     modalBottomSheetState,
+                    halfScreenHeight,
                 )
             }
-        )
+        }
     }
 }

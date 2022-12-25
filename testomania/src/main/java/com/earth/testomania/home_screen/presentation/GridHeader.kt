@@ -11,7 +11,7 @@ import androidx.compose.ui.unit.Dp
 import com.earth.testomania.R
 
 @Composable
-fun Toolbar(halfScreenHeight: Dp) {
+fun GridHeader(halfScreenHeight: Dp) {
     Image(
         modifier = Modifier
             .fillMaxWidth()
