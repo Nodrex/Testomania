@@ -78,12 +78,13 @@ fun HomeScreen(
             ) {
                 val (grid, searchBar) = createRefs()
 
-                SearchBar(
+                //TODO we should add searchbar
+                /*SearchBar(
                     Modifier
                         .fillMaxWidth()
                         .constrainAs(searchBar) {
                             bottom.linkTo(parent.bottom)
-                        })
+                        })*/
 
                 GridWithItems(
                     Modifier
