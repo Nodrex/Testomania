@@ -1,7 +1,10 @@
 package com.earth.testomania.home_screen.presentation
 
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyGridState
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ExperimentalMaterialApi
@@ -16,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.earth.testomania.common.custom_ui_components.dismissSnackbar
 import com.earth.testomania.common.networking.ConnectivityObserver
@@ -33,14 +37,24 @@ fun GridWithItems(
     viewModel: HomeScreenViewModel, navigator: DestinationsNavigator?,
     scaffoldState: ScaffoldState,
     modalBottomSheetState: ModalBottomSheetState,
+    lazyGridState: LazyGridState,
+    halfScreenHeight: Dp
 ) {
-    val contentPadding = 20.dp
+
+    val padding by animateDpAsState(
+        targetValue = if (lazyGridState.isScrolled) 0.dp else halfScreenHeight,
+        animationSpec = tween(durationMillis = 300)
+    )
+
+   val contentPadding = 20.dp
+
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
-        modifier = Modifier
+        modifier = Modifier.padding(top = padding),
+        state = lazyGridState,
         /*.constrainAs(grid) {
             bottom.linkTo(parent.bottom)
-        }*/,
+        },*/
         contentPadding = PaddingValues(contentPadding),
         horizontalArrangement = Arrangement.spacedBy(contentPadding),
         verticalArrangement = Arrangement.spacedBy(contentPadding)

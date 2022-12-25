@@ -14,11 +14,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.ui.theme.DialogBkgDark
 import com.earth.testomania.ui.theme.DialogBkgLight
-import com.earth.testomania.ui.theme.LightRed
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.launch
@@ -54,6 +55,9 @@ fun HomeScreen(
         }
     }
 
+    val configuration = LocalConfiguration.current
+    val halfScreenHeight = configuration.screenHeightDp.dp / 2
+
     //We need ModalBottomSheetLayout, because only this BottomSheet can be closed when clicking outside of bottomSheet
     ModalBottomSheetLayout(
         sheetState = modalBottomSheetState,
@@ -71,8 +75,17 @@ fun HomeScreen(
             scaffoldState = scaffoldState,
             backgroundColor = Color.Transparent
         ) {
-            GridWithItems(viewModel, navigator, scaffoldState, modalBottomSheetState)
-            Toolbar()
+            Box(modifier = Modifier.fillMaxSize()) {
+                GridWithItems(
+                    viewModel,
+                    navigator,
+                    scaffoldState,
+                    modalBottomSheetState,
+                    lazyGridState,
+                    halfScreenHeight
+                )
+                Toolbar(lazyGridState, halfScreenHeight)
+            }
 
             /*HomeScreenContent(
                 viewModel,
