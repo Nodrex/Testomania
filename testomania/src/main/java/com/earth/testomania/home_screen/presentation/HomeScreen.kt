@@ -7,7 +7,6 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.grid.LazyGridState
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -23,6 +22,9 @@ import com.earth.testomania.ui.theme.DialogBkgLight
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.launch
+import me.onebone.toolbar.CollapsingToolbarScaffold
+import me.onebone.toolbar.ScrollStrategy
+import me.onebone.toolbar.rememberCollapsingToolbarScaffoldState
 
 @OptIn(ExperimentalMaterialApi::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter", "MaterialDesignInsteadOrbitDesign")
@@ -46,7 +48,7 @@ fun HomeScreen(
         skipHalfExpanded = true
     )
 
-    val scaffoldState = rememberScaffoldState()
+    val scaffoldState = rememberCollapsingToolbarScaffoldState()
     val scope = rememberCoroutineScope()
 
     BackHandler(enabled = modalBottomSheetState.isVisible) {
@@ -69,47 +71,22 @@ fun HomeScreen(
             }
         }
     ) {
-        Scaffold(
+        CollapsingToolbarScaffold(
             modifier = Modifier
                 .systemBarsPadding(),
-            scaffoldState = scaffoldState,
-            backgroundColor = Color.Transparent
-        ) {
-            Box(modifier = Modifier.fillMaxSize()) {
+            state = scaffoldState,
+            scrollStrategy = ScrollStrategy.EnterAlwaysCollapsed,
+            toolbar = {
+                Toolbar(halfScreenHeight)
+            },
+            body = {
                 GridWithItems(
                     viewModel,
                     navigator,
-                    scaffoldState,
+                    null, //scaffoldState,
                     modalBottomSheetState,
-                    lazyGridState,
-                    halfScreenHeight
                 )
-                Toolbar(lazyGridState, halfScreenHeight)
             }
-
-            /*HomeScreenContent(
-                viewModel,
-                navigator,
-                scaffoldState,
-                modalBottomSheetState
-            )*/
-        }
+        )
     }
 }
-
-/*@Composable
-fun HomeScreenContent(
-    viewModel: HomeScreenViewModel,
-    navigator: DestinationsNavigator?,
-    scaffoldState: ScaffoldState,
-    modalBottomSheetState: ModalBottomSheetState,
-) {
-    Toolbar()
-    GridWithItems(viewModel, navigator, scaffoldState, modalBottomSheetState)
-}*/
-
-
-val LazyGridState.isScrolled: Boolean
-    get() = firstVisibleItemIndex > 0 || firstVisibleItemScrollOffset > 0
-
-

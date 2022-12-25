@@ -97,6 +97,7 @@ dependencies {
     implementation(libs.bundles.retrofit)
     implementation(libs.bundles.moshi)
     implementation(libs.bundles.coroutines)
+    implementation(libs.collapsible.toolbar)
 
     testImplementation(libs.bundles.test)
     androidTestImplementation(libs.bundles.android.test)
