@@ -23,30 +23,34 @@ class OpenTdbRepoImpl @Inject constructor(private val api: OpenTdbQuizApi) : Ope
             )
 
             val quizList = result.body()?.results?.mapIndexed { i: Int, resultDto: ResultDto ->
-                Quiz(id = i,
+                Quiz(
+                    id = i,
                     point = 1.0,
                     question = parseText(resultDto.question),
                     category = resultDto.category.replace("Entertainment:", "")
                         .replace("Science:", "").trim(),
-                    answers = buildList {
-                        resultDto.incorrect_answers.forEachIndexed { index, answer ->
-                            add(Answer(index.toString(), parseText(answer), null, false))
-                        }
-                        add(
-                            Answer(
-                                tag = count().plus(1).toString(),
-                                text = parseText(resultDto.correct_answer),
-                                image = null,
-                                isCorrect = true
-                            )
-                        )
-                    }.shuffled().mapIndexed { index, answer ->
-                        answer.copy(tag = (index + 1).toString())
-                    })
+                    answers = answers(resultDto)
+                )
             }
 
             emit(DataState.Success(payload = quizList))
         }
+    }
+
+    private fun answers(resultDto: ResultDto) = buildList {
+        resultDto.incorrect_answers.forEachIndexed { index, answer ->
+            add(Answer(index.toString(), parseText(answer), null, false))
+        }
+        add(
+            Answer(
+                tag = count().plus(1).toString(),
+                text = parseText(resultDto.correct_answer),
+                image = null,
+                isCorrect = true
+            )
+        )
+    }.shuffled().mapIndexed { index, answer ->
+        answer.copy(tag = (index + 1).toString())
     }
 
     private fun parseText(text: String) = Html.fromHtml(text, Html.FROM_HTML_MODE_LEGACY).toString()
