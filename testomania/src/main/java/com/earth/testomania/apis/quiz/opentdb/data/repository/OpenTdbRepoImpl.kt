@@ -52,6 +52,6 @@ class OpenTdbRepoImpl @Inject constructor(private val api: OpenTdbQuizApi) : Ope
     }.shuffled().mapIndexed { index, answer ->
         answer.copy(tag = (index + 1).toString())
     }
-
+    
     private fun parseText(text: String) = Html.fromHtml(text, Html.FROM_HTML_MODE_LEGACY).toString()
 }
