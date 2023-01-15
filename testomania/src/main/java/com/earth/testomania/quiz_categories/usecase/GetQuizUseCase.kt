@@ -38,8 +38,14 @@ abstract class GetQuizUseCase {
     private fun success(list: List<Quiz>?): DataState.Success<List<QuizUIState>> {
         val quizUIStateList = mutableListOf<QuizUIState>()
         list?.forEach {
-            if (it.correctAnswerCount == 0) logProblematicQuiz(it)
-            else if (!it.hasMultiAnswer) quizUIStateList += QuizUIState(quiz = it)
+            if (it.correctAnswerCount == 0) logProblematicQuiz(it, "Without correct answer")
+            else if (!it.hasMultiAnswer) {
+                if (it.correctAnswerCount > 1) logProblematicQuiz(
+                    it,
+                    "Quiz is single choice, but has multiple correct answers"
+                )
+                else quizUIStateList += QuizUIState(quiz = it)
+            }
             //TODO hasMultiAnswer filter is temporarily to disable multi answer quiz,
             // but we wel remove this constraint for future on next releases of App
         }
@@ -61,10 +67,10 @@ abstract class GetQuizUseCase {
     )
 
     // TODO have a separate UseCase for reporting errors
-    // UseCase should not do 2 things
-    private fun logProblematicQuiz(quiz: Quiz) = log(
+    // UseCase should not do more then 1 thing
+    private fun logProblematicQuiz(quiz: Quiz, errorDescription: String) = log(
         """!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        |Problematic Quiz (Without correct answer) from: ${getAPIUrl()}
+        |Problematic Quiz ($errorDescription) from: ${getAPIUrl()}
         |           $quiz
         |"[Please report to API creators]
         ------------------------------------------------"""
