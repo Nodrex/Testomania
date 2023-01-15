@@ -26,10 +26,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterialApi::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter", "MaterialDesignInsteadOrbitDesign")
 @Preview(showSystemUi = true)
-@Destination(
-    route = "home",
-    start = true
-)
+@Destination(route = "home", start = true)
 @Composable
 fun HomeScreen(
     navigator: DestinationsNavigator? = null,
@@ -39,8 +36,7 @@ fun HomeScreen(
     NetworkStateManager(viewModel.networkObserver)
 
     val modalBottomSheetState = rememberModalBottomSheetState(
-        initialValue = ModalBottomSheetValue.Hidden,
-        skipHalfExpanded = true
+        initialValue = ModalBottomSheetValue.Hidden, skipHalfExpanded = true
     )
 
     val scaffoldState = rememberScaffoldState()
@@ -57,33 +53,29 @@ fun HomeScreen(
 
     // We need ModalBottomSheetLayout, because only this BottomSheet can be closed when clicking
     // outside of bottomSheet
-    ModalBottomSheetLayout(
-        sheetState = modalBottomSheetState,
+    ModalBottomSheetLayout(sheetState = modalBottomSheetState,
         sheetBackgroundColor = if (isSystemInDarkTheme()) DialogBkgDark else DialogBkgLight,
         scrimColor = Color.Transparent,
         sheetContent = {
             Column(Modifier.navigationBarsPadding()) {
                 AboutBottomSheet(modalBottomSheetState, scope)
             }
-        }
-    ) {
+        }) {
         Scaffold(
             modifier = Modifier.statusBarsPadding(),
             scaffoldState = scaffoldState,
             backgroundColor = Color.Transparent
         ) {
             ConstraintLayout(
-                modifier = Modifier
-                    .fillMaxSize()
+                modifier = Modifier.fillMaxSize()
             ) {
                 val (grid, searchBar) = createRefs()
 
                 GridWithItems(
-                    Modifier
-                        .constrainAs(grid) {
-                            top.linkTo(parent.top)
-                            bottom.linkTo(searchBar.top)
-                        },
+                    Modifier.constrainAs(grid) {
+                        top.linkTo(parent.top)
+                        bottom.linkTo(searchBar.top)
+                    },
                     viewModel,
                     navigator,
                     scaffoldState,
