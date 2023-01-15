@@ -17,7 +17,7 @@ import androidx.core.content.res.ResourcesCompat.ID_NULL
 import com.earth.testomania.R
 import com.earth.testomania.common.model.QuizUIState
 import com.earth.testomania.destinations.ResultScreenDestination
-import com.earth.testomania.quiz_categories.DestinationViewModel
+import com.earth.testomania.quiz_categories.viewmodel.DestinationViewModel
 import com.earth.testomania.quiz_screen.*
 import com.earth.testomania.result_screen.domain.use_case.ResultDataCollectorUseCase
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -120,6 +120,7 @@ private fun CreateQuizScreen(
                                 // and not from quiz himself (occurs bug in case of Information
                                 // technologies when multiple categories are together),
                                 // but for now let's leave
+                                // TODO reduce indentation
                                 quizList.firstOrNull()?.quiz?.category ?: "Quiz"
                             )
                         )

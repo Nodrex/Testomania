@@ -9,7 +9,7 @@ import com.earth.testomania.common.custom_ui_components.TestomaniaChoiceTile
 import com.earth.testomania.common.custom_ui_components.getAnswerTileState
 import com.earth.testomania.common.model.Answer
 import com.earth.testomania.common.model.QuizUIState
-import com.earth.testomania.quiz_categories.DestinationViewModel
+import com.earth.testomania.quiz_categories.viewmodel.DestinationViewModel
 import kiwi.orbit.compose.ui.controls.Text
 
 

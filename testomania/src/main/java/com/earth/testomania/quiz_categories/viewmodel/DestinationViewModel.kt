@@ -1,4 +1,4 @@
-package com.earth.testomania.quiz_categories
+package com.earth.testomania.quiz_categories.viewmodel
 
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
