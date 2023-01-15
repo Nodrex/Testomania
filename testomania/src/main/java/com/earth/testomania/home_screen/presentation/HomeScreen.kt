@@ -68,8 +68,7 @@ fun HomeScreen(
         }
     ) {
         Scaffold(
-            modifier = Modifier
-                .systemBarsPadding(),
+            modifier = Modifier.statusBarsPadding(),
             scaffoldState = scaffoldState,
             backgroundColor = Color.Transparent
         ) {
