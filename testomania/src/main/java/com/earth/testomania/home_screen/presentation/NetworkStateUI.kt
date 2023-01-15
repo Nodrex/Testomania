@@ -22,7 +22,7 @@ import com.earth.testomania.ui.theme.LightRed
 import kiwi.orbit.compose.ui.controls.Text
 
 /**
- * Shoes whether network is turned on or not to the user
+ * shows whether network is turned on or not to the user
  */
 @Composable
 fun NetworkStateManager(

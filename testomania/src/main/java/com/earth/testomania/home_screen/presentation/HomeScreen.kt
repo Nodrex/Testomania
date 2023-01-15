@@ -55,7 +55,8 @@ fun HomeScreen(
     val configuration = LocalConfiguration.current
     val halfScreenHeight = configuration.screenHeightDp.dp / 2
 
-    //We need ModalBottomSheetLayout, because only this BottomSheet can be closed when clicking outside of bottomSheet
+    // We need ModalBottomSheetLayout, because only this BottomSheet can be closed when clicking
+    // outside of bottomSheet
     ModalBottomSheetLayout(
         sheetState = modalBottomSheetState,
         sheetBackgroundColor = if (isSystemInDarkTheme()) DialogBkgDark else DialogBkgLight,
@@ -77,14 +78,6 @@ fun HomeScreen(
                     .fillMaxSize()
             ) {
                 val (grid, searchBar) = createRefs()
-
-                //TODO we should add searchbar
-                /*SearchBar(
-                    Modifier
-                        .fillMaxWidth()
-                        .constrainAs(searchBar) {
-                            bottom.linkTo(parent.bottom)
-                        })*/
 
                 GridWithItems(
                     Modifier
