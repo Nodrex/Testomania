@@ -31,7 +31,8 @@ import kotlinx.coroutines.launch
 @Composable
 fun GridWithItems(
     modifier: Modifier,
-    viewModel: HomeScreenViewModel, navigator: DestinationsNavigator?,
+    viewModel: HomeScreenViewModel,
+    navigator: DestinationsNavigator?,
     scaffoldState: ScaffoldState,
     modalBottomSheetState: ModalBottomSheetState,
     halfScreenHeight: Dp,
@@ -45,6 +46,8 @@ fun GridWithItems(
         horizontalArrangement = Arrangement.spacedBy(contentPadding),
         verticalArrangement = Arrangement.spacedBy(contentPadding)
     ) {
+
+        // TODO place image in a column followed by tiles with grid layout
         header {
             GridHeader(halfScreenHeight)
         }
@@ -52,11 +55,7 @@ fun GridWithItems(
         items(viewModel.destinations.size) { index ->
             val item = viewModel.destinations[index]
             CardButton(
-                item,
-                navigator,
-                scaffoldState,
-                modalBottomSheetState,
-                viewModel.networkObserver
+                item, navigator, scaffoldState, modalBottomSheetState, viewModel.networkObserver
             )
         }
     }
@@ -72,8 +71,7 @@ fun CardButton(
     networkConnectivityObserver: NetworkConnectivityObserver,
 ) {
     val scope = rememberCoroutineScope()
-    val status by networkConnectivityObserver.observe()
-        .collectAsState(initial = false)
+    val status by networkConnectivityObserver.observe().collectAsState(initial = false)
 
     SurfaceCard(
         modifier = Modifier.size(125.dp),
