@@ -1,4 +1,4 @@
-package com.earth.testomania.domain.models
+package com.earth.testomania.skills.domain
 
 data class GeneralMathematicalSkillsTest(
     val question: String,
