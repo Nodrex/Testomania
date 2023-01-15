@@ -148,7 +148,7 @@ private fun CreateQuizScreen(
             }, Modifier.weight(1f)) {
                 Text(text = stringResource(R.string.navigation_next))
                 Icon(
-                    painter = painterResource(id = R.drawable.ic_orbit_chevron_right),
+                    painter = painterResource(id = R.drawable.ic_orbit_chevron_double_forward),
                     contentDescription = ""
                 )
             }

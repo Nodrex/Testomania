@@ -7,9 +7,9 @@ versionName = "1.2.2"
 composeCompiler = "1.2.0"
 
 [libraries]
-kiwi-icons = "kiwi.orbit.compose:icons:0.22.0"
-kiwi-ui = "kiwi.orbit.compose:ui:0.22.0"
-kiwi-illustrations = "kiwi.orbit.compose:illustrations:0.22.0"
+kiwi-icons = "kiwi.orbit.compose:icons:0.23.2"
+kiwi-ui = "kiwi.orbit.compose:ui:0.23.2"
+kiwi-illustrations = "kiwi.orbit.compose:illustrations:0.23.2"
 
 androidx-compose-navigation-hilt = "androidx.hilt:hilt-navigation-compose:1.0.0"
 androidx-compose-foundation = "androidx.compose.foundation:foundation:1.3.1"
@@ -32,9 +32,9 @@ androidx-datastore-core = "androidx.datastore:datastore-core:1.0.0"
 androidx-datastore = "androidx.datastore:datastore:1.0.0"
 androidx-core = "androidx.core:core-ktx:1.9.0"
 androidx-appcompat = "androidx.appcompat:appcompat:1.5.1"
-androidx-room-runtime = "androidx.room:room-runtime:2.4.3"
-androidx-room-ktx = "androidx.room:room-runtime:2.4.3"
-androidx-room-compiler = "androidx.room:room-runtime:2.4.3"
+androidx-room-runtime = "androidx.room:room-runtime:2.5.0"
+androidx-room-ktx = "androidx.room:room-runtime:2.5.0"
+androidx-room-compiler = "androidx.room:room-runtime:2.5.0"
 
 google-material = "com.google.android.material:material:1.7.0"
 google-hilt = "com.google.dagger:hilt-android:2.42"
@@ -67,7 +67,7 @@ robolectric = 'org.robolectric:robolectric:4.9.2'
 hilt-testing = 'com.google.dagger:hilt-android-testing:2.44.2'
 truth = "com.google.truth:truth:1.1.3"
 
-junit-android = 'androidx.test.ext:junit:1.1.4'
+junit-android = 'androidx.test.ext:junit:1.1.5'
 espresso = 'androidx.test.espresso:espresso-core:3.5.1'
 compose-test = "androidx.compose.ui:ui-test-junit4:1.3.3"
 
