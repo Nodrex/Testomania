@@ -17,6 +17,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.earth.testomania.home_screen.presentation.ui_components.AboutBottomSheet
+import com.earth.testomania.home_screen.presentation.ui_components.GridWithItems
+import com.earth.testomania.home_screen.presentation.ui_components.NetworkStateManager
 import com.earth.testomania.ui.theme.DialogBkgDark
 import com.earth.testomania.ui.theme.DialogBkgLight
 import com.ramcosta.composedestinations.annotation.Destination

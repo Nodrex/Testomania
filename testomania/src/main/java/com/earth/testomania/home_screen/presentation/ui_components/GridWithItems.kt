@@ -1,4 +1,4 @@
-package com.earth.testomania.home_screen.presentation
+package com.earth.testomania.home_screen.presentation.ui_components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.*
@@ -21,6 +21,7 @@ import com.earth.testomania.common.custom_ui_components.dismissSnackbar
 import com.earth.testomania.common.networking.ConnectivityObserver
 import com.earth.testomania.common.networking.NetworkConnectivityObserver
 import com.earth.testomania.home_screen.domain.model.HomeDestinationItem
+import com.earth.testomania.home_screen.presentation.HomeScreenViewModel
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kiwi.orbit.compose.ui.controls.Icon
 import kiwi.orbit.compose.ui.controls.SurfaceCard

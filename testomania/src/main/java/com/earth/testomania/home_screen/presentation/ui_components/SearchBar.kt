@@ -1,4 +1,4 @@
-package com.earth.testomania.home_screen.presentation
+package com.earth.testomania.home_screen.presentation.ui_components
 
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
