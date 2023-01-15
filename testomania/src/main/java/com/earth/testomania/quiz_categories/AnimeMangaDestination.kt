@@ -21,8 +21,9 @@ fun AnimeMangaQuiz(navigator: DestinationsNavigator) {
     MainQuizScreen(navigator, viewModel)
 }
 
-class GetAnimeMangaUseCse @Inject constructor(private val repository: OpenTdbRepo) :
-    OpenTDBApiBaseUrlUseCase() {
+class GetAnimeMangaUseCse @Inject constructor(
+    private val repository: OpenTdbRepo
+) : OpenTDBApiBaseUrlUseCase() {
 
     override suspend fun getRepResult() = repository.getQuiz(OpenTDBApiCategory.ANIME_MANGA, 20)
 
@@ -30,9 +31,5 @@ class GetAnimeMangaUseCse @Inject constructor(private val repository: OpenTdbRep
 
 @HiltViewModel
 class AnimeMangaViewModel @Inject constructor(
-    useCase: GetAnimeMangaUseCse,
-    dispatcher: CoroutineDispatcher
-) : DestinationViewModel(
-    useCase,
-    dispatcher
-)
+    useCase: GetAnimeMangaUseCse, dispatcher: CoroutineDispatcher
+) : DestinationViewModel(useCase, dispatcher)
