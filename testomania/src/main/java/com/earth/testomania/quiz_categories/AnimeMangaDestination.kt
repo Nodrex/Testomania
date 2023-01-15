@@ -5,6 +5,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.apis.quiz.opentdb.domain.models.OpenTDBApiCategory
 import com.earth.testomania.apis.quiz.opentdb.domain.repository.OpenTdbRepo
 import com.earth.testomania.quiz_categories.usecase.OpenTDBApiBaseUrlUseCase
+import com.earth.testomania.quiz_categories.viewmodel.DestinationViewModel
 import com.earth.testomania.quiz_screen.MainQuizScreen
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -21,8 +22,9 @@ fun AnimeMangaQuiz(navigator: DestinationsNavigator) {
     MainQuizScreen(navigator, viewModel)
 }
 
-class GetAnimeMangaUseCse @Inject constructor(private val repository: OpenTdbRepo) :
-    OpenTDBApiBaseUrlUseCase() {
+class GetAnimeMangaUseCse @Inject constructor(
+    private val repository: OpenTdbRepo
+) : OpenTDBApiBaseUrlUseCase() {
 
     override suspend fun getRepResult() = repository.getQuiz(OpenTDBApiCategory.ANIME_MANGA, 20)
 
@@ -30,9 +32,5 @@ class GetAnimeMangaUseCse @Inject constructor(private val repository: OpenTdbRep
 
 @HiltViewModel
 class AnimeMangaViewModel @Inject constructor(
-    useCase: GetAnimeMangaUseCse,
-    dispatcher: CoroutineDispatcher
-) : DestinationViewModel(
-    useCase,
-    dispatcher
-)
+    useCase: GetAnimeMangaUseCse, dispatcher: CoroutineDispatcher
+) : DestinationViewModel(useCase, dispatcher)

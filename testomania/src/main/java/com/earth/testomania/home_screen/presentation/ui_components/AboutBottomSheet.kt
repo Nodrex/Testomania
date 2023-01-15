@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterialApi::class)
 
-package com.earth.testomania.home_screen.presentation
+package com.earth.testomania.home_screen.presentation.ui_components
 
 import android.content.Context
 import android.content.Intent

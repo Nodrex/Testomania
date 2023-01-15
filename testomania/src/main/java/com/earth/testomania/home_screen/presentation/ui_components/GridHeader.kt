@@ -1,4 +1,4 @@
-package com.earth.testomania.home_screen.presentation
+package com.earth.testomania.home_screen.presentation.ui_components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxWidth

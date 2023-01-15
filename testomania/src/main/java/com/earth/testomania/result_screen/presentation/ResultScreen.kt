@@ -41,20 +41,20 @@ fun ResultScreen(
     val viewModel: ResultScreenViewModel = hiltViewModel()
     viewModel.resultData = resultData
 
-    val illustrationRes =
-        if (viewModel.resultData.isTestDone) R.drawable.il_orbit_success else R.drawable.il_orbit_error
+    val illustrationRes = if (viewModel.resultData.isTestDone) R.drawable.il_orbit_success
+    else R.drawable.il_orbit_error
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .systemBarsPadding()
+            .statusBarsPadding()
             .padding(8.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         Spacer(modifier = Modifier.size(30.dp))
         MainResultItem(
-            viewModel.resultData.testIconRes,
-            viewModel.resultData.quizCategoryName,
+            testIconRes = viewModel.resultData.testIconRes,
+            testName = viewModel.resultData.quizCategoryName,
             mainColor = OrbitTheme.colors.info.normal,
             progress = viewModel.resultData.overallProgress
         )
@@ -171,9 +171,7 @@ fun MainResultItem(
                 .padding(8.dp, 0.dp)
         ) {
             Text(
-                text = testName,
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold
+                text = testName, fontSize = 20.sp, fontWeight = FontWeight.Bold
             )
             Text(
                 color = mainColor,

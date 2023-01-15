@@ -1,4 +1,4 @@
-package com.earth.testomania.home_screen.presentation
+package com.earth.testomania.home_screen.presentation.ui_components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.*
@@ -22,6 +22,7 @@ import com.earth.testomania.common.custom_ui_components.dismissSnackbar
 import com.earth.testomania.common.networking.ConnectivityObserver
 import com.earth.testomania.common.networking.NetworkConnectivityObserver
 import com.earth.testomania.home_screen.domain.model.HomeDestinationItem
+import com.earth.testomania.home_screen.presentation.HomeScreenViewModel
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kiwi.orbit.compose.ui.controls.Icon
 import kiwi.orbit.compose.ui.controls.SurfaceCard
@@ -32,7 +33,8 @@ import kotlinx.coroutines.launch
 @Composable
 fun GridWithItems(
     modifier: Modifier,
-    viewModel: HomeScreenViewModel, navigator: DestinationsNavigator?,
+    viewModel: HomeScreenViewModel,
+    navigator: DestinationsNavigator?,
     scaffoldState: ScaffoldState,
     modalBottomSheetState: ModalBottomSheetState,
     halfScreenHeight: Dp,
@@ -46,6 +48,8 @@ fun GridWithItems(
         horizontalArrangement = Arrangement.spacedBy(contentPadding),
         verticalArrangement = Arrangement.spacedBy(contentPadding)
     ) {
+
+        // TODO place image in a column followed by tiles with grid layout
         header {
             GridHeader(halfScreenHeight)
         }
@@ -53,11 +57,7 @@ fun GridWithItems(
         items(viewModel.destinations.size) { index ->
             val item = viewModel.destinations[index]
             CardButton(
-                item,
-                navigator,
-                scaffoldState,
-                modalBottomSheetState,
-                viewModel.networkObserver
+                item, navigator, scaffoldState, modalBottomSheetState, viewModel.networkObserver
             )
         }
     }
@@ -73,8 +73,7 @@ fun CardButton(
     networkConnectivityObserver: NetworkConnectivityObserver,
 ) {
     val scope = rememberCoroutineScope()
-    val status by networkConnectivityObserver.observe()
-        .collectAsState(initial = false)
+    val status by networkConnectivityObserver.observe().collectAsState(initial = false)
 
     SurfaceCard(
         modifier = Modifier.size(125.dp),

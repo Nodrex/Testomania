@@ -1,4 +1,4 @@
-package com.earth.testomania.home_screen.presentation
+package com.earth.testomania.home_screen.presentation.ui_components
 
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Image
@@ -28,34 +28,24 @@ import kiwi.orbit.compose.ui.controls.Text
 fun NetworkStateManager(
     networkConnectivityObserver: NetworkConnectivityObserver,
 ) {
-    val status by networkConnectivityObserver.observe()
-        .collectAsState(initial = false)
+    val status by networkConnectivityObserver.observe().collectAsState(initial = false)
 
     if (status == ConnectivityObserver.ConnectionState.Unavailable) {
         Pulsating {
             Column(
                 Modifier
                     .fillMaxSize()
-                    .padding(
-                        start = 26.dp,
-                        top = 80.dp,
-                        end = 26.dp,
-                        bottom = 0.dp
-                    )
+                    .padding(start = 26.dp, top = 80.dp, end = 26.dp, bottom = 0.dp)
             ) {
                 Box(
                     Modifier
                         .fillMaxWidth()
                         .wrapContentHeight()
-                        .background(
-                            color = LightRed,
-                            shape = RoundedCornerShape(6.dp)
-                        )
+                        .background(color = LightRed, shape = RoundedCornerShape(6.dp))
                         .padding(4.dp)
                 ) {
                     Image(
-                        modifier = Modifier
-                            .padding(start = 10.dp),
+                        modifier = Modifier.padding(start = 10.dp),
                         painter = painterResource(id = R.drawable.ic_no_connection),
                         contentDescription = ""
                     )
@@ -78,18 +68,12 @@ fun Pulsating(pulseFraction: Float = 0.98f, content: @Composable () -> Unit) {
     val infiniteTransition = rememberInfiniteTransition()
 
     val scale by infiniteTransition.animateFloat(
-        initialValue = 1f,
-        targetValue = pulseFraction,
-        animationSpec = infiniteRepeatable(
-            animation = tween(1000),
-            repeatMode = RepeatMode.Reverse
+        initialValue = 1f, targetValue = pulseFraction, animationSpec = infiniteRepeatable(
+            animation = tween(1000), repeatMode = RepeatMode.Reverse
         )
     )
 
-    Box(
-        modifier = Modifier
-            .scale(scale)
-    ) {
+    Box(modifier = Modifier.scale(scale)) {
         content()
     }
 }
