@@ -16,12 +16,12 @@ class HomeScreenViewModel @Inject constructor(
     val destinations = listOf(
         HomeDestinationItem(
             name = R.string.about,
-            icon = R.drawable.ic_outline_info,
+            icon = R.drawable.about,
             destination = AboutBottomSheetDestination
         ),
         HomeDestinationItem(
             name = R.string.technical_tests,
-            icon = R.drawable.ic_orbit_dashboard,
+            icon = R.drawable.it,
             destination = InformationalTechnologiesQuizDestination
         ),
         HomeDestinationItem(
