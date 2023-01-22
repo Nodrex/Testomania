@@ -23,7 +23,7 @@
     <string name="install_browser">Pleas install at least browser to open %1$s</string>
     <string name="linkedin">LinkedIn</string>
     <string name="github">Github</string>
-    <string name="check_your_connection">You\'re offline check your connection</string>
+    <string name="check_your_connection">You\'re offline, please check your connection</string>
     <string name="books">Books</string>
     <string name="music">Music</string>
     <string name="tv">TV</string>

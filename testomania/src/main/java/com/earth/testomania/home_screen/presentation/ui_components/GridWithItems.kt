@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.earth.testomania.R
 import com.earth.testomania.common.custom_ui_components.dismissSnackbar
+import com.earth.testomania.common.custom_ui_components.showSnackbar
 import com.earth.testomania.common.networking.ConnectivityObserver
 import com.earth.testomania.common.networking.NetworkConnectivityObserver
 import com.earth.testomania.home_screen.domain.model.HomeDestinationItem
@@ -73,23 +74,21 @@ fun CardButton(
     val scope = rememberCoroutineScope()
     val status by networkConnectivityObserver.observe().collectAsState(initial = false)
 
-    if (status == ConnectivityObserver.ConnectionState.Unavailable) {
-        val infoText = stringResource(R.string.check_your_connection)
-        val dismissText = stringResource(R.string.dismiss)
-        LaunchedEffect(scaffoldState.snackbarHostState) {
-            scaffoldState.snackbarHostState.showSnackbar(
-                message = infoText,
-                actionLabel = dismissText
-            )
-        }
-    }
+    val infoText = stringResource(R.string.check_your_connection)
+    val dismissText = stringResource(R.string.dismiss)
 
     SurfaceCard(
         modifier = Modifier.size(125.dp),
         shape = RoundedCornerShape(10.dp),
-        enabled = status == ConnectivityObserver.ConnectionState.Available,
+        enabled = true,
         onClick = {
             dismissSnackbar(scaffoldState)
+
+            if (status == ConnectivityObserver.ConnectionState.Unavailable) {
+                showSnackbar(scope, scaffoldState, infoText, dismissText)
+                return@SurfaceCard
+            }
+
             when (destinationInfo.destination?.route) {
                 ABOUT_ROUT -> {
                     scope.launch {

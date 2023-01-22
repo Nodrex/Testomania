@@ -36,8 +36,6 @@ fun HomeScreen(
 ) {
     val viewModel: HomeScreenViewModel = hiltViewModel()
 
-    NetworkStateManager(viewModel.networkObserver)
-
     val modalBottomSheetState = rememberModalBottomSheetState(
         initialValue = ModalBottomSheetValue.Hidden, skipHalfExpanded = true
     )
@@ -88,4 +86,6 @@ fun HomeScreen(
             }
         }
     }
+
+    NetworkStateManager(viewModel.networkObserver)
 }
