@@ -1,4 +1,5 @@
 package com.earth.testomania.quiz_categories
+/*
 
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
@@ -125,6 +126,8 @@ abstract class DestinationViewModel(
 //    }
 
     fun enableAnswerSelection(quizUIState: QuizUIState) =
-        /*if (quizUIState.quiz.hasMultiAnswer) !quizUIState.multiSelectionWasDone.value else*/
+        */
+/*if (quizUIState.quiz.hasMultiAnswer) !quizUIState.multiSelectionWasDone.value else*//*
+
         quizUIState.selectedAnswers.isEmpty()
-}
+}*/

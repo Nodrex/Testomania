@@ -2,9 +2,10 @@ package com.earth.testomania.quiz_categories
 
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.earth.testomania.apis.quizapi.domain.model.QuizApiCategory
-import com.earth.testomania.apis.quizapi.domain.repository.QuizRepository
-import com.earth.testomania.quiz_categories.usecase.GetQuizUseCase
+import com.earth.testomania.apis.quiz.quizapi.domain.model.QuizApiCategory
+import com.earth.testomania.apis.quiz.quizapi.domain.repository.QuizRepository
+import com.earth.testomania.quiz_categories.usecase.QuizApiBaseUrlUseCase
+import com.earth.testomania.quiz_categories.viewmodel.DestinationViewModel
 import com.earth.testomania.quiz_screen.MainQuizScreen
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -23,7 +24,7 @@ fun SQLQuiz(navigator: DestinationsNavigator) {
 }
 
 class GetSQLUseCse @Inject constructor(private val repository: QuizRepository) :
-    GetQuizUseCase() {
+    QuizApiBaseUrlUseCase() {
 
     override suspend fun getRepResult() = repository.getQuizList(QuizApiCategory.SQL)
 

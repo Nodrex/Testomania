@@ -51,4 +51,8 @@
     <string name="php">PHP</string>
     <string name="programing">Programing</string>
     <string name="sql">SQL</string>
+    <string name="anime_manga">Anime Manga</string>
+    <string name="computers">Computers</string>
+    <string name="general_knowledge">General Knowledge</string>
+    <string name="music_and_theater">Music and Theater</string>
 </resources>

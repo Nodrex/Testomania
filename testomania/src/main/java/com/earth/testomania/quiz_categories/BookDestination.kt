@@ -2,10 +2,11 @@ package com.earth.testomania.quiz_categories
 
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.earth.testomania.apis.opentdb.domain.models.OpenTDBApiCategory
-import com.earth.testomania.apis.opentdb.domain.repository.OpenTdbRepo
+import com.earth.testomania.apis.quiz.opentdb.domain.models.OpenTDBApiCategory
+import com.earth.testomania.apis.quiz.opentdb.domain.repository.OpenTdbRepo
 import com.earth.testomania.common.unsplash.UnsplashRepo
-import com.earth.testomania.quiz_categories.usecase.GetQuizUseCase
+import com.earth.testomania.quiz_categories.usecase.OpenTDBApiBaseUrlUseCase
+import com.earth.testomania.quiz_categories.viewmodel.DestinationViewModel
 import com.earth.testomania.quiz_screen.MainQuizScreen
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -22,7 +23,8 @@ fun BookQuiz(navigator: DestinationsNavigator) {
     MainQuizScreen(navigator, viewModel)
 }
 
-class GetBooksUseCse @Inject constructor(private val repository: OpenTdbRepo) : GetQuizUseCase() {
+class GetBooksUseCse @Inject constructor(private val repository: OpenTdbRepo) :
+    OpenTDBApiBaseUrlUseCase() {
 
     override suspend fun getRepResult() = repository.getQuiz(OpenTDBApiCategory.BOOKS, 20)
 
