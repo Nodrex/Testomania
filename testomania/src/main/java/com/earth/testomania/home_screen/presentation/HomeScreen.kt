@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.home_screen.presentation.ui_components.AboutBottomSheet
+import com.earth.testomania.home_screen.presentation.ui_components.CustomSnackBar
 import com.earth.testomania.home_screen.presentation.ui_components.GridWithItems
 import com.earth.testomania.home_screen.presentation.ui_components.NetworkStateManager
 import com.earth.testomania.ui.theme.DialogBkgDark
@@ -65,7 +66,10 @@ fun HomeScreen(
         Scaffold(
             modifier = Modifier.statusBarsPadding(),
             scaffoldState = scaffoldState,
-            backgroundColor = Color.Transparent
+            backgroundColor = Color.Transparent,
+            snackbarHost = {
+                CustomSnackBar(scaffoldState)
+            },
         ) {
             ConstraintLayout(
                 modifier = Modifier.fillMaxSize()
