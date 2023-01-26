@@ -19,6 +19,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.earth.testomania.R
+import com.earth.testomania.common.log
 import com.earth.testomania.common.networking.ConnectivityObserver
 import com.earth.testomania.common.networking.NetworkConnectivityObserver
 import com.earth.testomania.ui.theme.DarkRed
@@ -32,7 +33,8 @@ import kiwi.orbit.compose.ui.controls.Text
 fun NetworkStateManager(
     networkConnectivityObserver: NetworkConnectivityObserver,
 ) {
-    val status by networkConnectivityObserver.observe().collectAsState(initial = false)
+    val status by networkConnectivityObserver.observe()
+        .collectAsState(initial = ConnectivityObserver.ConnectionState.Available)
 
     if (status == ConnectivityObserver.ConnectionState.Available) return
 
