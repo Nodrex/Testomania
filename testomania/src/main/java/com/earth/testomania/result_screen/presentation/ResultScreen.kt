@@ -48,28 +48,32 @@ fun ResultScreen(
         modifier = Modifier
             .fillMaxSize()
             .statusBarsPadding()
-            .padding(8.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
+            .padding(start = 8.dp, end = 8.dp, top = 3.dp),
     ) {
-        Spacer(modifier = Modifier.size(30.dp))
         MainResultItem(
             testIconRes = viewModel.resultData.testIconRes,
             testName = viewModel.resultData.quizCategoryName,
             mainColor = OrbitTheme.colors.info.normal,
             progress = viewModel.resultData.overallProgress
         )
-        Image(
-            painter = painterResource(id = illustrationRes),
-            contentDescription = "",
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 4.dp)
-        )
         LazyColumn(
             modifier = Modifier,
         ) {
+            item(key = 0) {
+                Image(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(
+                            bottom = 10.dp,
+                            top = 10.dp
+                        ),
+                    painter = painterResource(id = illustrationRes),
+                    contentDescription = "",
+
+                    )
+            }
             viewModel.resultData.incorrectQuestions.forEach { item ->
-                item(key = item.quiz.id) {
+                item(key = item.quiz.id + 1) {
                     IncorrectAnsweredQuestion(item = item)
                 }
             }
