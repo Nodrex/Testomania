@@ -95,8 +95,7 @@ fun IncorrectAnsweredQuestion(item: IncorrectlyAnsweredQuizModel) {
         ) {
             Text(
                 text = item.quiz.question,
-                fontSize = 20.sp,
-                color = MaterialTheme.colors.onBackground
+                fontSize = 20.sp
             )
 
             val incorrectAnswer = item.incorrectAnswersList.firstOrNull()
