@@ -56,7 +56,12 @@ fun GridWithItems(
         items(viewModel.destinations.size) { index ->
             val item = viewModel.destinations[index]
             CardButton(
-                item, navigator, scaffoldState, modalBottomSheetState, viewModel.networkObserver
+                item,
+                navigator,
+                scaffoldState,
+                modalBottomSheetState,
+                viewModel.networkObserver,
+                index == viewModel.destinations.lastIndex
             )
         }
     }
@@ -70,6 +75,7 @@ fun CardButton(
     scaffoldState: ScaffoldState,
     modalBottomSheetState: ModalBottomSheetState,
     networkConnectivityObserver: NetworkConnectivityObserver,
+    addBottomPadding: Boolean
 ) {
     val scope = rememberCoroutineScope()
     val status by networkConnectivityObserver.observe().collectAsState(initial = false)
@@ -77,8 +83,17 @@ fun CardButton(
     val infoText = stringResource(R.string.check_your_connection)
     val dismissText = stringResource(R.string.dismiss)
 
+    var tileHeight = 125.dp
+    var tileBottomPadding = 0.dp
+    if (addBottomPadding) {
+        tileHeight = 170.dp
+        tileBottomPadding = 45.dp
+    }
+
     SurfaceCard(
-        modifier = Modifier.size(125.dp),
+        modifier = Modifier
+            .size(width = 125.dp, height = tileHeight)
+            .padding(bottom = tileBottomPadding),
         shape = RoundedCornerShape(10.dp),
         enabled = true,
         onClick = {
