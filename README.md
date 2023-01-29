@@ -1,19 +1,19 @@
 # Testomania 
-- This App's main purpose is to demonstrate code excellence for android with
+- 😎 This App's main purpose is to demonstrate code excellence for android with
   clean architecture and modern latest libraries and components.
   On the other hand, this App is useful to kill time while learning new things.
   App's code is open source and everyone can contribute, add his own category, fix bugs, or add features.
-- Our ideology is that all the controls should be as bellow as possible in the thumb reaching range space
+- 💡 Our ideology is that all the controls should be as bellow as possible in the thumb reaching range space
   and all the information should be in upper side of screen, to avoid hand shifting while using App,
   so this will explain our UI decisions :D and we will try to follow this ideology as much as possible.
 
-- Enjoy and have fun
+- Enjoy and have fun 🤘
   
   [<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png"
       alt="Download from Google Play"
       height="80">](https://play.google.com/store/apps/details?id=com.earth.testomania)
 
-## Language:
+##👩‍💻Language:
 - Kotlin
 
 ## architecture:
