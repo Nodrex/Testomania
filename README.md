@@ -13,7 +13,7 @@
       alt="Download from Google Play"
       height="80">](https://play.google.com/store/apps/details?id=com.earth.testomania)
 
-##👩‍💻Language:
+##Language: 👩‍💻
 - Kotlin
 
 ## architecture:
