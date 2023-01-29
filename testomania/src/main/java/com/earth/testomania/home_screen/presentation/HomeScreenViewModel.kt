@@ -47,6 +47,21 @@ class HomeScreenViewModel @Inject constructor(
             destination = HTMLQuizDestination
         ),
         HomeDestinationItem(
+            name = R.string.javascript,
+            icon = R.drawable.html,
+            destination = JavaScriptQuizDestination
+        ),
+        HomeDestinationItem(
+            name = R.string.wordpress,
+            icon = R.drawable.html,
+            destination = WordPressQuizDestination
+        ),
+        HomeDestinationItem(
+            name = R.string.kubernetes,
+            icon = R.drawable.html,
+            destination = KubernetesQuizDestination
+        ),
+        HomeDestinationItem(
             name = R.string.my_sql,
             icon = R.drawable.mysql,
             destination = MySqlQuizDestination

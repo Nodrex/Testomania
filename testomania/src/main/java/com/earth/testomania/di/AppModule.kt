@@ -20,7 +20,6 @@ object AppModule {
     @Provides
     @Singleton
     fun provideOkHttpClient() = OkHttpClient.Builder()
-        .connectTimeout(10, TimeUnit.SECONDS)
         .writeTimeout(10, TimeUnit.SECONDS)
         .readTimeout(30, TimeUnit.SECONDS)
         .addInterceptor(HttpLoggingInterceptor()

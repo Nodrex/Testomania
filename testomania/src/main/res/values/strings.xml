@@ -58,4 +58,7 @@
     <string name="computers">Computers</string>
     <string name="general_knowledge">General Knowledge</string>
     <string name="music_and_theater">Music and Theater</string>
+    <string name="javascript">JavaScript</string>
+    <string name="wordpress">Wordpress</string>
+    <string name="kubernetes">Kubernetes</string>
 </resources>
