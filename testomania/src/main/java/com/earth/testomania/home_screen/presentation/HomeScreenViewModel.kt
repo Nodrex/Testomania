@@ -19,11 +19,13 @@ class HomeScreenViewModel @Inject constructor(
             icon = R.drawable.about,
             destination = AboutBottomSheetDestination
         ),
-        HomeDestinationItem(
+        //TODO commenting temporarily, while we fix bug to show correct category on result screen
+        //not to delay app release further
+        /*HomeDestinationItem(
             name = R.string.technical_tests,
             icon = R.drawable.it,
             destination = InformationalTechnologiesQuizDestination
-        ),
+        ),*/
         HomeDestinationItem(
             name = R.string.linux,
             icon = R.drawable.linux,

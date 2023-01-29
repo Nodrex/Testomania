@@ -41,6 +41,7 @@ fun HomeScreen(
         initialValue = ModalBottomSheetValue.Hidden, skipHalfExpanded = true
     )
 
+
     val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
 
@@ -52,14 +53,21 @@ fun HomeScreen(
 
     val configuration = LocalConfiguration.current
     val halfScreenHeight = configuration.screenHeightDp.dp / 2
+    val screen80Percent = configuration.screenHeightDp * 0.8
+    val screen50Percent = configuration.screenHeightDp * 0.5
 
     // We need ModalBottomSheetLayout, because only this BottomSheet can be closed when clicking
     // outside of bottomSheet
-    ModalBottomSheetLayout(sheetState = modalBottomSheetState,
+    ModalBottomSheetLayout(
+        sheetState = modalBottomSheetState,
         sheetBackgroundColor = if (isSystemInDarkTheme()) DialogBkgDark else DialogBkgLight,
         scrimColor = Color.Transparent,
         sheetContent = {
-            Column(Modifier.navigationBarsPadding()) {
+            Column(
+                Modifier
+                    .navigationBarsPadding()
+                    .heightIn(min = screen50Percent.dp, max = screen80Percent.dp)
+            ) {
                 AboutBottomSheet(modalBottomSheetState, scope)
             }
         }) {

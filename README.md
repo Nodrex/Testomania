@@ -3,7 +3,7 @@
   clean architecture and modern latest libraries and components.
   On the other hand, this App is useful to kill time while learning new things.
   App's code is open source and everyone can contribute, add his own category, fix bugs, or add features.
-- Also our ideology is that all the controls should be as bellow as possible in the thumb reaching range space
+- Our ideology is that all the controls should be as bellow as possible in the thumb reaching range space
   and all the information should be in upper side of screen, to avoid hand shifting while using App,
   so this will explain our UI decisions :D and we will try to follow this ideology as much as possible.
 
