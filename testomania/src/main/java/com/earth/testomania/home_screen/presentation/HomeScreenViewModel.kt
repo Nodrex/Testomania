@@ -48,17 +48,17 @@ class HomeScreenViewModel @Inject constructor(
         ),
         HomeDestinationItem(
             name = R.string.javascript,
-            icon = R.drawable.html,
+            icon = R.drawable.js,
             destination = JavaScriptQuizDestination
         ),
         HomeDestinationItem(
             name = R.string.wordpress,
-            icon = R.drawable.html,
+            icon = R.drawable.wordpress,
             destination = WordPressQuizDestination
         ),
         HomeDestinationItem(
             name = R.string.kubernetes,
-            icon = R.drawable.html,
+            icon = R.drawable.kubernetes,
             destination = KubernetesQuizDestination
         ),
         HomeDestinationItem(
