@@ -49,6 +49,7 @@ class OpenTdbRepoImpl @Inject constructor(private val api: OpenTdbQuizApi) : Ope
                 isCorrect = true
             )
         )
+        //TODO shuffle is business logic so should not be here
     }.shuffled().mapIndexed { index, answer ->
         answer.copy(tag = (index + 1).toString())
     }

@@ -19,11 +19,13 @@ class HomeScreenViewModel @Inject constructor(
             icon = R.drawable.about,
             destination = AboutBottomSheetDestination
         ),
-        HomeDestinationItem(
+        //TODO commenting temporarily, while we fix bug to show correct category on result screen
+        //not to delay app release further
+        /*HomeDestinationItem(
             name = R.string.technical_tests,
             icon = R.drawable.it,
             destination = InformationalTechnologiesQuizDestination
-        ),
+        ),*/
         HomeDestinationItem(
             name = R.string.linux,
             icon = R.drawable.linux,
@@ -43,6 +45,21 @@ class HomeScreenViewModel @Inject constructor(
             name = R.string.html,
             icon = R.drawable.html,
             destination = HTMLQuizDestination
+        ),
+        HomeDestinationItem(
+            name = R.string.javascript,
+            icon = R.drawable.js,
+            destination = JavaScriptQuizDestination
+        ),
+        HomeDestinationItem(
+            name = R.string.wordpress,
+            icon = R.drawable.wordpress,
+            destination = WordPressQuizDestination
+        ),
+        HomeDestinationItem(
+            name = R.string.kubernetes,
+            icon = R.drawable.kubernetes,
+            destination = KubernetesQuizDestination
         ),
         HomeDestinationItem(
             name = R.string.my_sql,

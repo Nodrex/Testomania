@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.home_screen.presentation.ui_components.AboutBottomSheet
+import com.earth.testomania.home_screen.presentation.ui_components.CustomSnackBar
 import com.earth.testomania.home_screen.presentation.ui_components.GridWithItems
 import com.earth.testomania.home_screen.presentation.ui_components.NetworkStateManager
 import com.earth.testomania.ui.theme.DialogBkgDark
@@ -36,11 +37,10 @@ fun HomeScreen(
 ) {
     val viewModel: HomeScreenViewModel = hiltViewModel()
 
-    NetworkStateManager(viewModel.networkObserver)
-
     val modalBottomSheetState = rememberModalBottomSheetState(
         initialValue = ModalBottomSheetValue.Hidden, skipHalfExpanded = true
     )
+
 
     val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
@@ -53,21 +53,31 @@ fun HomeScreen(
 
     val configuration = LocalConfiguration.current
     val halfScreenHeight = configuration.screenHeightDp.dp / 2
+    val screen80Percent = configuration.screenHeightDp * 0.8
+    val screen50Percent = configuration.screenHeightDp * 0.5
 
     // We need ModalBottomSheetLayout, because only this BottomSheet can be closed when clicking
     // outside of bottomSheet
-    ModalBottomSheetLayout(sheetState = modalBottomSheetState,
+    ModalBottomSheetLayout(
+        sheetState = modalBottomSheetState,
         sheetBackgroundColor = if (isSystemInDarkTheme()) DialogBkgDark else DialogBkgLight,
         scrimColor = Color.Transparent,
         sheetContent = {
-            Column(Modifier.navigationBarsPadding()) {
+            Column(
+                Modifier
+                    .navigationBarsPadding()
+                    .heightIn(min = screen50Percent.dp, max = screen80Percent.dp)
+            ) {
                 AboutBottomSheet(modalBottomSheetState, scope)
             }
         }) {
         Scaffold(
             modifier = Modifier.statusBarsPadding(),
             scaffoldState = scaffoldState,
-            backgroundColor = Color.Transparent
+            backgroundColor = Color.Transparent,
+            snackbarHost = {
+                CustomSnackBar(scaffoldState)
+            },
         ) {
             ConstraintLayout(
                 modifier = Modifier.fillMaxSize()
@@ -88,4 +98,6 @@ fun HomeScreen(
             }
         }
     }
+
+    NetworkStateManager(viewModel.networkObserver)
 }
