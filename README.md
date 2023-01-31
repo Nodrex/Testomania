@@ -16,42 +16,42 @@
 ## 👩‍💻 Language:
 - Kotlin
 
-## architecture:
+## 🏗 architecture:
  - Clean package based 
  - MVVM
  - Single Activity
  
- ## UI
+ ## 🖼️ UI
  - jetpack compose
  - jetpack compose navigation (https://github.com/raamcosta/compose-destinations)
  - Dark mode
  - Tablet UI
  
- ## DI
+ ## 🔪 DI
  - Hilt
  
- ## Testing
+ ## ✅ Testing
  - Unit Test (MockK)
  - Instrumentation (Robolectric)
  - UI Test (Espresso)
 
- ## Database
+ ## 💽 Database
  - DataStore
  - Room DB
 
- ## Observable
+ ## 👁️ Observable
  - StateFlow
  - SharedFlow
  - Flow
  - Jetpack Compose states
 
- ## Multithreading
+ ## 🧵 Multithreading
  - Coroutines
  
- ## Networking
+ ## 🌐 Networking
  - Retrofit
  - Moshi as Json convertor  
  - Coil to download images
 
- ## Tools
+ ## ⚙️ Tools
  - LeakCanary
