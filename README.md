@@ -13,6 +13,10 @@
       alt="Download from Google Play"
       height="80">](https://play.google.com/store/apps/details?id=com.earth.testomania)
 
+![image](https://user-images.githubusercontent.com/6556678/216141217-fcbbbb7c-6e10-4e93-8891-b7f0eb2a1a4b.png) ![image](https://user-images.githubusercontent.com/6556678/216141489-5e8bdc5a-0655-46e7-99d9-613224f27709.png) ![image](https://user-images.githubusercontent.com/6556678/216141634-02ae5434-8499-4557-99e5-561711a7a3f1.png)
+
+
+
 ## 👩‍💻 Language:
 - Kotlin
 
