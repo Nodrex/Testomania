@@ -1,6 +1,9 @@
 package com.earth.testomania.apis.quiz.opentdb.data.source.remote.dto
 
-data class ResultDto(
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
+data class ResultDTO(
     val category: String,
     val correct_answer: String,
     val difficulty: String,
