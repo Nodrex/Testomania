@@ -2,7 +2,7 @@ package com.earth.testomania.apis.quiz.opentdb.data.repository
 
 import android.text.Html
 import com.earth.testomania.apis.quiz.opentdb.data.source.OpenTdbQuizApi
-import com.earth.testomania.apis.quiz.opentdb.data.source.remote.dto.ResultDto
+import com.earth.testomania.apis.quiz.opentdb.data.source.remote.dto.ResultDTO
 import com.earth.testomania.apis.quiz.opentdb.domain.models.OpenTDBApiCategory
 import com.earth.testomania.apis.quiz.opentdb.domain.repository.OpenTdbRepo
 import com.earth.testomania.common.data.DataState
@@ -22,7 +22,7 @@ class OpenTdbRepoImpl @Inject constructor(private val api: OpenTdbQuizApi) : Ope
                 category = category.id, questionCount = questionCount
             )
 
-            val quizList = result.body()?.results?.mapIndexed { i: Int, resultDto: ResultDto ->
+            val quizList = result.body()?.results?.mapIndexed { i: Int, resultDto: ResultDTO ->
                 Quiz(
                     id = i,
                     point = 1.0,
@@ -37,7 +37,7 @@ class OpenTdbRepoImpl @Inject constructor(private val api: OpenTdbQuizApi) : Ope
         }
     }
 
-    private fun answers(resultDto: ResultDto) = buildList {
+    private fun answers(resultDto: ResultDTO) = buildList {
         resultDto.incorrect_answers.forEachIndexed { index, answer ->
             add(Answer(index.toString(), parseText(answer), null, false))
         }
