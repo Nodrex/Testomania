@@ -2,6 +2,7 @@ package com.earth.testomania.quiz_categories
 
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.earth.testomania.common.unsplash.UnsplashRepo
 import com.earth.testomania.apis.quiz.opentdb.domain.models.OpenTDBApiCategory
 import com.earth.testomania.apis.quiz.opentdb.domain.repository.OpenTdbRepo
 import com.earth.testomania.quiz_categories.usecase.OpenTDBApiBaseUrlUseCase
@@ -32,8 +33,10 @@ class GetAnimalsQuizUseCse @Inject constructor(private val repository: OpenTdbRe
 @HiltViewModel
 class AnimalsQuizViewModel @Inject constructor(
     useCase: GetAnimalsQuizUseCse,
-    dispatcher: CoroutineDispatcher
+    dispatcher: CoroutineDispatcher,
+    unsplashRepo: UnsplashRepo,
 ) : DestinationViewModel(
     useCase,
-    dispatcher
+    dispatcher,
+    unsplashRepo
 )

@@ -1,4 +1,5 @@
-package com.earth.testomania.quiz_categories.viewmodel
+package com.earth.testomania.quiz_categories
+/*
 
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
@@ -38,6 +39,7 @@ abstract class DestinationViewModel(
 
     init {
         initialize()
+
     }
 
     private fun getIllustration(categoryName: String) = viewModelScope.launch {
@@ -117,7 +119,15 @@ abstract class DestinationViewModel(
                             answerTag
                         ))
 
-    fun enableAnswerSelection(quizUIState: QuizUIState) =
-        quizUIState.selectedAnswers.isEmpty()
+//    fun getCategoryName() = category.tag.ifEmpty {
+//        if (category.category == QuizCategory.Programing.category) {
+//            "Programing"
+//        } else category.category
+//    }
 
-}
+    fun enableAnswerSelection(quizUIState: QuizUIState) =
+        */
+/*if (quizUIState.quiz.hasMultiAnswer) !quizUIState.multiSelectionWasDone.value else*//*
+
+        quizUIState.selectedAnswers.isEmpty()
+}*/

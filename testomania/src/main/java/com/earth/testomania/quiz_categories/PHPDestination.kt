@@ -12,6 +12,7 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
+import com.earth.testomania.common.unsplash.UnsplashRepo
 
 const val ROUTE_PHP = "home/PHP"
 
@@ -32,8 +33,8 @@ class GetPHPUseCse @Inject constructor(private val repository: QuizRepository) :
 @HiltViewModel
 class PHPViewModel @Inject constructor(
     useCase: GetPHPUseCse,
-    dispatcher: CoroutineDispatcher
+    dispatcher: CoroutineDispatcher, unsplashRepo: UnsplashRepo,
 ) : DestinationViewModel(
     useCase,
-    dispatcher
+    dispatcher, unsplashRepo,
 )

@@ -12,6 +12,7 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
+import com.earth.testomania.common.unsplash.UnsplashRepo
 
 const val ROUTE_PROGRAMING = "home/programing"
 
@@ -32,8 +33,8 @@ class GetProgramingUseCse @Inject constructor(private val repository: QuizReposi
 @HiltViewModel
 class ProgramingViewModel @Inject constructor(
     useCase: GetProgramingUseCse,
-    dispatcher: CoroutineDispatcher
+    dispatcher: CoroutineDispatcher, unsplashRepo: UnsplashRepo,
 ) : DestinationViewModel(
     useCase,
-    dispatcher
+    dispatcher, unsplashRepo,
 )

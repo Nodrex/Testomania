@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.apis.quiz.quizapi.domain.model.QuizApiCategory
 import com.earth.testomania.apis.quiz.quizapi.domain.repository.QuizRepository
+import com.earth.testomania.common.unsplash.UnsplashRepo
 import com.earth.testomania.quiz_categories.usecase.QuizApiBaseUrlUseCase
 import com.earth.testomania.quiz_categories.viewmodel.DestinationViewModel
 import com.earth.testomania.quiz_screen.MainQuizScreen
@@ -32,8 +33,8 @@ class GetLinuxUseCse @Inject constructor(private val repository: QuizRepository)
 @HiltViewModel
 class LinuxViewModel @Inject constructor(
     useCase: GetLinuxUseCse,
-    dispatcher: CoroutineDispatcher
+    dispatcher: CoroutineDispatcher, unsplashRepo: UnsplashRepo,
 ) : DestinationViewModel(
     useCase,
-    dispatcher
+    dispatcher, unsplashRepo,
 )

@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.earth.testomania.apis.quiz.opentdb.domain.models.OpenTDBApiCategory
 import com.earth.testomania.apis.quiz.opentdb.domain.repository.OpenTdbRepo
+import com.earth.testomania.common.unsplash.UnsplashRepo
 import com.earth.testomania.quiz_categories.usecase.OpenTDBApiBaseUrlUseCase
 import com.earth.testomania.quiz_categories.viewmodel.DestinationViewModel
 import com.earth.testomania.quiz_screen.MainQuizScreen
@@ -32,5 +33,10 @@ class GetAnimeMangaUseCse @Inject constructor(
 
 @HiltViewModel
 class AnimeMangaViewModel @Inject constructor(
-    useCase: GetAnimeMangaUseCse, dispatcher: CoroutineDispatcher
-) : DestinationViewModel(useCase, dispatcher)
+    useCase: GetAnimeMangaUseCse,
+    dispatcher: CoroutineDispatcher, unsplashRepo: UnsplashRepo,
+) : DestinationViewModel(
+    useCase,
+    dispatcher,
+    unsplashRepo
+)

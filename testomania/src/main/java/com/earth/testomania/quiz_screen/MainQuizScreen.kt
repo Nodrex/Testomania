@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -14,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import androidx.core.content.res.ResourcesCompat.ID_NULL
+import coil.compose.AsyncImage
 import com.earth.testomania.R
 import com.earth.testomania.common.model.QuizUIState
 import com.earth.testomania.destinations.ResultScreenDestination
@@ -148,7 +150,7 @@ private fun CreateQuizScreen(
             }, Modifier.weight(1f)) {
                 Text(text = stringResource(R.string.navigation_next))
                 Icon(
-                    painter = painterResource(id = R.drawable.ic_orbit_chevron_double_forward),
+                    painter = painterResource(id = R.drawable.ic_orbit_chevron_forward),
                     contentDescription = ""
                 )
             }
@@ -168,7 +170,7 @@ private fun QuestionAndAnswers(
     HorizontalPager(
         modifier = modifier.fillMaxSize(),
         count = quizList.size,
-        state = pagerState,
+        state = pagerState
     ) { pageIndex ->
         ConstraintLayout(modifier = Modifier.fillMaxSize()) {
             val (question, answers, illustration) = createRefs()
@@ -190,6 +192,15 @@ private fun QuestionAndAnswers(
             ) {
                 if (maxHeight > 100.dp) {
                     CategoryIllustration(category = quizList[pageIndex].quiz.category)
+                    val url by viewModel.categoryImageUrl.collectAsState()
+                    if (url.isNotEmpty()) {
+                        AsyncImage(
+                            model = url,
+                            contentDescription = "category illustration",
+                            modifier = modifier.fillMaxWidth(),
+                            contentScale = ContentScale.Crop,
+                        )
+                    }
                 }
             }
 
@@ -223,7 +234,7 @@ private fun QuestionAndAnswers(
 
 private fun findFirstIndexOfUnansweredQuestion(
     quizList: List<QuizUIState>,
-    pagerState: PagerState,
+    pagerState: PagerState
 ): Int {
     return quizList.indexOfFirst {
         it.selectedAnswers.isEmpty()

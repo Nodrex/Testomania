@@ -12,6 +12,7 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
+import com.earth.testomania.common.unsplash.UnsplashRepo
 
 const val ROUTE_TV = "home/tv"
 
@@ -32,8 +33,9 @@ class GetTVUseCse @Inject constructor(private val repository: OpenTdbRepo) :
 @HiltViewModel
 class TVViewModel @Inject constructor(
     useCase: GetTVUseCse,
-    dispatcher: CoroutineDispatcher
+    dispatcher: CoroutineDispatcher, unsplashRepo: UnsplashRepo,
 ) : DestinationViewModel(
     useCase,
-    dispatcher
+    dispatcher,
+    unsplashRepo
 )

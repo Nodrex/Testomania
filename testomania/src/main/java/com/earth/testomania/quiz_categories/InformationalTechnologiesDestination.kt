@@ -12,6 +12,7 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
+import com.earth.testomania.common.unsplash.UnsplashRepo
 
 
 const val ROUTE_INFORMATIONAL_TECHNOLOGIES = "home/informational_technologies"
@@ -33,8 +34,8 @@ class GetInformationalTechnologiesUseCse @Inject constructor(private val reposit
 @HiltViewModel
 class InformationalTechnologiesViewModel @Inject constructor(
     useCase: GetInformationalTechnologiesUseCse,
-    dispatcher: CoroutineDispatcher
+    dispatcher: CoroutineDispatcher, unsplashRepo: UnsplashRepo,
 ) : DestinationViewModel(
     useCase,
-    dispatcher
+    dispatcher, unsplashRepo,
 )
