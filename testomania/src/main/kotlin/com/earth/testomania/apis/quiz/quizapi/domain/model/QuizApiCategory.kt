@@ -1,7 +1,5 @@
 package com.earth.testomania.apis.quiz.quizapi.domain.model
 
-import com.earth.testomania.R
-
 /**
  * This is use by API to request specific category
  */
