@@ -47,7 +47,7 @@ accompanist-pager = "com.google.accompanist:accompanist-pager:0.28.0"
 mockk = "io.mockk:mockk:1.13.4"
 mockk-android = "io.mockk:mockk-android:1.13.4"
 
-coil = "io.coil-kt:coil-compose:2.2.2"
+coil = "io.coil-kt:coil-compose:2.3.0"
 
 firebase-crashlytics = "com.google.firebase:firebase-crashlytics:18.3.6"
 firebase-analytics = "com.google.firebase:firebase-crashlytics:18.3.6"
