@@ -8,9 +8,9 @@
     <string name="title_name">Testomania</string>
     <string name="error_load">Was not able to load tests, please try again later</string>
     <string name="error_generic">Some Error occurred, please try again later</string>
-    <string name="about_app">This App\'s main purpose is to demonstrate code excellence for android with
+    <string name="about_app">This App\'s main purpose is to demonstrate code excellence for Android with
         clean architecture and modern latest libraries and components.
-        On the other hand, this App is useful to kill time while learning new things.
+        On the other hand, this App is useful to pass time while learning new things.
         App\'s code is open source and everyone can contribute, add his own category, fix bugs, or add features.
         \nOur ideology is that all the controls should be as below as possible in the thumb-reaching range space
         and all the information should be on the upper side of the screen, to avoid hand shifting while using the App,
