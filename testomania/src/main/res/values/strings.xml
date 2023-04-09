@@ -19,6 +19,8 @@
     <string name="app_github_url">https://github.com/Nodrex/Testomania</string>
     <string name="creator_developers">Creator Developers:</string>
     <string name="navigation_finish">Finish</string>
+    <string name="feedback">Feedback</string>
+    <string name="help">Help</string>
     <string name="navigation_next">Next/Skip</string>
     <string name="coming_soon">Coming soon...</string>
     <string name="dismiss">Dismiss</string>

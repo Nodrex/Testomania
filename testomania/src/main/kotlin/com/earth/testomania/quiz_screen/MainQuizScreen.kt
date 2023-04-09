@@ -2,16 +2,25 @@
 
 package com.earth.testomania.quiz_screen
 
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ConstrainedLayoutReference
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.ConstraintLayoutScope
 import androidx.constraintlayout.compose.Dimension
 import androidx.core.content.res.ResourcesCompat.ID_NULL
 import com.earth.testomania.R
@@ -26,10 +35,8 @@ import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
-import kiwi.orbit.compose.ui.controls.ButtonPrimary
-import kiwi.orbit.compose.ui.controls.ButtonSecondary
 import kiwi.orbit.compose.ui.controls.Icon
-import kiwi.orbit.compose.ui.controls.Text
+import kiwi.orbit.compose.ui.controls.SurfaceCard
 import kotlinx.coroutines.launch
 
 
@@ -99,17 +106,34 @@ private fun CreateQuizScreen(
             viewModel
         )
 
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(10.dp)
-                .constrainAs(navigation) {
-                    top.linkTo(pager.bottom)
-                    bottom.linkTo(parent.bottom)
-                }, horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.End)
-        ) {
-            ButtonSecondary(
-                onClick = {
+        BottomBar(navigation, pager, pagerState, quizList, navigator, viewModel)
+    }
+}
+
+@Composable
+private fun ConstraintLayoutScope.BottomBar(
+    navigation: ConstrainedLayoutReference,
+    pager: ConstrainedLayoutReference,
+    pagerState: PagerState,
+    quizList: List<QuizUIState>,
+    navigator: DestinationsNavigator,
+    viewModel: DestinationViewModel
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(10.dp)
+            .constrainAs(navigation) {
+                top.linkTo(pager.bottom)
+                bottom.linkTo(parent.bottom)
+            }, horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.End)
+    ) {
+        val scope = rememberCoroutineScope()
+
+        BottomAppBar(
+            containerColor = Color.Transparent,
+            actions = {
+                BottomBarItem(R.string.navigation_finish, R.drawable.ic_check) {
                     navigator.navigateUp()
                     navigator.navigate(
                         ResultScreenDestination(
@@ -125,31 +149,81 @@ private fun CreateQuizScreen(
                             )
                         )
                     )
-                },
-                Modifier.weight(1f)
-            ) {
-                Text(text = stringResource(R.string.navigation_finish))
-
-            }
-            val scope = rememberCoroutineScope()
-
-            ButtonPrimary(onClick = {
-                scope.launch {
-                    if (pagerState.pageCount == pagerState.currentPage + 1) {
-                        val unansweredQuestion =
-                            findFirstIndexOfUnansweredQuestion(quizList, pagerState)
-
-                        pagerState.animateScrollToPage(unansweredQuestion)
-
-                    } else {
-                        pagerState.animateScrollToPage(pagerState.currentPage + 1)
-                    }
                 }
-            }, Modifier.weight(1f)) {
-                Text(text = stringResource(R.string.navigation_next))
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_orbit_chevron_double_forward),
-                    contentDescription = ""
+                Spacer(modifier = Modifier.width(10.dp))
+                BottomBarItem(R.string.feedback, R.drawable.ic_feedback) {
+                    //TODO open feedback screen
+                }
+                Spacer(modifier = Modifier.width(10.dp))
+                BottomBarItem(R.string.help, R.drawable.ic_help) {
+                    //TODO open feedback screen
+                }
+            },
+            floatingActionButton = {
+                FloatingActionButton(
+                    onClick = {
+                        scope.launch {
+                            if (pagerState.pageCount == pagerState.currentPage + 1) {
+                                val unansweredQuestion =
+                                    findFirstIndexOfUnansweredQuestion(quizList, pagerState)
+
+                                pagerState.animateScrollToPage(unansweredQuestion)
+
+                            } else {
+                                pagerState.animateScrollToPage(pagerState.currentPage + 1)
+                            }
+                        }
+                    },
+                    containerColor = BottomAppBarDefaults.bottomAppBarFabColor,
+                    elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_orbit_chevron_double_forward),
+                        contentDescription = ""
+                    )
+                }
+            }
+        )
+    }
+}
+
+@Composable
+private fun BottomBarItem(
+    @StringRes strId: Int,
+    @DrawableRes drawableId: Int,
+    onClick: () -> Unit
+) {
+    //TODO need to detect nav bar height
+    SurfaceCard(
+        modifier = Modifier
+            .size(height = 60.dp, width = 65.dp),
+        shape = RoundedCornerShape(10.dp),
+        backgroundColor = Color.Transparent,
+        elevation = 0.dp,
+        enabled = true,
+        onClick = {
+            onClick()
+        }) {
+        Column(
+            modifier = Modifier.padding(6.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            val name = stringResource(strId)
+            Icon(
+                painter = painterResource(drawableId),
+                contentDescription = name,
+                tint = Color.Unspecified
+            )
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                kiwi.orbit.compose.ui.controls.Text(
+                    text = name,
+                    textAlign = TextAlign.Center,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
                 )
             }
         }
