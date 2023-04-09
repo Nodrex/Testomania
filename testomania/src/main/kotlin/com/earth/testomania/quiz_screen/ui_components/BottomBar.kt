@@ -2,6 +2,7 @@ package com.earth.testomania.quiz_screen.ui_components
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.BottomAppBar
@@ -25,6 +26,8 @@ import com.earth.testomania.common.model.QuizUIState
 import com.earth.testomania.destinations.ResultScreenDestination
 import com.earth.testomania.quiz_categories.viewmodel.DestinationViewModel
 import com.earth.testomania.result_screen.domain.use_case.ResultDataCollectorUseCase
+import com.earth.testomania.ui.theme.DialogBkgDark
+import com.earth.testomania.ui.theme.DialogBkgLight
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.PagerState
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -43,72 +46,70 @@ fun ConstraintLayoutScope.BottomBar(
     navigator: DestinationsNavigator,
     viewModel: DestinationViewModel
 ) {
-    Row(
-        modifier = Modifier
+    val scope = rememberCoroutineScope()
+
+    BottomAppBar(
+        modifier =
+        Modifier
             .fillMaxWidth()
-            .padding(10.dp)
+            .padding(start = 6.dp)
             .constrainAs(navigation) {
                 top.linkTo(pager.bottom)
                 bottom.linkTo(parent.bottom)
-            }, horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.End)
-    ) {
-        val scope = rememberCoroutineScope()
-
-        BottomAppBar(
-            containerColor = Color.Transparent,
-            actions = {
-                BottomBarItem(R.string.navigation_finish, R.drawable.ic_check) {
-                    navigator.navigateUp()
-                    navigator.navigate(
-                        ResultScreenDestination(
-                            ResultDataCollectorUseCase().getQuizResult(
-                                quizList,
-                                viewModel.overallScore,
-                                //TODO not good we need to get actually from ViewModel as a category
-                                // and not from quiz himself (occurs bug in case of Information
-                                // technologies when multiple categories are together),
-                                // but for now let's leave
-                                // TODO reduce indentation
-                                quizList.firstOrNull()?.quiz?.category ?: "Quiz"
-                            )
+            },
+        containerColor = Color.Transparent,
+        actions = {
+            BottomBarItem(R.string.navigation_finish, R.drawable.ic_check) {
+                navigator.navigateUp()
+                navigator.navigate(
+                    ResultScreenDestination(
+                        ResultDataCollectorUseCase().getQuizResult(
+                            quizList,
+                            viewModel.overallScore,
+                            //TODO not good we need to get actually from ViewModel as a category
+                            // and not from quiz himself (occurs bug in case of Information
+                            // technologies when multiple categories are together),
+                            // but for now let's leave
+                            // TODO reduce indentation
+                            quizList.firstOrNull()?.quiz?.category ?: "Quiz"
                         )
                     )
-                }
-                Spacer(modifier = Modifier.width(10.dp))
-                BottomBarItem(R.string.feedback, R.drawable.ic_feedback) {
-                    //TODO open feedback screen
-                }
-                Spacer(modifier = Modifier.width(10.dp))
-                BottomBarItem(R.string.help, R.drawable.ic_help) {
-                    //TODO open feedback screen
-                }
-            },
-            floatingActionButton = {
-                FloatingActionButton(
-                    onClick = {
-                        scope.launch {
-                            if (pagerState.pageCount == pagerState.currentPage + 1) {
-                                val unansweredQuestion =
-                                    findFirstIndexOfUnansweredQuestion(quizList, pagerState)
-
-                                pagerState.animateScrollToPage(unansweredQuestion)
-
-                            } else {
-                                pagerState.animateScrollToPage(pagerState.currentPage + 1)
-                            }
-                        }
-                    },
-                    containerColor = BottomAppBarDefaults.bottomAppBarFabColor,
-                    elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_orbit_chevron_double_forward),
-                        contentDescription = ""
-                    )
-                }
+                )
             }
-        )
-    }
+            Spacer(modifier = Modifier.width(10.dp))
+            BottomBarItem(R.string.feedback, R.drawable.ic_feedback) {
+                //TODO open feedback screen
+            }
+            Spacer(modifier = Modifier.width(10.dp))
+            BottomBarItem(R.string.help, R.drawable.ic_help) {
+                //TODO open feedback screen
+            }
+        },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = {
+                    scope.launch {
+                        if (pagerState.pageCount == pagerState.currentPage + 1) {
+                            val unansweredQuestion =
+                                findFirstIndexOfUnansweredQuestion(quizList, pagerState)
+
+                            pagerState.animateScrollToPage(unansweredQuestion)
+
+                        } else {
+                            pagerState.animateScrollToPage(pagerState.currentPage + 1)
+                        }
+                    }
+                },
+                containerColor = BottomAppBarDefaults.bottomAppBarFabColor,
+                elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_orbit_chevron_double_forward),
+                    contentDescription = ""
+                )
+            }
+        }
+    )
 }
 
 @Composable
@@ -137,7 +138,7 @@ private fun BottomBarItem(
             Icon(
                 painter = painterResource(drawableId),
                 contentDescription = name,
-                tint = Color.Unspecified
+                tint = if (isSystemInDarkTheme()) Color.White else Color.Black,
             )
             Box(
                 modifier = Modifier.fillMaxSize(),
