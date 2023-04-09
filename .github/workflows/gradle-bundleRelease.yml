@@ -42,3 +42,12 @@ jobs:
           path: |
             ./testomania/build/outputs/bundle/release/*
             ./testomania/build/outputs/apk/release/*
+      - name: Upload Android Release to Play Store
+        uses: r0adkll/upload-google-play@v1.1.1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT_API_ACCESS }}
+          packageName: com.sohohouse.seven
+          releaseFiles: testomania/build/outputs/apk/release/app-production-release.aab
+          track: alpha
+          status: completed
+          mappingFile: testomania/build/outputs/mapping/release/mapping.txt
