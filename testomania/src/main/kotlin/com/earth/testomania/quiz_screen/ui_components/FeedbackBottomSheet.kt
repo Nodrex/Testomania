@@ -1,21 +1,28 @@
 package com.earth.testomania.quiz_screen.ui_components
 
-import androidx.compose.foundation.*
+import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.platform.SoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.earth.testomania.R
+import com.earth.testomania.quiz_categories.viewmodel.DestinationViewModel
 import com.earth.testomania.ui.theme.Gray
 import kiwi.orbit.compose.ui.OrbitTheme
 import kiwi.orbit.compose.ui.controls.SurfaceCard
@@ -23,11 +30,12 @@ import kiwi.orbit.compose.ui.controls.Text
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterialApi::class)
+@OptIn(ExperimentalMaterialApi::class, ExperimentalComposeUiApi::class)
 @Composable
 fun FeedbackBottomSheet(
     modalBottomSheetState: ModalBottomSheetState,
     scope: CoroutineScope,
+    viewModel: DestinationViewModel,
 ) {
     Column(
         Modifier
@@ -42,6 +50,7 @@ fun FeedbackBottomSheet(
         Spacer(modifier = Modifier.height(20.dp))
 
         var text by remember { mutableStateOf("") }
+        val keyboardController = LocalSoftwareKeyboardController.current
 
         TextField(
             value = text,
@@ -50,8 +59,8 @@ fun FeedbackBottomSheet(
             textStyle = MaterialTheme.typography.body1,
             shape = RoundedCornerShape(6.dp),
             keyboardOptions = KeyboardOptions(imeAction = androidx.compose.ui.text.input.ImeAction.Send),
-            keyboardActions = KeyboardActions(onDone = {
-                sendFeedbackAndCloseBottomSheet(scope, modalBottomSheetState)
+            keyboardActions = KeyboardActions(onSend = {
+                sendFeedbackAndCloseBottomSheet(scope, modalBottomSheetState, text, viewModel, keyboardController)
             }),
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = if (isSystemInDarkTheme()) Gray else Color.White,
@@ -72,7 +81,13 @@ fun FeedbackBottomSheet(
             elevation = 0.dp,
             enabled = true,
             onClick = {
-                sendFeedbackAndCloseBottomSheet(scope, modalBottomSheetState)
+                sendFeedbackAndCloseBottomSheet(
+                    scope,
+                    modalBottomSheetState,
+                    text,
+                    viewModel,
+                    keyboardController
+                )
             }) {
             Box(
                 contentAlignment = Alignment.Center
@@ -88,12 +103,16 @@ fun FeedbackBottomSheet(
 
 }
 
-@OptIn(ExperimentalMaterialApi::class)
+@OptIn(ExperimentalMaterialApi::class, ExperimentalComposeUiApi::class)
 private fun sendFeedbackAndCloseBottomSheet(
     scope: CoroutineScope,
-    modalBottomSheetState: ModalBottomSheetState
+    modalBottomSheetState: ModalBottomSheetState,
+    text: String,
+    viewModel: DestinationViewModel,
+    keyboardController: SoftwareKeyboardController?
 ) {
-    //TODO send feedback with user text and attache id or quiz
+    viewModel.sendFeedback(text)
+    keyboardController?.hide()
     scope.launch {
         modalBottomSheetState.hide()
     }
