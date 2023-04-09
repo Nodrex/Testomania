@@ -23,6 +23,11 @@ val developers = listOf(
         "https://www.linkedin.com/in/nodar-tchumbadze-15351163/"
     ),
     Developer(
+        "Matthew Pargalava",
+        "https://github.com/Shika0106",
+        "https://www.linkedin.com/in/matte-parghalava-2875a21a7"
+    ),
+    Developer(
         "Nika Mgaloblishvili",
         "https://github.com/nmgalo",
         "https://www.linkedin.com/in/nika-mgaloblishvili/"
