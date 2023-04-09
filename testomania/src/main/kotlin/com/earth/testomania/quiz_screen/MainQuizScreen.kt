@@ -2,27 +2,39 @@
 
 package com.earth.testomania.quiz_screen
 
+import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.ModalBottomSheetLayout
+import androidx.compose.material.ModalBottomSheetValue
+import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import androidx.core.content.res.ResourcesCompat.ID_NULL
 import com.earth.testomania.common.model.QuizUIState
+import com.earth.testomania.home_screen.presentation.ui_components.AboutBottomSheet
 import com.earth.testomania.quiz_categories.viewmodel.DestinationViewModel
 import com.earth.testomania.quiz_screen.*
 import com.earth.testomania.quiz_screen.ui_components.BottomBar
+import com.earth.testomania.quiz_screen.ui_components.FeedbackBottomSheet
+import com.earth.testomania.ui.theme.DialogBkgDark
+import com.earth.testomania.ui.theme.DialogBkgLight
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import kotlinx.coroutines.launch
 
 
 const val TECHNICAL_ROUTE = "home/technical_tests"
@@ -48,7 +60,7 @@ fun MainQuizScreen(
     else CreateQuizScreen(data, navigator, viewModel)
 }
 
-@OptIn(ExperimentalPagerApi::class)
+@OptIn(ExperimentalPagerApi::class, ExperimentalMaterialApi::class)
 @Composable
 private fun CreateQuizScreen(
     quizList: List<QuizUIState>,
@@ -67,31 +79,59 @@ private fun CreateQuizScreen(
         }
     }
 
-    ConstraintLayout(
-        modifier = Modifier
-            .fillMaxSize()
-            .systemBarsPadding()
-    ) {
-        val (progressBar, pager, navigation) = createRefs()
+    val modalBottomSheetState = rememberModalBottomSheetState(
+        initialValue = ModalBottomSheetValue.Hidden, skipHalfExpanded = true
+    )
 
-        OverallProgress(modifier = Modifier
-            .constrainAs(progressBar) {
-                top.linkTo(parent.top)
+    val scope = rememberCoroutineScope()
+
+    BackHandler(enabled = modalBottomSheetState.isVisible) {
+        scope.launch {
+            modalBottomSheetState.hide()
+        }
+    }
+
+    ModalBottomSheetLayout(
+        sheetState = modalBottomSheetState,
+        sheetBackgroundColor = if (isSystemInDarkTheme()) DialogBkgDark else DialogBkgLight,
+        scrimColor = Color.Transparent,
+        sheetContent = {
+            Column(
+                Modifier
+                    .navigationBarsPadding()
+                    //.heightIn(min = screen50Percent.dp, max = screen80Percent.dp)
+            ) {
+                FeedbackBottomSheet(modalBottomSheetState, scope)
             }
-            .padding(start = 10.dp, end = 10.dp), currentProgress, quizList.size)
+        }) {
 
-        QuestionAndAnswers(
-            modifier = Modifier.constrainAs(pager) {
-                top.linkTo(progressBar.bottom, margin = 10.dp)
-                bottom.linkTo(navigation.top)
-                height = Dimension.fillToConstraints
-            },
-            quizList,
-            pagerState,
-            viewModel
-        )
+        ConstraintLayout(
+            modifier = Modifier
+                .fillMaxSize()
+                .systemBarsPadding()
+        ) {
+            val (progressBar, pager, navigation) = createRefs()
 
-        BottomBar(navigation, pager, pagerState, quizList, navigator, viewModel)
+            OverallProgress(modifier = Modifier
+                .constrainAs(progressBar) {
+                    top.linkTo(parent.top)
+                }
+                .padding(start = 10.dp, end = 10.dp), currentProgress, quizList.size)
+
+            QuestionAndAnswers(
+                modifier = Modifier.constrainAs(pager) {
+                    top.linkTo(progressBar.bottom, margin = 10.dp)
+                    bottom.linkTo(navigation.top)
+                    height = Dimension.fillToConstraints
+                },
+                quizList,
+                pagerState,
+                viewModel
+            )
+
+            BottomBar(navigation, pager, pagerState, quizList, navigator, viewModel, modalBottomSheetState)
+        }
+
     }
 }
 

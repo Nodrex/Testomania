@@ -5,6 +5,8 @@ import androidx.annotation.StringRes
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.ModalBottomSheetState
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.BottomAppBarDefaults
 import androidx.compose.material3.FloatingActionButton
@@ -26,8 +28,6 @@ import com.earth.testomania.common.model.QuizUIState
 import com.earth.testomania.destinations.ResultScreenDestination
 import com.earth.testomania.quiz_categories.viewmodel.DestinationViewModel
 import com.earth.testomania.result_screen.domain.use_case.ResultDataCollectorUseCase
-import com.earth.testomania.ui.theme.DialogBkgDark
-import com.earth.testomania.ui.theme.DialogBkgLight
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.PagerState
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -36,7 +36,7 @@ import kiwi.orbit.compose.ui.controls.SurfaceCard
 import kiwi.orbit.compose.ui.controls.Text
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalPagerApi::class)
+@OptIn(ExperimentalPagerApi::class, ExperimentalMaterialApi::class)
 @Composable
 fun ConstraintLayoutScope.BottomBar(
     navigation: ConstrainedLayoutReference,
@@ -44,7 +44,8 @@ fun ConstraintLayoutScope.BottomBar(
     pagerState: PagerState,
     quizList: List<QuizUIState>,
     navigator: DestinationsNavigator,
-    viewModel: DestinationViewModel
+    viewModel: DestinationViewModel,
+    modalBottomSheetState: ModalBottomSheetState
 ) {
     val scope = rememberCoroutineScope()
 
@@ -78,7 +79,9 @@ fun ConstraintLayoutScope.BottomBar(
             }
             Spacer(modifier = Modifier.width(10.dp))
             BottomBarItem(R.string.feedback, R.drawable.ic_feedback) {
-                //TODO open feedback screen
+                scope.launch {
+                    modalBottomSheetState.show()
+                }
             }
             Spacer(modifier = Modifier.width(10.dp))
             BottomBarItem(R.string.help, R.drawable.ic_help) {

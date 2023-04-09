@@ -63,4 +63,7 @@
     <string name="javascript">JavaScript</string>
     <string name="wordpress">Wordpress</string>
     <string name="kubernetes">Kubernetes</string>
+    <string name="feedback_prompt">We utilize third-party services to load quizzes, which means we may not have full knowledge of all the quizzes.
+        We appreciate your feedback on the quizzes, including if you find them inappropriate, incorrect, or if you have any other information you would like to share.
+    </string>
 </resources>
