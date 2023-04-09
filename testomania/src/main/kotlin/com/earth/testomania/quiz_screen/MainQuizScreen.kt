@@ -21,7 +21,6 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import androidx.core.content.res.ResourcesCompat.ID_NULL
 import com.earth.testomania.common.model.QuizUIState
-import com.earth.testomania.home_screen.presentation.ui_components.AboutBottomSheet
 import com.earth.testomania.quiz_categories.viewmodel.DestinationViewModel
 import com.earth.testomania.quiz_screen.*
 import com.earth.testomania.quiz_screen.ui_components.BottomBar
@@ -76,6 +75,7 @@ private fun CreateQuizScreen(
     LaunchedEffect(pagerState) {
         snapshotFlow { pagerState.currentPage }.collect { page ->
             currentProgress = page + 1
+            viewModel.currentQuizIndex = page
         }
     }
 

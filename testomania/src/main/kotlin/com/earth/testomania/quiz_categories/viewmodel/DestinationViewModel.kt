@@ -36,6 +36,8 @@ abstract class DestinationViewModel(
     var overallScore: Double = 0.0
         private set
 
+    var currentQuizIndex = 0
+
     init {
         initialize()
     }
@@ -109,8 +111,11 @@ abstract class DestinationViewModel(
 
     fun sendFeedback(text: String) {
         if (text.isEmpty()) return
-        sendFeedbackWithFirebaseAnalytics(text)
-        log("Feedback sent: $text")
+        try {
+            sendFeedbackWithFirebaseAnalytics(text, data[currentQuizIndex])
+        } catch (e: Exception) {
+            log(e)
+        }
     }
 
 }
