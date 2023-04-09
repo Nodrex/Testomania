@@ -101,7 +101,7 @@ private fun CreateQuizScreen(
                     .navigationBarsPadding()
                     //.heightIn(min = screen50Percent.dp, max = screen80Percent.dp)
             ) {
-                FeedbackBottomSheet(modalBottomSheetState, scope)
+                FeedbackBottomSheet(modalBottomSheetState, scope, viewModel)
             }
         }) {
 
