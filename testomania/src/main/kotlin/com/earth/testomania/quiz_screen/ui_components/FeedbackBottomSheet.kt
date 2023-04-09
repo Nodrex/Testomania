@@ -61,6 +61,7 @@ fun FeedbackBottomSheet(
             keyboardOptions = KeyboardOptions(imeAction = androidx.compose.ui.text.input.ImeAction.Send),
             keyboardActions = KeyboardActions(onSend = {
                 sendFeedbackAndCloseBottomSheet(scope, modalBottomSheetState, text, viewModel, keyboardController)
+                text = ""
             }),
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = if (isSystemInDarkTheme()) Gray else Color.White,
@@ -88,6 +89,7 @@ fun FeedbackBottomSheet(
                     viewModel,
                     keyboardController
                 )
+                text = ""
             }) {
             Box(
                 contentAlignment = Alignment.Center

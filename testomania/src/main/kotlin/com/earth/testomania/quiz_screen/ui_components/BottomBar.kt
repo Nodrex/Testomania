@@ -85,7 +85,7 @@ fun ConstraintLayoutScope.BottomBar(
             }
             Spacer(modifier = Modifier.width(10.dp))
             BottomBarItem(R.string.help, R.drawable.ic_help) {
-                //TODO open feedback screen
+                //TODO open ChatGPT BottomSheet
             }
         },
         floatingActionButton = {
