@@ -47,7 +47,7 @@ jobs:
         with:
           serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT_API_ACCESS }}
           packageName: com.sohohouse.seven
-          releaseFiles: testomania/build/outputs/apk/release/app-production-release.aab
+          releaseFiles: testomania/build/outputs/apk/release/testomania-release.aab
           track: alpha
           status: completed
           mappingFile: testomania/build/outputs/mapping/release/mapping.txt
