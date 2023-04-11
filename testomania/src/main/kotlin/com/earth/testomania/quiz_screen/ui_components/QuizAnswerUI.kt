@@ -41,7 +41,7 @@ fun CreateQuizAnswerUI(
         onSelect = {
             viewModel.saveAnswer(quizUIState, answer.tag)
         },
-        title = answer.tag.toString(),
+        title = answer.tag,
         toggleColorType = answerState,
         content = {
             Text(
