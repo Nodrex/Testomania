@@ -55,14 +55,14 @@ fun ConstraintLayoutScope.BottomBar(
     val systemUiController = rememberSystemUiController()
     val useDarkIcons = !isSystemInDarkTheme()
 
-    val c = MaterialTheme.colorScheme.contentColorFor(MaterialTheme.colorScheme.surface) //MaterialTheme.colorScheme.surface //BottomAppBarDefaults.containerColor
+    val c = BottomAppBarDefaults.containerColor
 
     DisposableEffect(systemUiController, useDarkIcons) {
         // Update all of the system bar colors to be transparent, and use
         // dark icons if we're in light theme
         systemUiController.setNavigationBarColor(
             color = c,
-           // darkIcons = useDarkIcons
+            // darkIcons = useDarkIcons
         )
 
         // setStatusBarColor() and setNavigationBarColor() also exist
@@ -82,7 +82,8 @@ fun ConstraintLayoutScope.BottomBar(
         containerColor = BottomAppBarDefaults.containerColor,
         //containerColor = Color.Transparent,
         actions = {
-            BottomBarItem(R.string.navigation_finish, R.drawable.ic_check) {
+            Spacer(modifier = Modifier.width(10.dp))
+            BottomBarItem(R.string.navigation_finish, R.drawable.finish_line) {
                 navigator.navigateUp()
                 navigator.navigate(
                     ResultScreenDestination(
@@ -99,14 +100,12 @@ fun ConstraintLayoutScope.BottomBar(
                     )
                 )
             }
-            Spacer(modifier = Modifier.width(10.dp))
             BottomBarItem(R.string.feedback, R.drawable.ic_feedback) {
                 scope.launch {
                     modalBottomSheetState.show()
                 }
             }
-            Spacer(modifier = Modifier.width(10.dp))
-            BottomBarItem(R.string.help, R.drawable.ic_help) {
+            BottomBarItem(R.string.help, R.drawable.ic_chat_gpt) {
                 //TODO open ChatGPT BottomSheet
             }
         },
@@ -129,7 +128,7 @@ fun ConstraintLayoutScope.BottomBar(
                 elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
             ) {
                 Icon(
-                   //modifier = Modifier.fillMaxSize().padding(10.dp),
+                    //modifier = Modifier.fillMaxSize().padding(10.dp),
                     painter = painterResource(id = R.drawable.ic_orbit_chevron_double_forward),
                     contentDescription = "",
                     tint = if (isSystemInDarkTheme()) Color.White else Color.Black,
@@ -156,21 +155,15 @@ private fun BottomBarItem(
         onClick = {
             onClick()
         }) {
-        Column(
-            modifier = Modifier.padding(6.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            val name = stringResource(strId)
-            Icon(
-                modifier = Modifier.fillMaxSize()
-                    .padding(11.dp),
-                painter = painterResource(drawableId),
-                contentDescription = name,
-                //tint = if (isSystemInDarkTheme()) OrbitTheme.colors.primary.normal else OrbitTheme.colors.primary.strong,
-                tint = if (isSystemInDarkTheme()) Color.White else Color.Black,
-            )
-        }
+        val name = stringResource(strId)
+        Icon(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp),
+            painter = painterResource(drawableId),
+            contentDescription = name,
+            tint = if (isSystemInDarkTheme()) Color.White else Color.Black,
+        )
     }
 }
 
