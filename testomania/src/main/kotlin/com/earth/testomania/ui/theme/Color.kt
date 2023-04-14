@@ -19,3 +19,5 @@ val DialogBkgLight = Color(0xFFEEEEEE)
 
 val LightRed = Color(0xffffb4ab)
 val DarkRed = Color(0xffba1a1a)
+val BottomBarColorDark = Color(0xff262c39)
+val BottomBarColorLight = Color(0xffededee)
