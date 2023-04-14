@@ -9,7 +9,6 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ModalBottomSheetState
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -23,11 +22,8 @@ import com.earth.testomania.common.model.QuizUIState
 import com.earth.testomania.destinations.ResultScreenDestination
 import com.earth.testomania.quiz_categories.viewmodel.DestinationViewModel
 import com.earth.testomania.result_screen.domain.use_case.ResultDataCollectorUseCase
-import com.earth.testomania.ui.theme.BottomBarColorDark
-import com.earth.testomania.ui.theme.BottomBarColorLight
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.PagerState
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kiwi.orbit.compose.ui.controls.Icon
 import kiwi.orbit.compose.ui.controls.SurfaceCard
@@ -46,21 +42,6 @@ fun ConstraintLayoutScope.BottomBar(
 ) {
     val scope = rememberCoroutineScope()
 
-    val systemUiController = rememberSystemUiController()
-    val bottomBarColor = if (isSystemInDarkTheme()) BottomBarColorDark else BottomBarColorLight
-
-    DisposableEffect(systemUiController) {
-        systemUiController.setNavigationBarColor(
-            color = bottomBarColor,
-        )
-
-        onDispose {
-            systemUiController.setNavigationBarColor(
-                color = Color.Unspecified,
-            )
-        }
-    }
-
     BottomAppBar(
         modifier =
         Modifier
@@ -69,7 +50,6 @@ fun ConstraintLayoutScope.BottomBar(
                 top.linkTo(pager.bottom)
                 bottom.linkTo(parent.bottom)
             },
-        containerColor = bottomBarColor,
         actions = {
             Spacer(modifier = Modifier.width(10.dp))
             BottomBarItem(R.string.navigation_finish, R.drawable.finish_line) {
@@ -92,6 +72,7 @@ fun ConstraintLayoutScope.BottomBar(
             BottomBarItem(R.string.feedback, R.drawable.ic_feedback) {
                 scope.launch {
                     modalBottomSheetState.show()
+
                 }
             }
             BottomBarItem(R.string.help, R.drawable.ic_chat_gpt) {

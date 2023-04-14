@@ -96,11 +96,7 @@ private fun CreateQuizScreen(
         sheetBackgroundColor = if (isSystemInDarkTheme()) DialogBkgDark else DialogBkgLight,
         scrimColor = Color.Transparent,
         sheetContent = {
-            Column(
-                Modifier
-                    .navigationBarsPadding()
-                    //.heightIn(min = screen50Percent.dp, max = screen80Percent.dp)
-            ) {
+            Column {
                 FeedbackBottomSheet(modalBottomSheetState, scope, viewModel)
             }
         }) {
@@ -108,7 +104,7 @@ private fun CreateQuizScreen(
         ConstraintLayout(
             modifier = Modifier
                 .fillMaxSize()
-                .systemBarsPadding()
+                .statusBarsPadding()
         ) {
             val (progressBar, pager, navigation) = createRefs()
 
@@ -129,7 +125,15 @@ private fun CreateQuizScreen(
                 viewModel
             )
 
-            BottomBar(navigation, pager, pagerState, quizList, navigator, viewModel, modalBottomSheetState)
+            BottomBar(
+                navigation,
+                pager,
+                pagerState,
+                quizList,
+                navigator,
+                viewModel,
+                modalBottomSheetState
+            )
         }
 
     }
