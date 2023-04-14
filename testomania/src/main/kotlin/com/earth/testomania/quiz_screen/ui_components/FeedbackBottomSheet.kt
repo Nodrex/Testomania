@@ -40,6 +40,7 @@ fun FeedbackBottomSheet(
     Column(
         Modifier
             .padding(all = 20.dp)
+            .navigationBarsPadding()
             .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
