@@ -98,6 +98,9 @@ dependencies {
     implementation(libs.bundles.moshi)
     implementation(libs.bundles.coroutines)
 
+    implementation(platform(libs.firebase.analytics))
+    implementation(libs.firebase.analytics.ktx)
+
     testImplementation(libs.bundles.test)
     androidTestImplementation(libs.bundles.android.test)
     debugImplementation(libs.bundles.debug.tools)

@@ -6,8 +6,10 @@ import androidx.lifecycle.viewModelScope
 import com.earth.testomania.R
 import com.earth.testomania.common.coroutines.defaultCoroutineExceptionHandler
 import com.earth.testomania.common.data.DataState
+import com.earth.testomania.common.log
 import com.earth.testomania.common.model.QuizUIState
 import com.earth.testomania.common.model.SelectedAnswer
+import com.earth.testomania.common.sendFeedbackWithFirebaseAnalytics
 import com.earth.testomania.quiz_categories.usecase.GetQuizUseCase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Job
@@ -33,6 +35,8 @@ abstract class DestinationViewModel(
 
     var overallScore: Double = 0.0
         private set
+
+    var currentQuizIndex = 0
 
     init {
         initialize()
@@ -104,5 +108,14 @@ abstract class DestinationViewModel(
 
     fun enableAnswerSelection(quizUIState: QuizUIState) =
         quizUIState.selectedAnswers.isEmpty()
+
+    fun sendFeedback(text: String) {
+        if (text.isEmpty()) return
+        try {
+            sendFeedbackWithFirebaseAnalytics(text, data[currentQuizIndex])
+        } catch (e: Exception) {
+            log(e)
+        }
+    }
 
 }

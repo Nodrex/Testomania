@@ -8,9 +8,9 @@
     <string name="title_name">Testomania</string>
     <string name="error_load">Was not able to load tests, please try again later</string>
     <string name="error_generic">Some Error occurred, please try again later</string>
-    <string name="about_app">This App\'s main purpose is to demonstrate code excellence for android with
+    <string name="about_app">This App\'s main purpose is to demonstrate code excellence for Android with
         clean architecture and modern latest libraries and components.
-        On the other hand, this App is useful to kill time while learning new things.
+        On the other hand, this App is useful to pass time while learning new things.
         App\'s code is open source and everyone can contribute, add his own category, fix bugs, or add features.
         \nOur ideology is that all the controls should be as below as possible in the thumb-reaching range space
         and all the information should be on the upper side of the screen, to avoid hand shifting while using the App,
@@ -19,6 +19,8 @@
     <string name="app_github_url">https://github.com/Nodrex/Testomania</string>
     <string name="creator_developers">Creator Developers:</string>
     <string name="navigation_finish">Finish</string>
+    <string name="feedback">Feedback</string>
+    <string name="help">Help</string>
     <string name="navigation_next">Next/Skip</string>
     <string name="coming_soon">Coming soon...</string>
     <string name="dismiss">Dismiss</string>
@@ -61,4 +63,7 @@
     <string name="javascript">JavaScript</string>
     <string name="wordpress">Wordpress</string>
     <string name="kubernetes">Kubernetes</string>
+    <string name="feedback_prompt">We utilize third-party services to load quizzes, which means we may not have full knowledge of all the quizzes.
+        We appreciate your feedback on the quizzes, including if you find them inappropriate, incorrect, or if you have any other information you would like to share.
+    </string>
 </resources>

@@ -2,34 +2,37 @@
 
 package com.earth.testomania.quiz_screen
 
+import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.ModalBottomSheetLayout
+import androidx.compose.material.ModalBottomSheetValue
+import androidx.compose.material.rememberModalBottomSheetState
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import androidx.core.content.res.ResourcesCompat.ID_NULL
-import com.earth.testomania.R
 import com.earth.testomania.common.model.QuizUIState
-import com.earth.testomania.destinations.ResultScreenDestination
 import com.earth.testomania.quiz_categories.viewmodel.DestinationViewModel
 import com.earth.testomania.quiz_screen.*
-import com.earth.testomania.result_screen.domain.use_case.ResultDataCollectorUseCase
+import com.earth.testomania.quiz_screen.ui_components.BottomBar
+import com.earth.testomania.quiz_screen.ui_components.FeedbackBottomSheet
+import com.earth.testomania.ui.theme.DialogBkgDark
+import com.earth.testomania.ui.theme.DialogBkgLight
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
-import kiwi.orbit.compose.ui.controls.ButtonPrimary
-import kiwi.orbit.compose.ui.controls.ButtonSecondary
-import kiwi.orbit.compose.ui.controls.Icon
-import kiwi.orbit.compose.ui.controls.Text
 import kotlinx.coroutines.launch
 
 
@@ -56,7 +59,7 @@ fun MainQuizScreen(
     else CreateQuizScreen(data, navigator, viewModel)
 }
 
-@OptIn(ExperimentalPagerApi::class)
+@OptIn(ExperimentalPagerApi::class, ExperimentalMaterialApi::class)
 @Composable
 private fun CreateQuizScreen(
     quizList: List<QuizUIState>,
@@ -72,87 +75,67 @@ private fun CreateQuizScreen(
     LaunchedEffect(pagerState) {
         snapshotFlow { pagerState.currentPage }.collect { page ->
             currentProgress = page + 1
+            viewModel.currentQuizIndex = page
         }
     }
 
-    ConstraintLayout(
-        modifier = Modifier
-            .fillMaxSize()
-            .systemBarsPadding()
-    ) {
-        val (progressBar, pager, navigation) = createRefs()
+    val modalBottomSheetState = rememberModalBottomSheetState(
+        initialValue = ModalBottomSheetValue.Hidden, skipHalfExpanded = true
+    )
 
-        OverallProgress(modifier = Modifier
-            .constrainAs(progressBar) {
-                top.linkTo(parent.top)
-            }
-            .padding(start = 10.dp, end = 10.dp), currentProgress, quizList.size)
+    val scope = rememberCoroutineScope()
 
-        QuestionAndAnswers(
-            modifier = Modifier.constrainAs(pager) {
-                top.linkTo(progressBar.bottom, margin = 10.dp)
-                bottom.linkTo(navigation.top)
-                height = Dimension.fillToConstraints
-            },
-            quizList,
-            pagerState,
-            viewModel
-        )
-
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(10.dp)
-                .constrainAs(navigation) {
-                    top.linkTo(pager.bottom)
-                    bottom.linkTo(parent.bottom)
-                }, horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.End)
-        ) {
-            ButtonSecondary(
-                onClick = {
-                    navigator.navigateUp()
-                    navigator.navigate(
-                        ResultScreenDestination(
-                            ResultDataCollectorUseCase().getQuizResult(
-                                quizList,
-                                viewModel.overallScore,
-                                //TODO not good we need to get actually from ViewModel as a category
-                                // and not from quiz himself (occurs bug in case of Information
-                                // technologies when multiple categories are together),
-                                // but for now let's leave
-                                // TODO reduce indentation
-                                quizList.firstOrNull()?.quiz?.category ?: "Quiz"
-                            )
-                        )
-                    )
-                },
-                Modifier.weight(1f)
-            ) {
-                Text(text = stringResource(R.string.navigation_finish))
-
-            }
-            val scope = rememberCoroutineScope()
-
-            ButtonPrimary(onClick = {
-                scope.launch {
-                    if (pagerState.pageCount == pagerState.currentPage + 1) {
-                        val unansweredQuestion =
-                            findFirstIndexOfUnansweredQuestion(quizList, pagerState)
-
-                        pagerState.animateScrollToPage(unansweredQuestion)
-
-                    } else {
-                        pagerState.animateScrollToPage(pagerState.currentPage + 1)
-                    }
-                }
-            }, Modifier.weight(1f)) {
-                Text(text = stringResource(R.string.navigation_next))
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_orbit_chevron_double_forward),
-                    contentDescription = ""
-                )
-            }
+    BackHandler(enabled = modalBottomSheetState.isVisible) {
+        scope.launch {
+            modalBottomSheetState.hide()
         }
+    }
+
+    ModalBottomSheetLayout(
+        sheetState = modalBottomSheetState,
+        sheetBackgroundColor = if (isSystemInDarkTheme()) DialogBkgDark else DialogBkgLight,
+        scrimColor = Color.Transparent,
+        sheetContent = {
+            Column {
+                FeedbackBottomSheet(modalBottomSheetState, scope, viewModel)
+            }
+        }) {
+
+        ConstraintLayout(
+            modifier = Modifier
+                .fillMaxSize()
+                .statusBarsPadding()
+        ) {
+            val (progressBar, pager, navigation) = createRefs()
+
+            OverallProgress(modifier = Modifier
+                .constrainAs(progressBar) {
+                    top.linkTo(parent.top)
+                }
+                .padding(start = 10.dp, end = 10.dp), currentProgress, quizList.size)
+
+            QuestionAndAnswers(
+                modifier = Modifier.constrainAs(pager) {
+                    top.linkTo(progressBar.bottom, margin = 10.dp)
+                    bottom.linkTo(navigation.top)
+                    height = Dimension.fillToConstraints
+                },
+                quizList,
+                pagerState,
+                viewModel
+            )
+
+            BottomBar(
+                navigation,
+                pager,
+                pagerState,
+                quizList,
+                navigator,
+                viewModel,
+                modalBottomSheetState
+            )
+        }
+
     }
 }
 
@@ -219,15 +202,6 @@ private fun QuestionAndAnswers(
             }
         }
     }
-}
-
-private fun findFirstIndexOfUnansweredQuestion(
-    quizList: List<QuizUIState>,
-    pagerState: PagerState,
-): Int {
-    return quizList.indexOfFirst {
-        it.selectedAnswers.isEmpty()
-    }.takeIf { it >= 0 } ?: pagerState.currentPage
 }
 
 @Preview
