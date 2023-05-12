@@ -4,7 +4,7 @@ plugins {
     id("kotlin-parcelize")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
-    id("com.google.devtools.ksp") version ("1.7.0-1.0.6")
+    id("com.google.devtools.ksp") version ("1.8.21-1.0.11")
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
 }
