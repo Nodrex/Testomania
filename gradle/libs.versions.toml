@@ -62,8 +62,8 @@ moshi-core = "com.squareup.moshi:moshi-kotlin:1.14.0"
 moshi-converter = "com.squareup.retrofit2:converter-moshi:2.9.0"
 moshi-codegen = "com.squareup.moshi:moshi-kotlin-codegen:1.14.0"
 
-coroutines-core = 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.0'
-coroutines-android = 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.0'
+coroutines-core = 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1'
+coroutines-android = 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1'
 
 junit = 'junit:junit:4.13.2'
 robolectric = 'org.robolectric:robolectric:4.10.2'
