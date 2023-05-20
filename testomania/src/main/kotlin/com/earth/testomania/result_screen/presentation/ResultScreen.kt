@@ -47,6 +47,7 @@ fun ResultScreen(
         modifier = Modifier
             .fillMaxSize()
             .statusBarsPadding()
+            .navigationBarsPadding()
             .padding(start = 8.dp, end = 8.dp, top = 3.dp),
     ) {
         MainResultItem(
@@ -80,7 +81,6 @@ fun ResultScreen(
     }
 
 }
-
 
 @Composable
 fun IncorrectAnsweredQuestion(item: IncorrectlyAnsweredQuizModel) {
