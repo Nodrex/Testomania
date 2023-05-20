@@ -1,5 +1,7 @@
 package com.earth.testomania.quiz_screen.ui_components
 
+import android.content.Intent
+import android.net.Uri
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -12,11 +14,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstrainedLayoutReference
 import androidx.constraintlayout.compose.ConstraintLayoutScope
+import androidx.core.content.ContextCompat
 import com.earth.testomania.R
 import com.earth.testomania.common.model.QuizUIState
 import com.earth.testomania.destinations.ResultScreenDestination
@@ -41,6 +45,7 @@ fun ConstraintLayoutScope.BottomBar(
     modalBottomSheetState: ModalBottomSheetState
 ) {
     val scope = rememberCoroutineScope()
+    val context = LocalContext.current
 
     BottomAppBar(
         modifier =
@@ -59,11 +64,6 @@ fun ConstraintLayoutScope.BottomBar(
                         ResultDataCollectorUseCase().getQuizResult(
                             quizList,
                             viewModel.overallScore,
-                            //TODO not good we need to get actually from ViewModel as a category
-                            // and not from quiz himself (occurs bug in case of Information
-                            // technologies when multiple categories are together),
-                            // but for now let's leave
-                            // TODO reduce indentation
                             quizList.firstOrNull()?.quiz?.category ?: "Quiz"
                         )
                     )
@@ -72,11 +72,17 @@ fun ConstraintLayoutScope.BottomBar(
             BottomBarItem(R.string.feedback, R.drawable.ic_feedback) {
                 scope.launch {
                     modalBottomSheetState.show()
-
                 }
             }
-            BottomBarItem(R.string.help, R.drawable.ic_chat_gpt) {
-                //TODO open ChatGPT BottomSheet
+            BottomBarItem(R.string.help, R.drawable.google_logo_outline) {
+                ContextCompat.startActivity(
+                    context,
+                    Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse("https://www.google.com/search?q=${viewModel.getCurrentQuiz().quiz.question}")
+                    ),
+                    null
+                )
             }
         },
         floatingActionButton = {

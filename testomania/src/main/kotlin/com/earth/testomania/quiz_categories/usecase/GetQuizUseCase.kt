@@ -66,8 +66,6 @@ abstract class GetQuizUseCase {
         emptyList<QuizUIState>()
     )
 
-    // TODO have a separate UseCase for reporting errors
-    // UseCase should not do more then 1 thing
     private fun logProblematicQuiz(quiz: Quiz, errorDescription: String) = log(
         """!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         |Problematic Quiz ($errorDescription) from: ${getAPIUrl()}
