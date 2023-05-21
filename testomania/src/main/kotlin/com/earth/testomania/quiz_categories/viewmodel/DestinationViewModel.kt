@@ -118,4 +118,6 @@ abstract class DestinationViewModel(
         }
     }
 
+    fun getCurrentQuiz() = data[currentQuizIndex]
+
 }
