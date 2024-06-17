@@ -12,9 +12,9 @@ jobs:
           java-version: 19
           distribution: temurin
           cache: 'gradle'
-      - uses: gradle/gradle-build-action@v2
+      - uses: gradle/gradle-build-action@v3
         with:
           arguments: testDebug
-      - uses: gradle/gradle-build-action@v2
+      - uses: gradle/gradle-build-action@v3
         with:
           arguments: lintDebug
