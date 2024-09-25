@@ -58,7 +58,7 @@ firebase-analytics-ktx = { module = "com.google.firebase:firebase-analytics-ktx"
 retrofit-core = "com.squareup.retrofit2:retrofit:2.9.0"
 retrofit-logging-interceptor = "com.squareup.okhttp3:logging-interceptor:4.11.0"
 
-moshi-core = "com.squareup.moshi:moshi-kotlin:1.15.0"
+moshi-core = "com.squareup.moshi:moshi-kotlin:1.15.1"
 moshi-converter = "com.squareup.retrofit2:converter-moshi:2.9.0"
 moshi-codegen = "com.squareup.moshi:moshi-kotlin-codegen:1.15.0"
 
