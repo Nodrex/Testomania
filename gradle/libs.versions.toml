@@ -46,7 +46,7 @@ accompanist-systemuicontroller = "com.google.accompanist:accompanist-systemuicon
 accompanist-pager = "com.google.accompanist:accompanist-pager:0.28.0"
 
 mockk = "io.mockk:mockk:1.13.5"
-mockk-android = "io.mockk:mockk-android:1.13.5"
+mockk-android = "io.mockk:mockk-android:1.13.13"
 
 coil = "io.coil-kt:coil-compose:2.4.0"
 
